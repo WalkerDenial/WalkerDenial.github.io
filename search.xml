@@ -1,0 +1,1440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[ES6 简介]]></title>
+      <url>/2017/07/31/ES6/ES6%20%E7%AE%80%E4%BB%8B/</url>
+      <content type="html"><![CDATA[<p>ECMAScript 6.0（以下简称 ES6 ）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
+<h3 id="ECMAScript-和-JavaScript-的关系"><a href="#ECMAScript-和-JavaScript-的关系" class="headerlink" title="ECMAScript 和 JavaScript 的关系"></a>ECMAScript 和 JavaScript 的关系</h3><p>该标准从一开始就是针对 JavaScript 语言制定的，但是之所以不叫 JavaScript，有两个原因。一是商标，Java 是 Sun 公司的商标，根据授权协议，只有 Netscape 公司可以合法地使用 JavaScript 这个名字，且 JavaScript 本身也已经被 Netscape 公司注册为商标。二是想体现这门语言的制定者是 ECMA，不是 Netscape，这样有利于保证这门语言的开放性和中立性。</p>
+<p>因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 ActionScript）。</p>
+<h3 id="声明变量的六种方法"><a href="#声明变量的六种方法" class="headerlink" title="声明变量的六种方法"></a>声明变量的六种方法</h3><ol>
+<li>var</li>
+<li>function</li>
+<li>let</li>
+<li>const</li>
+<li>import</li>
+<li>class</li>
+</ol>
+<h3 id="正则特殊字符说明"><a href="#正则特殊字符说明" class="headerlink" title="正则特殊字符说明"></a>正则特殊字符说明</h3><p>1、 <code>.</code> 字符：除了换行符以外的任意单个字符</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'𠮷'</span><span class="token punctuation">;</span>
+<span class="token regex">/^.$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token regex">/^.$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>2、 <code>u</code> 修饰符：含义为 <strong>Unicode模式</strong>, 用来正确处理大于 \uFFFF 的 Unicode 字符。也就是说，会正确处理四个字节的 UTF-16 编码。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^\uD83D/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\uD83D\uDC2A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token regex">/^\uD83D/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\uD83D\uDC2A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>3、 <code>Unicode</code> 字符：ES6 新增了使用大括号表示 Unicode 字符，这种表示法在正则表达式中必须加上  <code>u</code> 修饰符，才能识别当中的大括号，否则会被解读为量词。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/\u{61}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token regex">/\u{61}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token regex">/\u{20BB7}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>4、<code>量词</code>：使用 <code>u</code> 修饰符后，所有量词都会正确识别码点大于 0xFFFF 的 Unicode 字符。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/a{2}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token regex">/a{2}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token regex">/𠮷{2}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token regex">/𠮷{2}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>5、<code>预定义模式</code>：<code>u</code> 修饰符也影响到预定义模式，能否正确识别码点大于 0xFFFF 的 Unicode 字符。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^\S$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token regex">/^\S$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><em>说明：上面代码的 <code>\S</code> 是预定义模式，匹配所有不是空格的字符。只有加了 <code>u</code> 修饰符，它才能正确匹配码点大于 0xFFFF 的 Unicode 字符。</em></p>
+<p>6、<code>i</code> 修饰符：有些 Unicode 字符的编码不同，但是字型很相近，比如，\u004B 与 \u212A 都是大写的 K。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/[a-z]/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\u212A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
+<span class="token regex">/[a-z]/iu</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\u212A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><em>上面代码中，不加 <code>u</code> 修饰符，就无法识别非规范的 <code>K</code> 字符</em></p>
+<p>7、<code>y</code> 修饰符：除了 <code>u</code> 修饰符，ES6 还为正则表达式添加了 <code>y</code> 修饰符，叫做“粘连”（ sticky ）修饰符。<code>y</code> 修饰符的作用与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，<code>g</code> 修饰符只要剩余位置中存在匹配就可，而 <code>y</code> 修饰符确保匹配必须从剩余的第一个位置开始，这也就是 “粘连” 的涵义。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'aaa_aa_a'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> r1 <span class="token operator">=</span> <span class="token regex">/a+/g</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> r2 <span class="token operator">=</span> <span class="token regex">/a+/y</span><span class="token punctuation">;</span>
+
+r1<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa"]</span>
+r2<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa"]</span>
+
+r1<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aa"]</span>
+r2<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><em>上面代码有两个正则表达式，一个使用 <code>g</code> 修饰符，另一个使用 <code>y</code> 修饰符。这两个正则表达式各执行了两次，第一次执行的时候，两者行为相同，剩余字符串都是 <code>_aa_a</code> 。由于 <code>g</code> 修饰没有位置要求，所以第二次执行会返回结果，而 <code>y</code> 修饰符要求匹配必须从头部开始，所以返回 <code>null</code>。</em></p>
+<p>如果改一下正则表达式，保证每次都能头部匹配，<code>y</code> 修饰符就会返回结果了。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'aaa_aa_a'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> r <span class="token operator">=</span> <span class="token regex">/a+_/y</span><span class="token punctuation">;</span>
+
+r<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa_"]</span>
+r<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aa_"]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><em>上面代码每次匹配，都是从剩余字符串的头部开始。</em></p>
+<p>使用 <code>lastIndex</code> 属性，可以更好地说明 <code>y</code> 修饰符。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/g</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 指定从2号位置（y）开始匹配</span>
+REGEX<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 匹配成功</span>
+<span class="token keyword">const</span> match <span class="token operator">=</span> REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaya'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 在3号位置匹配成功</span>
+match<span class="token punctuation">.</span>index <span class="token comment" spellcheck="true">// 3</span>
+
+<span class="token comment" spellcheck="true">// 下一次匹配从4号位开始</span>
+REGEX<span class="token punctuation">.</span>lastIndex <span class="token comment" spellcheck="true">// 4</span>
+
+<span class="token comment" spellcheck="true">// 4号位开始匹配失败</span>
+REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaxa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面代码中，<code>lastIndex</code> 属性指定每次搜索的开始位置，<code>g</code> 修饰符从这个位置开始向后搜索，直到发现匹配为止。</p>
+<p><code>y</code> 修饰符同样遵守 <code>lastIndex</code> 属性，但是要求必须在 <code>lastIndex</code> 指定的位置发现匹配。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/y</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 指定从2号位置开始匹配</span>
+REGEX<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 不是粘连，匹配失败</span>
+REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaya'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
+
+<span class="token comment" spellcheck="true">// 指定从3号位置开始匹配</span>
+REGEX<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3号位置是粘连，匹配成功</span>
+<span class="token keyword">const</span> match <span class="token operator">=</span> REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaxa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+match<span class="token punctuation">.</span>index <span class="token comment" spellcheck="true">// 3</span>
+REGEX<span class="token punctuation">.</span>lastIndex <span class="token comment" spellcheck="true">// 4</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实际上，<code>y</code> 修饰符号隐含了头部匹配的标志 <code>^</code>。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/b/y</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'aba'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// null</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><em>上面代码由于不能保证头部匹配，所以返回 <code>null</code>。<code>y</code> 修饰符的设计本意，就是让头部匹配的标志 <code>^</code> 在全局匹配中都有效。</em></p>
+<p>在 <code>split</code> 方法中使用 <code>y</code> 修饰符，原字符串必须以分隔符开头。这也意味着，只要匹配成功，数组的第一个成员肯定是空字符串。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 没有找到匹配</span>
+<span class="token string">'x##'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ 'x##' ]</span>
+
+<span class="token comment" spellcheck="true">// 找到两个匹配</span>
+<span class="token string">'##x'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ '', '', 'x' ]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>后续的分隔符只有紧跟前面的分隔符，才会被识别。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">'#x#'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ '', 'x#' ]</span>
+
+<span class="token string">'##'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ '', '', '' ]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>下面是字符串对象的 <code>replace</code> 方法的例子。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/gy</span><span class="token punctuation">;</span>
+<span class="token string">'aaxa'</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>REGEX<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// '--xa'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><em>上面代码中，最后一个 <code>a</code> 因为不是出现在下一次匹配的头部，所以不会被替换。</em></p>
+<p>单单一个 <code>y</code> 修饰符对 <code>match</code> 方法，只能返回第一个匹配，必须与 <code>g</code> 修饰符联用，才能返回所有匹配。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">'a1a2a3'</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/a\d/y</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["a1"]</span>
+<span class="token string">'a1a2a3'</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/a\d/gy</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["a1", "a2", "a3"]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>y</code> 修饰符的一个应用，是从字符串提取 token（词元），<code>y</code> 修饰符确保了匹配之间不会有漏掉的字符。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> TOKEN_Y <span class="token operator">=</span> <span class="token regex">/\s*(\+|[0-9]+)\s*/y</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> TOKEN_G  <span class="token operator">=</span> <span class="token regex">/\s*(\+|[0-9]+)\s*/g</span><span class="token punctuation">;</span>
+
+<span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_Y<span class="token punctuation">,</span> <span class="token string">'3 + 4'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span>
+<span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_G<span class="token punctuation">,</span> <span class="token string">'3 + 4'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span>
+
+<span class="token keyword">function</span> <span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_REGEX<span class="token punctuation">,</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> match<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>match <span class="token operator">=</span> TOKEN_REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>match<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><em>上面代码中，如果字符串里面没有非法字符，<code>y</code> 修饰符与 <code>g</code> 修饰符的提取结果是一样的。但是，一旦出现非法字符，两者的行为就不一样了。</em></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_Y<span class="token punctuation">,</span> <span class="token string">'3x + 4'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ '3' ]</span>
+<span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_G<span class="token punctuation">,</span> <span class="token string">'3x + 4'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><em>上面代码中，<code>g</code> 修饰符会忽略非法字符，而 <code>y</code> 修饰符不会，这样就很容易发现错误。</em></p>
+<p>8、<code>sticky</code> 属性：与 <code>y</code> 修饰符相匹配，ES6 的正则对象多了 <code>sticky</code> 属性，表示是否设置了 <code>y</code> 修饰符。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> r <span class="token operator">=</span> <span class="token regex">/hello\d/y</span><span class="token punctuation">;</span>
+r<span class="token punctuation">.</span>sticky <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>9、<code>flags</code> 属性：ES6 为正则表达式新增了 <code>flags</code> 属性，会返回正则表达式的修饰符。 </p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// ES5 的 source 属性</span>
+<span class="token comment" spellcheck="true">// 返回正则表达式的正文</span>
+<span class="token regex">/abc/ig</span><span class="token punctuation">.</span>source
+<span class="token comment" spellcheck="true">// "abc"</span>
+
+<span class="token comment" spellcheck="true">// ES6 的 flags 属性</span>
+<span class="token comment" spellcheck="true">// 返回正则表达式的修饰符</span>
+<span class="token regex">/abc/ig</span><span class="token punctuation">.</span>flags
+<span class="token comment" spellcheck="true">// 'gi'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>10、<code>s</code> 修饰符：dotAll 模式</p>
+<p>正则表达式中，点（ <code>.</code> ）是一个特殊字符，代表任意的单个字符，但是行终止符（line terminator character）除外。</p>
+<p>以下四个字符属于 <code>行终止符</code>。</p>
+<ol>
+<li>U+000A 换行符（\n）</li>
+<li>U+000D 回车符（\r）</li>
+<li>U+2028 行分隔符（line separator）</li>
+<li>U+2029 段分隔符（paragraph separator）</li>
+</ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/foo.bar/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// false</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><em>上面代码中，因为 <code>.</code> 不匹配 <code>\n</code>，所以正则表达式返回 <code>false</code>。</em></p>
+<p>所以现在有一个提案，引入 <code>/s</code> 修饰符，使得 <code>.</code> 可以匹配任意单个字符。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">/</span>foo<span class="token punctuation">.</span>bar<span class="token operator">/</span>s<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这被称为 <code>dotAll</code> 模式，即点（ <code>dot</code> ）代表一切字符。所以，正则表达式还引入了一个 <code>dotAll</code> 属性，返回一个布尔值，表示该正则表达式是否处在 <code>dotAll</code> 模式。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token operator">/</span>foo<span class="token punctuation">.</span>bar<span class="token operator">/</span>s<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 另一种写法</span>
+<span class="token comment" spellcheck="true">// const re = new RegExp('foo.bar', 's');</span>
+
+re<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
+re<span class="token punctuation">.</span>dotAll <span class="token comment" spellcheck="true">// true</span>
+re<span class="token punctuation">.</span>flags <span class="token comment" spellcheck="true">// 's'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>/s</code> 修饰符和多行修饰符 <code>/m</code> 不冲突，两者一起使用的情况下，.匹配所有字符，而 <code>^</code> 和 <code>$</code> 匹配每一行的行首和行尾。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> ES6 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 基础 </tag>
+            
+            <tag> ES6 </tag>
+            
+            <tag> 简介 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[访问者模式]]></title>
+      <url>/2017/03/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>访问者模式(Visitor Pattern)</code> : 提供一个作用于某对象结构中的各元素的操作表示，它使得可以在不改变各元素的类的前提下定义作用于这些元素的新操作。访问者模式是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>增加新的访问操作很方便。使用访问者模式，增加新的访问操作就意味着增加一个新的具体访问者类，实现简单，无须修改源代码，符合开闭原则；</li>
+<li>将有关元素对象的访问行为集中到一个访问者对象中，而不是分散在一个个的元素类中。类的职责更加清晰，有利于对象结构中元素对象的复用，相同的对象结构可以供多个不同的访问者访问；</li>
+<li>让用户能够在不修改现有元素类层次结构的情况下，定义作用于该层次结构的操作；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>增加新的元素类很困难。在访问者模式中，每增加一个新的元素类都意味着要在抽象访问者角色中增加一个新的抽象操作，并在每一个具体访问者类中增加相应的具体操作，这违背了开闭原则的要求；</li>
+<li>破坏封装。访问者模式要求访问者对象访问并调用每一个元素对象的操作，这意味着元素对象有时候必须暴露一些自己的内部操作和内部状态，否则无法提供访问者访问；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 访问者 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[模板方法模式]]></title>
+      <url>/2017/03/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>模板方法模式(Template Method Pattern)</code> : 定义一个操作中算法的框架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法是一种 <strong>行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>模板方法模式在父类中形式化地定义一个算法，而由它的子类来实现细节的处理，在子类实现详细的处理算法时并不会改变算法中步骤的执行次序；</li>
+<li>模板方法模式是一种代码复用技术，它在类库设计中尤为重要，它提取了类库中的公共行为，将公共行为放在父类中，而通过其子类来实现不同的行为，它鼓励恰当使用继承来实现代码复用；</li>
+<li>模板方法模式可实现一种反向控制结构，通过子类覆盖父类的钩子方法来决定某一特定步骤是否需要执行；</li>
+<li>在模板方法模式中可以通过子类来覆盖父类的基本方法，不同的子类可以提供基本方法的不同实现，更换和增加新的子类很方便，符合单一职责原则和开闭原则；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>需要为每一个基本方法的不同实现提供一个子类，如果父类中可变的基本方法太多，将会导致类的个数增加，系统更加庞大，设计也更加抽象，此时，可结合桥接模式来进行设计；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 模板方法 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[策略模式]]></title>
+      <url>/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>策略模式(Strategy Pattern)</code> : 定义一系列算法类，将每一个算法封装起来，并让它们可以互相替换。策略模式让算法独立于使用它的客户而变化，也称为 <strong>政策模式(Policy)</strong>。策略模式是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>策略模式提供了对开闭原则的完美支持，用户可以再不修改原有系统的基础上选择算法或行为，也可以灵活地增加新的算法或行为；</li>
+<li>策略模式提供了管理相关的算法族的办法。策略类的等级结构定义了一个算法或行为族，恰当使用继承可以把公共的代码移到抽象策略中，从而避免重复的代码；</li>
+<li>策略模式提供了一种可以替换继承关系的办法。如果不使用策略模式，那么使用算法的环境类就可能会有一些子类，每一个子类提供一种不同的算法。但是，这样一来算法的使用就和算法本身混在一起，不符合单一职责原则，决定使用哪一种算法的逻辑和该算法本身混合在一起，从而不可能再独立演化；而且使用继承无法实现算法或行为在程序运行时的动态切换；</li>
+<li>使用策略模式可以避免多重条件选择语句。多重条件选择语句不易维护，它把采取哪一种算法或行为的逻辑与算法或行为本身的实现逻辑混合在一起，将它们全部硬编码(Hard Coding)在一个庞大的多重条件选择语句中，比直接继承环境类的办法还要原始和落后；</li>
+<li>策略模式提供了一种算法的复用机制，由于将算法单独提取出来封装在策略类中，因此不同的环境类可以方便地复用这些策略类；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>客户端必须知道所有的策略类，并自行决定使用哪一个策略类。这就意味着客户端必须理解这些算法的区别，以便适时选择恰当的算法。换言之，策略模式只适用于客户端知道所有的算法或行为的情况；</li>
+<li>策略模式将造成系统产生很多具体策略类，任何细小的变化都将导致系统要增加一个新的具体策略类；</li>
+<li>无法同时在客户端使用多个策略类，也就是说，在使用策略模式时，客户端每次只能使用一个策略类，不支持使用一个策略类完成部分功能后再使用另一个策略类来完成剩余功能的情况；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 策略 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[状态模式]]></title>
+      <url>/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>状态模式(State Pattern)</code> : 允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象(Objects for States)，装填模式是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>封装了状态的转换规则，在装填模式中可以将状态的转换代码封装在环境类或者具体状态类中，可以对状态转换代码进行集中管理，而不是分散在一个个业务方法中；</li>
+<li>将所有与某个状态有关的行为放到一个类中，只需要注入一个不同的状态对象即可使环境对象拥有不同的行为；</li>
+<li>允许状态转换逻辑与状态对象合成一体，而不是提供一个巨大的条件语句块，状态模式可以避免使用庞大的条件语句来将业务方法和状态转换代码交织在一起；</li>
+<li>可以让多个环境对象共享一个状态对象，从而减少系统中对象的个数；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>状态模式的使用必然会增加系统中类和对象的个数，导致系统运行开销增大；</li>
+<li>状态模式的程序结构与实现都较为复杂，如果使用不当将导致程序结构和代码的混乱，增加系统设计的难度；</li>
+<li>状态模式对开闭原则的支持并不太好，增加新的状态类需要修改那些负责状态转换的源代码，否则无法转换到新的新增状态；而且修改某个状态类的行为也需要修改对应类的源代码；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 状态 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[观察者模式]]></title>
+      <url>/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>观察者模式(Observer Pattern)</code> : 定义对象之间的一种一对多依赖关系，使得每当一个对象状态发生改变时，其相关依赖对象皆得到通知并被自动更新。观察者模式的别名包括发布-订阅(Publish/Subscribe)模式、模型-视图(Model/View)模式、源-监听器(Source/Listener)模式或从属者(Dependents)模式。观察者模式是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>观察者模式可以实现表示层和数据逻辑层的分离，定义了稳定的消息更新传递机制，并抽象了更新接口，使得可以有各种各样不同的表示层充当具体观察者角色；</li>
+<li>观察者模式在观察目标和观察者之间建立一个抽象的耦合。观察者目标只需要维持一个抽象观察者的集合，无须了解其具体观察者。由于观察目标和观察者没有紧密地耦合在一起，因此它们可以属于不同的抽象化层次；</li>
+<li>观察者模式支持广播通信，观察目标会向所有已注册的观察者对象发送通知，简化了一对多系统设计的难度；</li>
+<li>观察者模式满足开闭原则的要求，增加新的具体观察者无须修改原有系统代码，在具体观察者与观察目标之间不存在关联关系的情况下，增加新的观察目标也很方便；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>如果一个观察目标对象有很多直接和间接观察者，将所有的观察者都通知到会花费很多时间；</li>
+<li>如果在观察者和观察目标之间存在循环依赖，观察目标会触发它们之间进行循环调用，可能导致系统崩溃；</li>
+<li>观察者模式没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的，而仅仅只是知道观察目标发生了变化；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 观察者 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[备忘录模式]]></title>
+      <url>/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>备忘录模式(Memento Pattern)</code> : 在不破坏封装的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样可以在以后将对象恢复到原先保存的状态。它是一种 <strong>对象行为型模式</strong>，其别名为 Token。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>它提供了一种状态恢复的实现机制，使得用户可以方便地回到一个特定的历史步骤，当新的状态无效或者存在问题时，可以使用暂时存储起来的备忘录将状态复原；</li>
+<li>备忘录实现了对信息的封装，一个备忘录对象是一种原发器对象状态的表示，不会被其他代码所改动。备忘录保存了原发器的状态，采用列表、堆栈等集合来存储备忘录对象可以实现多次撤销操作；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>资源消耗过大，如果需要保存的原发器类的成员变量太多，就不可避免地需要占用大量的存储空间，每保存一次对象的状态都需要消耗一定的系统资源；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 备忘录 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[中介者模式]]></title>
+      <url>/2017/02/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>中介者模式(Mediator Pattern)</code> : 用一个中介对象(中介者)来封装一系列的对象交互，中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为 <strong>调停者模式</strong>，它是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>中介者模式简化了对象之间的交互，它用中介者和同事的一对多交互代替了原来同事之间的多对多交互，一对多关系更容易理解、维护和扩展，将原本难以理解的网状结构转换成相对简单的星型结构；</li>
+<li>中介者模式可将各同事对象解耦。中介者有利于各同事之间的松耦合，可以独立地改变和复用每一个同事和中介者，增加新的中介者和新的同事类都比较方便，更好地符合开闭原则；</li>
+<li>可以减少大量同事子类生成，中介者将原本分布于多个对象之间的行为集中在一起，改变这些行为只需要生成新的中介者子类即可，这使得各个同事类可以被重用，无须对同事类进行扩展；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>在具体中介者类中包含了大量同事之间的交互细节，可能会导致具体中介者类非常复杂，使得系统难以维护</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 中介者 </tag>
+            
+            <tag> 行为型模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[迭代器模式]]></title>
+      <url>/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>迭代器模式(Iterator)</code> : 提供一种方法来访问聚合对象，而不用暴露这个对象的内部表示，其别名为游标(Cursor)。迭代器模式是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>支持以不同的方式遍历一个聚合对象，在同一个聚合对象上可以定义多种遍历方式。在迭代器模式中只需要用一个不同的迭代器来替换原有迭代器即可改变遍历算法，也可以自己定义迭代器的子类以支持新的遍历方式；</li>
+<li>迭代器简化了聚合类。由于引入了迭代器，在原有的聚合对象中不需要再自行提供数据遍历等方法，这样可以简化聚合类的设计；</li>
+<li>在迭代器模式中，由于引入了抽象层，增加新的聚合类和迭代器类都很方便，无须修改原有代码，满足开闭原则的要求；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>由于迭代器模式将存储数据和遍历数据的职责分离，增加新的聚合类需要对应增加新的迭代器类，类的个数成对增加，这在一定程度上增加了系统的复杂性；</li>
+<li>抽象迭代器的设计难度较大，需要充分考虑到系统将来的扩展，例如 JDK 内存迭代器 Iterator 就无法实现逆向遍历，如果需要实现逆向遍历，只能通过其子类 ListIterator 等来实现，而 ListIterator 迭代器无法用于操作 Serializable 类型的聚合对象。在自定义迭代器时，创建一个考虑全面的抽象迭代器并不是件很容易的事情；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 迭代器 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解释器模式]]></title>
+      <url>/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>解释器模式(Interpreter Pattern)</code> : 定义一个语言的文法，并且建立一个解释器来解释该语言中的句子，这里的 “语言” 是指使用规定格式和语法的代码。解释器模式是一种 <strong>类行为型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>易于改变和扩展文法。由于在解释器模式中使用类来表示语言的文法规则，因此可以通过继承等机制来改变或扩展文法；</li>
+<li>每一条文法规则都可以表示为一个类，因此可以方便地实现一个简单的语言；</li>
+<li>实现文法较为容易。在抽象语法树中每一个表达式节点类的实现方式都是相似的，这些类的代码编写都不会特别复杂，还可以通过一些工具自动生成节点类代码；</li>
+<li>增加新的解释表达式较为方便。如果用户需要增加新的解释表达式只需要对应增加一个新的终结符表达式或非终结符表达式类，原有表达式类代码无需修改，符合开闭原则；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>对于复杂文法难以维护。在解释器模式中，每一条规则至少需要定义一个类，因此如果一个语言包含太多文法规则，类的个数将会急剧增加，导致系统难以管理和维护，此时可以考虑使用语法分析程序等方式来取代解释器模式；</li>
+<li>执行效率较低。由于在解释器模式中使用了大量的循环和递归调用，因此在解释较为复杂的句子时其速度很慢，而且代码的调试过程也比较麻烦；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 解释器 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[命令模式]]></title>
+      <url>/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>命令模式(Command Pattern)</code> : 将一个请求封装为一个对象，从而可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种 <strong>对象行为型模式</strong>，其别名为 <strong>动作(Action)模式</strong> 或 <strong>事务模式(Transaction)模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>降低系统的耦合度。由于请求者与接收者之间不存在直接引用，因此请求者与接收者之间实现完全解耦，相同的请求者可以对应不同的接收者，同样，相同的接收者也可以供不同的请求者使用，两者之间具有良好的独立性；</li>
+<li>新的命令可以很容易地加入到系统中。由于增加新的具体命令类不会影响到其他类，因此增加新的具体命令类很容易，无须修改原有系统源代码甚至客户类代码，满足开闭原则的要求；</li>
+<li>可以比较容易地设计一个命令队列或者宏命令(组合命令)；</li>
+<li>为请求的撤销(Undo)和恢复(Redo)操作提供了一种设计和实现方案；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>使用命令模式可能会导致某些系统有过多的具体命令类。因为针对每一个对请求接收者的调用操作都需要设计一个具体命令类，因此在某些系统中可能需要提供大量的具体命令类，这将影响命令模式的使用；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 命令 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[职责链模式]]></title>
+      <url>/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>职责链模式(Chain of Responsibility Pattern)</code> : 避免将请求发送者与接收者耦合在一起，让多个对象都有机会接收请求，将这些对象链接成一条链，并且沿着这条链传递请求，知道有对象处理它为止。职责链模式是一种 <strong>对象行为型模式</strong>。</p>
+<p>职责链模式可分为纯的职责链模式和不纯的职责链模式两种。</p>
+<p><code>纯的职责链模式</code> 要求一个具体处理者对象只能在两个行为中选择一个：要么承担全部责任，要么将责任推给下家，不允许出现某一个具体处理者对象在承担了一部分或全部责任后又将责任向下传递的情况。而且在纯的职责链模式中，要求一个请求必须被某一个处理者对象所接收，不能出现某个请求未被任何一个处理者对象处理的情况。</p>
+<p><code>不纯的职责链模式</code> 允许某个请求被一个具体处理者部分处理后再向下传递，或者一个具体处理者处理完某请求后其后继处理者可以继续处理该请求，而且一个请求可以最终不被任何处理者对象所接收。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>职责链模式使得一个对象无须知道是其他哪一个对象处理其请求，对象仅需知道该请求会被处理即可，接收者和发送者都没有对方的明确信息，且链中的对象不需知道链的结构，由客户端负责链的创建，降低了系统的耦合度；</li>
+<li>请求处理对象仅需维持一个指向其后继者的引用，而不需要维持它对所有的候选处理者的引用，可简化对象的相互连接；</li>
+<li>在给对象分派职责时，职责链可以提供更多的灵活性，可以通过在运行时对链进行动态的增加或修改来增加或改变处理一个请求的职责；</li>
+<li>在系统中增加一个新的具体请求处理者时无需修改原有系统的代码，只需要在客户端重新建链即可，从这一点来看是符合开闭原则的；</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>由于一个请求没有明确的接收者，那么就不能保证它一定会被处理，该请求可能一直到链的末端都得不到处理；一个请求也可能因职责链没有被正确配置而得不到处理；</li>
+<li>对于比较长的职责链，请求的处理可能涉及多个处理对象，系统性能将受到一定影响，而且在进行代码调试时不太方便；</li>
+<li>如果建链不当，可能会造成循环调用，将导致系统陷入死循环；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 行为型模式 </tag>
+            
+            <tag> 职责链 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[代理模式]]></title>
+      <url>/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>代理模式(Proxy Pattern)</code> : 给某一个对象提供一个代理，并由代理对象控制对原对象的应用。代理模式是一种 <strong>对象结构性模式</strong>。</p>
+<h3 id="常见的几种代理模式"><a href="#常见的几种代理模式" class="headerlink" title="常见的几种代理模式"></a>常见的几种代理模式</h3><ol>
+<li><code>远程代理(Remote Proxy)</code> : 为一个位于不同的地址空间的对象提供一个本地的代理对象，这个不同的地址空间可以在同一台主机中，也可以在另一台主机中。远程代理又称为大使(Ambassador)</li>
+<li><code>虚拟代理(Virtual Proxy)</code> : 如果需要创建一个资源消耗较大的对象，先创建一个消耗对象较小的对象来表示，真实对象只在需要时才会被真正创建</li>
+<li><code>保护代理(Protect Proxy)</code> : 控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限</li>
+<li><code>缓冲代理（Cache Proxy)</code> : 为某一个目标操作的结果提供临时的存储空间，以便多个客户端可以共享这些结果</li>
+<li><code>只能引用代理(Smart  Reference Proxy)</code> : 当一个对象被引用时，提供一些额外的操作，例如将对象被调用的次数记录下来等等</li>
+</ol>
+<h3 id="RMI的基本实现步骤"><a href="#RMI的基本实现步骤" class="headerlink" title="RMI的基本实现步骤"></a>RMI的基本实现步骤</h3><ol>
+<li>客户端发起请求，将请求转交至 RMI 客户端的 Stub 类</li>
+<li>Stub 类将请求的接口、方法、参数等信息进行序列化</li>
+<li>将序列化后的流使用 Socket 传输至服务器端</li>
+<li>服务器端接收到流后将其转发至相应的 Skeleton 类</li>
+<li>Skeleton 类将请求信息反序列化后调用实际的业务处理类</li>
+<li>业务处理类处理完毕后将结果返回给 Skeleton 类</li>
+<li>Skeleton 类将结果序列化，再次通过 Socket 将流传送给客户端的 Stub</li>
+<li>Stub 在接收到流后进行反序列化，将反序列化后得到的 Java Object 对象返回给客户端调用者</li>
+</ol>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>代理模式能够协调调用者和被调用者，在一定程度上降低了系统的耦合度，满足迪米特法则</li>
+<li>客户端可以针对抽象主题角色进行编程，增加和更换代理类无须修改源代码，符合开闭原则，系统具有较好的灵活性和可扩展性</li>
+<li>远程代理为位于两个不同地址空间对象的访问提供了一种实现机制，可以将一些消耗资源较多的对象和操作移至性能更好的计算机上，提高系统的整体运行效率</li>
+<li>虚拟代理通过一个消耗资源较少的对象来代表一个消耗资源较多的对象，可以在一定程度上节省系统的运行开销</li>
+<li>保护代理可以控制对一个对象的访问权限，为不同的用户提供不同级别的使用权限</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢，例如保护代理</li>
+<li>实现代理模式需要额外的工作，有些代理模式的实现非常复杂，例如远程代理</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 代理 </tag>
+            
+            <tag> 结构型模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[享元模式]]></title>
+      <url>/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>享元模式(Flyweight Pattern)</code> : 运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细腻度对象，因此它又称为轻量级模式，是一种 <strong>对象结构性模式</strong>。</p>
+<p><code>单纯享元模式</code> 中，所有的具体享元类都是可以共享的，不存在非共享具体享元类。</p>
+<p><code>符合享元模式</code> 是将一些单纯享元对象使用组合模式加以组合。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>可以极大减少内存中对象的数量，使得相同或相似对象在内存中只保存一份，从而可以节约系统资源，提高系统性能</li>
+<li>享元模式的外部状态相对独立，而且不会影响其内部状态，从而使得享元对象可以在不同的环节中被共享</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>享元模式使得系统变得复杂，需要分离出内部状态和外部状态，这使得程序的逻辑复杂化</li>
+<li>为了使对象可以共享，享元模式需要将享元对象的部分状态外部化，而读取外部状态将使得运行时间长</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 结构型模式 </tag>
+            
+            <tag> 享元 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[外观模式]]></title>
+      <url>/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>外观模式(Facade Pattern)</code> : 外部与一个子系统的通信通过一个统一的外观角色进行，为子系统中的一组接口提供一个一致的入口，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种 <strong>对象结构性模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>对客户端屏蔽了子系统组件，减少了客户端所需处理的对象数目并使得子系统使用起来更加容易。通过引入外观模式，客户端代码将变得很简单，与之关联的对象也很少</li>
+<li>实现了子系统与客户端之间的松耦合关系，这使得子系统的变化不会影响到调用它的客户端，只需要调整外观类即可</li>
+<li>一个子系统的修改对其他子系统没有任何影响，而且子系统内部变化也不会影响到外观对象</li>
+<li>只提供了一个访问子系统的统一入口，并不影响客户端直接使用子系统类</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>不能很好地限制客户端直接只用子系统类，如果对客户端访问子系统类做太多的限制则减少了可变性和灵活性</li>
+<li>如果设计不当，怎加新的子系统可能需要修改外观类的源代码，这违背了开闭原则</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 结构型模式 </tag>
+            
+            <tag> 外观 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[装饰模式]]></title>
+      <url>/2017/02/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>装饰模式(Decorator Pattern)</code> : 动态地给一个对象增加一些额外的职责，就增加对象功能来说，装饰模式比生产子类实现更为灵活。装饰模式是一种 <strong>对象结构型模式</strong>。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>尽量保持装饰类的接口与被装饰类的接口相同，这样，对于客户端而言，无论是装饰之前的对象还是装饰之后的对象都可以一致对待。这也就是说，在可能的情况下，应该尽量使用透明装饰模式</li>
+<li>尽量保持具体构件类 ConcreteComponent 是一个 “轻” 类，也就是说不要把太多的行为放在具体构件类中，可以通过装饰类对其进行扩展</li>
+<li>如果只有一个具体构件类，那么抽象装饰类可以作为该具体构件类的直接子类</li>
+</ol>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>对于扩展一个对象的功能，装饰模式比继承更加灵活，不会导致类的个数急剧增加</li>
+<li>可以通过一种动态的方式来扩展一个对象的功能，通过配置文件可以在运行时选择不同的具体装饰类，从而实现不同的行为</li>
+<li>可以对一个对象进行多次装饰，通过使用不同的具体装饰类以及这些装饰类的排列组合，可以创造出很多不同行为的组合，得到功能更为强大的对象</li>
+<li>具体构件类与具体装饰类可以独立变化，用户可以根据需要增加新的具体构件类和具体装饰类，原有类库代码无需改变，符合开闭原则</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>使用装饰者模式进行系统设计时将产生很多小对象，这些对象的区别在于它们之间相互连接的方式有所不同，而不是它们的类或者属性值有所不同，大量小对象的产生势必会占用更多的系统资源，在一定程度上影响程序的性能</li>
+<li>装饰模式提供了一种比继承更加灵活机动的解决方案，但同时也意味着比继承更加易于出错，排错也很困难，对于多次装饰的对象，调试时寻找错误可能需要逐级排查，较为繁琐</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 结构型模式 </tag>
+            
+            <tag> 装饰 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[组合模式]]></title>
+      <url>/2017/02/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>组合模式(Composite Pattern)</code> : 组合多个对象形成树形结构以表示具有 “整体一部分” 关系的层次结构。组合模式对单个对象(即叶子对象)和组合对象(即容器对象)的使用具有一致性，组合模式又可以称为 <strong>“整体-部分”模式</strong>，它是一种 <strong>对象结构性模式</strong>。</p>
+<h3 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h3><ul>
+<li><strong>透明组合模式</strong> 中，抽象组件 Component 中声明了所有用于管理成员对象的方法，包括 add(), remove() 以及 getChild() 等方法，这样做的好处是确保所有的构件类都有相同的接口</li>
+<li><strong>安全组合模式</strong> 中，在抽象组件 Component 中没有声明任何用于管理成员对象的方法，而是在 Composite 类中声明并实现这些方法。</li>
+</ul>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>组合模式可以清楚地定义分层次的复杂对象，表示对象的全部或部分层次，它让客户端忽略了层次的差异，方便对整个层次结构进行控制</li>
+<li>客户端可以一致地使用一个组合结构或其中单个对象，不必关心处理的是单个对象还是整个组合结构，简化了客户端代码</li>
+<li>在组合模式中增加新的容器构件和叶子构件都很方便，无需对现有类库进行任何修改，符合开闭原则</li>
+<li>组合模式为树形结构的面向对象实现提供了一种灵活的解决方案，通过叶子对象和容器对象的递归组合，可以形成复杂的树形结构，但对树形结构的控制却非常简单</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>在增加新构件时很难对容器中的构件类型进行限制。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 结构型模式 </tag>
+            
+            <tag> 组合 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[桥接模式]]></title>
+      <url>/2017/02/21/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>桥接模式(Bridge Pattern)</code> : 将抽象部分与其实现部分分离，使他们都可以独立地变化。它是一种 <strong>对象结构型模式</strong>，又称为 <strong>柄体(Handle and Body)模式</strong> 或 <strong>接口(Interface)模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>分离抽象接口及其实现部分。桥接模式使用“对象间的关联关系”解耦了抽象和实现之间固有的绑定关系，使得抽象和实现可以沿着各自的维度来变化(即抽象和实现不再在同一个继承层次结构中，而是“子类化”它们，使它们各自都具有自己的子类，以便任意组合子类，从而获得多维度组合对象)；</li>
+<li>在很多情况下，桥接模式可以取代更多层继承方案。多继承方案违背了单一职责原则，复用性较差，且类的个数非常多，桥接模式是比多层继承方案更好的解决方法，它极大的减少了子类的个数；</li>
+<li>桥接模式提高了系统的可扩展性，在两个变化维度中任意扩展一个维度，都不需要修改原有系统，符合开闭原则</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>桥接模式的使用会增加系统的理解与设计难度，由于关联关系建立在抽象层，要求开发者一开始就针对抽象层进行设计与编程；</li>
+<li>桥接模式要求正确识别出系统中两个独立变化的维度，因此其使用范围具有一定的局限性，如何正确识别两个独立维度也需要一定的经验积累</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 结构型模式 </tag>
+            
+            <tag> 桥接 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[适配器模式]]></title>
+      <url>/2017/02/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>适配器模式(Adapter Pattern)</code> : 将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。</p>
+<h3 id="适配器模式分类"><a href="#适配器模式分类" class="headerlink" title="适配器模式分类"></a>适配器模式分类</h3><ul>
+<li>对象适配器</li>
+<li>类适配器</li>
+<li>双向适配器</li>
+<li>缺省适配器</li>
+</ul>
+<p><code>缺省适配器模式(Default Adapter Pattern)</code> : 当不需要实现一个接口所提供的所有方法时，可先设计一个抽象类实现该接口，并为接口中每个方法提供一个默认实现(空方法)，那么该抽象类的子类可以选择性地覆盖父类的某些方法来实现需求，它适用于不想使用一个接口中的所有方法的情况，又称为单接口适配器模式。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>将目标类和适配者类解耦，通过引入一个适配器类来重用现有的适配者类，无须修改原有结构；</li>
+<li>增加了类的透明性和复用性，将具体的业务实现过程封装在适配者类中，对于客户端类而言是透明的，而且提高了适配者类的复用性，同一个适配者类可以在多个不同的系统中复用；</li>
+<li>灵活性和扩展性都非常好，通过使用配置文件，可以很方便地更换适配器，也可以在不修改原有代码的基础上增加新的适配器类，完全符合开闭原则；</li>
+</ol>
+<p><strong>类适配器优点</strong>：由于适配器类是适配者类的子类，因此可以在适配器类中置换一些适配者的方法，使得适配器的灵活性更强。</p>
+<p><strong>对象适配器优点</strong>：</p>
+<ol>
+<li>一个对象适配器可以把多个不同的适配者适配到同一个目标</li>
+<li>可以适配一个适配者的子类，由于适配器和适配者之间是关联关系，根据里氏代换原则，适配者的子类也可通过该适配器进行适配</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>对于 Java、c# 等不支持多重类继承的语言，一次最多只能适配一个适配者类，不能同时适配多个适配者；</li>
+<li>适配者类不能为最终类，例如在 Java 中不能为 final 类，C# 中不能为 sealed 类；</li>
+<li>在 Java、C# 等语言中，类适配器模式中的目标抽象类只能为接口，不能为类，其使用有一定的局限性；</li>
+</ol>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ol>
+<li>系统需要使用一些现有的类，而这些类的接口(例如方法名)不符合系统的需要，甚至没有这些类的源代码；</li>
+<li>想创建一个可以重复使用的类，用于与一些彼此之间没有太大关联的类，包括一些可能在将来引进的类一起工作；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 结构型模式 </tag>
+            
+            <tag> 适配器 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[建造者模式]]></title>
+      <url>/2017/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>建造者模式(Builder Pattern)</code> : 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种 <strong>对象创建型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>在建造者模式中，客户端不必知道产品内部组成的细节，将产品本身与产品的创建过程解耦，使得相同的创建过程可以创建不同的产品对象</li>
+<li>每一个具体建造者都相对独立，而与其他具体建造者无关，因此可以很方便地替换具体建造者或增加新的具体建造者，用户使用不同的具体建造者即可得到不同的产品对象。由于指挥类针对抽象建造者编程，增加新的具体建造者无须修改原有类库的代码，系统扩展方便，符合开闭原则</li>
+<li>可以更加精细地控制产品的创建过程。将复杂产品的创建步骤分解在不同的方法中，使得创建过程更加清晰，也更加方便使用程序来控制创建过程</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>建造者模式所创建的产品一般具有较多的共同点，其组成部分相似，如果产品之间的差异性很大，例如很多组成部分都不相同，就不适合使用建造者模式，因此其使用范围受到一定的限制</li>
+<li>如果产品的内部结构复杂且多变，可能会需要定义很多具体建造者类来实现这种变化，这就导致系统变得很庞大，增加系统的理解难度和运行成本</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 创建型模式 </tag>
+            
+            <tag> 建造者 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[原型模式]]></title>
+      <url>/2017/02/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>原型模式(Prototype Pattern)</code> : 使用原型实例指定创建对象的种类，并且通过克隆这些原型创建新的对象。原型模式是一种 <strong>对象创建型模式</strong>。</p>
+<h3 id="原型模式结构"><a href="#原型模式结构" class="headerlink" title="原型模式结构"></a>原型模式结构</h3><ol>
+<li>抽象原型类(Prototype): 它是声明克隆方法的接口，是所有具体原型类的公共父类，可以是抽象类也可以是接口，甚至还可以是具体实现类</li>
+<li>具体原型类(ConcretePrototype): 它实现在抽象原型类中声明的克隆方法，在克隆方法中返回自己的一个克隆对象</li>
+<li>客户类(Client): 让一个原型对象克隆自身从而创建一个新的对象，在客户类中只需要直接实例化或通过工厂方法等方式创建一个原型对象，再通过调用该对象的克隆方法即可得到多个相同的对象</li>
+</ol>
+<h3 id="浅克隆与深克隆相同与区别"><a href="#浅克隆与深克隆相同与区别" class="headerlink" title="浅克隆与深克隆相同与区别"></a>浅克隆与深克隆相同与区别</h3><h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h4><ol>
+<li>克隆的 object 的都是新的，即内存地址是不同的</li>
+</ol>
+<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><ol>
+<li>浅克隆克隆的是内存指向地址，如果是 <strong>基本数据类型</strong>，影响不大，如果是 <strong>引用类型</strong>，则 clone 对象中属性的修改，会引起被克隆对象数据的修改，导致数据紊乱</li>
+<li>深 clone，即将整个对象 clone 并且生成新的对象，不论是对象内存指向地址还是属性内存指向地址，都不相同，可以进行需求操作而不影响被 clone 体</li>
+</ol>
+<p><strong>浅克隆</strong> 的实现方案是：利用 java 的 cloneable 接口，可以快速实现克隆；或者创建一个新对象，并且赋值即可。    </p>
+<p><strong>深克隆</strong> 的实现方案是：利用 Serializable 接口，克隆对象流并生成新对象即可。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>当创建新的对象实例较为复杂时，使用原型模式可以简化对象的创建过程，通过复制一个已有实例可以提高新实例的创建效率</li>
+<li>扩展性好。由于在原型模式中提供了抽象原型类，在客户端可以针对抽象原型类进行编程，而将具体原型类写在配置文件中，增加或减少具体原型类对原有系统都没有任何影响</li>
+<li>原型模式提供了简化的创建结构。工厂方法模式常常需要有一个月产品类等级结构相同的工厂等级结构，而原型模式就不需要这样，原型模式中产品的复制是通过封装在原型类中的克隆方法实现的，无须专门的工厂类来创建产品</li>
+<li>可以使用深克隆的方式保存对象状态。使用原型模式将对象复制一份并将其状态保存起来，以便在需要的时候使用，例如恢复到某一历史状态，可辅助实现撤销操作</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>需要为每一个类配备一个克隆方法，而且该克隆方法位于一个类的内部，当对已有的类进行改造时，需要修改源代码，违背了开闭原则</li>
+<li>在实现深克隆时需要编写较为复杂的代码，而且当对象之间存在多重的嵌套引用时，为了实现深克隆，每一层对象对应的类都必须支持深克隆，实现起来可能会比较麻烦</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 创建型模式 </tag>
+            
+            <tag> 原型 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[3种工厂模式对比]]></title>
+      <url>/2017/02/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/</url>
+      <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th style="text-align:left">模式名称</th>
+<th style="text-align:left">优点</th>
+<th style="text-align:left">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">简单工厂模式(Simple Factory Pattern)</td>
+<td style="text-align:left">1、一个工厂类就可以实现功能；<br>2、外部无需关注如何获取所需对象</td>
+<td style="text-align:left">1、每当添加或者删除一个对象时，需要修改 Factory 类，不符合开闭原则；<br>2、Factory 类职责过重，需要负责的东西很多</td>
+</tr>
+<tr>
+<td style="text-align:left">工厂方法模式(Factory Method Pattern)</td>
+<td style="text-align:left">1、新增产品时，无需修改 Factory 代码，符合开闭原则</td>
+<td style="text-align:left">1、每添加一个新产品，需要生成一个产品 class 和一个产品对应的 Facroty，会增加项目的复杂度；</td>
+</tr>
+<tr>
+<td style="text-align:left">抽象工厂模式(Abstract Factory Pattern)</td>
+<td style="text-align:left">1、新增产品族时无需修改 Factory 类，符合开闭原则，满足后期扩展的需求</td>
+<td style="text-align:left">1、新增产品等级结构的时候，需要修改 Factory 类，不符合开闭原则；<br>2、修改 Factory 的时候，由于 Factory 是抽象类，影响较大，如果系统比较庞大，会出现很多新问题</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 工厂 </tag>
+            
+            <tag> 汇总 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[抽象工厂模式]]></title>
+      <url>/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>抽象工厂模式(Abstract Factory Pattern)</code> : 提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为 Kit 模式，它是一种 <strong>对象创建型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>抽象工厂模式隔离了具体类的生成，使得客户并不需要知道什么被创建。由于这种隔离，更换一个具体工厂就变得相对容易，所有的具体工厂都实现了在抽象工厂中声明的那些公共接口，因此只需要改变具体工厂的实例，就可以在某种程度上改变整个软件系统的行为</li>
+<li>当一个产品族中的多个对象被设计成一起工作时，它能够保证客户端始终只使用同一个产品族中的对象</li>
+<li>增加新的产品族很方便，无需修改已有系统，符合开闭原则</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>增加新的产品等级结构麻烦，需要对原有系统进行较大的修改，甚至需要修改抽象层代码，违背了开闭原则</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 创建型模式 </tag>
+            
+            <tag> 抽象工厂 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[工厂方法模式]]></title>
+      <url>/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>工厂方法模式(Factory Method Pattern)</code> : 定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。工厂方法模式又简称为 <strong>工厂模式(Factory Pattern)</strong>，又可称作 <strong>虚拟构造器模式(Virtual Constructor Pattern)</strong> 或 <strong>多态工厂模式(Polymorphic Factory Pattern)</strong>。工厂方法模式是一种 <strong>类创建型模式</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>在工厂方法模式中，工厂方法用来创建客户所需要的产品，同时还向客户隐藏了哪种具体产品类将被实例化这一细节，用户只需要关心所需产品对应的工厂，无需关心创建细节，甚至无须知道具体产品类的类名</li>
+<li>基于工厂角色和产品角色的多态性设计是工厂方法模式的关键。它能够让工厂可以自主确定创建何种产品对象，而如何创建这个对象的细节则完全封装在具体工厂内部。工厂方法模式之所以又被称为多态工厂模式，正是因为所有的具体工厂类都具有同一抽象父类</li>
+<li>使用工厂方法模式的另一个优点使在系统中加入新产品时，无须修改抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改其它的具体工厂和具体产品，而只要添加一个具体工厂和具体产品就可以了，这样，系统的可扩展性也就变得非常好，完全符合开闭原则</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>在添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中类的个数将成对增加，在一定程度上增加了系统的复杂度，有更多的类需要编译和运行，会给系统带来一些额外的开销</li>
+<li>由于考虑到系统的可扩展性，需要引入抽象层，在客户端代码中均使用抽象层就行定义，增加了系统的抽象性和理解难度，且在实现时可能需要用到 DOM、反射等技术，增加了系统的实现难度</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 创建型模式 </tag>
+            
+            <tag> 工厂方法 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[简单工厂模式]]></title>
+      <url>/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>简单工厂模式(Simple Factory Pattern)</code> : 定义一个工厂类，它可以根据参数的不同返回不同的实例，被创建的实例通常都具有共同的父类。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>工厂类包含必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例，客户端可以免除直接创建产品对象的职责，而仅仅”消费”产品。简单工厂模式实现了对象创建和使用的分离</li>
+<li>客户端无需知道所创建的具体产品类的类名，只需要知道具体产品类所对应的参数即可，对于一些复杂的类名，通过简单工厂模式可以在一定的程度减少使用者的记忆量</li>
+<li>通过引入配置文件，可以在不修改任何客户端代码的情况下更换和增加新的具体产品类，在一定程度上提高了系统的灵活性</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>由于工厂类集中了所有产品的创建逻辑，职责过重，一旦不能正常工作，整个系统都要受到影响</li>
+<li>使用简单工厂模式势必会增加系统中类的个数，增加了系统的复杂度和理解难度</li>
+<li>系统扩展困难，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护</li>
+<li>简单工程模式由于使用了静态工厂方法，造成工厂角色无法形成基于继承的等级结构</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 创建型模式 </tag>
+            
+            <tag> 简单工厂 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[单例模式]]></title>
+      <url>/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><code>单例模式(Singleton Pattern)</code> : 确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种 <strong>对象创建型模式</strong>。</p>
+<h3 id="单例模式要点"><a href="#单例模式要点" class="headerlink" title="单例模式要点"></a>单例模式要点</h3><ol>
+<li>某个类只能有一个实例</li>
+<li>它必须自行创建这个实例</li>
+<li>它必须自行向整个系统提供这个实例</li>
+</ol>
+<p><img src="http://personal-blog.oss-cn-hangzhou.aliyuncs.com/design_pattern_singleton.png" alt="单例模式"></p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>单例模式提供了对唯一实例的受访控制</li>
+<li>由于在系统内只存在一个对象，因此可以节约系统资源</li>
+<li>允许可变数量的实例</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>由于单例模式中没有抽象层，因此单例类的扩展有很大的困难</li>
+<li>单例类的职责过重，在一定程度上违背了单一职责原则</li>
+<li>编程语言的自动垃圾回收技术，如果实例化的共享对象长时间不被利用，系统会自动销毁并回收资源，这将导致共享的单例对象状态的丢失</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 单例 </tag>
+            
+            <tag> 创建型模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UML 概述]]></title>
+      <url>/2017/02/14/UML/UML%E6%A6%82%E8%BF%B0/</url>
+      <content type="html"><![CDATA[<p>UML 类图可用于描述每一个设计模式的结构以及对模式实例进行说明，而模式结构又是设计模式解法的核心组成部分。</p>
+<h3 id="UML-特性"><a href="#UML-特性" class="headerlink" title="UML 特性"></a>UML 特性</h3><ol>
+<li>UML 融合了多种优秀的面向对象建模方法以及多种得到认可的软件工程方法，消除了因方法林立且互相独立而带来的种种不便，集百家之所长，故名 <strong>“统一(Unified)”</strong>；</li>
+<li>UML 是一种通用的可视化 <strong>建模(Modeling)</strong> 语言，不同于编程语言，她通过一些标准的图形符号和文字来对系统进行建模，用于对软件进行描述、可视化处理、构造和建立软件系统制品的文档；</li>
+<li>UML 是一种 <strong>语言(Language)</strong>，也就意味着它有属于自己的标准表达规则，它不是一种类似  Java，C++，C# 的编程语言，而是一种分析设计语言，也就是一种建模语言；</li>
+</ol>
+<h3 id="UML-结构"><a href="#UML-结构" class="headerlink" title="UML 结构"></a>UML 结构</h3><ol>
+<li><strong>视图(View)：</strong>UML 视图用于从不同的角度来表示待建模系统(UML 视图包括用户视图、结构视图、行为视图、实现视图和环境视图)；</li>
+<li><strong>图(Diagram)：</strong>UML 图是描述 UML 视图内容的图形(分别是用例图、类图、对象图、包图、组合结构图、状态图、活动图、顺序图、通信图、定时图、交互概览图、组件图和部署图)；</li>
+<li><strong>模型元素(Model Element)：</strong>模型元素是指 UML 图中所使用的一些概念，它们对应于普通的面向对象概念，如类、对象、消息以及这些概念之间的关系，如关联关系、依赖关系、泛化关系等；</li>
+<li><strong>通用机制(General Mechanism)：</strong>UML 提供的通用机制为模型元素提供额外的注释、信息和寓意，这些通用机制也提供了扩展机制，允许用户对 UML 进行扩展，如定义新的建模元素、扩展原有元素的语义、添加新的特殊信息来扩展模型元素的规则说明等，以便适用于一个特定的方法或过程、组织或用户；</li>
+</ol>
+<h4 id="UML-类的组成"><a href="#UML-类的组成" class="headerlink" title="UML 类的组成"></a>UML 类的组成</h4><ol>
+<li><strong>类名</strong>：每个类都必须有一个名字，类名也是一个字符串；</li>
+<li><strong>类的属性(Attributes)</strong>：属性是指类的性质，即类的成员变量。一个类可以有任意多个属性，也可以没有属性；UML规定属性的表示方法为：<code>可见性 名称 :类型[ = 默认值]</code><ol>
+<li>“可见性” 表示该属性对于类外的元素而言是否可见，包括公有(public)、私有(private)和受保护(protected)3种，在类图中分别用符号 +、- 和 # 表示;</li>
+<li>“名称” 表示属性名，用一个字符串表示;</li>
+<li>“类型” 表示属性的数据类型，可以是基本数据类型，也可以是用户自定义类型;</li>
+<li>“默认值” 是一个可选项，即属性的初始值;</li>
+</ol>
+</li>
+<li><strong>类的操作(Operations)</strong>：操作是类的任意一个实例对象都可以使用的行为，是类的成员方法；</li>
+</ol>
+<h3 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h3><ol>
+<li>关联关系<ul>
+<li>双向关联</li>
+<li>单向关联</li>
+<li>自关联</li>
+<li>多重性关联</li>
+<li>聚合关系</li>
+<li>组合关系</li>
+</ul>
+</li>
+<li>依赖关系</li>
+<li>泛化关系</li>
+<li>接口与实现关系</li>
+</ol>
+<p><img src="http://personal-blog.oss-cn-hangzhou.aliyuncs.com/uml_base.png" alt="类之间关系图例"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> UML </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 基础 </tag>
+            
+            <tag> UML </tag>
+            
+            <tag> 特性 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[面向对象设计原则]]></title>
+      <url>/2017/01/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</url>
+      <content type="html"><![CDATA[<p>在引用开发过程中，最难的不是完成应用的开发工作，而是在后续的升级、维护过程中让应用系统能够拥抱变化。拥抱变化也就意味着在满足需求且不破坏系统稳定性的前提下保持高可扩展性、高内聚、低耦合，在经历了个版本的变更之后依然保持清晰、灵活、稳定的系统架构。当然，这是一个比较理想的情况，但我们必须要朝着这个方向去努力，那么遵循面向对象设计原则就是我们走向灵活软件之路所迈出的第一步。</p>
+<h4 id="1、单一职责原则-Single-Responsibility-Principle-SRP"><a href="#1、单一职责原则-Single-Responsibility-Principle-SRP" class="headerlink" title="1、单一职责原则(Single Responsibility Principle,SRP)"></a>1、单一职责原则(Single Responsibility Principle,SRP)</h4><p><code>单一职责原则</code>：就一个类而言，应该仅有一个引起它变化的原因。简单来说，一个类中应该是一组相关性很高的函数、数据的封装。</p>
+<h4 id="2、开闭原则-Open-Closed-Principle-OCP"><a href="#2、开闭原则-Open-Closed-Principle-OCP" class="headerlink" title="2、开闭原则(Open-Closed Principle,OCP)"></a>2、开闭原则(Open-Closed Principle,OCP)</h4><p><code>开闭原则</code>：软件中的对象（类、模块、函数等）应该对于扩展是开放的，但是，对于修改是封闭的。</p>
+<h4 id="3、里氏替换原则-Liskov-Substitution-Principle-LSP"><a href="#3、里氏替换原则-Liskov-Substitution-Principle-LSP" class="headerlink" title="3、里氏替换原则(Liskov Substitution Principle,LSP)"></a>3、里氏替换原则(Liskov Substitution Principle,LSP)</h4><p><code>里氏替换原则</code> 通俗的定义是：所有引用基类(父类)的地方必须能透明地使用其子类对象。</p>
+<p><code>里氏替换原则</code> 的定义是（两种定义）：</p>
+<pre><code>1. 如果对每一个类型为 S 的对象 O1，都有类型为 T 的对象 O2，使得以 T 定义的所有程序 P 在所有的对象 O1 都代换成 O2 时，程序 P 的行为没有发生变化，那么类型 S 是类型 T 的子类型；
+2. 所有引用基类的地方必须能透明地使用其子类对象；
+</code></pre><p>继承的优点：</p>
+<pre><code>1. 代码重用，减少创建类的成本，每个子类都拥有父类的方法和属性；
+2. 子类与父类基本相似，但又与父类有所区别；
+3. 提高代码的可扩展性；
+</code></pre><p>继承的缺点：</p>
+<pre><code>1. 继承是侵入性的，只要继承就必须拥有父类的所有属性和方法；
+2. 可能造成子类代码冗余、灵活性降低，因为子类必须拥有父类的属性和方法；
+</code></pre><h4 id="4、依赖倒置原则-Dependency-Inversion-Principle-DIP"><a href="#4、依赖倒置原则-Dependency-Inversion-Principle-DIP" class="headerlink" title="4、依赖倒置原则(Dependency Inversion Principle,DIP)"></a>4、依赖倒置原则(Dependency Inversion Principle,DIP)</h4><p><code>依赖倒置原则</code>：指代了一种特定的解耦形式，使得高层次的模块不依赖于低层次的模块的实现细节的目的，依赖模块被颠倒了。通俗的讲就是：抽象不应该依赖于细节，细节应当依赖于抽象；换言之，要针对接口编程，而不是针对实现编程。</p>
+<p><strong>关键点</strong></p>
+<pre><code>1. 高层模块不应该依赖低层模块，两者都应该依赖其抽象；
+2. 抽象不应该依赖细节；
+3. 细节应该依赖抽象；
+</code></pre><h4 id="5、接口隔离原则-Interface-Segregation-Principle-ISP"><a href="#5、接口隔离原则-Interface-Segregation-Principle-ISP" class="headerlink" title="5、接口隔离原则(Interface Segregation Principle,ISP)"></a>5、接口隔离原则(Interface Segregation Principle,ISP)</h4><p><code>接口隔离原则</code> 的定义是（两种定义）：</p>
+<pre><code>1. 客户端不应该依赖它不需要的接口；
+2. 类间的依赖关系应该建立在最小的接口上；
+</code></pre><h4 id="6、合成复用原则-Composite-Reuse-Principle-CRP"><a href="#6、合成复用原则-Composite-Reuse-Principle-CRP" class="headerlink" title="6、合成复用原则(Composite Reuse Principle,CRP)"></a>6、合成复用原则(Composite Reuse Principle,CRP)</h4><p><code>合成复用原则</code>：尽量使用对象组合，而不是继承来达到复用的目的。</p>
+<h4 id="7、迪米特原则-Law-of-Demeter-LOD"><a href="#7、迪米特原则-Law-of-Demeter-LOD" class="headerlink" title="7、迪米特原则(Law of Demeter,LOD)"></a>7、迪米特原则(Law of Demeter,LOD)</h4><p><code>迪米特原则</code>的定义是：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道的最少，类的内部如何实现与调用者或者依赖者只需要知道它需要的方法即可，其它的可一概不用管。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 设计原则 </tag>
+            
+            <tag> 基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[设计模式概述]]></title>
+      <url>/2017/01/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%BF%B0/</url>
+      <content type="html"><![CDATA[<p><code>模式</code> 是在特定环境下人们解决某类重复出现问题的一套成功或有效的解决方案(A pattern is a successful or efficient solution to a recurring problem within a context)。</p>
+<p><code>设计模式(Design Pattern)</code> 是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。</p>
+<p><code>设计模式</code>一般包含 <strong>模式名称</strong>、<strong>问题</strong>、<strong>目的</strong>、<strong>解决方案</strong>、<strong>效果</strong> 等组成要素，其中关键要素是 <strong>模式名称</strong>、<strong>问题</strong>、<strong>解决方案</strong> 和 <strong>效果</strong>。</p>
+<pre><code>`模式名称(Pattern name)` 通过一两个词来为模式命名，以便我们更好地理解模式并方便开发人员之间的交流，绝大多数模式都是根据其功能或模式结构来命名的。
+
+`问题(Problem)` 描述了应该在何时使用模式，它包含了设计中存在的问题以及问题存在的原因。
+
+`解决方案(Solution)` 描述了一个设计模式的组成部分，以及这些组成部分之间的相互关系、各自的职责和协作方式，通常解决方案通过UML类图和核心代码进行描述。
+
+`效果(Consequence)` 描述了模式的优缺点以及在使用模式时应权衡的问题。
+</code></pre><p>根据设计模式的用途，设计模式可分为 <strong>创建型(Creational)</strong>、<strong>结构型(Structural)</strong> 和 <strong>行为型(Behavioral)</strong> 三种。</p>
+<pre><code>`创建型` 模式主要用于描述如何创建对象；
+
+`结构型` 模式主要用于描述如何实现类或对象的组合；
+
+`行为型` 模式主要用于描述类或对象怎样交互以及怎样分配职责；
+</code></pre><h4 id="创建型模式-Creational-Pattern"><a href="#创建型模式-Creational-Pattern" class="headerlink" title="创建型模式(Creational Pattern)"></a>创建型模式(Creational Pattern)</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">模式名称</th>
+<th style="text-align:left">学习难度</th>
+<th style="text-align:left">使用频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">单例模式(Singleton Pattern)</td>
+<td style="text-align:left">✨</td>
+<td style="text-align:left">✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">简单工厂模式(Simple Factory Pattern)</td>
+<td style="text-align:left">✨✨</td>
+<td style="text-align:left">✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">工厂方法模式(Factory Method Pattern)</td>
+<td style="text-align:left">✨✨</td>
+<td style="text-align:left">✨✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">抽象工厂模式(Abstract Factory Pattern)</td>
+<td style="text-align:left">✨✨✨✨</td>
+<td style="text-align:left">✨✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">原型模式(Prototype Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">建造者模式(Builder Pattern)</td>
+<td style="text-align:left">✨✨✨✨</td>
+<td style="text-align:left">✨✨</td>
+</tr>
+</tbody>
+</table>
+<h4 id="结构型模式-Structural-Pattern"><a href="#结构型模式-Structural-Pattern" class="headerlink" title="结构型模式(Structural Pattern)"></a>结构型模式(Structural Pattern)</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">模式名称</th>
+<th style="text-align:left">学习难度</th>
+<th style="text-align:left">使用频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">适配器模式(Adapter Pattern)</td>
+<td style="text-align:left">✨✨</td>
+<td style="text-align:left">✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">桥接模式(Bridge Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">组合模式(Composite Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">装饰模式(Decorator Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">外观模式(Facade Pattern)</td>
+<td style="text-align:left">✨</td>
+<td style="text-align:left">✨✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">享元模式(Flyweight Pattern)</td>
+<td style="text-align:left">✨✨✨✨</td>
+<td style="text-align:left">✨</td>
+</tr>
+<tr>
+<td style="text-align:left">代理模式(Proxy Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨✨</td>
+</tr>
+</tbody>
+</table>
+<h4 id="行为型模式-Behavioral-Pattern"><a href="#行为型模式-Behavioral-Pattern" class="headerlink" title="行为型模式(Behavioral Pattern)"></a>行为型模式(Behavioral Pattern)</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">模式名称</th>
+<th style="text-align:left">学习难度</th>
+<th style="text-align:left">使用频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">职责链模式(Chain of Responsibility Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">命令模式(Command Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">解释器模式(Interpreter Pattern)</td>
+<td style="text-align:left">✨✨✨✨✨</td>
+<td style="text-align:left">✨</td>
+</tr>
+<tr>
+<td style="text-align:left">迭代器模式(Iterator Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">中介者模式(Mediator Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">备忘录模式(Memento Pattern)</td>
+<td style="text-align:left">✨✨</td>
+<td style="text-align:left">✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">观察者模式(Observer Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">状态模式(State Pattern)</td>
+<td style="text-align:left">✨✨✨</td>
+<td style="text-align:left">✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">策略模式(Strategy Pattern)</td>
+<td style="text-align:left">✨</td>
+<td style="text-align:left">✨✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">模板方法模式(Template Method Pattern)</td>
+<td style="text-align:left">✨✨</td>
+<td style="text-align:left">✨✨✨</td>
+</tr>
+<tr>
+<td style="text-align:left">访问者模式(Visitor Pattern)</td>
+<td style="text-align:left">✨✨✨✨</td>
+<td style="text-align:left">✨</td>
+</tr>
+</tbody>
+</table>
+<h4 id="设计模式用途"><a href="#设计模式用途" class="headerlink" title="设计模式用途"></a>设计模式用途</h4><ol>
+<li>可以避免做一些重复性的工作，有助于提高设计和开发效率；</li>
+<li>提供了一套通用的设计词汇和一种通用的形式来方便开发人员之间的交流和沟通，使得设计方案更加通熟易懂；</li>
+<li>使开发人员可以更好地重用一些已有的设计方案、功能模块甚至一个完整的软件系统，避免经常做一些重复的设计、编写一些重复的代码；</li>
+<li>有助于别人更快地理解系统；</li>
+<li>有助于深入地理解面向对象思想；</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 设计模式 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 模式 </tag>
+            
+            <tag> 概述 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
+    
+    <entry>
+      <title><![CDATA[About me]]></title>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<p>Name : Walker Denial</p>
+<p>Email : WalkerDenial@qq.com</p>
+<p>Address : ShangHai</p>
+<p>Desciption : Life will be better!</p>
+]]></content>
+    </entry>
+    
+  
+</search>
