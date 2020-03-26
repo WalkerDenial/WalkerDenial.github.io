@@ -624,9 +624,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 代理 </tag>
-            
             <tag> 结构型模式 </tag>
+            
+            <tag> 代理 </tag>
             
         </tags>
         
@@ -657,9 +657,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 结构型模式 </tag>
-            
             <tag> 享元 </tag>
+            
+            <tag> 结构型模式 </tag>
             
         </tags>
         
