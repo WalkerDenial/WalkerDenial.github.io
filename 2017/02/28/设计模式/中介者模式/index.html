@@ -85,7 +85,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
     </li>
 </ul>
 <!--categories-->
@@ -98,7 +98,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-13.png)">
   <h2>中介者模式</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-02-28T06:29:00.000Z">
@@ -135,13 +135,13 @@
     
   </div>
   <div class="post-page-content">
-  <p><code>中介者模式(Mediator Pattern)</code> : 用一个中介对象(中介者)来封装一系列的对象交互，中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为 <strong>调停者模式</strong>，它是一种 <strong>对象行为型模式</strong>。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+  <p><code>中介者模式（Mediator Pattern）</code>：用一个中介对象（中介者）来封装一系列的对象交互，中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为 <strong>调停者模式</strong>，它是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
 <li>中介者模式简化了对象之间的交互，它用中介者和同事的一对多交互代替了原来同事之间的多对多交互，一对多关系更容易理解、维护和扩展，将原本难以理解的网状结构转换成相对简单的星型结构；</li>
 <li>中介者模式可将各同事对象解耦。中介者有利于各同事之间的松耦合，可以独立地改变和复用每一个同事和中介者，增加新的中介者和新的同事类都比较方便，更好地符合开闭原则；</li>
 <li>可以减少大量同事子类生成，中介者将原本分布于多个对象之间的行为集中在一起，改变这些行为只需要生成新的中介者子类即可，这使得各个同事类可以被重用，无须对同事类进行扩展；</li>
 </ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
 <li>在具体中介者类中包含了大量同事之间的交互细节，可能会导致具体中介者类非常复杂，使得系统难以维护</li>
 </ol>
 
@@ -168,7 +168,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">2.</span> <span class="post-toc-text">缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

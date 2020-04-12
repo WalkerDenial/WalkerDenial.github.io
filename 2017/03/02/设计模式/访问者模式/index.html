@@ -85,7 +85,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
     </li>
 </ul>
 <!--categories-->
@@ -98,7 +98,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-5.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)">
   <h2>访问者模式</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-03-02T08:24:00.000Z">
@@ -135,13 +135,13 @@
     
   </div>
   <div class="post-page-content">
-  <p><code>访问者模式(Visitor Pattern)</code> : 提供一个作用于某对象结构中的各元素的操作表示，它使得可以在不改变各元素的类的前提下定义作用于这些元素的新操作。访问者模式是一种 <strong>对象行为型模式</strong>。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+  <p><code>访问者模式（Visitor Pattern）</code>：提供一个作用于某对象结构中的各元素的操作表示，它使得可以在不改变各元素的类的前提下定义作用于这些元素的新操作。访问者模式是一种 <strong>对象行为型模式</strong>。</p>
+<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
 <li>增加新的访问操作很方便。使用访问者模式，增加新的访问操作就意味着增加一个新的具体访问者类，实现简单，无须修改源代码，符合开闭原则；</li>
 <li>将有关元素对象的访问行为集中到一个访问者对象中，而不是分散在一个个的元素类中。类的职责更加清晰，有利于对象结构中元素对象的复用，相同的对象结构可以供多个不同的访问者访问；</li>
 <li>让用户能够在不修改现有元素类层次结构的情况下，定义作用于该层次结构的操作；</li>
 </ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
 <li>增加新的元素类很困难。在访问者模式中，每增加一个新的元素类都意味着要在抽象访问者角色中增加一个新的抽象操作，并在每一个具体访问者类中增加相应的具体操作，这违背了开闭原则的要求；</li>
 <li>破坏封装。访问者模式要求访问者对象访问并调用每一个元素对象的操作，这意味着元素对象有时候必须暴露一些自己的内部操作和内部状态，否则无法提供访问者访问；</li>
 </ol>
@@ -169,7 +169,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">2.</span> <span class="post-toc-text">缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

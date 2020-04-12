@@ -85,7 +85,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
     </li>
 </ul>
 <!--categories-->
@@ -98,7 +98,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-5.png)">
   <h2>建造者模式</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-02-17T08:54:00.000Z">
@@ -135,13 +135,13 @@
     
   </div>
   <div class="post-page-content">
-  <p><code>建造者模式(Builder Pattern)</code> : 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种 <strong>对象创建型模式</strong>。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+  <p><code>建造者模式（Builder Pattern）</code>：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种 <strong>对象创建型模式</strong>。</p>
+<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
 <li>在建造者模式中，客户端不必知道产品内部组成的细节，将产品本身与产品的创建过程解耦，使得相同的创建过程可以创建不同的产品对象</li>
 <li>每一个具体建造者都相对独立，而与其他具体建造者无关，因此可以很方便地替换具体建造者或增加新的具体建造者，用户使用不同的具体建造者即可得到不同的产品对象。由于指挥类针对抽象建造者编程，增加新的具体建造者无须修改原有类库的代码，系统扩展方便，符合开闭原则</li>
 <li>可以更加精细地控制产品的创建过程。将复杂产品的创建步骤分解在不同的方法中，使得创建过程更加清晰，也更加方便使用程序来控制创建过程</li>
 </ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
 <li>建造者模式所创建的产品一般具有较多的共同点，其组成部分相似，如果产品之间的差异性很大，例如很多组成部分都不相同，就不适合使用建造者模式，因此其使用范围受到一定的限制</li>
 <li>如果产品的内部结构复杂且多变，可能会需要定义很多具体建造者类来实现这种变化，这就导致系统变得很庞大，增加系统的理解难度和运行成本</li>
 </ol>
@@ -169,7 +169,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">2.</span> <span class="post-toc-text">缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

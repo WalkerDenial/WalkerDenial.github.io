@@ -85,7 +85,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
     </li>
 </ul>
 <!--categories-->
@@ -98,7 +98,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)">
   <h2>外观模式</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-02-24T07:12:00.000Z">
@@ -135,14 +135,14 @@
     
   </div>
   <div class="post-page-content">
-  <p><code>外观模式(Facade Pattern)</code> : 外部与一个子系统的通信通过一个统一的外观角色进行，为子系统中的一组接口提供一个一致的入口，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种 <strong>对象结构性模式</strong>。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+  <p><code>外观模式（Facade Pattern）</code>：外部与一个子系统的通信通过一个统一的外观角色进行，为子系统中的一组接口提供一个一致的入口，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种 <strong>对象结构性模式</strong>。</p>
+<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
 <li>对客户端屏蔽了子系统组件，减少了客户端所需处理的对象数目并使得子系统使用起来更加容易。通过引入外观模式，客户端代码将变得很简单，与之关联的对象也很少</li>
 <li>实现了子系统与客户端之间的松耦合关系，这使得子系统的变化不会影响到调用它的客户端，只需要调整外观类即可</li>
 <li>一个子系统的修改对其他子系统没有任何影响，而且子系统内部变化也不会影响到外观对象</li>
 <li>只提供了一个访问子系统的统一入口，并不影响客户端直接使用子系统类</li>
 </ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
 <li>不能很好地限制客户端直接只用子系统类，如果对客户端访问子系统类做太多的限制则减少了可变性和灵活性</li>
 <li>如果设计不当，怎加新的子系统可能需要修改外观类的源代码，这违背了开闭原则</li>
 </ol>
@@ -170,7 +170,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">2.</span> <span class="post-toc-text">缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

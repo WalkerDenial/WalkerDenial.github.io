@@ -85,7 +85,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+        <a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
     </li>
 </ul>
 <!--categories-->
@@ -98,7 +98,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)">
   <h2>享元模式</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-02-24T07:18:00.000Z">
@@ -135,14 +135,14 @@
     
   </div>
   <div class="post-page-content">
-  <p><code>享元模式(Flyweight Pattern)</code> : 运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细腻度对象，因此它又称为轻量级模式，是一种 <strong>对象结构性模式</strong>。</p>
+  <p><code>享元模式（Flyweight Pattern）</code>：运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细腻度对象，因此它又称为轻量级模式，是一种 <strong>对象结构性模式</strong>。</p>
 <p><code>单纯享元模式</code> 中，所有的具体享元类都是可以共享的，不存在非共享具体享元类。</p>
 <p><code>符合享元模式</code> 是将一些单纯享元对象使用组合模式加以组合。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
 <li>可以极大减少内存中对象的数量，使得相同或相似对象在内存中只保存一份，从而可以节约系统资源，提高系统性能</li>
 <li>享元模式的外部状态相对独立，而且不会影响其内部状态，从而使得享元对象可以在不同的环节中被共享</li>
 </ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
 <li>享元模式使得系统变得复杂，需要分离出内部状态和外部状态，这使得程序的逻辑复杂化</li>
 <li>为了使对象可以共享，享元模式需要将享元对象的部分状态外部化，而读取外部状态将使得运行时间长</li>
 </ol>
@@ -170,7 +170,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">2.</span> <span class="post-toc-text">缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
