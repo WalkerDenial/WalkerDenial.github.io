@@ -3,6 +3,241 @@
   
     
     <entry>
+      <title><![CDATA[概述]]></title>
+      <url>/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/</url>
+      <content type="html"><![CDATA[<p>面试官：请讲一下计算机网络的原理，以及你对它的理解。</p>
+<p>我：<img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/expression_0.jpg" alt></p>
+<p>作为一枚野生程序猿，通过网络进行数据交换已成家常便饭，最常接触的就是 HTTP、HTTPS、SOCKET，但是，平常只是使用而已，没有深入研究过，一到面试就卡壳。那么今天就来扒一扒 <strong>计算机网络原理</strong> 到底是什么。</p>
+<h3 id="1-计算机网络指的是什么？"><a href="#1-计算机网络指的是什么？" class="headerlink" title="1. 计算机网络指的是什么？"></a>1. 计算机网络指的是什么？</h3><p>首先说明一下，这里的<strong>「计算机」</strong>并不是通常意义上的 <strong>个人计算机（PC）</strong>、<strong>笔记本电脑</strong> 或者 <strong>服务器计算机</strong>，而应该包括所有带有计算能力的只能计算设备，比如：智能手机、智能家电等等。因此，我们应将<strong>「计算机」</strong>理解为<strong>「计算机设备」</strong>。</p>
+<p>先来扒一扒计算机历史，计算机诞生之初，每台计算机都只在「自己范围内处理信息」，如果需要在不同计算机之间交换、分享信息，就只能通过存储介质等进行。随着计算机技术的发展，越来越需要在计算机之间进行快速、大量的信息交换，于是人们便将 <strong>计算机技术</strong> 与 <strong>通信技术</strong> 进行完美结合，诞生了计算机网络。</p>
+<p>从技术范畴来看：</p>
+<blockquote>
+<p>计算机网络是「计算机技术」与「通信技术」相互融合的产物。</p>
+</blockquote>
+<p>计算机网络并没有一个统一的精确定义，通常指的是：</p>
+<blockquote>
+<p>计算机网络是利用 <strong>通信设备</strong> 与 <strong>通信链路</strong> 或者 <strong>通信网络</strong>，互连 <strong>位置不同</strong>、<strong>功能自治</strong> 的计算机系统，并遵循一定的规则实现计算机系统之间的信息交换。</p>
+</blockquote>
+<p>更为简短、概括性的定义为：</p>
+<blockquote>
+<p>计算机网络是 <strong>互连</strong> 的、<strong>自治</strong> 的计算机的集合。</p>
+<blockquote>
+<p>互连：指利用通信链路连接相互独立的计算机系统。通信链路可以是双绞线、光纤、微波、通信卫星等。</p>
+<p>自治：指互连的计算机系统彼此独立，不存在主从或者控制与被控制的关系。</p>
+</blockquote>
+</blockquote>
+<h3 id="2-经常听说「协议」这个词，在计算机网络中它指的是什么呢？"><a href="#2-经常听说「协议」这个词，在计算机网络中它指的是什么呢？" class="headerlink" title="2. 经常听说「协议」这个词，在计算机网络中它指的是什么呢？"></a>2. 经常听说「协议」这个词，在计算机网络中它指的是什么呢？</h3><p>前面简单介绍了「计算机」和「通信设备」，如同道路交通系统一样，道路修建好了，路网也建立了，硬件基础建立完毕。但是，如果没有交通规则进行制约，道路系统将会变成一团乱麻，同理，网络系统中，也需要遵循一些规则和约定，来保证网络稳定、有序、高效的运行，这些规则或约定，就是网络协议。</p>
+<blockquote>
+<p>协议约定了实体之间交换的信息类型、信息各部分的含义、信息交换顺序以及收到特定信息或出现异常时应采取的行为。</p>
+</blockquote>
+<p>协议三要素：</p>
+<ol>
+<li>语法（syntax）：定义实体之间交换信息的格式与结构，或者定义实体（比如硬件设备）之间传输信号的电平等。</li>
+<li>语义（semantics）：定义实体之间交换的信息中心需要发送（或包含）哪些控制信息，这些信息的具体含义，以及针对不同含义的控制信息，接收信息端应如何响应。另外，有的协议还需要进行差错检测，这类协议通常会在协议信息中附加差错编码等控制信息。语义还需要定义彼此采用何种差错编码，以及采取何种差错处理机制等。</li>
+<li>时序（timing）：也称为同步，定义实体之间交换信息的顺序以及如何匹配或适应彼此的速度。</li>
+</ol>
+<h3 id="3-计算机网络的功能"><a href="#3-计算机网络的功能" class="headerlink" title="3. 计算机网络的功能"></a>3. 计算机网络的功能</h3><ol>
+<li>硬件资源共享：例如打印机、存储资源等</li>
+<li>软件资源共享：例如 SaaS 服务等</li>
+<li>信息资源共享：例如新闻阅读、信息检索等</li>
+</ol>
+<h3 id="4-计算机网络的分类"><a href="#4-计算机网络的分类" class="headerlink" title="4. 计算机网络的分类"></a>4. 计算机网络的分类</h3><h4 id="4-1-按覆盖范围"><a href="#4-1-按覆盖范围" class="headerlink" title="4.1 按覆盖范围"></a>4.1 按覆盖范围</h4><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">场景</th>
+<th align="center">范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">个域网（PAN）</td>
+<td align="center">穿戴设备、便携式移动设备等</td>
+<td align="center">1~10m</td>
+</tr>
+<tr>
+<td align="center">局域网（LAN）</td>
+<td align="center">办公室、办公楼、厂区、校园等</td>
+<td align="center">10m~1km</td>
+</tr>
+<tr>
+<td align="center">城域网（MAN）</td>
+<td align="center">覆盖一个城市范围</td>
+<td align="center">5~50km</td>
+</tr>
+<tr>
+<td align="center">广域网（WAN）</td>
+<td align="center">跨越更大的地理空间</td>
+<td align="center">几十~几千 km</td>
+</tr>
+</tbody></table>
+<h4 id="4-2-按拓扑结构分类"><a href="#4-2-按拓扑结构分类" class="headerlink" title="4.2 按拓扑结构分类"></a>4.2 按拓扑结构分类</h4><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/topology.png" alt="常见拓扑结构示意图"></p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="left">描述</th>
+<th align="left">总结</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">星型拓扑结构（图 a）</td>
+<td align="left">包含一个中央节点，网络中的主机通过点对点通信链路与中央节点连接</td>
+<td align="left">优点：易于监控与管理，故障诊断与隔离容易；<br>缺点：中央节点是网络的瓶颈，一旦故障，全网瘫痪，网络规模受限于中央节点的端口数量；</td>
+</tr>
+<tr>
+<td align="center">总线型拓扑结构（图 b）</td>
+<td align="left">采用一条广播信道作为公共传输介质，称为总线，所有节点均与总线连接，节点间的通信均通过共享的总线进行</td>
+<td align="left">优点：结构简单，所需电缆数量少，易于扩展；<br>缺点：通信范围受限，故障诊断与隔离较困难，容易产生冲突；</td>
+</tr>
+<tr>
+<td align="center">环形拓扑结构（图 c）</td>
+<td align="left">利用通信链路将所有节点连接成一个闭合的环</td>
+<td align="left">优点：所需电缆长度短，可以使用光纤，易于避免冲突；<br>缺点：某节点故障容易引起全网瘫痪，新节点的加入或撤出过程比较麻烦，存在等待时间问题；</td>
+</tr>
+<tr>
+<td align="center">网状拓扑结构（图 d）</td>
+<td align="left">网络中的节点通过多条链路与不同的节点直接连接</td>
+<td align="left">优点：可靠性高，一条过多条链路故障时，网络仍然可联通；<br>缺点：网络结构复杂，造价成本高，选路协议复杂；</td>
+</tr>
+<tr>
+<td align="center">树形拓扑结构（图 e）</td>
+<td align="left">可以看做是总线型拓扑或星型拓扑网络的扩展</td>
+<td align="left">优点：易于扩展，故障隔离容易；<br>缺点：对根节点的可靠性要求高，一旦根节点故障，则可能导致网络大范围无法通信；</td>
+</tr>
+<tr>
+<td align="center">混合型拓扑结构（图 f）</td>
+<td align="left">由两种以上简单拓扑结构网混合连接而成的网络</td>
+<td align="left">优点：易于扩展，可以构建不同规模网络，并可根据需要优选网络结构；<br>缺点：网络结构复杂，管理与维护复杂；</td>
+</tr>
+</tbody></table>
+<h3 id="5-计算机网络结构（简单了解一下就好）"><a href="#5-计算机网络结构（简单了解一下就好）" class="headerlink" title="5. 计算机网络结构（简单了解一下就好）"></a>5. 计算机网络结构（简单了解一下就好）</h3><ol>
+<li><p>网络边缘</p>
+</li>
+<li><p>接入网络</p>
+<blockquote>
+<ol>
+<li>电话拨号接入</li>
+<li>非对称数字用户线路 ADSL</li>
+<li>混合光纤同轴电缆 HFC 接入网络</li>
+<li>局域网</li>
+<li>移动接入网络</li>
+</ol>
+</blockquote>
+</li>
+<li><p>网络核心</p>
+</li>
+</ol>
+<h3 id="6-数据交换技术"><a href="#6-数据交换技术" class="headerlink" title="6. 数据交换技术"></a>6. 数据交换技术</h3><ol>
+<li>电路交换</li>
+<li>报文交换</li>
+<li>分组交换</li>
+</ol>
+<blockquote>
+<p>分组交换是目前计算机网络广泛采用的技术。分组交换需要将待传输数据（即报文）分割成较小的数据块，每个数据块附加上地址、序号等控制信息构成数据分组（packet），每个分组独立传输到目的地，目的地将受到的分组重新组装，还原为报文。分组传输过程通常也采用存储—转发交换方式。</p>
+</blockquote>
+<p>分组交换优点：</p>
+<ol>
+<li>交换设备存储容量要求低</li>
+<li>交换速度快</li>
+<li>可靠传输效率高</li>
+<li>更加公平</li>
+</ol>
+<h3 id="7-计算机网络性能"><a href="#7-计算机网络性能" class="headerlink" title="7. 计算机网络性能"></a>7. 计算机网络性能</h3><ol>
+<li>速率与带宽：指网络单位时间内传送的数据量，用以描述网络传输数据的快慢，也称为数据传输速率或数据速率；</li>
+<li>时延：指数据从网络中的一个节点（主机或交换设备等）到达另一节点所需要的时间；包括 <strong>节点处理时延（nodal processing delay）</strong>、<strong>排队时延（queueing delay）</strong>、<strong>传输时延（transmission delay）</strong> 和 <strong>传播时延（propagation delay）</strong>；</li>
+<li>时延带宽积：指一段物理链路的传播时延与链路带宽的乘积；</li>
+<li>丢包率：当网络拥塞特别严重时，新到达的分组甚至已无缓存空间暂存该分组，此时交换节点会丢弃分组，就会发生「丢包」现象；</li>
+<li>吞吐量：表示在单位时间内源主机通过网络向目的主机实际送达的数据量；</li>
+</ol>
+<h3 id="8-计算机网络体系结构"><a href="#8-计算机网络体系结构" class="headerlink" title="8. 计算机网络体系结构"></a>8. 计算机网络体系结构</h3><h4 id="8-1-OSI-参考模型"><a href="#8-1-OSI-参考模型" class="headerlink" title="8.1 OSI 参考模型"></a>8.1 OSI 参考模型</h4><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/OSI.jpeg" alt="OSI 参考模型描述的数据封装和传输过程"></p>
+<p>从上层往下层依次介绍：</p>
+<blockquote>
+<ol start="7">
+<li><p>应用层：给用户提供网络服务，包括文件传送、电子邮件、P2P 应用等。应用层为用户提供了一个使用网络应用的「接口」；</p>
+</li>
+<li><p>表示层：</p>
+<blockquote>
+<ol>
+<li>主要用于处理应用实体间交换数据的语法，目的是解决格式和数据表示的差别，从而为应用提供一个一致的数据格式，使字符、格式等有差异的设备之间相互通信；</li>
+<li>实现文本压缩/解压缩、数据加密/解密、字符串彪马的转换等功能；</li>
+</ol>
+</blockquote>
+</li>
+<li><p>会话层：</p>
+<blockquote>
+<ol>
+<li>在建立会话时核实双方身份是否有权参加会话；</li>
+<li>确定双方支付通信费用；</li>
+<li>双方在各种选择功能方面（如全双工还是半双工通信）取得一致；</li>
+<li>在会话建立以后，需要对进程间的对话进行管理与控制；</li>
+</ol>
+</blockquote>
+</li>
+<li><p>传输层：主要功能包括复用/分解（区分发送和接收主机上的进程），端到端的可靠数据传输、连接控制、流量控制和拥塞控制机制等</p>
+</li>
+<li><p>网络层：</p>
+<blockquote>
+<ol>
+<li>数据转发与路由；</li>
+<li>对进入交换网络的通信量加以控制，以避免通信量过大造成交换网络性能下降；</li>
+<li>寻址功能，确保分组可以被正确传输到目的主机；</li>
+</ol>
+</blockquote>
+</li>
+<li><p>数据链路层：</p>
+<blockquote>
+<ol>
+<li>实现在相邻节点之间数据可靠而有效的传输；</li>
+<li>寻址，确保每一帧都能准确地传送到正确的接收方，接收方也有关知道发送方的地址；</li>
+</ol>
+</blockquote>
+</li>
+<li><p>物理层：主要功能是在传输介质上实现无结构比特流传输；</p>
+</li>
+</ol>
+</blockquote>
+<p>参考模型高低层划分：</p>
+<ul>
+<li>网络底层：主要完成数据交换和数据传输。包含物理层、数据链路层、网络层；</li>
+<li>衔接层：传输层；</li>
+<li>网络高层：主要是完成信息处理服务的功能。包含会话层、表示层、应用层；</li>
+</ul>
+<p><strong>PS：实际应用的网络中几乎没有严格按照 OSI 参考模型构件的。OSI 参考模型的意义在于它是一种计算机网络的理论体系结构，是目前学习、讨论计算机网络的一种工具，能够从理论上很好地解释网络概念、层次与通信过程，是学习计算机网络必须学习和掌握的内容。</strong></p>
+<h4 id="8-2-TCP-IP-参考模型"><a href="#8-2-TCP-IP-参考模型" class="headerlink" title="8.2 TCP/IP 参考模型"></a>8.2 TCP/IP 参考模型</h4><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/TCP_IP.jpeg" alt="TCP/IP 参考模型"></p>
+<blockquote>
+<ol>
+<li><p>应用层：TCP/IP 参考模型将 OSI 参考模型中会话层和表示层的功能合并到了应用层来实现；</p>
+</li>
+<li><p>传输层：主要包括面向连接、提供可靠数据流传输的传输控制协议 TCP 和无连接不提供可靠数据传输的用户数据报协议 UDP；</p>
+</li>
+<li><p>网络互连层：是整个参考模型的核心，主要解决把数据分组发往目的网络或主机的问题；（IP 是无连接不可靠网络协议）</p>
+</li>
+<li><p>网络接口层：实际上，TCP/IP 参考模型没有真正描述这一层的实现，只是要求能够提供给其上层—网络互连层一个访问接口，以便在其上传递 IP 分组；</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="8-3-五层参考模型"><a href="#8-3-五层参考模型" class="headerlink" title="8.3 五层参考模型"></a>8.3 五层参考模型</h4><p>对比 TCP/IP 参考模型与 OSI 参考模型，TCP/IP 参考模型缺少 OSI 参考模型中功能比较少的会话层与表示层，而 TCP/IP 参考模型的网络接口层则相当于合并了 OSI 参考模型的数据链路层与物理层。结合这两个参考模型，可以提出综合理论需求与实际网络的五层参考模型，包括 <strong>物理层</strong>、<strong>数据链路层</strong>、<strong>网络层</strong>、<strong>传输层</strong> 与 <strong>应用层</strong>，各层功能基本与 OSI 参考模型对应。</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/five_layer.jpeg" alt="五层参考模型"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 计算机网络 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> 概述 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ES6 简介]]></title>
       <url>/2017/07/31/ES6/ES6%20%E7%AE%80%E4%BB%8B/</url>
       <content type="html"><![CDATA[<p>ECMAScript 6.0（以下简称 ES6 ）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</p>
@@ -19,32 +254,26 @@
 <h3 id="正则特殊字符说明"><a href="#正则特殊字符说明" class="headerlink" title="正则特殊字符说明"></a>正则特殊字符说明</h3><p>1、 <code>.</code> 字符：除了换行符以外的任意单个字符</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'𠮷'</span><span class="token punctuation">;</span>
 <span class="token regex">/^.$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/^.$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/^.$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>2、 <code>u</code> 修饰符：含义为 <strong>Unicode模式</strong>, 用来正确处理大于 \uFFFF 的 Unicode 字符。也就是说，会正确处理四个字节的 UTF-16 编码。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^\uD83D/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\uD83D\uDC2A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/^\uD83D/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\uD83D\uDC2A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token regex">/^\uD83D/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\uD83D\uDC2A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>3、 <code>Unicode</code> 字符：ES6 新增了使用大括号表示 Unicode 字符，这种表示法在正则表达式中必须加上  <code>u</code> 修饰符，才能识别当中的大括号，否则会被解读为量词。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/\u{61}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
 <span class="token regex">/\u{61}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token regex">/\u{20BB7}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/\u{20BB7}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>4、<code>量词</code>：使用 <code>u</code> 修饰符后，所有量词都会正确识别码点大于 0xFFFF 的 Unicode 字符。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/a{2}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
 <span class="token regex">/a{2}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
 <span class="token regex">/𠮷{2}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/𠮷{2}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/𠮷{2}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>5、<code>预定义模式</code>：<code>u</code> 修饰符也影响到预定义模式，能否正确识别码点大于 0xFFFF 的 Unicode 字符。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^\S$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/^\S$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token regex">/^\S$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><em>说明：上面代码的 <code>\S</code> 是预定义模式，匹配所有不是空格的字符。只有加了 <code>u</code> 修饰符，它才能正确匹配码点大于 0xFFFF 的 Unicode 字符。</em></p>
 <p>6、<code>i</code> 修饰符：有些 Unicode 字符的编码不同，但是字型很相近，比如，\u004B 与 \u212A 都是大写的 K。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/[a-z]/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\u212A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/[a-z]/iu</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\u212A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token regex">/[a-z]/iu</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\u212A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><em>上面代码中，不加 <code>u</code> 修饰符，就无法识别非规范的 <code>K</code> 字符</em></p>
 <p>7、<code>y</code> 修饰符：除了 <code>u</code> 修饰符，ES6 还为正则表达式添加了 <code>y</code> 修饰符，叫做“粘连”（ sticky ）修饰符。<code>y</code> 修饰符的作用与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，<code>g</code> 修饰符只要剩余位置中存在匹配就可，而 <code>y</code> 修饰符确保匹配必须从剩余的第一个位置开始，这也就是 “粘连” 的涵义。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'aaa_aa_a'</span><span class="token punctuation">;</span>
@@ -55,16 +284,14 @@ r1<span class="token punctuation">.</span><span class="token function">exec</spa
 r2<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa"]</span>
 
 r1<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aa"]</span>
-r2<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+r2<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>上面代码有两个正则表达式，一个使用 <code>g</code> 修饰符，另一个使用 <code>y</code> 修饰符。这两个正则表达式各执行了两次，第一次执行的时候，两者行为相同，剩余字符串都是 <code>_aa_a</code> 。由于 <code>g</code> 修饰没有位置要求，所以第二次执行会返回结果，而 <code>y</code> 修饰符要求匹配必须从头部开始，所以返回 <code>null</code>。</em></p>
 <p>如果改一下正则表达式，保证每次都能头部匹配，<code>y</code> 修饰符就会返回结果了。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'aaa_aa_a'</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> r <span class="token operator">=</span> <span class="token regex">/a+_/y</span><span class="token punctuation">;</span>
 
 r<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa_"]</span>
-r<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aa_"]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+r<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aa_"]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>上面代码每次匹配，都是从剩余字符串的头部开始。</em></p>
 <p>使用 <code>lastIndex</code> 属性，可以更好地说明 <code>y</code> 修饰符。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/g</span><span class="token punctuation">;</span>
@@ -82,8 +309,7 @@ match<span class="token punctuation">.</span>index <span class="token comment" s
 REGEX<span class="token punctuation">.</span>lastIndex <span class="token comment" spellcheck="true">// 4</span>
 
 <span class="token comment" spellcheck="true">// 4号位开始匹配失败</span>
-REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaxa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaxa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面代码中，<code>lastIndex</code> 属性指定每次搜索的开始位置，<code>g</code> 修饰符从这个位置开始向后搜索，直到发现匹配为止。</p>
 <p><code>y</code> 修饰符同样遵守 <code>lastIndex</code> 属性，但是要求必须在 <code>lastIndex</code> 指定的位置发现匹配。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/y</span><span class="token punctuation">;</span>
@@ -100,12 +326,10 @@ REGEX<span class="token punctuation">.</span>lastIndex <span class="token operat
 <span class="token comment" spellcheck="true">// 3号位置是粘连，匹配成功</span>
 <span class="token keyword">const</span> match <span class="token operator">=</span> REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaxa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 match<span class="token punctuation">.</span>index <span class="token comment" spellcheck="true">// 3</span>
-REGEX<span class="token punctuation">.</span>lastIndex <span class="token comment" spellcheck="true">// 4</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+REGEX<span class="token punctuation">.</span>lastIndex <span class="token comment" spellcheck="true">// 4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际上，<code>y</code> 修饰符号隐含了头部匹配的标志 <code>^</code>。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/b/y</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'aba'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// null</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// null</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><em>上面代码由于不能保证头部匹配，所以返回 <code>null</code>。<code>y</code> 修饰符的设计本意，就是让头部匹配的标志 <code>^</code> 在全局匹配中都有效。</em></p>
 <p>在 <code>split</code> 方法中使用 <code>y</code> 修饰符，原字符串必须以分隔符开头。这也意味着，只要匹配成功，数组的第一个成员肯定是空字符串。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 没有找到匹配</span>
@@ -114,24 +338,20 @@ REGEX<span class="token punctuation">.</span>lastIndex <span class="token commen
 
 <span class="token comment" spellcheck="true">// 找到两个匹配</span>
 <span class="token string">'##x'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '', '', 'x' ]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// [ '', '', 'x' ]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>后续的分隔符只有紧跟前面的分隔符，才会被识别。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">'#x#'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// [ '', 'x#' ]</span>
 
 <span class="token string">'##'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '', '', '' ]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// [ '', '', '' ]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面是字符串对象的 <code>replace</code> 方法的例子。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/gy</span><span class="token punctuation">;</span>
-<span class="token string">'aaxa'</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>REGEX<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// '--xa'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token string">'aaxa'</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>REGEX<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// '--xa'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><em>上面代码中，最后一个 <code>a</code> 因为不是出现在下一次匹配的头部，所以不会被替换。</em></p>
 <p>单单一个 <code>y</code> 修饰符对 <code>match</code> 方法，只能返回第一个匹配，必须与 <code>g</code> 修饰符联用，才能返回所有匹配。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">'a1a2a3'</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/a\d/y</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["a1"]</span>
-<span class="token string">'a1a2a3'</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/a\d/gy</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["a1", "a2", "a3"]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token string">'a1a2a3'</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/a\d/gy</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["a1", "a2", "a3"]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>y</code> 修饰符的一个应用，是从字符串提取 token（词元），<code>y</code> 修饰符确保了匹配之间不会有漏掉的字符。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> TOKEN_Y <span class="token operator">=</span> <span class="token regex">/\s*(\+|[0-9]+)\s*/y</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> TOKEN_G  <span class="token operator">=</span> <span class="token regex">/\s*(\+|[0-9]+)\s*/g</span><span class="token punctuation">;</span>
@@ -148,19 +368,16 @@ REGEX<span class="token punctuation">.</span>lastIndex <span class="token commen
     result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>match<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> result<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>上面代码中，如果字符串里面没有非法字符，<code>y</code> 修饰符与 <code>g</code> 修饰符的提取结果是一样的。但是，一旦出现非法字符，两者的行为就不一样了。</em></p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_Y<span class="token punctuation">,</span> <span class="token string">'3x + 4'</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">// [ '3' ]</span>
 <span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_G<span class="token punctuation">,</span> <span class="token string">'3x + 4'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>上面代码中，<code>g</code> 修饰符会忽略非法字符，而 <code>y</code> 修饰符不会，这样就很容易发现错误。</em></p>
 <p>8、<code>sticky</code> 属性：与 <code>y</code> 修饰符相匹配，ES6 的正则对象多了 <code>sticky</code> 属性，表示是否设置了 <code>y</code> 修饰符。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> r <span class="token operator">=</span> <span class="token regex">/hello\d/y</span><span class="token punctuation">;</span>
-r<span class="token punctuation">.</span>sticky <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+r<span class="token punctuation">.</span>sticky <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>9、<code>flags</code> 属性：ES6 为正则表达式新增了 <code>flags</code> 属性，会返回正则表达式的修饰符。 </p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// ES5 的 source 属性</span>
 <span class="token comment" spellcheck="true">// 返回正则表达式的正文</span>
@@ -170,8 +387,7 @@ r<span class="token punctuation">.</span>sticky <span class="token comment" spel
 <span class="token comment" spellcheck="true">// ES6 的 flags 属性</span>
 <span class="token comment" spellcheck="true">// 返回正则表达式的修饰符</span>
 <span class="token regex">/abc/ig</span><span class="token punctuation">.</span>flags
-<span class="token comment" spellcheck="true">// 'gi'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// 'gi'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>10、<code>s</code> 修饰符：dotAll 模式</p>
 <p>正则表达式中，点（ <code>.</code> ）是一个特殊字符，代表任意的单个字符，但是行终止符（line terminator character）除外。</p>
 <p>以下四个字符属于 <code>行终止符</code>。</p>
@@ -182,12 +398,10 @@ r<span class="token punctuation">.</span>sticky <span class="token comment" spel
 <li>U+2029 段分隔符（paragraph separator）</li>
 </ol>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/foo.bar/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// false</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><em>上面代码中，因为 <code>.</code> 不匹配 <code>\n</code>，所以正则表达式返回 <code>false</code>。</em></p>
 <p>所以现在有一个提案，引入 <code>/s</code> 修饰符，使得 <code>.</code> 可以匹配任意单个字符。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">/</span>foo<span class="token punctuation">.</span>bar<span class="token operator">/</span>s<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">/</span>foo<span class="token punctuation">.</span>bar<span class="token operator">/</span>s<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这被称为 <code>dotAll</code> 模式，即点（ <code>dot</code> ）代表一切字符。所以，正则表达式还引入了一个 <code>dotAll</code> 属性，返回一个布尔值，表示该正则表达式是否处在 <code>dotAll</code> 模式。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token operator">/</span>foo<span class="token punctuation">.</span>bar<span class="token operator">/</span>s<span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// 另一种写法</span>
@@ -195,8 +409,7 @@ r<span class="token punctuation">.</span>sticky <span class="token comment" spel
 
 re<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
 re<span class="token punctuation">.</span>dotAll <span class="token comment" spellcheck="true">// true</span>
-re<span class="token punctuation">.</span>flags <span class="token comment" spellcheck="true">// 's'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+re<span class="token punctuation">.</span>flags <span class="token comment" spellcheck="true">// 's'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>/s</code> 修饰符和多行修饰符 <code>/m</code> 不冲突，两者一起使用的情况下，.匹配所有字符，而 <code>^</code> 和 <code>$</code> 匹配每一行的行首和行尾。</p>
 ]]></content>
       
@@ -209,11 +422,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
         
@@ -624,9 +837,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 结构型模式 </tag>
-            
             <tag> 代理 </tag>
+            
+            <tag> 结构型模式 </tag>
             
         </tags>
         
@@ -657,9 +870,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 享元 </tag>
-            
             <tag> 结构型模式 </tag>
+            
+            <tag> 享元 </tag>
             
         </tags>
         
@@ -925,9 +1138,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 原型 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
         
@@ -939,29 +1152,27 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
       <content type="html"><![CDATA[<table>
 <thead>
 <tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">优点</th>
-<th style="text-align:left">缺点</th>
+<th align="left">模式名称</th>
+<th align="left">优点</th>
+<th align="left">缺点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">简单工厂模式(Simple Factory Pattern)</td>
-<td style="text-align:left">1、一个工厂类就可以实现功能；<br>2、外部无需关注如何获取所需对象</td>
-<td style="text-align:left">1、每当添加或者删除一个对象时，需要修改 Factory 类，不符合开闭原则；<br>2、Factory 类职责过重，需要负责的东西很多</td>
+<tbody><tr>
+<td align="left">简单工厂模式(Simple Factory Pattern)</td>
+<td align="left">1、一个工厂类就可以实现功能；<br>2、外部无需关注如何获取所需对象</td>
+<td align="left">1、每当添加或者删除一个对象时，需要修改 Factory 类，不符合开闭原则；<br>2、Factory 类职责过重，需要负责的东西很多</td>
 </tr>
 <tr>
-<td style="text-align:left">工厂方法模式(Factory Method Pattern)</td>
-<td style="text-align:left">1、新增产品时，无需修改 Factory 代码，符合开闭原则</td>
-<td style="text-align:left">1、每添加一个新产品，需要生成一个产品 class 和一个产品对应的 Facroty，会增加项目的复杂度；</td>
+<td align="left">工厂方法模式(Factory Method Pattern)</td>
+<td align="left">1、新增产品时，无需修改 Factory 代码，符合开闭原则</td>
+<td align="left">1、每添加一个新产品，需要生成一个产品 class 和一个产品对应的 Facroty，会增加项目的复杂度；</td>
 </tr>
 <tr>
-<td style="text-align:left">抽象工厂模式(Abstract Factory Pattern)</td>
-<td style="text-align:left">1、新增产品族时无需修改 Factory 类，符合开闭原则，满足后期扩展的需求</td>
-<td style="text-align:left">1、新增产品等级结构的时候，需要修改 Factory 类，不符合开闭原则；<br>2、修改 Factory 的时候，由于 Factory 是抽象类，影响较大，如果系统比较庞大，会出现很多新问题</td>
+<td align="left">抽象工厂模式(Abstract Factory Pattern)</td>
+<td align="left">1、新增产品族时无需修改 Factory 类，符合开闭原则，满足后期扩展的需求</td>
+<td align="left">1、新增产品等级结构的时候，需要修改 Factory 类，不符合开闭原则；<br>2、修改 Factory 的时候，由于 Factory 是抽象类，影响较大，如果系统比较庞大，会出现很多新问题</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 ]]></content>
       
         <categories>
@@ -1109,9 +1320,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 单例 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 单例 </tag>
             
         </tags>
         
@@ -1169,11 +1380,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> UML </tag>
             
             <tag> 特性 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
         
@@ -1188,23 +1399,18 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
 <h4 id="3、里氏替换原则-Liskov-Substitution-Principle-LSP"><a href="#3、里氏替换原则-Liskov-Substitution-Principle-LSP" class="headerlink" title="3、里氏替换原则(Liskov Substitution Principle,LSP)"></a>3、里氏替换原则(Liskov Substitution Principle,LSP)</h4><p><code>里氏替换原则</code> 通俗的定义是：所有引用基类(父类)的地方必须能透明地使用其子类对象。</p>
 <p><code>里氏替换原则</code> 的定义是（两种定义）：</p>
 <pre><code>1. 如果对每一个类型为 S 的对象 O1，都有类型为 T 的对象 O2，使得以 T 定义的所有程序 P 在所有的对象 O1 都代换成 O2 时，程序 P 的行为没有发生变化，那么类型 S 是类型 T 的子类型；
-2. 所有引用基类的地方必须能透明地使用其子类对象；
-</code></pre><p>继承的优点：</p>
+2. 所有引用基类的地方必须能透明地使用其子类对象；</code></pre><p>继承的优点：</p>
 <pre><code>1. 代码重用，减少创建类的成本，每个子类都拥有父类的方法和属性；
 2. 子类与父类基本相似，但又与父类有所区别；
-3. 提高代码的可扩展性；
-</code></pre><p>继承的缺点：</p>
+3. 提高代码的可扩展性；</code></pre><p>继承的缺点：</p>
 <pre><code>1. 继承是侵入性的，只要继承就必须拥有父类的所有属性和方法；
-2. 可能造成子类代码冗余、灵活性降低，因为子类必须拥有父类的属性和方法；
-</code></pre><h4 id="4、依赖倒置原则-Dependency-Inversion-Principle-DIP"><a href="#4、依赖倒置原则-Dependency-Inversion-Principle-DIP" class="headerlink" title="4、依赖倒置原则(Dependency Inversion Principle,DIP)"></a>4、依赖倒置原则(Dependency Inversion Principle,DIP)</h4><p><code>依赖倒置原则</code>：指代了一种特定的解耦形式，使得高层次的模块不依赖于低层次的模块的实现细节的目的，依赖模块被颠倒了。通俗的讲就是：抽象不应该依赖于细节，细节应当依赖于抽象；换言之，要针对接口编程，而不是针对实现编程。</p>
+2. 可能造成子类代码冗余、灵活性降低，因为子类必须拥有父类的属性和方法；</code></pre><h4 id="4、依赖倒置原则-Dependency-Inversion-Principle-DIP"><a href="#4、依赖倒置原则-Dependency-Inversion-Principle-DIP" class="headerlink" title="4、依赖倒置原则(Dependency Inversion Principle,DIP)"></a>4、依赖倒置原则(Dependency Inversion Principle,DIP)</h4><p><code>依赖倒置原则</code>：指代了一种特定的解耦形式，使得高层次的模块不依赖于低层次的模块的实现细节的目的，依赖模块被颠倒了。通俗的讲就是：抽象不应该依赖于细节，细节应当依赖于抽象；换言之，要针对接口编程，而不是针对实现编程。</p>
 <p><strong>关键点</strong></p>
 <pre><code>1. 高层模块不应该依赖低层模块，两者都应该依赖其抽象；
 2. 抽象不应该依赖细节；
-3. 细节应该依赖抽象；
-</code></pre><h4 id="5、接口隔离原则-Interface-Segregation-Principle-ISP"><a href="#5、接口隔离原则-Interface-Segregation-Principle-ISP" class="headerlink" title="5、接口隔离原则(Interface Segregation Principle,ISP)"></a>5、接口隔离原则(Interface Segregation Principle,ISP)</h4><p><code>接口隔离原则</code> 的定义是（两种定义）：</p>
+3. 细节应该依赖抽象；</code></pre><h4 id="5、接口隔离原则-Interface-Segregation-Principle-ISP"><a href="#5、接口隔离原则-Interface-Segregation-Principle-ISP" class="headerlink" title="5、接口隔离原则(Interface Segregation Principle,ISP)"></a>5、接口隔离原则(Interface Segregation Principle,ISP)</h4><p><code>接口隔离原则</code> 的定义是（两种定义）：</p>
 <pre><code>1. 客户端不应该依赖它不需要的接口；
-2. 类间的依赖关系应该建立在最小的接口上；
-</code></pre><h4 id="6、合成复用原则-Composite-Reuse-Principle-CRP"><a href="#6、合成复用原则-Composite-Reuse-Principle-CRP" class="headerlink" title="6、合成复用原则(Composite Reuse Principle,CRP)"></a>6、合成复用原则(Composite Reuse Principle,CRP)</h4><p><code>合成复用原则</code>：尽量使用对象组合，而不是继承来达到复用的目的。</p>
+2. 类间的依赖关系应该建立在最小的接口上；</code></pre><h4 id="6、合成复用原则-Composite-Reuse-Principle-CRP"><a href="#6、合成复用原则-Composite-Reuse-Principle-CRP" class="headerlink" title="6、合成复用原则(Composite Reuse Principle,CRP)"></a>6、合成复用原则(Composite Reuse Principle,CRP)</h4><p><code>合成复用原则</code>：尽量使用对象组合，而不是继承来达到复用的目的。</p>
 <h4 id="7、迪米特原则-Law-of-Demeter-LOD"><a href="#7、迪米特原则-Law-of-Demeter-LOD" class="headerlink" title="7、迪米特原则(Law of Demeter,LOD)"></a>7、迪米特原则(Law of Demeter,LOD)</h4><p><code>迪米特原则</code>的定义是：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道的最少，类的内部如何实现与调用者或者依赖者只需要知道它需要的方法即可，其它的可一概不用管。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
 ]]></content>
       
@@ -1237,166 +1443,158 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
 
 `解决方案(Solution)` 描述了一个设计模式的组成部分，以及这些组成部分之间的相互关系、各自的职责和协作方式，通常解决方案通过UML类图和核心代码进行描述。
 
-`效果(Consequence)` 描述了模式的优缺点以及在使用模式时应权衡的问题。
-</code></pre><p>根据设计模式的用途，设计模式可分为 <strong>创建型(Creational)</strong>、<strong>结构型(Structural)</strong> 和 <strong>行为型(Behavioral)</strong> 三种。</p>
+`效果(Consequence)` 描述了模式的优缺点以及在使用模式时应权衡的问题。</code></pre><p>根据设计模式的用途，设计模式可分为 <strong>创建型(Creational)</strong>、<strong>结构型(Structural)</strong> 和 <strong>行为型(Behavioral)</strong> 三种。</p>
 <pre><code>`创建型` 模式主要用于描述如何创建对象；
 
 `结构型` 模式主要用于描述如何实现类或对象的组合；
 
-`行为型` 模式主要用于描述类或对象怎样交互以及怎样分配职责；
-</code></pre><h4 id="创建型模式-Creational-Pattern"><a href="#创建型模式-Creational-Pattern" class="headerlink" title="创建型模式(Creational Pattern)"></a>创建型模式(Creational Pattern)</h4><table>
+`行为型` 模式主要用于描述类或对象怎样交互以及怎样分配职责；</code></pre><h4 id="创建型模式-Creational-Pattern"><a href="#创建型模式-Creational-Pattern" class="headerlink" title="创建型模式(Creational Pattern)"></a>创建型模式(Creational Pattern)</h4><table>
 <thead>
 <tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">学习难度</th>
-<th style="text-align:left">使用频率</th>
+<th align="left">模式名称</th>
+<th align="left">学习难度</th>
+<th align="left">使用频率</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">单例模式(Singleton Pattern)</td>
-<td style="text-align:left">✨</td>
-<td style="text-align:left">✨✨✨✨</td>
+<tbody><tr>
+<td align="left">单例模式(Singleton Pattern)</td>
+<td align="left">✨</td>
+<td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">简单工厂模式(Simple Factory Pattern)</td>
-<td style="text-align:left">✨✨</td>
-<td style="text-align:left">✨✨✨</td>
+<td align="left">简单工厂模式(Simple Factory Pattern)</td>
+<td align="left">✨✨</td>
+<td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">工厂方法模式(Factory Method Pattern)</td>
-<td style="text-align:left">✨✨</td>
-<td style="text-align:left">✨✨✨✨✨</td>
+<td align="left">工厂方法模式(Factory Method Pattern)</td>
+<td align="left">✨✨</td>
+<td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">抽象工厂模式(Abstract Factory Pattern)</td>
-<td style="text-align:left">✨✨✨✨</td>
-<td style="text-align:left">✨✨✨✨✨</td>
+<td align="left">抽象工厂模式(Abstract Factory Pattern)</td>
+<td align="left">✨✨✨✨</td>
+<td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">原型模式(Prototype Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨</td>
+<td align="left">原型模式(Prototype Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">建造者模式(Builder Pattern)</td>
-<td style="text-align:left">✨✨✨✨</td>
-<td style="text-align:left">✨✨</td>
+<td align="left">建造者模式(Builder Pattern)</td>
+<td align="left">✨✨✨✨</td>
+<td align="left">✨✨</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="结构型模式-Structural-Pattern"><a href="#结构型模式-Structural-Pattern" class="headerlink" title="结构型模式(Structural Pattern)"></a>结构型模式(Structural Pattern)</h4><table>
 <thead>
 <tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">学习难度</th>
-<th style="text-align:left">使用频率</th>
+<th align="left">模式名称</th>
+<th align="left">学习难度</th>
+<th align="left">使用频率</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">适配器模式(Adapter Pattern)</td>
-<td style="text-align:left">✨✨</td>
-<td style="text-align:left">✨✨✨✨</td>
+<tbody><tr>
+<td align="left">适配器模式(Adapter Pattern)</td>
+<td align="left">✨✨</td>
+<td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">桥接模式(Bridge Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨</td>
+<td align="left">桥接模式(Bridge Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">组合模式(Composite Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨✨</td>
+<td align="left">组合模式(Composite Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">装饰模式(Decorator Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨</td>
+<td align="left">装饰模式(Decorator Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">外观模式(Facade Pattern)</td>
-<td style="text-align:left">✨</td>
-<td style="text-align:left">✨✨✨✨✨</td>
+<td align="left">外观模式(Facade Pattern)</td>
+<td align="left">✨</td>
+<td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">享元模式(Flyweight Pattern)</td>
-<td style="text-align:left">✨✨✨✨</td>
-<td style="text-align:left">✨</td>
+<td align="left">享元模式(Flyweight Pattern)</td>
+<td align="left">✨✨✨✨</td>
+<td align="left">✨</td>
 </tr>
 <tr>
-<td style="text-align:left">代理模式(Proxy Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨✨</td>
+<td align="left">代理模式(Proxy Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨✨</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="行为型模式-Behavioral-Pattern"><a href="#行为型模式-Behavioral-Pattern" class="headerlink" title="行为型模式(Behavioral Pattern)"></a>行为型模式(Behavioral Pattern)</h4><table>
 <thead>
 <tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">学习难度</th>
-<th style="text-align:left">使用频率</th>
+<th align="left">模式名称</th>
+<th align="left">学习难度</th>
+<th align="left">使用频率</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">职责链模式(Chain of Responsibility Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨</td>
+<tbody><tr>
+<td align="left">职责链模式(Chain of Responsibility Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">命令模式(Command Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨✨</td>
+<td align="left">命令模式(Command Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">解释器模式(Interpreter Pattern)</td>
-<td style="text-align:left">✨✨✨✨✨</td>
-<td style="text-align:left">✨</td>
+<td align="left">解释器模式(Interpreter Pattern)</td>
+<td align="left">✨✨✨✨✨</td>
+<td align="left">✨</td>
 </tr>
 <tr>
-<td style="text-align:left">迭代器模式(Iterator Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨✨✨</td>
+<td align="left">迭代器模式(Iterator Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">中介者模式(Mediator Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨</td>
+<td align="left">中介者模式(Mediator Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">备忘录模式(Memento Pattern)</td>
-<td style="text-align:left">✨✨</td>
-<td style="text-align:left">✨✨</td>
+<td align="left">备忘录模式(Memento Pattern)</td>
+<td align="left">✨✨</td>
+<td align="left">✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">观察者模式(Observer Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨✨✨</td>
+<td align="left">观察者模式(Observer Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">状态模式(State Pattern)</td>
-<td style="text-align:left">✨✨✨</td>
-<td style="text-align:left">✨✨✨</td>
+<td align="left">状态模式(State Pattern)</td>
+<td align="left">✨✨✨</td>
+<td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">策略模式(Strategy Pattern)</td>
-<td style="text-align:left">✨</td>
-<td style="text-align:left">✨✨✨✨</td>
+<td align="left">策略模式(Strategy Pattern)</td>
+<td align="left">✨</td>
+<td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">模板方法模式(Template Method Pattern)</td>
-<td style="text-align:left">✨✨</td>
-<td style="text-align:left">✨✨✨</td>
+<td align="left">模板方法模式(Template Method Pattern)</td>
+<td align="left">✨✨</td>
+<td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td style="text-align:left">访问者模式(Visitor Pattern)</td>
-<td style="text-align:left">✨✨✨✨</td>
-<td style="text-align:left">✨</td>
+<td align="left">访问者模式(Visitor Pattern)</td>
+<td align="left">✨✨✨✨</td>
+<td align="left">✨</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="设计模式用途"><a href="#设计模式用途" class="headerlink" title="设计模式用途"></a>设计模式用途</h4><ol>
 <li>可以避免做一些重复性的工作，有助于提高设计和开发效率；</li>
 <li>提供了一套通用的设计词汇和一种通用的形式来方便开发人员之间的交流和沟通，使得设计方案更加通熟易懂；</li>
@@ -1415,9 +1613,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 模式 </tag>
-            
             <tag> 概述 </tag>
+            
+            <tag> 模式 </tag>
             
         </tags>
         
@@ -1430,7 +1628,7 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
       <title><![CDATA[About me]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>Name : Walker Denial</p>
-<p>Email : WalkerDenial@qq.com</p>
+<p>Email : <a href="mailto:WalkerDenial@qq.com" target="_blank" rel="noopener">WalkerDenial@qq.com</a></p>
 <p>Address : ShangHai</p>
 <p>Desciption : Life will be better!</p>
 ]]></content>
