@@ -3,6 +3,47 @@
   
     
     <entry>
+      <title><![CDATA[网络应用]]></title>
+      <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h3 id="1-计算机网络应用体系结构"><a href="#1-计算机网络应用体系结构" class="headerlink" title="1. 计算机网络应用体系结构"></a>1. 计算机网络应用体系结构</h3><p>从体系结构角度进行划分：</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">客户/服务器（C/S）结构</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">纯 P2P（Peer to Peer）结构</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">混合结构</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+]]></content>
+      
+        <categories>
+            
+            <category> 计算机网络 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 网络应用 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[计算机网络概述]]></title>
       <url>/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/</url>
       <content type="html"><![CDATA[<p>面试官：请讲一下计算机网络的原理，以及你对它的理解。</p>
@@ -2966,9 +3007,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 原型 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
         
@@ -3148,9 +3189,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 单例 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 单例 </tag>
             
         </tags>
         
