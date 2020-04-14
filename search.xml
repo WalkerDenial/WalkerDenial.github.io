@@ -10,23 +10,23 @@
 <thead>
 <tr>
 <th align="center">名称</th>
-<th align="center">描述</th>
+<th align="center">特征</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">客户/服务器（C/S）结构</td>
-<td align="center"></td>
+<td align="center">通信只在客户与服务器之间进行，客户与客户之间不进行直接通信</td>
 </tr>
 <tr>
 <td align="center">纯 P2P（Peer to Peer）结构</td>
-<td align="center"></td>
+<td align="center">任何一个对等端既可以主动发起请求另一个对等端的服务，也可以被动地为其他对等端提供服务</td>
 </tr>
 <tr>
 <td align="center">混合结构</td>
-<td align="center"></td>
+<td align="center">既有中心服务器的存在，又有对等端（客户）间的直接通信</td>
 </tr>
 </tbody></table>
-]]></content>
+<h3 id="2-网络应用通信基本原理"><a href="#2-网络应用通信基本原理" class="headerlink" title="2. 网络应用通信基本原理"></a>2. 网络应用通信基本原理</h3>]]></content>
       
         <categories>
             
@@ -2291,11 +2291,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
         
@@ -3251,11 +3251,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> UML </tag>
             
             <tag> 特性 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
         
