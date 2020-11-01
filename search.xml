@@ -3,6 +3,184 @@
   
     
     <entry>
+      <title><![CDATA[Android 中 Gradle 调用过程]]></title>
+      <url>/2020/11/01/Gradle/Android%20%E4%B8%AD%20Gradle%20%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<p>在 Android 开发中，我们经常接触 gradle 文件，例如：settings.gradle、build.gradle 等等，那么新建一个项目，他们之间的先后顺序是什么呢？</p>
+<p>What？为什么要知道这个呢，直接调用它不香吗？</p>
+<p>香是香，<strong>但是</strong> 当你需要做一些配置的时候，比如资源配置、预处理等操作的时候，该添加到什么位置呢？只有搞清楚了调用流程，才能在正确的地方添加操作。</p>
+<p><strong>接下来以一个新建项目为例：</strong></p>
+<p>新建一个 Android 项目目录如下：</p>
+<pre><code>├── app
+│   ├── libs
+│   ├── src
+│   ├── build.gradle
+│   └── proguard-rules.pro
+├── build
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── config.gradle
+├── build.gradle
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+├── local.properties
+└── settings.gradle</code></pre><p>其中 <code>config.gradle</code> 是基础配置，统一管理依赖项，整个项目中，存在 <strong>4</strong> 个 gradle 文件，它们分别是：</p>
+<ol>
+<li>app/build.gradle：对 app 模块所需配置信息进行管理；</li>
+<li>config.gradle：对依赖配置版本信息进行统一管理；</li>
+<li>build.gradle：项目根配置文件；</li>
+<li>settings.gradle：配置、管理项目模块信息；</li>
+</ol>
+<p>对以上 4 个文件进行日志信息输出处理：</p>
+<p><strong>app/build.gradle</strong></p>
+<pre class="line-numbers language-groove"><code class="language-groove">
+android {
+    println("app --> build.gradle --> android")
+    ...
+
+    defaultConfig {
+        println("app --> build.gradle --> defaultConfig")
+        ...
+        println("app --> build.gradle --> defaultConfig out")
+    }
+
+    buildTypes {
+        println("app --> build.gradle --> buildTypes")
+        debug {
+            println("app --> build.gradle --> debug")
+            println("app --> build.gradle --> debug out")
+        }
+        release {
+            println("app --> build.gradle --> release")
+            ...
+            println("app --> build.gradle --> release out")
+        }
+        println("app --> build.gradle --> buildTypes out")
+    }
+    compileOptions {
+        println("app --> build.gradle --> compileOptions")
+        ...
+        println("app --> build.gradle --> compileOptions out")
+    }
+    kotlinOptions {
+        println("app --> build.gradle --> kotlinOptions")
+        ...
+        println("app --> build.gradle --> kotlinOptions out")
+    }
+    println("app --> build.gradle --> android out")
+}
+
+dependencies {
+    println("app --> build.gradle --> dependencies")
+    ...
+    println("app --> build.gradle --> dependencies out")
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>config.gradle</strong></p>
+<pre class="line-numbers language-groove"><code class="language-groove">allprojects {
+    println("config.gradle --> allprojects")
+    repositories {
+        println("config.gradle --> repositories")
+        ...
+        println("config.gradle --> repositories out")
+    }
+    println("config.gradle --> allprojects out")
+}
+
+task clean(type: Delete) {
+    println("config.gradle --> clean")
+    ...
+    println("config.gradle --> clean out")
+}
+
+ext.deps = [
+        ...
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>build.gradle</strong></p>
+<pre class="line-numbers language-groove"><code class="language-groove">    buildscript {
+    println("build.gradle --> buildscript")
+    ...
+    repositories {
+        println("build.gradle --> repositories")
+        ...
+        println("build.gradle --> repositories out")
+    }
+    dependencies {
+        println("build.gradle --> dependencies")
+        ..
+        println("build.gradle --> dependencies out")
+    }
+    println("build.gradle --> buildscript out")
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>settings.gradle</strong></p>
+<pre class="line-numbers language-groove"><code class="language-groove">    println("settings.gradle --> start")
+    ...
+    println("settings.gradle --> end")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>build 项目之后，日志输出信息如下：</p>
+<pre><code>Starting Gradle Daemon...
+Gradle Daemon started in 953 ms
+settings.gradle --&gt; start
+settings.gradle --&gt; end
+
+&gt; Configure project :
+build.gradle --&gt; buildscript
+build.gradle --&gt; repositories
+build.gradle --&gt; repositories out
+build.gradle --&gt; dependencies
+build.gradle --&gt; dependencies out
+build.gradle --&gt; buildscript out
+config.gradle --&gt; allprojects
+config.gradle --&gt; repositories
+config.gradle --&gt; repositories out
+config.gradle --&gt; allprojects out
+config.gradle --&gt; allprojects
+config.gradle --&gt; repositories
+config.gradle --&gt; repositories out
+config.gradle --&gt; allprojects out
+config.gradle --&gt; clean
+config.gradle --&gt; clean out
+
+&gt; Configure project :app
+app --&gt; build.gradle --&gt; android
+app --&gt; build.gradle --&gt; defaultConfig
+app --&gt; build.gradle --&gt; defaultConfig out
+app --&gt; build.gradle --&gt; buildTypes
+app --&gt; build.gradle --&gt; debug
+app --&gt; build.gradle --&gt; debug out
+app --&gt; build.gradle --&gt; release
+app --&gt; build.gradle --&gt; release out
+app --&gt; build.gradle --&gt; buildTypes out
+app --&gt; build.gradle --&gt; compileOptions
+app --&gt; build.gradle --&gt; compileOptions out
+app --&gt; build.gradle --&gt; kotlinOptions
+app --&gt; build.gradle --&gt; kotlinOptions out
+app --&gt; build.gradle --&gt; android out
+app --&gt; build.gradle --&gt; dependencies
+app --&gt; build.gradle --&gt; dependencies out</code></pre><p>由此可知，执行顺序如下：<strong>settings.gradle</strong> –&gt; <strong>build.gradle</strong> –&gt; <strong>config.gradle</strong> –&gt; <strong>app/build.gradle</strong> ，在配置 config 信息时，要注意其实效性在 build.gradle 之后，可以避免很多不必要的错误。</p>
+<p>最后，项目地址信息 <a href="https://github.com/WalkerDenial/KotlinStudy" target="_blank" rel="noopener">KotlinStudy</a>，欢迎交流学习。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Gradle </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 基础 </tag>
+            
+            <tag> Gradle </tag>
+            
+            <tag> Android </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[网络应用]]></title>
       <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8/</url>
       <content type="html"><![CDATA[<h3 id="1-计算机网络应用体系结构"><a href="#1-计算机网络应用体系结构" class="headerlink" title="1. 计算机网络应用体系结构"></a>1. 计算机网络应用体系结构</h3><p>从体系结构角度进行划分：</p>
