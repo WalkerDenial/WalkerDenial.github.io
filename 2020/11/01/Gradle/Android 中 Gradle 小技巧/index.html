@@ -125,26 +125,48 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-7.png)">
-  <h2>命令模式</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <h2>Android 中 Gradle 小技巧</h2>
     
-  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-02-27T07:02:00.000Z">
-          2017-02-27
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-01T15:49:00.000Z">
+          2020-11-01
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p><code>命令模式（Command Pattern）</code>：将一个请求封装为一个对象，从而可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种 <strong>对象行为型模式</strong>，其别名为 <strong>动作（Action）模式</strong> 或 <strong>事务模式（Transaction）模式</strong>。</p>
-<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
-<li>降低系统的耦合度。由于请求者与接收者之间不存在直接引用，因此请求者与接收者之间实现完全解耦，相同的请求者可以对应不同的接收者，同样，相同的接收者也可以供不同的请求者使用，两者之间具有良好的独立性；</li>
-<li>新的命令可以很容易地加入到系统中。由于增加新的具体命令类不会影响到其他类，因此增加新的具体命令类很容易，无须修改原有系统源代码甚至客户类代码，满足开闭原则的要求；</li>
-<li>可以比较容易地设计一个命令队列或者宏命令（组合命令）；</li>
-<li>为请求的撤销（Undo）和恢复（Redo）操作提供了一种设计和实现方案；</li>
-</ol>
-<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
-<li>使用命令模式可能会导致某些系统有过多的具体命令类。因为针对每一个对请求接收者的调用操作都需要设计一个具体命令类，因此在某些系统中可能需要提供大量的具体命令类，这将影响命令模式的使用；</li>
-</ol>
+  <p>在安卓项目开发中，最常用的就是 gradle 配置，对于一个单一 module 来说，怎么配置其实影响不大。但是，如果存在多个 module，例如：</p>
+<pre><code>├── app
+├── module1
+├── module2
+├── nodule3
+├── module4
+└── module5</code></pre><p>那么这其中就涉及到各个 module 中 gradle 依赖的管理，如果管理不到位，就会出现重复包、不同版本包，甚至冲突等问题，那么如何做到版本统一呢？</p>
+<p>常用方式如下：</p>
+<p>1、新建 config.gradle，在里面定义 ext 信息，示例代码如下：</p>
+<pre><code>ext.deps = [
+        kt    : [
+                core: &quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;
+        ],
+        andX  : [
+                core      : &#39;androidx.core:core-ktx:1.2.0&#39;,
+                appcompat : &#39;androidx.appcompat:appcompat:1.1.0&#39;,
+                constraint: &#39;androidx.constraintlayout:constraintlayout:1.1.3&#39;,
+                livedata  : &#39;androidx.lifecycle:lifecycle-livedata-ktx:2.2.0&#39;,
+                viewmodel : &#39;androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0&#39;
+        ],
+        google: [
+                material: &#39;com.google.android.material:material:1.1.0&#39;
+        ],
+        test  : [
+                junit   : &#39;junit:junit:4.12&#39;,
+                ext     : &#39;androidx.test.ext:junit:1.1.1&#39;,
+                espresso: &#39;androidx.test.espresso:espresso-core:3.2.0&#39;
+        ]
+]</code></pre><p>2、通过 <strong>apply from: “config.gradle”</strong> 引入，使用 <strong>deps.andX.core</strong> 引入，便可以做到引用同一处定义信息，避免版本错乱问题。</p>
+<p>到这里看起来像是问题解决了，那么…又来了一个新问题，如下图所示：</p>
+<p>由此可知，执行顺序如下：<strong>settings.gradle</strong> –&gt; <strong>build.gradle</strong> –&gt; <strong>config.gradle</strong> –&gt; <strong>app/build.gradle</strong> ，在配置 config 信息时，要注意其实效性在 build.gradle 之后，可以避免很多不必要的错误。</p>
+<p>最后，项目地址信息 <a href="https://github.com/WalkerDenial/KotlinStudy" target="_blank" rel="noopener">KotlinStudy</a>，欢迎交流学习。</p>
 
   </div>
   <!--评论块-->
@@ -154,22 +176,19 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2017/02/27/设计模式/解释器模式/" id="post_nav-newer" class="post-nav-content prev-content">
-      <上一篇 < a>
-    
 
 
   <!-- Next Nav -->
     
-  <a href="/2017/02/27/设计模式/职责链模式/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2020/11/01/Gradle/Android 中 Gradle 调用过程/" id="post_nav-older" class="post-nav-content next-content">
       下一篇>
   </a>
     
-</上一篇></a></nav>
+</nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
+    
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
