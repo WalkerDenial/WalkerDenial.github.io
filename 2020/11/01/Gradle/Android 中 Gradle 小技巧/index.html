@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-18.png)">
   <h2>Android 中 Gradle 小技巧</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-01T15:49:00.000Z">
@@ -165,8 +165,32 @@
         ]
 ]</code></pre><p>2、通过 <strong>apply from: “config.gradle”</strong> 引入，使用 <strong>deps.andX.core</strong> 引入，便可以做到引用同一处定义信息，避免版本错乱问题。</p>
 <p>到这里看起来像是问题解决了，那么…又来了一个新问题，如下图所示：</p>
-<p>由此可知，执行顺序如下：<strong>settings.gradle</strong> –&gt; <strong>build.gradle</strong> –&gt; <strong>config.gradle</strong> –&gt; <strong>app/build.gradle</strong> ，在配置 config 信息时，要注意其实效性在 build.gradle 之后，可以避免很多不必要的错误。</p>
-<p>最后，项目地址信息 <a href="https://github.com/WalkerDenial/KotlinStudy" target="_blank" rel="noopener">KotlinStudy</a>，欢迎交流学习。</p>
+<pre><code>implementation &#39;androidx.core:core-ktx:1.2.0&#39;
+implementation &#39;androidx.appcompat:appcompat:1.1.0&#39;
+testImplementation &#39;junit:junit:4.12&#39;
+androidTestImplementation &#39;androidx.test.ext:junit:1.1.1&#39;
+androidTestImplementation &#39;androidx.test.espresso:espresso-core:3.2.0&#39;</code></pre><p>这几行代码有没有那么一丝丝的眼熟？应该、好像、大概、差不多、也许…每个 build.gradle 里面都要写一遍，哪怕引用 config.gradle 里面的同一配置，可是这几个重复的代码还是没有减少，那么…我们…能不能再优化一下呢，答案当然是肯定的啦。</p>
+<p>3、在 <strong>config.gradle</strong> 中定义方法，在方法里面做引用聚合，这样就能减少重复代码了，show me code：</p>
+<pre><code>ext.baseDeps = { handler -&gt;
+    handler.implementation deps.kt.core
+
+    handler.implementation deps.andX.core
+    handler.implementation deps.andX.appcompat
+    handler.implementation deps.andX.constraint
+    handler.implementation deps.andX.livedata
+    handler.implementation deps.andX.viewmodel
+
+    handler.testImplementation deps.test.junit
+    handler.androidTestImplementation deps.test.ext
+    handler.androidTestImplementation deps.test.espresso
+}</code></pre><p>相应的，<strong>build.gradle</strong> 里面的代码可以写成这样：</p>
+<pre><code>dependencies {
+    baseDeps(dependencies)
+}</code></pre><p>就是这样，一行代码即可搞定公共基础依赖，就是这么简单。</p>
+<p>总结：</p>
+<pre><code>1. 配置 config.gradle 依赖组件/版本信息；
+2. 提取组合依赖为一个方法；
+3. 尽情一行代码调用吧；</code></pre><p>最后，示例项目地址信息 <a href="https://github.com/WalkerDenial/KotlinStudy" target="_blank" rel="noopener">示例代码</a>，欢迎交流学习，如果错误，请指正。</p>
 
   </div>
   <!--评论块-->
