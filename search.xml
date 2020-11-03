@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[协程概述]]></title>
+      <url>/2020/11/03/Kotlin/%E5%8D%8F%E7%A8%8B%E6%A6%82%E8%BF%B0/</url>
+      <content type="html"><![CDATA[<p>学习 <strong>协程</strong>，那么首先来了解一下什么是 <strong>协程</strong></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Kotlin </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 协程 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android 中 Gradle 小技巧]]></title>
       <url>/2020/11/01/Gradle/Android%20%E4%B8%AD%20Gradle%20%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
       <content type="html"><![CDATA[<p>在安卓项目开发中，最常用的就是 gradle 配置，对于一个单一 module 来说，怎么配置其实影响不大。但是，如果存在多个 module，例如：</p>
@@ -3364,9 +3385,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 原型 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
         
@@ -3546,9 +3567,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 单例 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 单例 </tag>
             
         </tags>
         
