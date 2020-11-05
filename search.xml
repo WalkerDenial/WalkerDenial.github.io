@@ -3,9 +3,16 @@
   
     
     <entry>
-      <title><![CDATA[协程概述]]></title>
+      <title><![CDATA[Coroutine 协程概述]]></title>
       <url>/2020/11/03/Kotlin/%E5%8D%8F%E7%A8%8B%E6%A6%82%E8%BF%B0/</url>
-      <content type="html"><![CDATA[<p>学习 <strong>协程</strong>，那么首先来了解一下什么是 <strong>协程</strong></p>
+      <content type="html"><![CDATA[<p>学习 <code>协程「Coroutine」</code>，那么首先来了解一下什么是 <code>协程</code>，先看一下<code>协程</code> 的定义：</p>
+<blockquote>
+<p>Coroutines are computer program components that generalize subroutines for non-preemptive multitasking, by allowing multiple entry points for suspending and resuming execution at certain locations. Coroutines are well-suited for implementing more familiar program components such as cooperative tasks, exceptions, event loops, iterators, infinite lists and pipes.</p>
+</blockquote>
+<p>中文翻译如下：</p>
+<blockquote>
+<p><code>协程</code>（英语：coroutine）是计算机程序的一类组件，推广了 <a href="https://bk.tw.lvfukeji.com/baike-%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener">协作式多任务</a> 的 <a href="https://bk.tw.lvfukeji.com/baike-%E5%AD%90%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener">子程序</a>，允许执行被挂起与被恢复。相对子例程而言，协程更为一般和灵活，但在实践中使用没有子例程那样广泛。协程更适合于用来实现彼此熟悉的程序组件，如 <a href="https://bk.tw.lvfukeji.com/baike-%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener">协作式多任务</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86" target="_blank" rel="noopener">异常处理</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" target="_blank" rel="noopener">事件循环</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E8%BF%AD%E4%BB%A3%E5%99%A8" target="_blank" rel="noopener">迭代器</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E6%83%B0%E6%80%A7%E6%B1%82%E5%80%BC" target="_blank" rel="noopener">无限列表</a> 和 <a href="https://bk.tw.lvfukeji.com/baike-%E7%AE%A1%E9%81%93_(%E8%BD%AF%E4%BB%B6)" target="_blank" rel="noopener">管道</a>。</p>
+</blockquote>
 ]]></content>
       
         <categories>
@@ -18,6 +25,8 @@
         <tags>
             
             <tag> 协程 </tag>
+            
+            <tag> Coroutine </tag>
             
         </tags>
         
@@ -3385,9 +3394,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 原型 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 原型 </tag>
             
         </tags>
         
@@ -3567,9 +3576,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 单例 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
         
