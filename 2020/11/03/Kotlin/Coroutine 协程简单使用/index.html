@@ -125,8 +125,8 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)">
-  <h2>Coroutine 协程概述</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-10.png)">
+  <h2>Coroutine 协程简单使用</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-03T15:35:00.000Z">
           2020-11-03
@@ -135,7 +135,7 @@
     
   </div>
   <div class="post-page-content">
-  <p>学习 <code>协程「Coroutine」</code>，那么首先来了解一下什么是 <code>协程</code>，先看一下<code>协程</code> 的定义：</p>
+  <h1 id="1-协程是什么？"><a href="#1-协程是什么？" class="headerlink" title="1. 协程是什么？"></a>1. 协程是什么？</h1><p>在使用之前，需要了解什么是 <code>协程</code>，先看一下<code>协程</code> 的定义：</p>
 <blockquote>
 <p>Coroutines are computer program components that generalize subroutines for non-preemptive multitasking, by allowing multiple entry points for suspending and resuming execution at certain locations. Coroutines are well-suited for implementing more familiar program components such as cooperative tasks, exceptions, event loops, iterators, infinite lists and pipes.</p>
 </blockquote>
@@ -143,6 +143,76 @@
 <blockquote>
 <p><code>协程</code>（英语：coroutine）是计算机程序的一类组件，推广了 <a href="https://bk.tw.lvfukeji.com/baike-%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener">协作式多任务</a> 的 <a href="https://bk.tw.lvfukeji.com/baike-%E5%AD%90%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener">子程序</a>，允许执行被挂起与被恢复。相对子例程而言，协程更为一般和灵活，但在实践中使用没有子例程那样广泛。协程更适合于用来实现彼此熟悉的程序组件，如 <a href="https://bk.tw.lvfukeji.com/baike-%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener">协作式多任务</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86" target="_blank" rel="noopener">异常处理</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" target="_blank" rel="noopener">事件循环</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E8%BF%AD%E4%BB%A3%E5%99%A8" target="_blank" rel="noopener">迭代器</a>、<a href="https://bk.tw.lvfukeji.com/baike-%E6%83%B0%E6%80%A7%E6%B1%82%E5%80%BC" target="_blank" rel="noopener">无限列表</a> 和 <a href="https://bk.tw.lvfukeji.com/baike-%E7%AE%A1%E9%81%93_(%E8%BD%AF%E4%BB%B6)" target="_blank" rel="noopener">管道</a>。</p>
 </blockquote>
+<pre><code>协程是一种在程序中处理并发任务的方案；也是这种方案的一个组件。
+在协程中，是没有并发、并行概念的。</code></pre><p><strong>在 kotlin for Android 中，kotlin 只是一个线程框架，线程所具有的并发、并行等问题，协程也会一个不落。究其原因在于在 Android 开发中 kotlin 需要编译成能被 JVM 识别的字节码，是基于<code>线程</code>的，所以不存在协程效率比线程高等情况，协程只是对线程的一个包装，是无法绕开线程的问题的。</strong></p>
+<h1 id="2-协程怎么写？"><a href="#2-协程怎么写？" class="headerlink" title="2. 协程怎么写？"></a>2. 协程怎么写？</h1><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 使用 GlobalScope 作用域，通过 launch 开启一段协程</span>
+GlobalScope<span class="token punctuation">.</span><span class="token function">launch</span> <span class="token punctuation">{</span>
+    <span class="token function">printThreadInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printThreadInfo</span><span class="token punctuation">(</span>prefix<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Log<span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token string">"CoroutineDemo"</span><span class="token punctuation">,</span> <span class="token string">"${if(prefix.isNullOrBlank()) "</span><span class="token string">" else "</span>$prefix<span class="token punctuation">,</span> <span class="token string">"}current thread is <span class="token interpolation"><span class="token delimiter variable">${</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>name<span class="token delimiter variable">}</span></span>"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用上述代码输出结果如下：</p>
+<pre><code>current thread is DefaultDispatcher-worker-1</code></pre><p>通过 <code>launch</code> 即可开启一段协程，在 <code>launch</code> 中可以传入 <code>Dispatchers</code> 来指定线程，具体有一下 4 种类型：</p>
+<ol>
+<li>Default：默认调度器；</li>
+<li>Main：主线程调度器；</li>
+<li>Unconfined：未被明确配置的调度器；</li>
+<li>IO：流调度器，一般 <code>IO 操作</code>、<code>网络请求</code> 等耗时操作；</li>
+</ol>
+<h1 id="3-协程模拟场景"><a href="#3-协程模拟场景" class="headerlink" title="3. 协程模拟场景"></a>3. 协程模拟场景</h1><p>假设：目前有 3 个网络请求方法，分别是：networkTest1、networkTest2、networkTest3，以及 3 个对应的 UI 更新，分别是：uiTest1、uiTest2、uiTest3。</p>
+<pre><code>模拟网络请求以及更新 UI
+1. 请求接口 1 --&gt; 更新 UI 1
+2. 请求接口 2 --&gt; 更新 UI 2
+3. 请求接口 3 --&gt; 更新 UI 3</code></pre><p>先看一下通常<code>线程</code>写法：</p>
+<pre><code>// 线程写法
+thread {
+    networkTest1()
+    activity?.runOnUiThread {
+        uiTest1()
+        thread {
+            networkTest2()
+            activity?.runOnUiThread {
+                uiTest2()
+                thread {
+                    networkTest3()
+                    activity?.runOnUiThread {
+                        uiTest3()
+                    }
+                }
+            }
+        }
+    }
+}</code></pre><p>输出信息为：</p>
+<pre><code>networkTest1(), current thread is Thread-2
+uiTest1(), current thread is main
+networkTest2(), current thread is Thread-3
+uiTest2(), current thread is main
+networkTest3(), current thread is Thread-4
+uiTest3(), current thread is main</code></pre><p>死亡回调有木有？接下来看一下<code>协程</code>写法：</p>
+<pre><code>viewModel.viewModelScope.launch(Dispatchers.Main) {
+    networkTests1()
+    uiTest1()
+    networkTests2()
+    uiTest2()
+    networkTests3()
+    uiTest3()
+}</code></pre><p>输出信息为：</p>
+<pre><code>networkTest1(), current thread is DefaultDispatcher-worker-1
+uiTest1(), current thread is main
+networkTest2(), current thread is DefaultDispatcher-worker-3
+uiTest2(), current thread is main
+networkTest3(), current thread is DefaultDispatcher-worker-1
+uiTest3(), current thread is main</code></pre><p>就这几行看似同步的代码，实现了异步任务、线程切换等问题，由此可见，<code>协程</code>比单纯使用线程方便很多。由日志信息可见，<code>DefaultDispatcher-worker-1</code> 与 <code>DefaultDispatcher-worker-3</code> 并不是同一个线程哟，所以说 <code>协程是单线程</code> 的说法是错误的。</p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>协程是什么：协程是一个线程框架；</p>
+<p>使用协程的优势：</p>
+<ol>
+<li>耗时代码可以自动分配到后台，任务执行完后也可以自动切回；</li>
+<li>对比 thread，可以避免死亡回调的问题；</li>
+<li>可以用看似同步的代码实现异步任务，使代码更简洁，提高可读性；</li>
+</ol>
+<p>最后，示例项目地址信息 <a href="https://github.com/WalkerDenial/KotlinStudy" target="_blank" rel="noopener">示例代码</a>，欢迎交流学习，如果错误，请指正。</p>
 
   </div>
   <!--评论块-->
@@ -164,7 +234,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-协程是什么？"><span class="post-toc-text">1. 协程是什么？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-协程怎么写？"><span class="post-toc-text">2. 协程怎么写？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-协程模拟场景"><span class="post-toc-text">3. 协程模拟场景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-总结"><span class="post-toc-text">3. 总结</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
