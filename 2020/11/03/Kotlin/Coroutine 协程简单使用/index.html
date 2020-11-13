@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
   <h2>Coroutine 协程简单使用</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-03T15:35:00.000Z">
@@ -161,11 +161,11 @@ GlobalScope<span class="token punctuation">.</span><span class="token function">
 <li>Unconfined：未被明确配置的调度器；</li>
 <li>IO：流调度器，一般 <code>IO 操作</code>、<code>网络请求</code> 等耗时操作；</li>
 </ol>
-<h1 id="3-串行协程模拟场景"><a href="#3-串行协程模拟场景" class="headerlink" title="3. 串行协程模拟场景"></a>3. 串行协程模拟场景</h1><p>假设：目前有 3 个网络请求方法，分别是：networkTest1、networkTest2、networkTest3，以及 3 个对应的 UI 更新，分别是：uiTest1、uiTest2、uiTest3。</p>
+<h1 id="3-串行场景模拟"><a href="#3-串行场景模拟" class="headerlink" title="3. 串行场景模拟"></a>3. 串行场景模拟</h1><p>假设：目前有 3 个网络请求方法，分别是：networkTest1、networkTest2、networkTest3，以及 3 个对应的 UI 更新，分别是：uiTest1、uiTest2、uiTest3。</p>
 <pre><code>模拟网络请求以及更新 UI
 step 1. 请求接口 1 --&gt; 更新 UI 1
 step 2. 请求接口 2 --&gt; 更新 UI 2
-step 3. 请求接口 3 --&gt; 更新 UI 3</code></pre><h2 id="3-1-先看一下通常线程写法："><a href="#3-1-先看一下通常线程写法：" class="headerlink" title="3.1 先看一下通常线程写法："></a>3.1 先看一下通常<code>线程</code>写法：</h2><pre><code>// 线程写法
+step 3. 请求接口 3 --&gt; 更新 UI 3</code></pre><h2 id="3-1-普通写法："><a href="#3-1-普通写法：" class="headerlink" title="3.1 普通写法："></a>3.1 普通写法：</h2><pre><code>// 线程写法
 thread {
     networkTest1()
     activity?.runOnUiThread {
@@ -190,7 +190,27 @@ networkTest2(), current thread is Thread-3
 uiTest2(), current thread is main
 networkTest3(), current thread is Thread-4
 uiTest3(), current thread is main</code></pre><p>死亡回调有木有？</p>
-<h2 id="3-2-接下来看一下协程写法："><a href="#3-2-接下来看一下协程写法：" class="headerlink" title="3.2 接下来看一下协程写法："></a>3.2 接下来看一下<code>协程</code>写法：</h2><pre><code>viewModel.viewModelScope.launch(Dispatchers.Main) {
+<h2 id="3-2-RxJava写法："><a href="#3-2-RxJava写法：" class="headerlink" title="3.2 RxJava写法："></a>3.2 <code>RxJava</code>写法：</h2><pre><code>Observable.just(&quot;Test&quot;)
+            .observeOn(Schedulers.io())
+            .doOnNext { networkTestRx1() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { uiTest1() }
+            .observeOn(Schedulers.io())
+            .doOnNext { networkTestRx2() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { uiTest2() }
+            .observeOn(Schedulers.io())
+            .doOnNext { networkTestRx3() }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { uiTest3() }
+            .subscribe()</code></pre><p>输出信息如下图所示：</p>
+<pre><code>networkTestRx1(), current thread is RxCachedThreadScheduler-1
+uiTest1(), current thread is main
+networkTestRx2(), current thread is RxCachedThreadScheduler-2
+uiTest2(), current thread is main
+networkTestRx3(), current thread is RxCachedThreadScheduler-3
+uiTest3(), current thread is main</code></pre><p>由输出信息可见，<code>RxJava</code> 线程切换没有问题，完美的实现了需求。但是，为了实现线程切换，增加的 <strong>线程切换代码量</strong> 是 <strong>有效执行代码量</strong> 的一倍，相比于普通写法，代码量减少了不少，但是线程切换的代码占比较大，那么…还有没有优化空间呢？</p>
+<h2 id="3-2-协程写法："><a href="#3-2-协程写法：" class="headerlink" title="3.2 协程写法："></a>3.2 <code>协程</code>写法：</h2><pre><code>viewModel.viewModelScope.launch(Dispatchers.Main) {
     networkTests1()
     uiTest1()
     networkTests2()
@@ -203,9 +223,9 @@ uiTest1(), current thread is main
 networkTest2(), current thread is DefaultDispatcher-worker-3
 uiTest2(), current thread is main
 networkTest3(), current thread is DefaultDispatcher-worker-1
-uiTest3(), current thread is main</code></pre><h2 id="3-3-最后，看一下RxJava写法："><a href="#3-3-最后，看一下RxJava写法：" class="headerlink" title="3.3 最后，看一下RxJava写法："></a>3.3 最后，看一下<code>RxJava</code>写法：</h2><pre><code>问题点：RxJava 串行问题待解决</code></pre><p>就这几行看似同步的代码，实现了异步任务、线程切换等问题，由此可见，<code>协程</code>比单纯使用线程方便很多。由日志信息可见，<code>DefaultDispatcher-worker-1</code> 与 <code>DefaultDispatcher-worker-3</code> 并不是同一个线程哟，所以说 <code>协程是单线程的说法是错误的</code>。</p>
-<h1 id="4-协程-VS-RxJava"><a href="#4-协程-VS-RxJava" class="headerlink" title="4 协程 VS RxJava"></a>4 <code>协程</code> VS RxJava</h1><p>相同点：</p>
-<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h1><p>协程是什么：协程是一个线程框架；</p>
+uiTest3(), current thread is main</code></pre><p>就这几行看似同步的代码，实现了异步任务、线程切换等问题，由此可见，<code>协程</code>比单纯使用线程方便很多。由日志信息可见，<code>DefaultDispatcher-worker-1</code> 与 <code>DefaultDispatcher-worker-3</code> 并不是同一个线程哟，所以说 <code>协程是单线程的说法是错误的</code>。</p>
+<h1 id="5-协程-VS-RxJava"><a href="#5-协程-VS-RxJava" class="headerlink" title="5 协程 VS RxJava"></a>5 <code>协程</code> VS RxJava</h1><p>相同点：</p>
+<h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h1><p>协程是什么：协程是一个线程框架；</p>
 <p>使用协程的优势：</p>
 <ol>
 <li>耗时代码可以自动分配到后台，任务执行完后也可以自动切回；</li>
@@ -234,7 +254,7 @@ uiTest3(), current thread is main</code></pre><h2 id="3-3-最后，看一下RxJa
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-协程是什么？"><span class="post-toc-text">1. 协程是什么？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-协程怎么写？"><span class="post-toc-text">2. 协程怎么写？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-串行协程模拟场景"><span class="post-toc-text">3. 串行协程模拟场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-先看一下通常线程写法："><span class="post-toc-text">3.1 先看一下通常线程写法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-接下来看一下协程写法："><span class="post-toc-text">3.2 接下来看一下协程写法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-最后，看一下RxJava写法："><span class="post-toc-text">3.3 最后，看一下RxJava写法：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-协程-VS-RxJava"><span class="post-toc-text">4 协程 VS RxJava</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-总结"><span class="post-toc-text">5. 总结</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-协程是什么？"><span class="post-toc-text">1. 协程是什么？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-协程怎么写？"><span class="post-toc-text">2. 协程怎么写？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-串行场景模拟"><span class="post-toc-text">3. 串行场景模拟</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-普通写法："><span class="post-toc-text">3.1 普通写法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-RxJava写法："><span class="post-toc-text">3.2 RxJava写法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-协程写法："><span class="post-toc-text">3.2 协程写法：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-协程-VS-RxJava"><span class="post-toc-text">5 协程 VS RxJava</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-总结"><span class="post-toc-text">6. 总结</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
