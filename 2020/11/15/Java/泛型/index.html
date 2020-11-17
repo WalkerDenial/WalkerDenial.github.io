@@ -135,7 +135,31 @@
     
   </div>
   <div class="post-page-content">
-  <p>！！！加班到现在，一天没时间写，mark，先整一下下一期目标吧，重学泛型</p>
+  <p>A：今天来聊聊一些 Java 基础吧，简单说说泛型。</p>
+<p>B：泛型不是一直在用嘛，很简单的啊，一对 &lt;&gt; 就能指定泛型，然后使用。</p>
+<p>A：那你先讲讲什么叫泛型吧？</p>
+<p>B：Emmm…（一时语塞，虽然一直在用，但是一时语塞，组织不起来语言）。</p>
+<p>A：概念不清，意识模糊，只是停留在会用阶段，却不知道本质。</p>
+<p>B：（假装一时忘记了而已）</p>
+<p>A：既然经常使用泛型，那么应该知道泛型擦除机制吧。</p>
+<p>B：这个我知道的，很简单嘛，为了兼容 JDK5 以前的版本。</p>
+<p>A：既然在编译时，会有泛型擦除机制，那么在编译打包后，例如：Gson 又是怎么能正确解析成指定的泛型类呢？按照前面所说，泛型擦除了啊。</p>
+<p>B：Emmm… 彻底蒙圈</p>
+<p><code>泛型</code>，作为一枚野生 Android 搬砖工，最常用的莫过于 <code>泛型</code>，在所有的架构中，<code>泛型</code> 是核心，所以说：<code>泛型</code> 是通往高阶的基础。哪怕你调用第三方框架再熟练，也只是个熟练的 API 调用者而已，出个问题就无法解决，只会甩锅给三方库，但是问题还是得不到解决。所以，在成长的路上，首先要彻底了解并掌握 <code>泛型</code>，只有这样，才能不至于在后期举步维艰。</p>
+<h1 id="1、先了解一下泛型是什么"><a href="#1、先了解一下泛型是什么" class="headerlink" title="1、先了解一下泛型是什么"></a>1、先了解一下泛型是什么</h1><p>先看一下 <a href="https://bk.tw.lvfukeji.com/baike-%E6%B3%9B%E5%9E%8B" target="_blank" rel="noopener">维基百科</a> 的定义：</p>
+<blockquote>
+<p>泛型的定义主要有以下两种：</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>在程序编码中一些包含类型参数的类型，也就是说泛型的参数只可以代表類，不能代表个别对象。（这是当今常见的定义）</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>在程序编码中一些包含参数的类。其参数可以代表类或对象等等。（现在人们大多把这称作模板）</li>
+</ol>
+</blockquote>
 
   </div>
   <!--评论块-->
@@ -160,7 +184,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1、先了解一下泛型是什么"><span class="post-toc-text">1、先了解一下泛型是什么</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
