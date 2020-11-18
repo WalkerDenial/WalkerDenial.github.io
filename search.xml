@@ -136,6 +136,25 @@ System.out.println(&quot;MarkDown&quot;);</code></pre><h3 id="插入表格"><a h
 <li>在程序编码中一些包含参数的类。其参数可以代表类或对象等等。（现在人们大多把这称作模板）</li>
 </ol>
 </blockquote>
+<p>再了解一下参数分类：</p>
+<ol>
+<li>形式参数：输入是值；</li>
+<li>类型参数：输入是类型；</li>
+</ol>
+<p>由上可知，泛型是 <strong>类型化参数</strong>。</p>
+<h1 id="2、泛型优点有哪些"><a href="#2、泛型优点有哪些" class="headerlink" title="2、泛型优点有哪些"></a>2、泛型优点有哪些</h1><ol>
+<li>在编译期进行更强的类型检查；</li>
+<li>消除类型转换；</li>
+<li>能够实现通用算法；</li>
+</ol>
+<h1 id="3、常用的类型参数名称"><a href="#3、常用的类型参数名称" class="headerlink" title="3、常用的类型参数名称"></a>3、常用的类型参数名称</h1><ol>
+<li>E -&gt; Element</li>
+<li>K -&gt; Key</li>
+<li>N -&gt; Number</li>
+<li>T -&gt; Type</li>
+<li>V -&gt; Value</li>
+<li>S、U、V etc -&gt; 2nd、3rd、4th types</li>
+</ol>
 ]]></content>
       
         <categories>
@@ -3359,9 +3378,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 结构型模式 </tag>
-            
             <tag> 代理 </tag>
+            
+            <tag> 结构型模式 </tag>
             
         </tags>
         
@@ -3392,9 +3411,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 享元 </tag>
-            
             <tag> 结构型模式 </tag>
+            
+            <tag> 享元 </tag>
             
         </tags>
         
