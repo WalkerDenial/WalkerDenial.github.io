@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)">
   <h2>泛型</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-15T15:37:00.000Z">
@@ -160,17 +160,30 @@
 <li>在程序编码中一些包含参数的类。其参数可以代表类或对象等等。（现在人们大多把这称作模板）</li>
 </ol>
 </blockquote>
-<p>再了解一下参数分类：</p>
+<p>在下定义之前，再了解一下参数分类，一般情况下，参数分为以下两类：</p>
 <ol>
 <li>形式参数：输入是值；</li>
 <li>类型参数：输入是类型；</li>
 </ol>
+<p>接下来，结合代码进行简单介绍分析（已经了解的可跳过）。</p>
+<h2 id="1-1-形式参数"><a href="#1-1-形式参数" class="headerlink" title="1.1 形式参数"></a>1.1 形式参数</h2><p>在工作中，经常编写的就是方法，例如：</p>
+<pre class="line-numbers language-Java"><code class="language-Java">// 其中，a、b 都是形式参数，传入的是已经构建好的对象（Java 一切皆对象）
+public int add (int a, int b) { 
+    return a + b;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>根据方法本质来说，需要使用到传入的对象的某个值来进行相应的加工处理，这就是形式参数，简称 <code>形参</code>；</p>
+<h2 id="1-2-类型参数"><a href="#1-2-类型参数" class="headerlink" title="1.2 类型参数"></a>1.2 类型参数</h2><p>处理需要值以外，有时候还需要指定类型，例如：</p>
+<pre class="line-numbers language-Java"><code class="language-Java">List<string> list = new ArrayList();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></string></code></pre>
+<p>在 <code>&lt;&gt;</code> 中，有一个类型 <strong>String</strong>，注意，是 <strong>类型</strong> 哟，而不是对象，至于原因吗，好好想想…再想想，这个 <strong>String</strong> 你实例化了吗，现在能理解 <strong>对象</strong> 和 <strong>类型</strong> 的区别了吧，<code>&lt;String&gt;</code> 的目的就是为了告诉编译器，在这个 <code>List</code> 中，指定的是 <code>String</code> 类型的，只能对 <code>String</code> 类型的对象进行处理，不信的话你可以调用 <code>list.add(0)</code> 试试，看看会不会报错，至于原因，后续会讲。</p>
 <p>由上可知，泛型是 <strong>类型化参数</strong>。</p>
 <h1 id="2、为什么要使用泛型"><a href="#2、为什么要使用泛型" class="headerlink" title="2、为什么要使用泛型"></a>2、为什么要使用泛型</h1><ol>
 <li>在编译期进行更强的类型检查；</li>
 <li>消除类型转换；</li>
 <li>能够实现通用算法；</li>
 </ol>
+<p>接下来，逐步进行解释：</p>
+<h2 id="2-1-在编译期进行更强的类型检查"><a href="#2-1-在编译期进行更强的类型检查" class="headerlink" title="2.1 在编译期进行更强的类型检查"></a>2.1 在编译期进行更强的类型检查</h2><p>Talk is cheap, show me the code. 先上一段毒代码：</p>
+<pre><code>List objList = new ArrayList();</code></pre><p><del>~ 未完待续 ~</del></p>
 <h1 id="3、泛型分类"><a href="#3、泛型分类" class="headerlink" title="3、泛型分类"></a>3、泛型分类</h1><ol>
 <li>泛型类</li>
 <li>泛型接口</li>
@@ -182,7 +195,7 @@ public class Box&lt;T&gt; {
 }</code></pre><pre><code>// 泛型接口
 pubclic interface Box&lt;T&gt;{
 
-}</code></pre><pre class="line-numbers language-泛型方法"><code class="language-泛型方法">// 
+}</code></pre><pre class="line-numbers language-泛型方法"><code class="language-泛型方法">// 泛型方法
 public <t> void test(T t) {
 
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></t></code></pre>
@@ -194,7 +207,7 @@ public <t> void test(T t) {
 <li>V -&gt; Value</li>
 <li>S、U、V etc -&gt; 2nd、3rd、4th types</li>
 </ol>
-
+<h1 id="5、泛型扩展"><a href="#5、泛型扩展" class="headerlink" title="5、泛型扩展"></a>5、泛型扩展</h1>
   </div>
   <!--评论块-->
     
@@ -218,7 +231,7 @@ public <t> void test(T t) {
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1、先了解一下泛型是什么"><span class="post-toc-text">1、先了解一下泛型是什么</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2、为什么要使用泛型"><span class="post-toc-text">2、为什么要使用泛型</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3、泛型分类"><span class="post-toc-text">3、泛型分类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4、常用的类型参数名称"><span class="post-toc-text">4、常用的类型参数名称</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1、先了解一下泛型是什么"><span class="post-toc-text">1、先了解一下泛型是什么</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-形式参数"><span class="post-toc-text">1.1 形式参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-类型参数"><span class="post-toc-text">1.2 类型参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2、为什么要使用泛型"><span class="post-toc-text">2、为什么要使用泛型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-在编译期进行更强的类型检查"><span class="post-toc-text">2.1 在编译期进行更强的类型检查</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3、泛型分类"><span class="post-toc-text">3、泛型分类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4、常用的类型参数名称"><span class="post-toc-text">4、常用的类型参数名称</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5、泛型扩展"><span class="post-toc-text">5、泛型扩展</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
