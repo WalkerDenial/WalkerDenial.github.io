@@ -98,7 +98,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/Kotlin/">Kotlin<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/其他/">其他<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/其他/">其他<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
   <h2>泛型</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-15T15:37:00.000Z">
@@ -136,7 +136,7 @@
   </div>
   <div class="post-page-content">
   <p>A：今天来聊聊一些基础吧，简单说说泛型。</p>
-<p>B：泛型不是一直在用嘛，很简单的啊，一对 &lt;&gt; 就能指定泛型，然后使用。</p>
+<p>B：泛型不是一直在用嘛，很简单的啊，一对 <code>&lt;&gt;</code> 就能指定泛型，然后使用。</p>
 <p>A：那你先讲讲什么叫泛型吧？</p>
 <p>B：Emmm…（一时语塞，虽然一直在用，但是一时语塞，组织不起来语言）。</p>
 <p>A：概念不清，意识模糊，只是停留在会用阶段，却不知道本质。</p>
@@ -190,7 +190,10 @@ list.add(2);
 list.add(3);
 list.add(&quot;4&quot;); // 失误操作
 
-int nun4 = (int) list.get(3);</code></pre><p>由于没有类型约束，编译器不会报错，但是，在运行时，程序会直接崩溃，并报 <code>ClassCastException</code>，这要是发生在线上，就是生产事故了。那么如何在编译器就能检测出这个错误呢，这就该 <code>泛型</code> 登场了，修改代码如下：</p>
+for (int i = 0; i &lt; list.size(); i++) {
+    int num = (int) list.get(3);
+    System.out.println(&quot;num is &quot; + num);
+}</code></pre><p>由于没有类型约束，编译器不会报错，但是，在运行时，程序会直接崩溃，并报 <code>ClassCastException</code>，这要是发生在线上，就是生产事故了。那么如何在编译器就能检测出这个错误呢，这就该 <code>泛型</code> 登场了，修改代码如下：</p>
 <pre><code>// 一个用于存储 int 数据的集合
 List list = new ArrayList&lt;Integer&gt;();
 list.add(1);
@@ -205,7 +208,7 @@ int num = (int) list.get(3); //由于 List 未指定类型，系统无法得知 
 
 List list = new ArrayList&lt;Integer&gt;();
 list.add(1);
-int num = ist.get(0); // 由于指定了类型 `Integer`，系统会推断出对应的类型，可以省去强转，也可避免强转成错误的类型，提高了代码的健壮性</code></pre><h2 id="2-3-能够实现通用算法"><a href="#2-3-能够实现通用算法" class="headerlink" title="2.3 能够实现通用算法"></a>2.3 能够实现通用算法</h2><p>没有泛型以前的 <code>add</code> 世界：</p>
+int num = list.get(0); // 由于指定了类型 `Integer`，系统会推断出对应的类型，可以省去强转，也可避免强转成错误的类型，提高了代码的健壮性</code></pre><h2 id="2-3-能够实现通用算法"><a href="#2-3-能够实现通用算法" class="headerlink" title="2.3 能够实现通用算法"></a>2.3 能够实现通用算法</h2><p>没有泛型以前的 <code>add</code> 世界：</p>
 <pre><code>public double add (int a, int b) {
     return a + b;
 }
@@ -244,14 +247,14 @@ public <t> void test(T t) {
 
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></t></code></pre>
 <h1 id="4、常用的类型参数名称"><a href="#4、常用的类型参数名称" class="headerlink" title="4、常用的类型参数名称"></a>4、常用的类型参数名称</h1><ol>
-<li>E -&gt; Element</li>
-<li>K -&gt; Key</li>
-<li>N -&gt; Number</li>
-<li>T -&gt; Type</li>
-<li>V -&gt; Value</li>
-<li>S、U、V etc -&gt; 2nd、3rd、4th types</li>
+<li>E –&gt; Element</li>
+<li>K –&gt; Key</li>
+<li>N –&gt; Number</li>
+<li>T –&gt; Type</li>
+<li>V –&gt; Value</li>
+<li>S、U、V etc –&gt; 2nd、3rd、4th types</li>
 </ol>
-<p>只是一些共识，代表指定什么意思，跟着用就对了，不需要过多介绍。</p>
+<p>只是一些共识，代表指定什么意思，跟着用就对了，如果你想特立独行，那…也不是不可以。</p>
 <h1 id="5、泛型扩展"><a href="#5、泛型扩展" class="headerlink" title="5、泛型扩展"></a>5、泛型扩展</h1><p>在很多需求中，泛型 <code>&lt;&gt;</code> 中的类型可能不是一个确定的类型，那么能不能不指定具体类型，比如某一个类的父类，以便后续扩展呢接下来，答案是肯定的，接下来，将介绍一下 <code>受限通配符</code> 和 <code>非受限通配符</code>，从而让泛型也具有可扩展性。</p>
 <h2 id="5-1-继承"><a href="#5-1-继承" class="headerlink" title="5.1 继承"></a>5.1 继承</h2><h3 id="5-1-1-接口的继承"><a href="#5-1-1-接口的继承" class="headerlink" title="5.1.1 接口的继承"></a>5.1.1 接口的继承</h3><pre><code>interface GenericInterface&lt;T&gt;
 
@@ -300,20 +303,24 @@ class MultipleGenericClass3&lt;T : A, C, D&gt;</code></pre><p>看注释即可。
 <h2 id="5-2-通配符"><a href="#5-2-通配符" class="headerlink" title="5.2 通配符"></a>5.2 通配符</h2><h3 id="5-2-1-受上限控制的通配符"><a href="#5-2-1-受上限控制的通配符" class="headerlink" title="5.2.1 受上限控制的通配符"></a>5.2.1 受上限控制的通配符</h3><p>语法格式：&lt;? extends XXX&gt;</p>
 <p>优点：扩大兼容的范围。</p>
 <pre><code>List&lt;Number&gt; list1; // list1 只能匹配 Number 类型的数据
-List&lt;N exntends Number&gt; list2; // list2 可以匹配 Number 类型的数据及其子类</code></pre><h3 id="5-2-2-受下限控制的通配符"><a href="#5-2-2-受下限控制的通配符" class="headerlink" title="5.2.2 受下限控制的通配符"></a>5.2.2 受下限控制的通配符</h3><p>语法格式：&lt;? super XXX&gt;</p>
+List&lt;? exntends Number&gt; list2; // list2 可以匹配 Number 类型的数据及其子类</code></pre><h3 id="5-2-2-受下限控制的通配符"><a href="#5-2-2-受下限控制的通配符" class="headerlink" title="5.2.2 受下限控制的通配符"></a>5.2.2 受下限控制的通配符</h3><p>语法格式：&lt;? super XXX&gt;</p>
 <p>优点：扩大兼容的范围；可以建立泛型类、接口间的联系。</p>
 <pre><code>List&lt;Integer&gt; list1; // list1 只能匹配 Integer 类型的数据
-List&lt;N super Integer&gt; list2; // list2 可以匹配 Integer 类型的数据及其祖类/接口</code></pre><h3 id="5-2-3-非受限的通配符"><a href="#5-2-3-非受限的通配符" class="headerlink" title="5.2.3 非受限的通配符"></a>5.2.3 非受限的通配符</h3><p>语法格式：&lt;? &gt;</p>
+List&lt;? super Integer&gt; list2; // list2 可以匹配 Integer 类型的数据及其祖类/接口</code></pre><h3 id="5-2-3-非受限的通配符"><a href="#5-2-3-非受限的通配符" class="headerlink" title="5.2.3 非受限的通配符"></a>5.2.3 非受限的通配符</h3><p>语法格式：&lt;? &gt;</p>
 <p>关键使用场合：</p>
 <ol>
 <li>一个方法，而这方法的实现可以利用 Object 类中提供的功能时泛型类中的方法不依赖类型参数时如 List.size() 方法，它并不关心 List 中元素的具体类型；</li>
-<li>List<xxx> 是 List<?> 的一个子类型理解 List<object> 和 List<?> 的不同：差在NULL处理，前者不支持，而后者却可接受一个 null 入表；</object></xxx></li>
+<li>List<xxx> 是 List<?> 的一个子类型理解 List<object> 和 List<?> 的不同：差在 NULL 处理，前者不支持，而后者却可接受一个 null 入表；</object></xxx></li>
 </ol>
 <p>泛型类/接口之间，没有任何关联，例如 <code>List&lt;Integer&gt;</code> 和 <code>List&lt;Number&gt;</code> 没有任何关联，不过可以使用通配符来建立联系。</p>
 <h1 id="6、PESC-原则"><a href="#6、PESC-原则" class="headerlink" title="6、PESC 原则"></a>6、PESC 原则</h1><p>PESC 原则的好处：提升了API的灵活性。</p>
 <h2 id="6-1-PE（Producer-extends）"><a href="#6-1-PE（Producer-extends）" class="headerlink" title="6.1 PE（Producer extends）"></a>6.1 PE（Producer extends）</h2><p>如果你只需要从集合中获得类型 T , 使用 &lt;? extends T&gt; 通配符。</p>
-<h2 id="6-2-SC（Consumer-super）"><a href="#6-2-SC（Consumer-super）" class="headerlink" title="6.2 SC（Consumer super）"></a>6.2 SC（Consumer super）</h2><p>如果你只需要将类型T放到集合中, 使用 &lt;? super T&gt; 通配符。</p>
-<p>当然，如果你既想当 <code>生产者</code>，又想当 <code>消费者</code>，那么不使用通配符即可。</p>
+<pre><code>public void test(List&lt;? extends Number&gt; list) {
+    list.add(0); // 错误， 此处 list 作为一个生产者，后续操作只能消费，不能继续生产
+}</code></pre><h2 id="6-2-SC（Consumer-super）"><a href="#6-2-SC（Consumer-super）" class="headerlink" title="6.2 SC（Consumer super）"></a>6.2 SC（Consumer super）</h2><p>如果你只需要将类型T放到集合中, 使用 &lt;? super T&gt; 通配符。</p>
+<pre><code>public void test(List&lt;? super Number&gt; list) {
+    list.add(0); // 错误， 此处 list 作为一个消费者，后续操作只能生产，不能继续消费
+}</code></pre><p>当然，如果你既想当 <code>生产者</code>，又想当 <code>消费者</code>，那么不使用通配符即可。</p>
 <h1 id="7、类型擦除"><a href="#7、类型擦除" class="headerlink" title="7、类型擦除"></a>7、类型擦除</h1><p>在讲 <code>类型擦除</code> 之前，先来了解一下 <code>泛型</code> 历史。泛型是在 JDK5 才出现的，为了保证旧的 JDK 版本能正常运行，那么只能对 <code>泛型</code> 操刀了，将 <code>泛型</code> 处理成低版本能识别的信息，由此可见，Java/Kotlin 中的 <code>泛型</code> 为 <strong>伪泛型</strong>。</p>
 <p>那么，如何兼容呢？<code>类型擦除</code> 就是在该场景下诞生的。</p>
 <p>擦除规则：</p>
