@@ -123,58 +123,63 @@
 
 <div id="content-outer">
   <div id="content-inner">
-    <div id="tag">
-    <div id="recent-posts">
-  
-      <div class="recent-post-item lazy" style="background-color:#26A69A" data-original="/images/random/vateral-14.png">
-        <a class="recent-post-link" href="/2017/02/28/设计模式/中介者模式/">
-        <div class="post-hover">
-          <!--title-->
-          <p class="post-title"><a href="/2017/02/28/设计模式/中介者模式/">中介者模式</a></p>
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
+  <h2>注解</h2>
+    
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-30T15:21:00.000Z">
+          2020-11-30
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>在编码中，经常使用到 <code>注解</code>，例如：@Nullable、@LayoutRes、@ColorRes 等等，为工程开发提供了极大的便捷性，那么今天就来扒一扒 <code>注解</code>。</p>
+<h1 id="1、-注解在-Java-中的定义"><a href="#1、-注解在-Java-中的定义" class="headerlink" title="1、 注解在 Java 中的定义"></a>1、 注解在 Java 中的定义</h1><blockquote>
+<p>Java 注解（Annotation）又称为 Java 标注，是 JDK1.5 引入的一种注释机制。是元数据的一种形式，提供有关于程序但不属于程序本身的数据。注解对它们注解的代码的操作没有直接影响。</p>
+</blockquote>
+<h2 id="2、注解扒皮"><a href="#2、注解扒皮" class="headerlink" title="2、注解扒皮"></a>2、注解扒皮</h2><p>是不是有点绕？简单来讲，<code>注解</code> 就是一种注释，提供标注功能，但是对所标注的代码没有任何影响，例如自定义一个注解：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>SOURCE<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>METHOD<span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">WD</span> <span class="token punctuation">{</span>
 
-          <!--date-->
-          
-            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-28T06:29:00.000Z">
-              2017-02-28
-            </time>
-            </p>
-          
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在此处自定义了一个注解 <code>WD</code>，使用如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@WD</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">annotationTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-          <!--tags-->
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>就这么简单，一个 <code>注解</code> 就诞生了，<strong>但是</strong> 这个 <code>注解</code> 并没有什么用，你没看错，就是一个标记而已，但是没有任何实质作用。</p>
+<p>Emmm… 平常不是经常用注解嘛，都是有作用的啊，这是不是一个假注解呢？</p>
+<p>不存在的，这就是货真价实的真注解，我们再深一步，扒一扒和平常用的注解有什么不同。</p>
 
-          标签:
-            
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/中介者/">中介者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/行为型模式/">行为型模式</a></li></ul>
-            
-          <!--分类-->
+  </div>
+  <!--评论块-->
+    
 
-          分类:
-            
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
-            
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
 
-          <!--excerpt-->
-          <div class="post-excerpt">
-            <p>
-              摘要：
-              
-                中介者模式（Mediator Pattern）：用一个中介对象（中介者）来封装一系列的对象交互，中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为 调停者模式，它是一种 对象行为型模式。
 
-              
-            </p>
-          </div>
-          <div class="post-more"><a href="/2017/02/28/设计模式/中介者模式/">全文阅读 >></a></div>
-        </div>
-        </a>
-      </div>
-  
-  <nav class="paging">
-    <span class="page-number current">1</span>
+  <!-- Next Nav -->
+    
+  <a href="/2020/11/16/其他/MarkDown 介绍/" id="post_nav-older" class="post-nav-content next-content">
+      下一篇>
+  </a>
+    
 </nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1、-注解在-Java-中的定义"><span class="post-toc-text">1、 注解在 Java 中的定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、注解扒皮"><span class="post-toc-text">2、注解扒皮</span></a></li></ol></li></ol>
 </div>
-
-
-</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
   </div>
 </div>
 <div id="bottom-outer">

@@ -85,7 +85,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+        <a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
     </li>
 </ul>
 <!--categories-->
@@ -98,7 +98,7 @@
 
 <ul class="dropdown-menu dropdown">
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/其他/">其他<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+        <a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/其他/">其他<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-13.png)">
   <h2>泛型</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-15T15:37:00.000Z">
@@ -325,6 +325,10 @@ List<span class="token operator">&lt;</span><span class="token operator">?</span
 <li>List<xxx> 是 List<?> 的一个子类型理解 List<object> 和 List<?> 的不同：差在 NULL 处理，前者不支持，而后者却可接受一个 null 入表；</object></xxx></li>
 </ol>
 <p>泛型类/接口之间，没有任何关联，例如 <code>List&lt;Integer&gt;</code> 和 <code>List&lt;Number&gt;</code> 没有任何关联，不过可以使用通配符来建立联系。</p>
+<p><strong>通配符只能在泛型方法中使用，泛型类、泛型接口无法使用。</strong></p>
+<p><strong>通配符只能在泛型方法中使用，泛型类、泛型接口无法使用。</strong></p>
+<p><strong>通配符只能在泛型方法中使用，泛型类、泛型接口无法使用。</strong></p>
+<p>重要的情况说 3 遍。</p>
 <h1 id="6、PESC-原则"><a href="#6、PESC-原则" class="headerlink" title="6、PESC 原则"></a>6、PESC 原则</h1><p>PESC 原则的好处：提升了 API 的灵活性。</p>
 <h2 id="6-1-PE（Producer-extends）"><a href="#6-1-PE（Producer-extends）" class="headerlink" title="6.1 PE（Producer extends）"></a>6.1 PE（Producer extends）</h2><p>如果你只需要从集合中获得类型 T , 使用 &lt;? extends T&gt; 通配符。</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Number</span><span class="token operator">></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
