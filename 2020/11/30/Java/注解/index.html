@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-4.png)">
   <h2>注解</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-30T15:21:00.000Z">
@@ -217,6 +217,48 @@ annotationProcessor <span class="token string">'com.jakewharton:butterknife-comp
     SATURDAY<span class="token punctuation">,</span>
     SUNDAY
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后，我们再看一下对应的字节码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">enum</span> com<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks <span class="token keyword">extends</span> <span class="token class-name">java</span><span class="token operator">/</span>lang<span class="token operator">/</span>Enum <span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> MONDAY
+
+  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> TUESDAY
+
+  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> WEDNESDAY
+
+  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> THURSDAY
+
+  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> FRIDAY
+
+  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> SATURDAY
+
+  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> SUNDAY
+
+  <span class="token comment" spellcheck="true">// 其余代码省略，有兴趣的同学可以自己生成字节码查看一下</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们看到，字节码生成了 7 个对象用来表述星期信息，而对象的开销又比较大，从而会增加应用开销，从字节码也能看出，为什么 <code>枚举</code> 开销会比较大了，这里只有 7 个枚举，对应 7 个对象，那么如果 700 个枚举呢？7000 个呢？所以，寻找一种替代办法还是很有必要的。</p>
+<p>接下来，我们看一下另一种写法，IntDef 写法：</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@IntDef</span><span class="token punctuation">(</span>MONDAY<span class="token punctuation">,</span> TUESDAY<span class="token punctuation">,</span> WEDNESDAY<span class="token punctuation">,</span> THURSDAY<span class="token punctuation">,</span> FRIDAY<span class="token punctuation">,</span> SATURDAY<span class="token punctuation">,</span> SUNDAY<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FIELD<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>TYPE_PARAMETER<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>VALUE_PARAMETER<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>SOURCE<span class="token punctuation">)</span>
+<span class="token keyword">annotation</span> <span class="token keyword">class</span> WeekDays<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此处设置了 <strong>注解</strong> WeekDays，再看看如何使用的：</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">showWeek</span><span class="token punctuation">(</span><span class="token annotation builtin">@WeekDays</span> day<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">showWeek</span><span class="token punctuation">(</span><span class="token number">99</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Java 版本此处编译器会直接报错，Kotlin 目前还存在问题</span>
+    <span class="token function">showWeek</span><span class="token punctuation">(</span>THURSDAY<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 只有限定范围内的数据，传入才能通过编译</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里只是定义了 7 个常量，开销比对象小多了，达到了优化的目的。</p>
+<p>综上所述，在要使用枚举的时候，看看能不能使用 <code>IntDef</code>、<code>StringDef</code> 替代，从而降低内存的开销。</p>
 
   </div>
   <!--评论块-->
