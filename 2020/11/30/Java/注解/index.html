@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
   <h2>注解</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-30T15:21:00.000Z">
@@ -198,6 +198,25 @@ annotationProcessor <span class="token string">'com.jakewharton:butterknife-comp
 <td align="center">在程序运行期间，通过反射技术动态获取注解与其元素，从而完成不同的逻辑判定。</td>
 </tr>
 </tbody></table>
+<h1 id="5、注解-IntDef-使用"><a href="#5、注解-IntDef-使用" class="headerlink" title="5、注解 IntDef 使用"></a>5、注解 IntDef 使用</h1><p>IntDef 顾名思义就是对 Int 数据进行规约的，比如我们常用的 view.setBackgroundResource(xxx)，此处 xxx 为 int 类型，但是如果我们随便传入一个 int 类型进去，会发现编译器报错，这里就是类似 IntDef 的功劳，编译器帮我们检查数据是否合法，从而避免很多不必要的错误。以往，为了确保数据唯一，我们常常使用 <code>枚举</code> 来进行规约，但是随着项目增大，枚举会很多很多，导致内存开销也比较大，为了优化性能，可以考虑尝试使用 IntDef 解解毒。</p>
+<p>先看一下 <code>枚举</code> 的写法：</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
+ * 列举周几信息
+ * 常规写法：枚举
+ */</span>
+<span class="token comment" spellcheck="true">/**
+ * 列举周几信息
+ * 常规写法：枚举
+ */</span>
+<span class="token keyword">enum</span> <span class="token keyword">class</span> Weeks <span class="token punctuation">{</span>
+    MONDAY<span class="token punctuation">,</span>
+    TUESDAY<span class="token punctuation">,</span>
+    WEDNESDAY<span class="token punctuation">,</span>
+    THURSDAY<span class="token punctuation">,</span>
+    FRIDAY<span class="token punctuation">,</span>
+    SATURDAY<span class="token punctuation">,</span>
+    SUNDAY
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <!--评论块-->
@@ -219,7 +238,7 @@ annotationProcessor <span class="token string">'com.jakewharton:butterknife-comp
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1、-注解在-Java-中的定义"><span class="post-toc-text">1、 注解在 Java 中的定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、注解扒皮"><span class="post-toc-text">2、注解扒皮</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3、概念介绍"><span class="post-toc-text">3、概念介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-作用在代码的注解是"><span class="post-toc-text">3.1 作用在代码的注解是</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-作用在其他注解的注解-或者说-元注解-是"><span class="post-toc-text">3.2 作用在其他注解的注解(或者说 元注解)是:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-从-Java-7-开始，额外添加了-3-个注解"><span class="post-toc-text">3.3 从 Java 7 开始，额外添加了 3 个注解:</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4、注解的应用场景"><span class="post-toc-text">4、注解的应用场景</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1、-注解在-Java-中的定义"><span class="post-toc-text">1、 注解在 Java 中的定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、注解扒皮"><span class="post-toc-text">2、注解扒皮</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3、概念介绍"><span class="post-toc-text">3、概念介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-作用在代码的注解是"><span class="post-toc-text">3.1 作用在代码的注解是</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-作用在其他注解的注解-或者说-元注解-是"><span class="post-toc-text">3.2 作用在其他注解的注解(或者说 元注解)是:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-从-Java-7-开始，额外添加了-3-个注解"><span class="post-toc-text">3.3 从 Java 7 开始，额外添加了 3 个注解:</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4、注解的应用场景"><span class="post-toc-text">4、注解的应用场景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5、注解-IntDef-使用"><span class="post-toc-text">5、注解 IntDef 使用</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
