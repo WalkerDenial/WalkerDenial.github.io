@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title><![CDATA[反射]]></title>
+      <url>/2020/12/03/Java/%E5%8F%8D%E5%B0%84/</url>
+      <content type="html"><![CDATA[<p>前面讲到了 <code>注解</code>，也自定义了 <code>注解</code> 来规约数据类型，避免传入错误数据，以及使用自定义 <code>注解</code> 检测机制，替代 <code>枚举</code>，降低内存开销。今天来讲讲 <code>注解</code> 结合 <code>反射</code> 的化学反应。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> Kotlin </tag>
+            
+            <tag> Android </tag>
+            
+            <tag> 反射 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[注解]]></title>
       <url>/2020/11/30/Java/%E6%B3%A8%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>在编码中，经常使用到 <code>注解</code>，例如：@Nullable、@LayoutRes、@ColorRes 等等，为工程开发提供了极大的便捷性，那么今天就来扒一扒 <code>注解</code>。</p>
@@ -140,11 +167,11 @@ annotationProcessor <span class="token string">'com.jakewharton:butterknife-comp
         
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
             
             <tag> Kotlin </tag>
+            
+            <tag> Android </tag>
             
             <tag> 注解 </tag>
             
@@ -567,11 +594,11 @@ boxs <span class="token operator">=</span> <span class="token keyword">new</span
         
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
             
             <tag> Kotlin </tag>
+            
+            <tag> Android </tag>
             
             <tag> 泛型 </tag>
             
@@ -798,11 +825,11 @@ androidTestImplementation &#39;androidx.test.espresso:espresso-core:3.2.0&#39;</
         
         <tags>
             
-            <tag> Gradle </tag>
+            <tag> 基础 </tag>
             
             <tag> Android </tag>
             
-            <tag> 基础 </tag>
+            <tag> Gradle </tag>
             
         </tags>
         
@@ -976,11 +1003,11 @@ app --&gt; build.gradle --&gt; dependencies out</code></pre><p>由此可知，�
         
         <tags>
             
-            <tag> Gradle </tag>
+            <tag> 基础 </tag>
             
             <tag> Android </tag>
             
-            <tag> 基础 </tag>
+            <tag> Gradle </tag>
             
         </tags>
         
@@ -3374,11 +3401,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
         
