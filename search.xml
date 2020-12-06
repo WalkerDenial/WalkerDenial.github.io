@@ -584,6 +584,11 @@ boxs <span class="token operator">=</span> <span class="token keyword">new</span
         <span class="token keyword">throw</span> t<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="8-9-Java-中-Arrays-不能使用泛型"><a href="#8-9-Java-中-Arrays-不能使用泛型" class="headerlink" title="8.9 Java 中 Arrays 不能使用泛型"></a>8.9 Java 中 Arrays 不能使用泛型</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 错误示例
+ * 在 Java 中，数组不支持泛型
+ */</span>
+Arrays arrays <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Arrays</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       
         <categories>
@@ -826,9 +831,9 @@ androidTestImplementation &#39;androidx.test.espresso:espresso-core:3.2.0&#39;</
         
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> Android </tag>
             
             <tag> Gradle </tag>
             
@@ -1004,9 +1009,9 @@ app --&gt; build.gradle --&gt; dependencies out</code></pre><p>由此可知，�
         
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> Android </tag>
             
             <tag> Gradle </tag>
             
