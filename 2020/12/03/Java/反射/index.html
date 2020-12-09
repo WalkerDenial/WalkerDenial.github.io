@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-13.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
   <h2>反射</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-03T15:45:00.000Z">
@@ -137,6 +137,17 @@
   <div class="post-page-content">
   <p>前面讲到了 <code>注解</code>，也自定义了 <code>注解</code> 来规约数据类型，避免传入错误数据，以及使用自定义 <code>注解</code> 检测机制，替代 <code>枚举</code>，降低内存开销。今天来讲讲 <code>注解</code> 结合 <code>反射</code> 的化学反应。</p>
 <p>在结合使用之前，先来简单讲讲 <code>反射</code>。</p>
+<h1 id="1-什么是反射"><a href="#1-什么是反射" class="headerlink" title="1. 什么是反射"></a>1. 什么是反射</h1><blockquote>
+<p>Java 的反射（reflection）机制是指在程序的运行状态中，可以构造任意一个类的对象，可以了解任意一个对象所属的类，可以了解任意一个类的成员变量和方法，可以调用任意一个对象的属性和方法。这种动态获取程序信息以及动态调用对象的功能称为 Java 语言的反射机制。反射被视为动态语言的关键。</p>
+</blockquote>
+<h1 id="2-反射的主要作用"><a href="#2-反射的主要作用" class="headerlink" title="2. 反射的主要作用"></a>2. 反射的主要作用</h1><ol>
+<li>在运行时判断任意一个对象所属的类；</li>
+<li>在运行时构造任意一个类的对象；</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法；</li>
+<li>在运行时调用任意一个对象的方法；</li>
+<li>生成动态代理；</li>
+</ol>
+<h1 id="3-反射结合注解"><a href="#3-反射结合注解" class="headerlink" title="3. 反射结合注解"></a>3. 反射结合注解</h1><p>前面讲了 <code>反射</code> 能动态的获取类的相关信息以及构件类，而 <code>注解</code> 能标记相关的信息，那么二者相结合，能实现什么效果呢？接下来结合案例进行分析。</p>
 
   </div>
   <!--评论块-->
@@ -161,7 +172,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-什么是反射"><span class="post-toc-text">1. 什么是反射</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-反射的主要作用"><span class="post-toc-text">2. 反射的主要作用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-反射结合注解"><span class="post-toc-text">3. 反射结合注解</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
