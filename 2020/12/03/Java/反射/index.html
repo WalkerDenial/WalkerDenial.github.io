@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
   <h2>反射</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-03T15:45:00.000Z">
@@ -148,6 +148,36 @@
 <li>生成动态代理；</li>
 </ol>
 <h1 id="3-反射结合注解"><a href="#3-反射结合注解" class="headerlink" title="3. 反射结合注解"></a>3. 反射结合注解</h1><p>前面讲了 <code>反射</code> 能动态的获取类的相关信息以及构件类，而 <code>注解</code> 能标记相关的信息，那么二者相结合，能实现什么效果呢？接下来结合案例进行分析。</p>
+<p>场景：现有两个界面：MainActivity 和 SecondActivity，从 MainActivity 跳转到 SecondActivity 中时，需要携带 name、age 两个参数，通过注解的方式，动态获取参数。</p>
+<h2 id="第一步：自定义注解"><a href="#第一步：自定义注解" class="headerlink" title="第一步：自定义注解"></a>第一步：自定义注解</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FIELD<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>SOURCE<span class="token punctuation">)</span>
+<span class="token keyword">annotation</span> <span class="token keyword">class</span> <span class="token function">AutoWired</span><span class="token punctuation">(</span><span class="token keyword">val</span> value<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="第二步：MainActivity-和-SecondActivity-的创建以及跳转的实现"><a href="#第二步：MainActivity-和-SecondActivity-的创建以及跳转的实现" class="headerlink" title="第二步：MainActivity 和 SecondActivity 的创建以及跳转的实现"></a>第二步：MainActivity 和 SecondActivity 的创建以及跳转的实现</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> MainActivity <span class="token operator">:</span> ContainerActivity<span class="token operator">&lt;</span>MainFragment<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">getContentFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> MainFragment <span class="token operator">=</span> <span class="token function">MainFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> SecondActivity <span class="token operator">:</span> ContainerActivity<span class="token operator">&lt;</span>SecondFragment<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">getContentFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> SecondFragment <span class="token operator">=</span> <span class="token function">SecondFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="第三步：通过反射自动注入传入的值，也是最关键的一步"><a href="#第三步：通过反射自动注入传入的值，也是最关键的一步" class="headerlink" title="第三步：通过反射自动注入传入的值，也是最关键的一步"></a>第三步：通过反射自动注入传入的值，也是最关键的一步</h2><p>首先：在 SecondFragment 中添加注解</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@AutoWired</span> <span class="token comment" spellcheck="true">// 此处添加注解</span>
+<span class="token keyword">var</span> name<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token string">""</span>
+
+<span class="token annotation builtin">@AutoWired</span> <span class="token comment" spellcheck="true">// 此处添加注解</span>
+<span class="token keyword">var</span> age<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其次：调用自动注入方法</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin">AutoWiredUtil<span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后：通过 <code>反射</code> 获取被 <code>注解</code> 标识过的属性，解析并注入值</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>最后：刷新界面数据，此处通过 DataBinding 绑定 LiveData 数据进行刷新</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin">viewModel<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">postValue</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+viewModel<span class="token punctuation">.</span>age<span class="token punctuation">.</span><span class="token function">postValue</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>如果属性过多的情况下，会省略很多 xxx.getIntent().getXXXExtra 方法，也能避免自己忘记手动获取，即提高了效率，也降低了出错的概率，何乐而不为呢。</p>
+<p>最后，示例项目地址信息 <a href="https://github.com/WalkerDenial/KotlinStudy" target="_blank" rel="noopener">示例代码</a>，欢迎交流学习，如果错误，请指正。</p>
 
   </div>
   <!--评论块-->
@@ -172,7 +202,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-什么是反射"><span class="post-toc-text">1. 什么是反射</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-反射的主要作用"><span class="post-toc-text">2. 反射的主要作用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-反射结合注解"><span class="post-toc-text">3. 反射结合注解</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-什么是反射"><span class="post-toc-text">1. 什么是反射</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-反射的主要作用"><span class="post-toc-text">2. 反射的主要作用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-反射结合注解"><span class="post-toc-text">3. 反射结合注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一步：自定义注解"><span class="post-toc-text">第一步：自定义注解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二步：MainActivity-和-SecondActivity-的创建以及跳转的实现"><span class="post-toc-text">第二步：MainActivity 和 SecondActivity 的创建以及跳转的实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三步：通过反射自动注入传入的值，也是最关键的一步"><span class="post-toc-text">第三步：通过反射自动注入传入的值，也是最关键的一步</span></a></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
