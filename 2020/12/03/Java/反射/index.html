@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-7.png)">
   <h2>反射</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-03T15:45:00.000Z">
@@ -149,8 +149,9 @@
 </ol>
 <h1 id="3-反射结合注解"><a href="#3-反射结合注解" class="headerlink" title="3. 反射结合注解"></a>3. 反射结合注解</h1><p>前面讲了 <code>反射</code> 能动态的获取类的相关信息以及构件类，而 <code>注解</code> 能标记相关的信息，那么二者相结合，能实现什么效果呢？接下来结合案例进行分析。</p>
 <p>场景：现有两个界面：MainActivity 和 SecondActivity，从 MainActivity 跳转到 SecondActivity 中时，需要携带 name、age 两个参数，通过注解的方式，动态获取参数。</p>
-<h2 id="第一步：自定义注解"><a href="#第一步：自定义注解" class="headerlink" title="第一步：自定义注解"></a>第一步：自定义注解</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FIELD<span class="token punctuation">)</span>
-<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>SOURCE<span class="token punctuation">)</span>
+<h2 id="第一步：自定义注解"><a href="#第一步：自定义注解" class="headerlink" title="第一步：自定义注解"></a>第一步：自定义注解</h2><p><strong>注意：</strong>此处注解必须为 <code>运行时注解</code>，因为需要通过反射动态获取类型，如果不设置为运行时，在代码编译后，注解将会被抹除，无法使用；</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FIELD<span class="token punctuation">)</span>
+<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
 <span class="token keyword">annotation</span> <span class="token keyword">class</span> <span class="token function">AutoWired</span><span class="token punctuation">(</span><span class="token keyword">val</span> value<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="第二步：MainActivity-和-SecondActivity-的创建以及跳转的实现"><a href="#第二步：MainActivity-和-SecondActivity-的创建以及跳转的实现" class="headerlink" title="第二步：MainActivity 和 SecondActivity 的创建以及跳转的实现"></a>第二步：MainActivity 和 SecondActivity 的创建以及跳转的实现</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> MainActivity <span class="token operator">:</span> ContainerActivity<span class="token operator">&lt;</span>MainFragment<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
@@ -172,7 +173,28 @@
 <p>其次：调用自动注入方法</p>
 <pre class="line-numbers language-kotlin"><code class="language-kotlin">AutoWiredUtil<span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后：通过 <code>反射</code> 获取被 <code>注解</code> 标识过的属性，解析并注入值</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">inject</span><span class="token punctuation">(</span>context<span class="token operator">:</span> Fragment<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> fields <span class="token operator">=</span> context<span class="token punctuation">.</span>javaClass<span class="token punctuation">.</span>declaredFields
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fields<span class="token punctuation">.</span><span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>item <span class="token keyword">in</span> fields<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>item<span class="token punctuation">.</span><span class="token function">isAnnotationPresent</span><span class="token punctuation">(</span>AutoWired<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">continue</span>
+        <span class="token keyword">var</span> key <span class="token operator">=</span> item<span class="token punctuation">.</span><span class="token function">getDeclaredAnnotation</span><span class="token punctuation">(</span>AutoWired<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span><span class="token punctuation">.</span>value
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> key <span class="token operator">=</span> item<span class="token punctuation">.</span>name
+        <span class="token keyword">val</span> intent <span class="token operator">=</span> context<span class="token punctuation">.</span>activity<span class="token operator">?</span><span class="token punctuation">.</span>intent
+        <span class="token keyword">when</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            String<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java <span class="token operator">-></span> <span class="token punctuation">{</span>
+                <span class="token keyword">val</span> value <span class="token operator">=</span> intent<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                item<span class="token punctuation">.</span>isAccessible <span class="token operator">=</span> <span class="token boolean">true</span>
+                item<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            Int<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java <span class="token operator">-></span> <span class="token punctuation">{</span>
+                <span class="token keyword">val</span> value <span class="token operator">=</span> intent<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">getIntExtra</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                item<span class="token punctuation">.</span>isAccessible <span class="token operator">=</span> <span class="token boolean">true</span>
+                item<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最后：刷新界面数据，此处通过 DataBinding 绑定 LiveData 数据进行刷新</p>
 <pre class="line-numbers language-kotlin"><code class="language-kotlin">viewModel<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">postValue</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
 viewModel<span class="token punctuation">.</span>age<span class="token punctuation">.</span><span class="token function">postValue</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>

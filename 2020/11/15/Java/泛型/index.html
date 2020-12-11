@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-17.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)">
   <h2>泛型</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-15T15:37:00.000Z">
@@ -136,7 +136,7 @@
   </div>
   <div class="post-page-content">
   <p>A：今天来聊聊一些基础吧，简单说说泛型。</p>
-<p>B：泛型不是一直在用嘛，很简单的啊，一对 <code>&amp;lt;&amp;gt;</code> 就能指定泛型，然后使用。</p>
+<p>B：泛型不是一直在用嘛，很简单的啊，一对 <code>&lt;&gt;</code> 就能指定泛型，然后使用。</p>
 <p>A：那你先讲讲什么叫泛型吧？</p>
 <p>B：Emmm…（一时语塞，虽然一直在用，但是一时语塞，组织不起来语言）。</p>
 <p>A：概念不清，意识模糊，只是停留在会用阶段，却不知道本质。</p>
@@ -147,9 +147,19 @@
 <p>B：Emmm… 彻底蒙圈</p>
 <p><code>泛型</code>，作为一枚野生 Android 搬砖工，最常用的莫过于 <code>泛型</code>，在所有的架构中，<code>泛型</code> 是核心，所以说：<code>泛型</code> 是通往高阶的基础。哪怕你调用第三方框架再熟练，也只是个熟练的 API 调用者而已，出个问题就无法解决，只会甩锅给三方库，但是问题还是得不到解决。所以，在成长的路上，首先要彻底了解并掌握 <code>泛型</code>，只有这样，才能不至于在后期举步维艰。</p>
 <h1 id="1、先了解一下泛型是什么"><a href="#1、先了解一下泛型是什么" class="headerlink" title="1、先了解一下泛型是什么"></a>1、先了解一下泛型是什么</h1><p>先看一下 <a href="https://bk.tw.lvfukeji.com/baike-%E6%B3%9B%E5%9E%8B" target="_blank" rel="noopener">维基百科</a> 的定义：</p>
-<p>&gt;泛型的定义主要有以下两种：</p>
-<p>&gt; 1. 在程序编码中一些包含类型参数的类型，也就是说泛型的参数只可以代表類，不能代表个别对象。（这是当今常见的定义）</p>
-<p>&gt; 2. 在程序编码中一些包含参数的类。其参数可以代表类或对象等等。（现在人们大多把这称作模板）</p>
+<blockquote>
+<p>泛型的定义主要有以下两种：</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>在程序编码中一些包含类型参数的类型，也就是说泛型的参数只可以代表類，不能代表个别对象。（这是当今常见的定义）</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>在程序编码中一些包含参数的类。其参数可以代表类或对象等等。（现在人们大多把这称作模板）</li>
+</ol>
+</blockquote>
 <p>在下定义之前，再了解一下参数分类，一般情况下，参数分为以下两类：</p>
 <ol>
 <li>形式参数：输入是值；</li>
@@ -163,8 +173,8 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>根据方法本质来说，需要使用到传入的对象的某个值来进行相应的加工处理，这就是形式参数，简称 <code>形参</code>；</p>
 <h2 id="1-2-类型参数"><a href="#1-2-类型参数" class="headerlink" title="1.2 类型参数"></a>1.2 类型参数</h2><p>处理需要值以外，有时候还需要指定类型，例如：</p>
-<pre class="line-numbers language-java"><code class="language-java">List<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>String<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在 <code>&amp;lt;&amp;gt;</code> 中，有一个类型 <strong>String</strong>，注意，是 <strong>类型</strong> 哟，而不是对象，至于原因吗，好好想想…再想想，这个 <strong>String</strong> 你实例化了吗，现在能理解 <strong>对象</strong> 和 <strong>类型</strong> 的区别了吧，<code>&amp;lt;String&amp;gt;</code> 的目的就是为了告诉编译器，在这个 <code>List</code> 中，指定的是 <code>String</code> 类型的，只能对 <code>String</code> 类型的对象进行处理，不信的话你可以调用 <code>list.add(0)</code> 试试，看看会不会报错，至于原因，后续会讲。</p>
+<pre class="line-numbers language-java"><code class="language-java">List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在 <code>&lt;&gt;</code> 中，有一个类型 <strong>String</strong>，注意，是 <strong>类型</strong> 哟，而不是对象，至于原因吗，好好想想…再想想，这个 <strong>String</strong> 你实例化了吗，现在能理解 <strong>对象</strong> 和 <strong>类型</strong> 的区别了吧，<code>&lt;String&gt;</code> 的目的就是为了告诉编译器，在这个 <code>List</code> 中，指定的是 <code>String</code> 类型的，只能对 <code>String</code> 类型的对象进行处理，不信的话你可以调用 <code>list.add(0)</code> 试试，看看会不会报错，至于原因，后续会讲。</p>
 <p>由上可知，泛型是 <strong>类型化参数</strong>。</p>
 <h1 id="2、为什么要使用泛型"><a href="#2、为什么要使用泛型" class="headerlink" title="2、为什么要使用泛型"></a>2、为什么要使用泛型</h1><ol>
 <li>在编译期进行更强的类型检查；</li>
@@ -174,31 +184,31 @@
 <p>接下来，逐步进行解释：</p>
 <h2 id="2-1-在编译期进行更强的类型检查"><a href="#2-1-在编译期进行更强的类型检查" class="headerlink" title="2.1 在编译期进行更强的类型检查"></a>2.1 在编译期进行更强的类型检查</h2><p>Talk is cheap, show me the code. 先上一段毒代码：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 一个用于存储 int 数据的集合</span>
-List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 失误操作</span>
 
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span> list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"num is "</span> <span class="token operator">+</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由于没有类型约束，编译器不会报错，但是，在运行时，程序会直接崩溃，并报 <code>ClassCastException</code>，这要是发生在线上，就是生产事故了。那么如何在编译器就能检测出这个错误呢，这就该 <code>泛型</code> 登场了，修改代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 一个用于存储 int 数据的集合</span>
-List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>Integer<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 此次会直接报错，编译无法通过</span>
 
-<span class="token keyword">int</span> nun4 <span class="token operator">=</span> ist<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 同时，这里没有强转了</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">int</span> num4 <span class="token operator">=</span> ist<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 同时，这里没有强转了</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在约定类型后， list 只能添加对应的类型，也就是示例代码中的 <code>Integer</code>，如果传入 <code>String</code>，是无法通过编译的，这样就将错误由 <strong>运行时错误</strong> 提前为 <strong>编译时错误</strong>，并且在多人合作时，也不用担心其他小伙伴添加错误的类型对象。</p>
-<h2 id="2-2-消除类型转换"><a href="#2-2-消除类型转换" class="headerlink" title="2.2 消除类型转换"></a>2.2 消除类型转换</h2><pre class="line-numbers language-java"><code class="language-java">List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="2-2-消除类型转换"><a href="#2-2-消除类型转换" class="headerlink" title="2.2 消除类型转换"></a>2.2 消除类型转换</h2><pre class="line-numbers language-java"><code class="language-java">List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//由于 List 未指定类型，系统无法得知 get 后的类型，因此，需要进行强转</span>
 
-List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>Integer<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> num <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 由于指定了类型 `Integer`，系统会推断出对应的类型，可以省去强转，也可避免强转成错误的类型，提高了代码的健壮性</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="2-3-能够实现通用算法"><a href="#2-3-能够实现通用算法" class="headerlink" title="2.3 能够实现通用算法"></a>2.3 能够实现通用算法</h2><p>没有泛型以前的 <code>add</code> 世界：</p>
@@ -222,7 +232,7 @@ list<span class="token punctuation">.</span><span class="token function">add</sp
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// 如果根据排列组合来写，方法数量只会呈指数级增长</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>居然要写 6 个方法，才能实现兼容，使用泛型之后的世界：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>N <span class="token keyword">extends</span> <span class="token class-name">Number</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token keyword">double</span> <span class="token function">add</span><span class="token punctuation">(</span>N a<span class="token punctuation">,</span> N b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token operator">&lt;</span>N <span class="token keyword">extends</span> <span class="token class-name">Number</span><span class="token operator">></span> <span class="token keyword">double</span> <span class="token function">add</span><span class="token punctuation">(</span>N a<span class="token punctuation">,</span> N b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> b<span class="token punctuation">.</span><span class="token function">doubleValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>由于使用了泛型，方法数量减少为 1 个，实现了代码复用。因此，掌握好泛型，是通往高阶之路的基础。</p>
@@ -232,15 +242,15 @@ list<span class="token punctuation">.</span><span class="token function">add</sp
 <li>泛型方法</li>
 </ol>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 泛型类</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Box</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>T<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Box</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> T t<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 泛型接口</span>
-pubclic <span class="token keyword">interface</span> <span class="token class-name">Box</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>T<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">{</span>
+pubclic <span class="token keyword">interface</span> <span class="token class-name">Box</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 泛型方法</span>
-<span class="token keyword">public</span> <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>T<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>T t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>T t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="4、常用的类型参数名称"><a href="#4、常用的类型参数名称" class="headerlink" title="4、常用的类型参数名称"></a>4、常用的类型参数名称</h1><ol>
@@ -252,30 +262,30 @@ pubclic <span class="token keyword">interface</span> <span class="token class-na
 <li>S、U、V etc –&gt; 2nd、3rd、4th types</li>
 </ol>
 <p>只是一些共识，代表指定什么意思，跟着用就对了，如果你想特立独行，那…也不是不可以。</p>
-<h1 id="5、泛型扩展"><a href="#5、泛型扩展" class="headerlink" title="5、泛型扩展"></a>5、泛型扩展</h1><p>在很多需求中，泛型 <code>&amp;lt;&amp;gt;</code> 中的类型可能不是一个确定的类型，那么能不能不指定具体类型，比如某一个类的父类，以便后续扩展呢接下来，答案是肯定的，接下来，将介绍一下 <code>受限通配符</code> 和 <code>非受限通配符</code>，从而让泛型也具有可扩展性。</p>
-<h2 id="5-1-继承"><a href="#5-1-继承" class="headerlink" title="5.1 继承"></a>5.1 继承</h2><h3 id="5-1-1-接口的继承"><a href="#5-1-1-接口的继承" class="headerlink" title="5.1.1 接口的继承"></a>5.1.1 接口的继承</h3><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">interface</span> GenericInterface&amp;lt<span class="token punctuation">;</span>T&amp;gt<span class="token punctuation">;</span>
+<h1 id="5、泛型扩展"><a href="#5、泛型扩展" class="headerlink" title="5、泛型扩展"></a>5、泛型扩展</h1><p>在很多需求中，泛型 <code>&lt;&gt;</code> 中的类型可能不是一个确定的类型，那么能不能不指定具体类型，比如某一个类的父类，以便后续扩展呢接下来，答案是肯定的，接下来，将介绍一下 <code>受限通配符</code> 和 <code>非受限通配符</code>，从而让泛型也具有可扩展性。</p>
+<h2 id="5-1-继承"><a href="#5-1-继承" class="headerlink" title="5.1 继承"></a>5.1 继承</h2><h3 id="5-1-1-接口的继承"><a href="#5-1-1-接口的继承" class="headerlink" title="5.1.1 接口的继承"></a>5.1.1 接口的继承</h3><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">interface</span> GenericInterface<span class="token operator">&lt;</span>T<span class="token operator">></span>
 
 <span class="token comment" spellcheck="true">/**
  * 接口继承方式一
  */</span>
-<span class="token keyword">interface</span> GenericChildInterface1&amp;lt<span class="token punctuation">;</span>T&amp;gt<span class="token punctuation">;</span> <span class="token operator">:</span> GenericInterface&amp;lt<span class="token punctuation">;</span>T&amp;gt<span class="token punctuation">;</span>
+<span class="token keyword">interface</span> GenericChildInterface1<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">:</span> GenericInterface<span class="token operator">&lt;</span>T<span class="token operator">></span>
 
 <span class="token comment" spellcheck="true">/**
  * 接口继承方式二
  */</span>
-<span class="token keyword">interface</span> GenericChildInterface2 <span class="token operator">:</span> GenericInterface&amp;lt<span class="token punctuation">;</span>String&amp;gt<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">interface</span> GenericChildInterface2 <span class="token operator">:</span> GenericInterface<span class="token operator">&lt;</span>String<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>比较简单，就不过多介绍了。</p>
-<h3 id="5-1-2-类的继承"><a href="#5-1-2-类的继承" class="headerlink" title="5.1.2 类的继承"></a>5.1.2 类的继承</h3><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> GenericClass&amp;lt<span class="token punctuation">;</span>T&amp;gt<span class="token punctuation">;</span>
+<h3 id="5-1-2-类的继承"><a href="#5-1-2-类的继承" class="headerlink" title="5.1.2 类的继承"></a>5.1.2 类的继承</h3><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> GenericClass<span class="token operator">&lt;</span>T<span class="token operator">></span>
 
 <span class="token comment" spellcheck="true">/**
  * 泛型继承方式一
  */</span>
-<span class="token keyword">class</span> GenericChildClass1&amp;lt<span class="token punctuation">;</span>T&amp;gt<span class="token punctuation">;</span> <span class="token operator">:</span> GenericClass&amp;lt<span class="token punctuation">;</span>T&amp;gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> GenericChildClass1<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">:</span> GenericClass<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true">/**
  * 泛型继承方式二
  */</span>
-<span class="token keyword">class</span> GenericChildClass2 <span class="token operator">:</span> GenericClass&amp;lt<span class="token punctuation">;</span>String&amp;gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">class</span> GenericChildClass2 <span class="token operator">:</span> GenericClass<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>也比较简单，看一眼即可。</p>
 <h3 id="5-1-3-多继承"><a href="#5-1-3-多继承" class="headerlink" title="5.1.3 多继承"></a>5.1.3 多继承</h3><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> A
 <span class="token keyword">open</span> <span class="token keyword">class</span> B
@@ -287,54 +297,60 @@ pubclic <span class="token keyword">interface</span> <span class="token class-na
  * 错误写法
  * 原因：注意单继承，这里 A、B 都是 class，同时继承多个 class，违背单继承原则，无法编译通过
  */</span>
-<span class="token keyword">class</span> MultipleGenericClass1&amp;lt<span class="token punctuation">;</span>T <span class="token operator">:</span> A<span class="token punctuation">,</span> B<span class="token punctuation">,</span> C<span class="token punctuation">,</span> D&amp;gt<span class="token punctuation">;</span>
+<span class="token keyword">class</span> MultipleGenericClass1<span class="token operator">&lt;</span>T <span class="token operator">:</span> A<span class="token punctuation">,</span> B<span class="token punctuation">,</span> C<span class="token punctuation">,</span> D<span class="token operator">></span>
 
 <span class="token comment" spellcheck="true">/**
  * 错误写法
  * 原因：注意继承规则，如果存在 class，那么 class 一定要排在前面
  */</span>
-<span class="token keyword">class</span> MultipleGenericClass2&amp;lt<span class="token punctuation">;</span>T <span class="token operator">:</span> C<span class="token punctuation">,</span> A<span class="token punctuation">,</span> D&amp;gt<span class="token punctuation">;</span>
+<span class="token keyword">class</span> MultipleGenericClass2<span class="token operator">&lt;</span>T <span class="token operator">:</span> C<span class="token punctuation">,</span> A<span class="token punctuation">,</span> D<span class="token operator">></span>
 
 <span class="token comment" spellcheck="true">/**
  * 正确写法
  */</span>
-<span class="token keyword">class</span> MultipleGenericClass3&amp;lt<span class="token punctuation">;</span>T <span class="token operator">:</span> A<span class="token punctuation">,</span> C<span class="token punctuation">,</span> D&amp;gt<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">class</span> MultipleGenericClass3<span class="token operator">&lt;</span>T <span class="token operator">:</span> A<span class="token punctuation">,</span> C<span class="token punctuation">,</span> D<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>看注释即可。</p>
 <h2 id="5-2-通配符"><a href="#5-2-通配符" class="headerlink" title="5.2 通配符"></a>5.2 通配符</h2><h3 id="5-2-1-受上限控制的通配符"><a href="#5-2-1-受上限控制的通配符" class="headerlink" title="5.2.1 受上限控制的通配符"></a>5.2.1 受上限控制的通配符</h3><p>语法格式：<strong>&lt;? extends XXX&gt;</strong></p>
 <p>优点：扩大兼容的范围。</p>
-<pre class="line-numbers language-java"><code class="language-java">List<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>Number<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> list1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list1 只能匹配 Number 类型的数据</span>
-List<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">?</span> exntends Number<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> list2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list2 可以匹配 Number 类型的数据及其子类</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java">List<span class="token operator">&lt;</span>Number<span class="token operator">></span> list1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list1 只能匹配 Number 类型的数据</span>
+List<span class="token operator">&lt;</span><span class="token operator">?</span> exntends Number<span class="token operator">></span> list2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list2 可以匹配 Number 类型的数据及其子类</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="5-2-2-受下限控制的通配符"><a href="#5-2-2-受下限控制的通配符" class="headerlink" title="5.2.2 受下限控制的通配符"></a>5.2.2 受下限控制的通配符</h3><p>语法格式：<strong>&lt;? super XXX&gt;</strong></p>
 <p>优点：扩大兼容的范围；可以建立泛型类、接口间的联系。</p>
-<pre class="line-numbers language-java"><code class="language-java">List<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>Integer<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> list1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list1 只能匹配 Integer 类型的数据</span>
-List<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">?</span> <span class="token keyword">super</span> Integer<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> list2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list2 可以匹配 Integer 类型的数据及其祖类/接口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java">List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> list1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list1 只能匹配 Integer 类型的数据</span>
+List<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">super</span> Integer<span class="token operator">></span> list2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// list2 可以匹配 Integer 类型的数据及其祖类/接口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="5-2-3-非受限的通配符"><a href="#5-2-3-非受限的通配符" class="headerlink" title="5.2.3 非受限的通配符"></a>5.2.3 非受限的通配符</h3><p>语法格式：<strong>&lt;? &gt;</strong></p>
 <p>关键使用场合：</p>
 <ol>
 <li>一个方法，而这方法的实现可以利用 Object 类中提供的功能时泛型类中的方法不依赖类型参数时如 List.size() 方法，它并不关心 List 中元素的具体类型；</li>
 <li>List&lt;XXX&gt; 是 List&lt;?&gt; 的一个子类型理解 List&lt;Object&gt; 和 List&lt;?&gt; 的不同：差在 NULL 处理，前者不支持，而后者却可接受一个 null 入表；</li>
 </ol>
-<p>泛型类/接口之间，没有任何关联，例如 <code>List&amp;lt;Integer&amp;gt;</code> 和 <code>List&amp;lt;Number&amp;gt;</code> 没有任何关联，不过可以使用通配符来建立联系。</p>
+<p>泛型类/接口之间，没有任何关联，例如 <code>List&lt;Integer&gt;</code> 和 <code>List&lt;Number&gt;</code> 没有任何关联，不过可以使用通配符来建立联系。</p>
 <p><strong>通配符只能在泛型方法中使用，泛型类、泛型接口无法使用。</strong></p>
 <p><strong>通配符只能在泛型方法中使用，泛型类、泛型接口无法使用。</strong></p>
 <p><strong>通配符只能在泛型方法中使用，泛型类、泛型接口无法使用。</strong></p>
 <p>重要的情况说 3 遍。</p>
 <h1 id="6、PESC-原则"><a href="#6、PESC-原则" class="headerlink" title="6、PESC 原则"></a>6、PESC 原则</h1><p>PESC 原则的好处：提升了 API 的灵活性。</p>
 <h2 id="6-1-PE（Producer-extends）"><a href="#6-1-PE（Producer-extends）" class="headerlink" title="6.1 PE（Producer extends）"></a>6.1 PE（Producer extends）</h2><p>如果你只需要从集合中获得类型 T , 使用 &lt;? extends T&gt; 通配符。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>List<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Number</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Number</span><span class="token operator">></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误， 此处 list 作为一个生产者，后续操作只能消费，不能继续生产</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="6-2-SC（Consumer-super）"><a href="#6-2-SC（Consumer-super）" class="headerlink" title="6.2 SC（Consumer super）"></a>6.2 SC（Consumer super）</h2><p>如果你只需要将类型T放到集合中, 使用 &lt;? super T&gt; 通配符。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>List<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">?</span> <span class="token keyword">super</span> Number<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">super</span> Number<span class="token operator">></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误， 此处 list 作为一个消费者，后续操作只能生产，不能继续消费</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>当然，如果你既想当 <code>生产者</code>，又想当 <code>消费者</code>，那么不使用通配符即可。</p>
 <h1 id="7、类型擦除"><a href="#7、类型擦除" class="headerlink" title="7、类型擦除"></a>7、类型擦除</h1><p>在讲 <code>类型擦除</code> 之前，先来了解一下 <code>泛型</code> 历史。泛型是在 JDK5 才出现的，为了保证旧的 JDK 版本能正常运行，那么只能对 <code>泛型</code> 操刀了，将 <code>泛型</code> 处理成低版本能识别的信息，由此可见，Java/Kotlin 中的 <code>泛型</code> 为 <strong>伪泛型</strong>。</p>
 <p>那么，如何兼容呢？<code>类型擦除</code> 就是在该场景下诞生的。</p>
 <p>擦除规则：</p>
-<p>&gt; 编译器会把泛型类型中所有的类型参数替换为它们的上（下）限，如果没有对类型参数做出限制，那么就替换为 Object 类型。(因此，编译出的字节码仅仅包含了常规类，接口和方法。)</p>
-<p>&gt; 在必要时插入类型转换以保持类型安全。</p>
-<p>&gt; 生成桥方法以在扩展泛型时保持多态性。</p>
+<blockquote>
+<p>编译器会把泛型类型中所有的类型参数替换为它们的上（下）限，如果没有对类型参数做出限制，那么就替换为 Object 类型。(因此，编译出的字节码仅仅包含了常规类，接口和方法。)</p>
+</blockquote>
+<blockquote>
+<p>在必要时插入类型转换以保持类型安全。</p>
+</blockquote>
+<blockquote>
+<p>生成桥方法以在扩展泛型时保持多态性。</p>
+</blockquote>
 <p>字节码如下，有兴趣的话可以研究研究：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 在子类，泛型设置为 Integer，那么 setT 的参数就变为 Integer， 但是基类却不知道这个情况</span>
 <span class="token keyword">public</span> <span class="token function">getT</span><span class="token punctuation">(</span><span class="token punctuation">)</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>Integer<span class="token punctuation">;</span>
@@ -381,19 +397,19 @@ MAXLOCALS <span class="token operator">=</span> <span class="token number">1</sp
 <span class="token comment" spellcheck="true">/**
  * 静态方法如果是泛型方法，那么可以正常使用
  */</span>
-<span class="token keyword">fun</span> &amp;lt<span class="token punctuation">;</span>T&amp;gt<span class="token punctuation">;</span> <span class="token function">test</span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">test</span><span class="token punctuation">(</span>t<span class="token operator">:</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="8-4-基础类型不能作为泛型实例化类型，包装类型可以"><a href="#8-4-基础类型不能作为泛型实例化类型，包装类型可以" class="headerlink" title="8.4 基础类型不能作为泛型实例化类型，包装类型可以"></a>8.4 基础类型不能作为泛型实例化类型，包装类型可以</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> list <span class="token operator">=</span> arrayListOf&amp;lt<span class="token punctuation">;</span>double&amp;gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 错误写法，基础类型不能作为泛型实例化类型</span>
-<span class="token keyword">val</span> list <span class="token operator">=</span> arrayListOf&amp;lt<span class="token punctuation">;</span>Double&amp;gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 正确写法，包装类型可以作为泛型实例化类型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="8-4-基础类型不能作为泛型实例化类型，包装类型可以"><a href="#8-4-基础类型不能作为泛型实例化类型，包装类型可以" class="headerlink" title="8.4 基础类型不能作为泛型实例化类型，包装类型可以"></a>8.4 基础类型不能作为泛型实例化类型，包装类型可以</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> list <span class="token operator">=</span> arrayListOf<span class="token operator">&lt;</span>double<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 错误写法，基础类型不能作为泛型实例化类型</span>
+<span class="token keyword">val</span> list <span class="token operator">=</span> arrayListOf<span class="token operator">&lt;</span>Double<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 正确写法，包装类型可以作为泛型实例化类型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="8-5-泛型不能使用-instanceof-的"><a href="#8-5-泛型不能使用-instanceof-的" class="headerlink" title="8.5 泛型不能使用 instanceof 的"></a>8.5 泛型不能使用 instanceof 的</h2><p>语法层面规定的，究其原因就是泛型擦除机制，在编译器泛型就不存在了，所以 instanceof 无效。</p>
-<h2 id="8-6-两个泛型类相同"><a href="#8-6-两个泛型类相同" class="headerlink" title="8.6 两个泛型类相同"></a>8.6 两个泛型类相同</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> boxInt <span class="token operator">=</span> Box&amp;lt<span class="token punctuation">;</span>Int&amp;gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">val</span> boxString <span class="token operator">=</span> Box&amp;lt<span class="token punctuation">;</span>String&amp;gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="8-6-两个泛型类相同"><a href="#8-6-两个泛型类相同" class="headerlink" title="8.6 两个泛型类相同"></a>8.6 两个泛型类相同</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> boxInt <span class="token operator">=</span> Box<span class="token operator">&lt;</span>Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">val</span> boxString <span class="token operator">=</span> Box<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>boxInt<span class="token punctuation">.</span>class <span class="token operator">==</span> boxString<span class="token punctuation">.</span>class<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>因为泛型擦除机制，在泛型被擦除后，boxInt 与 boxString 的类型是相同的，都是 Box 类。</p>
-<h2 id="8-7-泛型可以声明数组，但是不能初始化泛型数组"><a href="#8-7-泛型可以声明数组，但是不能初始化泛型数组" class="headerlink" title="8.7 泛型可以声明数组，但是不能初始化泛型数组"></a>8.7 泛型可以声明数组，但是不能初始化泛型数组</h2><pre class="line-numbers language-java"><code class="language-java">Box<span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>Double<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> boxs<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 没有异常</span>
-boxs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Box</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>Double<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误，泛型数组不能初始化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="8-8-泛型不能-extends-Exception-Throwable"><a href="#8-8-泛型不能-extends-Exception-Throwable" class="headerlink" title="8.8 泛型不能 extends Exception/Throwable*/"></a>8.8 泛型不能 extends Exception/Throwable*/</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>T <span class="token keyword">extends</span> <span class="token class-name">Throwable</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>T t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h2 id="8-7-泛型可以声明数组，但是不能初始化泛型数组"><a href="#8-7-泛型可以声明数组，但是不能初始化泛型数组" class="headerlink" title="8.7 泛型可以声明数组，但是不能初始化泛型数组"></a>8.7 泛型可以声明数组，但是不能初始化泛型数组</h2><pre class="line-numbers language-java"><code class="language-java">Box<span class="token operator">&lt;</span>Double<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> boxs<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 没有异常</span>
+boxs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Box</span><span class="token operator">&lt;</span>Double<span class="token operator">></span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误，泛型数组不能初始化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="8-8-泛型不能-extends-Exception-Throwable"><a href="#8-8-泛型不能-extends-Exception-Throwable" class="headerlink" title="8.8 泛型不能 extends Exception/Throwable*/"></a>8.8 泛型不能 extends Exception/Throwable*/</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Throwable</span><span class="token operator">></span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>T t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">try</span> <span class="token punctuation">{</span>
 
     <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 错误，不能捕捉异常对象</span>
@@ -402,7 +418,7 @@ boxs <span class="token operator">=</span> <span class="token keyword">new</span
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">// 编写可以捕获异常代码</span>
-<span class="token keyword">public</span> <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>T <span class="token keyword">extends</span> <span class="token class-name">Throwable</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>T t<span class="token punctuation">)</span> <span class="token keyword">throws</span> T <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Throwable</span><span class="token operator">></span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>T t<span class="token punctuation">)</span> <span class="token keyword">throws</span> T <span class="token punctuation">{</span>
     <span class="token keyword">try</span> <span class="token punctuation">{</span>
 
     <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -413,7 +429,7 @@ boxs <span class="token operator">=</span> <span class="token keyword">new</span
  * 错误示例
  * 在 Java 中，数组不支持泛型
  */</span>
-Arrays arrays <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Arrays</span><span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>String<span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Arrays arrays <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Arrays</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="8-10-Java-中-List-与-List-lt-gt-区别在哪"><a href="#8-10-Java-中-List-与-List-lt-gt-区别在哪" class="headerlink" title="8.10 Java 中 List 与 List &lt;?&gt; 区别在哪"></a>8.10 Java 中 List 与 List &lt;?&gt; 区别在哪</h2><p>List：原始类型，不是泛型，所以不涉及到类型检查；</p>
 <p>List &lt;?&gt;: 泛型，涉及到类型检查；</p>
 <h2 id="8-11-Java-中-List-lt-Object-gt-与-List-lt-gt-的区别在哪"><a href="#8-11-Java-中-List-lt-Object-gt-与-List-lt-gt-的区别在哪" class="headerlink" title="8.11 Java 中 List&lt;Object&gt; 与 List&lt;?&gt; 的区别在哪"></a>8.11 Java 中 List&lt;Object&gt; 与 List&lt;?&gt; 的区别在哪</h2><p>List&lt;?&gt;：是一个未知类型的 List，可以把 List&lt;String&gt;、List&lt;Integer&gt; 等赋值给 List&lt;?&gt;；</p>
