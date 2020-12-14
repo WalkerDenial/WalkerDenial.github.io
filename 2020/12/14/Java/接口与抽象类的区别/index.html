@@ -125,26 +125,79 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)">
-  <h2>模板方法模式</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)">
+  <h2>接口与抽象类的区别</h2>
     
-  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-03-02T06:39:00.000Z">
-          2017-03-02
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-14T14:41:00.000Z">
+          2020-12-14
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p><code>模板方法模式（Template Method Pattern）</code>：定义一个操作中算法的框架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法是一种 <strong>行为型模式</strong>。</p>
-<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
-<li>模板方法模式在父类中形式化地定义一个算法，而由它的子类来实现细节的处理，在子类实现详细的处理算法时并不会改变算法中步骤的执行次序；</li>
-<li>模板方法模式是一种代码复用技术，它在类库设计中尤为重要，它提取了类库中的公共行为，将公共行为放在父类中，而通过其子类来实现不同的行为，它鼓励恰当使用继承来实现代码复用；</li>
-<li>模板方法模式可实现一种反向控制结构，通过子类覆盖父类的钩子方法来决定某一特定步骤是否需要执行；</li>
-<li>在模板方法模式中可以通过子类来覆盖父类的基本方法，不同的子类可以提供基本方法的不同实现，更换和增加新的子类很方便，符合单一职责原则和开闭原则；</li>
+  <p>OOP 中，核心是 <code>封装</code>、<code>继承</code> 和 <code>多态</code>，而在 <code>继承</code> 中，常常关联的是 <code>接口</code> 和 <code>抽象类</code>，经常用倒是不假，但是使用语言组织描述一下，有可能就会卡壳，而这些是基础，基础的掌握程度决定了大厦的高度，因此，经常重新梳理一下 <code>封装</code> 中常用的 <code>接口</code> 和 <code>抽象类</code>。</p>
+<p>老规矩，想学什么东西，第一件事就是要了解 <strong>是什么</strong>，如果概念不清，就相当于开车路线不清楚，在路上瞎开，有时候，不一定能开到期望的终点。</p>
+<h1 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h1><h2 id="1-1-接口"><a href="#1-1-接口" class="headerlink" title="1.1 接口"></a>1.1 接口</h2><blockquote>
+<p>接口（英语：Interface），在Java编程语言中是一个抽象类型（Abstract Type），它被用来要求类(Class) 必须实现指定的方法，使不同类的对象可以利用相同的界面进行沟通。接口通常以 interface 来宣告，它仅能包含方法签名（Method Signature）以及常量宣告（变量宣告包含了 static 及 final），一个接口不会包含方法的实现（仅有定义）。</p>
+</blockquote>
+<p><code>接口</code> 的特点：</p>
+<ol>
+<li>接口无法被实例化，但是可以被实现。一个实现接口的类，必须实现接口内所描述的所有方法，否则就必须宣告为抽象类（Abstract Class）</li>
+<li>在Java中，接口类型可用来宣告一个变量，他们可以成为一个空指针，或是被绑定在一个以此接口实现的对象</li>
+<li>其中一个使用接口的优势是，可以利用他们模拟多重继承，类在JAVA中不允许多重继承，所有在JAVA中的类必须而且仅能有一个父类，而java.lang.Object（JAVA类型系统中最顶层的类型）是唯一一个例外</li>
+<li>JAVA的类可以被实现许多个接口，然而一个接口则无法实现其他的接口</li>
 </ol>
-<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
-<li>需要为每一个基本方法的不同实现提供一个子类，如果父类中可变的基本方法太多，将会导致类的个数增加，系统更加庞大，设计也更加抽象，此时，可结合桥接模式来进行设计；</li>
-</ol>
+<p>知道 <code>接口</code> 是什么，以及其特点以后，我们能用 <code>接口</code> 做什么呢？</p>
+<p>开发中，可以使用 <code>接口</code> 用来统一类的共通行为，当不同的类需要进行信息共享时，是不需要特别去创建类间的关系。</p>
+<p>举个 🌰：</p>
+<p>一个人（Human）及一只鹦鹉（Parrot）都会吹口哨（whistle），然而 Human 及 Parrot 不应该为 Whistler 的子类，最好的做法是令他们为 Animal 的子类，而他们可以使用 Whistler 的接口进行沟通。其中 Whistler 就可以是一个 <code>接口</code> ，规约了 whistle 功能。</p>
+<h2 id="1-2-抽象类"><a href="#1-2-抽象类" class="headerlink" title="1.2  抽象类"></a>1.2  抽象类</h2><p>介绍 <code>抽象</code> 类之前，先简单介绍下 <strong>不抽象</strong> 的 <code>类</code>。</p>
+<blockquote>
+<p>类（英语：class）在面向对象编程中是一种面向对象计算机编程语言的构造，是创建对象的蓝图，描述了所创建的对象共同的属性和方法。</p>
+<p>类的更严格的定义是由某种特定的元数据所组成的内聚的包。它描述了一些对象的行为规则，而这些对象就被称为该类的实例。</p>
+</blockquote>
+<p>简单来讲，<code>类</code> 就是对 <code>属性</code> 和 <code>方法</code> 的封装。使用伪码举个 🌰 ：</p>
+<pre><code>class 人 {
+    属性：身高
+    属性：性别
+    属性：肤色
+
+    方法：学习() {
+        输出：比如正在看这篇文章的你正在学习
+    }
+
+    方法：跑步() {
+    }
+
+    // ...
+}</code></pre><p>结合上面简单的伪码，就能简单的理解 <code>类</code> 了，你可以尝试举一反三。</p>
+<p>接下来，进入正题，介绍介绍 <code>抽象类</code>。</p>
+<blockquote>
+<p>抽象类：被定义为永远不会也不能被实例化为具体的对象。它往往用于定义一种抽象上的概念，在类的继承关系中它往往被定义在较上层的位置。</p>
+</blockquote>
+<p>敲黑板！敲黑板！敲黑板！</p>
+<p><strong>永远不会也不能被实例化为具体的对象</strong>，这是重点，圈起来要考。</p>
+<p>既然不能被实例化，那么它的作用是什么呢，请往后看：<strong>定义一种抽象上的概念</strong>，这就是 <code>抽象类</code> 的核心目的。是一个 <strong>概念</strong>，而不是具体的实现。</p>
+<h1 id="2-抽象类-和-接口-对比分析"><a href="#2-抽象类-和-接口-对比分析" class="headerlink" title="2. 抽象类 和 接口 对比分析"></a>2. <code>抽象类</code> 和 <code>接口</code> 对比分析</h1><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">相同点</th>
+<th align="center">不同点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">接口</td>
+<td align="center">1. 对共同的属性进行规约；<br>2. 对共同的方法进行规约；<br>3. 是不完整的类；<br>4. 接口可以看做是一个特殊的抽象类；</td>
+<td align="center">不能包含对共同方法和属性的提供实现</td>
+</tr>
+<tr>
+<td align="center">抽象类</td>
+<td align="center">同上</td>
+<td align="center">可以规约一个共同的方法和属性时提供一个对他们的实现</td>
+</tr>
+</tbody></table>
+<p>最后，再次送上一个 🌰：“水果”可以算作一个抽象类，而“苹果”、“香蕉”则可以作为它的派生类。区别在于，“水果”是个概念，它不会有实例，但是“苹果”、“香蕉”则肯定会有实例。</p>
 
   </div>
   <!--评论块-->
@@ -154,22 +207,19 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2017/03/02/设计模式/访问者模式/" id="post_nav-newer" class="post-nav-content prev-content">
-      <上一篇 < a>
-    
 
 
   <!-- Next Nav -->
     
-  <a href="/2017/03/01/设计模式/策略模式/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2020/12/07/Kotlin/面向对象回顾/" id="post_nav-older" class="post-nav-content next-content">
       下一篇>
   </a>
     
-</上一篇></a></nav>
+</nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-基础概念"><span class="post-toc-text">1. 基础概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-接口"><span class="post-toc-text">1.1 接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-抽象类"><span class="post-toc-text">1.2  抽象类</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-抽象类-和-接口-对比分析"><span class="post-toc-text">2. 抽象类 和 接口 对比分析</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
