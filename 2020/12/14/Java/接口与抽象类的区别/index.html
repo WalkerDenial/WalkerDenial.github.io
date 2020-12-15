@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)">
   <h2>接口与抽象类的区别</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-14T14:41:00.000Z">
@@ -182,21 +182,54 @@
 <thead>
 <tr>
 <th align="center"></th>
-<th align="center">相同点</th>
-<th align="center">不同点</th>
+<th align="center">接口</th>
+<th align="center">抽象类</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">接口</td>
-<td align="center">1. 对共同的属性进行规约；<br>2. 对共同的方法进行规约；<br>3. 是不完整的类；<br>4. 接口可以看做是一个特殊的抽象类；</td>
-<td align="center">不能包含对共同方法和属性的提供实现</td>
+<td align="center">是不完整的类</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
 </tr>
 <tr>
-<td align="center">抽象类</td>
-<td align="center">同上</td>
-<td align="center">可以规约一个共同的方法和属性时提供一个对他们的实现</td>
+<td align="center">定义抽象方法</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">定义非抽象方法</td>
+<td align="center">❎</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">定义不可变属性</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">定义可变属性</td>
+<td align="center">❎</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">单继承</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">多继承</td>
+<td align="center">✅</td>
+<td align="center">❎</td>
 </tr>
 </tbody></table>
+<p>由上面可见，<code>接口</code> 可以看做一种特殊的 <code>抽象类</code>。</p>
+<h1 id="3-抽象类-和-接口-的选择"><a href="#3-抽象类-和-接口-的选择" class="headerlink" title="3. 抽象类 和 接口 的选择"></a>3. <code>抽象类</code> 和 <code>接口</code> 的选择</h1><h2 id="3-1-从-属性-和-方法-进行判断"><a href="#3-1-从-属性-和-方法-进行判断" class="headerlink" title="3.1 从 属性 和 方法 进行判断"></a>3.1 从 <code>属性</code> 和 <code>方法</code> 进行判断</h2><ol>
+<li>属性是可变的</li>
+<li>提供默认方法实现，减少重复代码编写</li>
+</ol>
+<p>如果满足上面任何一个条件，选择 <code>抽象类</code>，反之，选择 <code>接口</code>；</p>
+<h3 id="3-2-从-is-T-判断"><a href="#3-2-从-is-T-判断" class="headerlink" title="3.2 从 is T 判断"></a>3.2 从 is T 判断</h3><p>采用 is 的方式进行判断。举个例子，<strong>苹果</strong> 细分领域还有很多，比如：<strong>红富士</strong>、<strong>烟台苹果</strong> 等等，这里 <strong>红富士</strong> is <strong>苹果</strong>，是一个可具象化的类型，这种场景应选择 <code>抽象类</code>；</p>
+<p>如果只是一个一个概念性的东西，比如 <strong>飞翔</strong>，可以具有该行为能力的物种有很多，并且是可选的，大部分鸟类可以飞，但是还有不会飞的鸟类，那么 <code>飞翔</code> 就是一个可选动作属性，此处使用 <code>接口</code> 适宜；</p>
 <p>最后，再次送上一个 🌰：“水果”可以算作一个抽象类，而“苹果”、“香蕉”则可以作为它的派生类。区别在于，“水果”是个概念，它不会有实例，但是“苹果”、“香蕉”则肯定会有实例。</p>
 
   </div>
@@ -219,7 +252,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-基础概念"><span class="post-toc-text">1. 基础概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-接口"><span class="post-toc-text">1.1 接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-抽象类"><span class="post-toc-text">1.2  抽象类</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-抽象类-和-接口-对比分析"><span class="post-toc-text">2. 抽象类 和 接口 对比分析</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-基础概念"><span class="post-toc-text">1. 基础概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-接口"><span class="post-toc-text">1.1 接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-抽象类"><span class="post-toc-text">1.2  抽象类</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-抽象类-和-接口-对比分析"><span class="post-toc-text">2. 抽象类 和 接口 对比分析</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-抽象类-和-接口-的选择"><span class="post-toc-text">3. 抽象类 和 接口 的选择</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-从-属性-和-方法-进行判断"><span class="post-toc-text">3.1 从 属性 和 方法 进行判断</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-从-is-T-判断"><span class="post-toc-text">3.2 从 is T 判断</span></a></li></ol></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
