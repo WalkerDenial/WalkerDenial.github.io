@@ -1280,11 +1280,11 @@ androidTestImplementation &#39;androidx.test.espresso:espresso-core:3.2.0&#39;</
         
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
         
@@ -1458,11 +1458,11 @@ app --&gt; build.gradle --&gt; dependencies out</code></pre><p>由此可知，�
         
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
         
@@ -3856,11 +3856,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
         
@@ -4572,9 +4572,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 原型 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 原型 </tag>
             
         </tags>
         
@@ -4754,9 +4754,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 单例 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
         
@@ -4870,16 +4870,16 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
 <h4 id="6-合成复用原则（Composite-Reuse-Principle-CRP）"><a href="#6-合成复用原则（Composite-Reuse-Principle-CRP）" class="headerlink" title="6. 合成复用原则（Composite Reuse Principle, CRP）"></a>6. 合成复用原则（Composite Reuse Principle, CRP）</h4><p><code>合成复用原则</code>：尽量使用对象组合，而不是继承来达到复用的目的。</p>
 <h4 id="7-迪米特原则（Law-of-Demeter-LOD）"><a href="#7-迪米特原则（Law-of-Demeter-LOD）" class="headerlink" title="7. 迪米特原则（Law of Demeter, LOD）"></a>7. 迪米特原则（Law of Demeter, LOD）</h4><p><code>迪米特原则</code> 的定义是：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道的最少，类的内部如何实现与调用者或者依赖者只需要知道它需要的方法即可，其它的可一概不用管。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
 <p>简单一点来说，局部变量中，不要引入新的类，错误示例代码如下：</p>
-<pre class="line-numbers language-Java"><code class="language-Java">public class Order {
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
 
-    private Product product = new Product();
-    private Customer customer = new Customer();
+    <span class="token keyword">private</span> Product product <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Customer customer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Customer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    public void book(int productId, int userId) {
-        Worker worker = new Worker(); // 在局部变量中，引入了新的类 Worker，违反了迪米特原则
-    }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">book</span><span class="token punctuation">(</span><span class="token keyword">int</span> productId<span class="token punctuation">,</span> <span class="token keyword">int</span> userId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Worker worker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在局部变量中，引入了新的类 Worker，违反了迪米特原则</span>
+    <span class="token punctuation">}</span>
 
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       
         <categories>
@@ -4930,32 +4930,32 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">单例模式（Singleton Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">单例模式（Singleton Pattern）</a></td>
 <td align="left">✨</td>
 <td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">简单工厂模式（Simple Factory Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">简单工厂模式（Simple Factory Pattern）</a></td>
 <td align="left">✨✨</td>
 <td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td align="left">工厂方法模式（Factory Method Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">工厂方法模式（Factory Method Pattern）</a></td>
 <td align="left">✨✨</td>
 <td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">抽象工厂模式（Abstract Factory Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">抽象工厂模式（Abstract Factory Pattern）</a></td>
 <td align="left">✨✨✨✨</td>
 <td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">原型模式（Prototype Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">原型模式（Prototype Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td align="left">建造者模式（Builder Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">建造者模式（Builder Pattern）</a></td>
 <td align="left">✨✨✨✨</td>
 <td align="left">✨✨</td>
 </tr>
@@ -4969,37 +4969,37 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">适配器模式（Adapter Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">适配器模式（Adapter Pattern）</a></td>
 <td align="left">✨✨</td>
 <td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">桥接模式（Bridge Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/21/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">桥接模式（Bridge Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td align="left">组合模式（Composite Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">组合模式（Composite Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">装饰模式（Decorator Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">装饰模式（Decorator Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td align="left">外观模式（Facade Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">外观模式（Facade Pattern）</a></td>
 <td align="left">✨</td>
 <td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">享元模式（Flyweight Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">享元模式（Flyweight Pattern）</a></td>
 <td align="left">✨✨✨✨</td>
 <td align="left">✨</td>
 </tr>
 <tr>
-<td align="left">代理模式（Proxy Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">代理模式（Proxy Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨✨</td>
 </tr>
@@ -5013,57 +5013,57 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">职责链模式（Chain of Responsibility Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">职责链模式（Chain of Responsibility Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨</td>
 </tr>
 <tr>
-<td align="left">命令模式（Command Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">命令模式（Command Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">解释器模式（Interpreter Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">解释器模式（Interpreter Pattern）</a></td>
 <td align="left">✨✨✨✨✨</td>
 <td align="left">✨</td>
 </tr>
 <tr>
-<td align="left">迭代器模式（Iterator Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">迭代器模式（Iterator Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">中介者模式（Mediator Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/02/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">中介者模式（Mediator Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨</td>
 </tr>
 <tr>
-<td align="left">备忘录模式（Memento Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">备忘录模式（Memento Pattern）</a></td>
 <td align="left">✨✨</td>
 <td align="left">✨✨</td>
 </tr>
 <tr>
-<td align="left">观察者模式（Observer Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">观察者模式（Observer Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">状态模式（State Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">状态模式（State Pattern）</a></td>
 <td align="left">✨✨✨</td>
 <td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td align="left">策略模式（Strategy Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/03/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">策略模式（Strategy Pattern）</a></td>
 <td align="left">✨</td>
 <td align="left">✨✨✨✨</td>
 </tr>
 <tr>
-<td align="left">模板方法模式（Template Method Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/03/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">模板方法模式（Template Method Pattern）</a></td>
 <td align="left">✨✨</td>
 <td align="left">✨✨✨</td>
 </tr>
 <tr>
-<td align="left">访问者模式（Visitor Pattern）</td>
+<td align="left"><a href="https://walkerdenial.com/2017/03/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">访问者模式（Visitor Pattern）</a></td>
 <td align="left">✨✨✨✨</td>
 <td align="left">✨</td>
 </tr>
