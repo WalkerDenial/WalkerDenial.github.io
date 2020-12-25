@@ -3,6 +3,85 @@
   
     
     <entry>
+      <title><![CDATA[代理与动态代理]]></title>
+      <url>/2020/12/25/Java/%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</url>
+      <content type="html"><![CDATA[<p>在前面学习 <code>设计模式</code> 的时候，学习过 <a href="https://walkerdenial.com/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">代理模式</a>，如果没看过的可以点击链接看一下。</p>
+<p>我们经常听到的是 <strong>没有中间商赚差价</strong>，<strong>代理</strong> 其实就相当于是 <strong>中间商</strong>，既然中间商会赚差价（额外增加开销），那么我们为什么要使用 <strong>代理</strong> 呢？</p>
+<p>举个栗子，现在需要购买食物大米，你是直接去超市、小卖部、粮油店等 <strong>中间商</strong> 处买呢？还是直接下乡，去种植户里购买？如果直接购买的话，你不仅要知道你需要的是大米，还需要知道大米产自哪里、哪个季节收获、哪个区域售卖等等一系列问题，会额外增加消费者负担，而这些，其实可以交给 <strong>代理</strong> 搞定就行了，省心、省力。</p>
+<p>场景：购买大米。</p>
+<p>Step. 1 定义食物接口</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IFood</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Step. 2 定义大米</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RiceFood</span> <span class="token keyword">implements</span> <span class="token class-name">IFood</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"buy food for rice"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Step. 3 代理入场</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 食物代理类
+ * 作用：用户只需要通过代理商购买食物，而不需要去农田里购买
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NormalFoodProxy</span> <span class="token keyword">implements</span> <span class="token class-name">IFood</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> IFood food<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">NormalFoodProxy</span><span class="token punctuation">(</span>IFood food<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>food <span class="token operator">=</span> food<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置具体代理商</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 通过委托代理商购买商品
+     * 好处：可以对商品进行加工处理
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">beforeSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        food<span class="token punctuation">.</span><span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">afterSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 售前服务</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">beforeSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"代理商检查食物是否安全"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 售后服务</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">afterSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"代理商提供送货上门服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Step. 4 消费者购买</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 1. 找到代理商并告诉 ta，需要购买大米</span>
+NormalFoodProxy proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">new</span> <span class="token function">NormalFoodProxy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RiceFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 2. 购买大米</span>
+proxy<span class="token punctuation">.</span><span class="token function">buyRice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>就是这么简单，2 步就搞定了，花费一些可以接受的代价，尽快满足需求，何乐而不为呢？</p>
+<p>做过支付的同学应该深有体会，是对接支付宝、微信支付呢，还是分别对接几百家银行方便，相比不用多说了吧。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> 代理 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[接口与抽象类的区别]]></title>
       <url>/2020/12/14/Java/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
       <content type="html"><![CDATA[<p>OOP 中，核心是 <code>封装</code>、<code>继承</code> 和 <code>多态</code>，而在 <code>继承</code> 中，常常关联的是 <code>接口</code> 和 <code>抽象类</code>，经常用倒是不假，但是使用语言组织描述一下，有可能就会卡壳，而这些是基础，基础的掌握程度决定了大厦的高度，因此，经常重新梳理一下 <code>封装</code> 中常用的 <code>接口</code> 和 <code>抽象类</code>。</p>
@@ -4358,9 +4437,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 结构型模式 </tag>
-            
             <tag> 代理 </tag>
+            
+            <tag> 结构型模式 </tag>
             
         </tags>
         
@@ -4391,9 +4470,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 享元 </tag>
-            
             <tag> 结构型模式 </tag>
+            
+            <tag> 享元 </tag>
             
         </tags>
         
