@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-18.png)">
   <h2>代理与动态代理</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-25T15:23:00.000Z">
@@ -138,7 +138,7 @@
   <p>在前面学习 <code>设计模式</code> 的时候，学习过 <a href="https://walkerdenial.com/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">代理模式</a>，如果没看过的可以点击链接看一下。</p>
 <p>我们经常听到的是 <strong>没有中间商赚差价</strong>，<strong>代理</strong> 其实就相当于是 <strong>中间商</strong>，既然中间商会赚差价（额外增加开销），那么我们为什么要使用 <strong>代理</strong> 呢？</p>
 <p>举个栗子，现在需要购买食物大米，你是直接去超市、小卖部、粮油店等 <strong>中间商</strong> 处买呢？还是直接下乡，去种植户里购买？如果直接购买的话，你不仅要知道你需要的是大米，还需要知道大米产自哪里、哪个季节收获、哪个区域售卖等等一系列问题，会额外增加消费者负担，而这些，其实可以交给 <strong>代理</strong> 搞定就行了，省心、省力。</p>
-<p>场景：购买大米。</p>
+<h1 id="1-静态代理"><a href="#1-静态代理" class="headerlink" title="1. 静态代理"></a>1. 静态代理</h1><p>场景：购买大米。</p>
 <p>Step. 1 定义食物接口</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IFood</span> <span class="token punctuation">{</span>
     <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -190,6 +190,132 @@ NormalFoodProxy proxy <span class="token operator">=</span> <span class="token k
 proxy<span class="token punctuation">.</span><span class="token function">buyRice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>就是这么简单，2 步就搞定了，花费一些可以接受的代价，尽快满足需求，何乐而不为呢？</p>
 <p>做过支付的同学应该深有体会，是对接支付宝、微信支付呢，还是分别对接几百家银行方便，相比不用多说了吧。</p>
+<p>优点：</p>
+<ol>
+<li>通过代理可以提供增值服务（扩展更多信息）</li>
+<li>通过代理可以不需要知道具体实现细节</li>
+</ol>
+<p>同时，缺点也很明显：</p>
+<ol>
+<li>增加一个新的操作，需要增加新的接口，违反开闭原则，可扩展性差</li>
+<li>虽然不需要知道具体实现细节，但是需要知道具体实现类，造成类的额外负担</li>
+<li>还是需要知道具体实现类，导致类变得复杂</li>
+</ol>
+<p>如果需要的种类成千上万，那么代理类就会庞大到无法维护，所以 <code>动态代理</code> 应用而生。</p>
+<h1 id="2-动态代理"><a href="#2-动态代理" class="headerlink" title="2. 动态代理"></a>2. 动态代理</h1><p>动态代理的核心是 JDK 提供的 <strong>Proxy</strong> 和 <strong>InvocationHandler</strong>。</p>
+<p>结合 Proxy 注释介绍 Proxy 是什么：</p>
+<blockquote>
+<p>Proxy provides static methods for creating dynamic proxy classes and instances, and it is also the superclass of all dynamic proxy classes created by those methods.</p>
+</blockquote>
+<p>简单翻译一下就是：Proxy 提供静态方法用来创建动态代理类和实例，所有的动态代理类都基于它。</p>
+<p>看来，想要使用动态代理是绕不过 <strong>Proxy</strong> 的了。</p>
+<p>与 <strong>Proxy</strong> 紧密结合的，还要有 ** InvocationHandler** 类。</p>
+<blockquote>
+<p>InvocationHandler is the interface implemented by the invocation handler of a proxy instance.</p>
+<p>Each proxy instance has an associated invocation handler. When a method is invoked on a proxy instance, the method invocation is encoded and dispatched to the invoke method of its invocation handler.</p>
+</blockquote>
+<p>代码也很简单，就只有一个方法。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token keyword">throws</span> Throwable<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>那么，<strong>Proxy</strong> 倒是是如何结合 <strong>InvocationHandler</strong> 的呢，接下来看一下源码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Proxy</span> <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 省略若干代码</span>
+
+    <span class="token comment" spellcheck="true">// parameter types of a proxy class constructor</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> constructorParams <span class="token operator">=</span> <span class="token punctuation">{</span> InvocationHandler<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// a cache of proxy classes</span>
+    <span class="token keyword">protected</span> InvocationHandler h<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Object <span class="token function">newProxyInstance</span><span class="token punctuation">(</span>ClassLoader loader<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> interfaces<span class="token punctuation">,</span> InvocationHandler h<span class="token punctuation">)</span> <span class="token keyword">throws</span> IllegalArgumentException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 省略若干代码</span>
+
+        <span class="token comment" spellcheck="true">// 通过反射的方式将 InvocationHandler 对象 h 传递给实例化的类</span>
+        <span class="token keyword">return</span> cons<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span>h<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后看一下动态生成的类中 <strong>InvocationHandler</strong> 如何工作的。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span>  <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// 调用 InvocationHandler 的 invoke 方法进行处理</span>
+          <span class="token comment" spellcheck="true">// 由此可见，自定义动态代理需要实现 InvocationHandler 的，要不然流程无法走通</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span>h<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> m3<span class="token punctuation">,</span> <span class="token punctuation">(</span>Object<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RuntimeException</span> <span class="token operator">|</span> Error var2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> var2<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> var3<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UndeclaredThrowableException</span><span class="token punctuation">(</span>var3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-动态代理示例"><a href="#3-动态代理示例" class="headerlink" title="3. 动态代理示例"></a>3. 动态代理示例</h3><p>由上面源码分析，自定义动态代理类需要 implements InvocationHandler，先定义一个代理。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 除了 InvocationHandler，不需要实现额外接口</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DynamicProxy</span> <span class="token keyword">implements</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Object factory<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setFactory</span><span class="token punctuation">(</span>Object factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>factory <span class="token operator">=</span> factory<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> Object <span class="token function">getFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> factory<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 通过 Proxy 获得动态代理对象
+     *
+     * @return
+     */</span>
+    <span class="token keyword">public</span> Object <span class="token function">getProxyInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                factory<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 通过动态代理方法进行增强
+     *
+     * @param proxy
+     * @param method
+     * @param args
+     * @return
+     * @throws Throwable
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+        <span class="token function">doBefore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Object result <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>factory<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">doAfter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">doBefore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"提供代理前服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">doAfter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"提供代理后服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 初始化动态代理类</span>
+    DynamicProxy proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DynamicProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 代理 RiceFood（此时动态代理类里面没有实现 IFood 接口）</span>
+    RiceFood riceFood <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RiceFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    proxy<span class="token punctuation">.</span><span class="token function">setFactory</span><span class="token punctuation">(</span>riceFood<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 获取动态代理类实例</span>
+    IFood riceProxy <span class="token operator">=</span> <span class="token punctuation">(</span>IFood<span class="token punctuation">)</span> proxy<span class="token punctuation">.</span><span class="token function">getProxyInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    riceProxy<span class="token punctuation">.</span><span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+输出信息如下：
+
+提供代理前服务
+buy food <span class="token keyword">for</span> rice
+提供代理后服务<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>总结：相较于静态代理，动态代理可扩展性更强，Retrofit 使用的就是 动态代理，Spring 中也大量使用到动态代理，掌握好动态代理，能提升框架搭建的能力。</p>
 
   </div>
   <!--评论块-->
@@ -211,7 +337,7 @@ proxy<span class="token punctuation">.</span><span class="token function">buyRic
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-静态代理"><span class="post-toc-text">1. 静态代理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-动态代理"><span class="post-toc-text">2. 动态代理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-动态代理示例"><span class="post-toc-text">3. 动态代理示例</span></a></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
