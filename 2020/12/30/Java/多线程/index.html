@@ -125,26 +125,33 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)">
-  <h2>模板方法模式</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <h2>多线程</h2>
     
-  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-03-02T06:39:00.000Z">
-          2017-03-02
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-30T15:07:00.000Z">
+          2020-12-30
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p><code>模板方法模式（Template Method Pattern）</code>：定义一个操作中算法的框架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法是一种 <strong>行为型模式</strong>。</p>
-<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
-<li>模板方法模式在父类中形式化地定义一个算法，而由它的子类来实现细节的处理，在子类实现详细的处理算法时并不会改变算法中步骤的执行次序；</li>
-<li>模板方法模式是一种代码复用技术，它在类库设计中尤为重要，它提取了类库中的公共行为，将公共行为放在父类中，而通过其子类来实现不同的行为，它鼓励恰当使用继承来实现代码复用；</li>
-<li>模板方法模式可实现一种反向控制结构，通过子类覆盖父类的钩子方法来决定某一特定步骤是否需要执行；</li>
-<li>在模板方法模式中可以通过子类来覆盖父类的基本方法，不同的子类可以提供基本方法的不同实现，更换和增加新的子类很方便，符合单一职责原则和开闭原则；</li>
-</ol>
-<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
-<li>需要为每一个基本方法的不同实现提供一个子类，如果父类中可变的基本方法太多，将会导致类的个数增加，系统更加庞大，设计也更加抽象，此时，可结合桥接模式来进行设计；</li>
-</ol>
+  <p>在开发过程中，遇到 IO 操作、网络请求等耗时操作，通常都会放到子线程中去处理，如果有多个操作，就涉及到了 <strong>多线程</strong>，现在就来扒一扒 <strong>多线程</strong>，然后基于扒皮之后的结果，进行线程优化。</p>
+<p>在进入正题之前，先介绍一下基础概念，不仅要知其然，还要知其所以然。</p>
+<h1 id="1-基础概念"><a href="#1-基础概念" class="headerlink" title="1. 基础概念"></a>1. 基础概念</h1><blockquote>
+<p><code>时钟频率</code>：时钟频率（又译：时钟频率速度，英语：clock rate），是指同步电路中时钟的基础频率，它以「若干次周期每秒」来度量，量度单位采用 SI 单位赫兹（Hz）。</p>
+<p><code>主频</code>：主频即 CPU 的时钟频率，计算机的操作在时钟信号的控制下分步执行，每个时钟信号周期完成一步操作，时钟频率的高低在很大程度上反映了 CPU 速度的快慢。</p>
+<p><code>外频</code>：是 CPU 外部的工作频率，是由主板提供的基准时钟频率。</p>
+<p><code>FSB 频率</code>：是连接 CPU 和主板芯片组中的北桥芯片的前端总线（Front Side Bus）上的数据传输频率。</p>
+<p>CPU 的主频和外频间存在这样的关系：主频 = 外频 × 倍频。</p>
+<p><code>进程</code>：进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。</p>
+<p><code>线程</code>：线程（英语：thread）是操作系统能够进行运算调度的最小单位。</p>
+</blockquote>
+<p>从理论上来讲，<strong>主频</strong> 越高，CPU 运算能力越强，再根据 <code>摩尔定律</code> 来看，每过 18 个月计算机性能就会翻一倍，那么岂不是只管提升 <strong>主频</strong> 就行了，还有 <strong>多线程</strong> 什么事情啊。</p>
+<p>其实不然，到目前的发展状况来看，由于CPU是在半导体硅片上制造的，在硅片上的元件之间需要导线进行联接，由于在高频状态下要求导线越细越短越好，这样才能减小导线分布电容等杂散干扰以保证 CPU 运算正确。因此制造工艺的限制，是 CPU 主频发展的最大障碍之一。</p>
+<p>举个栗子就明白了。以前的绿皮火车特别特别慢，导致在一个时间周期内，只能跑一次运输，相当于早期的 CPU；后来，有了快车；再后来，有了动车；现在，有了高铁和复兴号。在同一个时间周期内，绿皮火车只能完成一次运输，复兴号却可以完成 4~5 次运输（相当于主频提升），效率大大提升。可是当达到一定的速度后，再想提升速度就很难了。</p>
+<p>那么…科技发展到此停止了吗？</p>
+<p>不存在的，既然 <strong>主频</strong> 提升困难，那多个 CPU 一起运行，不也可以提升性能嘛，多核就涉及到了多线程，也就是今天要讲的主题的由来。</p>
+<p>接上个🌰，铺设多条轨道，同时跑多列车，性能不就提升起来了嘛。</p>
 
   </div>
   <!--评论块-->
@@ -154,22 +161,19 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2017/03/02/设计模式/访问者模式/" id="post_nav-newer" class="post-nav-content prev-content">
-      <上一篇 < a>
-    
 
 
   <!-- Next Nav -->
     
-  <a href="/2017/03/01/设计模式/策略模式/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2020/12/25/Java/代理与动态代理/" id="post_nav-older" class="post-nav-content next-content">
       下一篇>
   </a>
     
-</上一篇></a></nav>
+</nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-基础概念"><span class="post-toc-text">1. 基础概念</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
