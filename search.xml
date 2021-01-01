@@ -15,13 +15,142 @@
 <p>CPU 的主频和外频间存在这样的关系：主频 = 外频 × 倍频。</p>
 <p><code>进程</code>：进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。</p>
 <p><code>线程</code>：线程（英语：thread）是操作系统能够进行运算调度的最小单位。</p>
+<p><code>并发</code>：在同一个时间段内，两个或多个程序执行，有时间上的重叠（宏观上是同时，微观上仍是顺序执行）。</p>
+<p><code>并行</code>：一组程序按独立异步的速度执行，不等于时间上的重叠（同一个时刻发生)。</p>
 </blockquote>
 <p>从理论上来讲，<strong>主频</strong> 越高，CPU 运算能力越强，再根据 <code>摩尔定律</code> 来看，每过 18 个月计算机性能就会翻一倍，那么岂不是只管提升 <strong>主频</strong> 就行了，还有 <strong>多线程</strong> 什么事情啊。</p>
 <p>其实不然，到目前的发展状况来看，由于CPU是在半导体硅片上制造的，在硅片上的元件之间需要导线进行联接，由于在高频状态下要求导线越细越短越好，这样才能减小导线分布电容等杂散干扰以保证 CPU 运算正确。因此制造工艺的限制，是 CPU 主频发展的最大障碍之一。</p>
-<p>举个栗子就明白了。以前的绿皮火车特别特别慢，导致在一个时间周期内，只能跑一次运输，相当于早期的 CPU；后来，有了快车；再后来，有了动车；现在，有了高铁和复兴号。在同一个时间周期内，绿皮火车只能完成一次运输，复兴号却可以完成 4~5 次运输（相当于主频提升），效率大大提升。可是当达到一定的速度后，再想提升速度就很难了。</p>
-<p>那么…科技发展到此停止了吗？</p>
+<p>举个栗子就明白了。以前的绿皮火车特别特别慢，导致在一个时间周期内，只能跑一次运输，相当于早期的 CPU；后来，列车速度不断提升，有了快车；再后来，有了动车；现在，有了高铁和复兴号。在同一个时间周期内，绿皮火车只能完成一次运输，复兴号却可以完成 4~5 次运输（相当于主频提升），效率大大提升。可是当达到一定的速度后，再想提升速度就很难了。</p>
+<p>那么…性能提升发展到此停止了吗？</p>
 <p>不存在的，既然 <strong>主频</strong> 提升困难，那多个 CPU 一起运行，不也可以提升性能嘛，多核就涉及到了多线程，也就是今天要讲的主题的由来。</p>
 <p>接上个🌰，铺设多条轨道，同时跑多列车，性能不就提升起来了嘛。</p>
+<h1 id="2-查看线程信息示例"><a href="#2-查看线程信息示例" class="headerlink" title="2. 查看线程信息示例"></a>2. 查看线程信息示例</h1><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 虚拟机线程管理接口</span>
+    ThreadMXBean threadMXBean <span class="token operator">=</span> ManagementFactory<span class="token punctuation">.</span><span class="token function">getThreadMXBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 获去线程信息</span>
+    ThreadInfo<span class="token punctuation">[</span><span class="token punctuation">]</span> threadInfos <span class="token operator">=</span> threadMXBean<span class="token punctuation">.</span><span class="token function">dumpAllThreads</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 输出线程信息</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>ThreadInfo threadInfo <span class="token operator">:</span> threadInfos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"["</span> <span class="token operator">+</span> threadInfo<span class="token punctuation">.</span><span class="token function">getThreadId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"]"</span> <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> threadInfo<span class="token punctuation">.</span><span class="token function">getThreadName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>调用上述方法后，会输出虚拟机中的线程信息，我电脑上的输出信息如下：</p>
+<pre><code>[4] Signal Dispatcher // 信令分发
+[3] Finalizer // 对象被销毁时调用，但是不一定百分比调用成功
+[2] Reference Handler // 引用处理
+[1] main // 主线程</code></pre><h1 id="3-线程的使用"><a href="#3-线程的使用" class="headerlink" title="3. 线程的使用"></a>3. 线程的使用</h1><p>一般来讲，想使用线程，有 3 种方式：</p>
+<p>方式 1：继承 Thread</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 1. 派生 Thread
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UseThread</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I am extends Thread"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>方式 2：实现 Runnable</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UseRun</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I am implements Runnable"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>方式 3：实现 Callable，有返回值</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UseCall</span> <span class="token keyword">implements</span> <span class="token class-name">Callable</span><span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I am implements Callable"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"Call result"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实际而言，只有第一种才能算称得上 <code>线程</code>，Runnable 和 Callable 表示的是 <code>线程</code> 中的 <strong>任务</strong>，而非线程，还是需要传递到 <code>线程</code> 中，通过 <code>线程</code> 的 start() 方法启动线程。</p>
+<p>测试代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 测试方法
+ * @param args
+ * @throws ExecutionException
+ * @throws InterruptedException
+ *
+ * 实际而言，只有 Thread 才能代表线程；
+ * Runnable、Callable 表示的是任务
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> ExecutionException<span class="token punctuation">,</span> InterruptedException <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * 基于 Thread 派生启动线程
+     */</span>
+    UseThread useThread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UseThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    useThread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 基于 Runnable 启动线程
+     */</span>
+    UseRun useRun <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UseRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span>useRun<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 通过 Callable 可以获取回调信息
+     */</span>
+    UseCall useCall <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UseCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    FutureTask<span class="token operator">&lt;</span>String<span class="token operator">></span> futureTask <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FutureTask</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>useCall<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span>futureTask<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>futureTask<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：start() 方法不一定代表线程立即执行，只是告诉线程目前处于就绪状态，具体什么时间执行是等待系统通知的。</p>
+<h1 id="4-线程的停止"><a href="#4-线程的停止" class="headerlink" title="4. 线程的停止"></a>4. 线程的停止</h1><p>前面讲了开启 <code>线程</code>，那么线程也要能停止才行啊。</p>
+<p>在讲停止之前，先补充一下 <strong>抢占式</strong> 任务基本信息：在调用 stop() 方法之后，线程直接停止，加入线程现在在处理的信息是否重要，可能会造成丢失，比如正在写一个关键文件，已经写入 90%，如果此时停止，文件就会出现异常，导致信息丢失。</p>
+<p>由于 <strong>抢占式任务</strong> 的种种弊端，现已废弃 <strong>stop()</strong> 方法，改为 <strong>协作式任务</strong>。这就温柔的多了，只是告诉 <code>线程</code>，你被打断了，线程可以继续执行任务，也可以择时停止，这样就能避免信息丢失，同时，对开发人员的要求也提高了不少。</p>
+<p>下面，简单介绍一下几个方法，避免混淆；</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * Interrupts this thread.
+ * Unless the current thread is interrupting itself, which is always permitted, the checkAccess method of this thread is invoked, which may cause a SecurityException to be thrown.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">!=</span> Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">checkAccess</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>blockerLock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Interruptible b <span class="token operator">=</span> blocker<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">interrupt0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Just to set the interrupt flag，注意这个官方注释哟，这里其实只是设置了 interrupt 标识符，具体是否停止要看线程本身。</span>
+            b<span class="token punctuation">.</span><span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">interrupt0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 这是一个 native 方法，主要作用是测试线程是否 interrupted，注意传的参数，如果为 true，则会清空当前 interrupted 状态，千万要注意</span>
+<span class="token keyword">private</span> <span class="token keyword">native</span> <span class="token keyword">boolean</span> <span class="token function">isInterrupted</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> ClearInterrupted<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 其实就是调用了上面的 isInterrupted 方法，并表示不清除 interrupted 状态</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isInterrupted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">isInterrupted</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 同上，与  isInterrupted() 的区别就是：会清除 interrupted 状态</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">interrupted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isInterrupted</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="5-线程常用方法"><a href="#5-线程常用方法" class="headerlink" title="5. 线程常用方法"></a>5. 线程常用方法</h1><p>前面介绍了开始、结束，再介绍一下线程的其它常用方法。</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">yield()</td>
+<td align="center">native 方法，线程从运行状态切换为可运行状态，也就是就绪状态</td>
+</tr>
+<tr>
+<td align="center">sleep()</td>
+<td align="center">native 方法，线程会切换为阻塞状态</td>
+</tr>
+<tr>
+<td align="center">join()</td>
+<td align="center">实际上内部调用了 wait 方法，线程切换为阻塞状态</td>
+</tr>
+</tbody></table>
 ]]></content>
       
         <categories>
