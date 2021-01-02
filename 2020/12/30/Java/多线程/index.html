@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-12.png)">
   <h2>多线程</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-30T15:07:00.000Z">
@@ -281,6 +281,259 @@
 <td align="center">实际上内部调用了 wait 方法，线程切换为阻塞状态</td>
 </tr>
 </tbody></table>
+<h1 id="6-线程锁"><a href="#6-线程锁" class="headerlink" title="6. 线程锁"></a>6. 线程锁</h1><p>前面讲到过，进程下的资源对所有子线程共享，那么子线程就可以对资源进行读写，多个线程同时抢夺资源，就会出现数据错乱。先列举一个示例代码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SynTest</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">long</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> Object obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCount</span><span class="token punctuation">(</span><span class="token keyword">long</span> count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> count<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 对 count 进行累加，由于没有加锁，计算的结果会偏小，不正确</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">incCount1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 加方法锁</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">incCount2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 加指定对象锁</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">incCount3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 加当前对象锁</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">incCount4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 开启线程进行操作</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Count</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> SynTest synTest<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">Count</span><span class="token punctuation">(</span>SynTest test<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>synTest <span class="token operator">=</span> test<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                synTest<span class="token punctuation">.</span><span class="token function">incCount1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SynTest synTest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SynTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 启动两个线程对 count 进行操作</span>
+        Count thread1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Count</span><span class="token punctuation">(</span>synTest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Count thread2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Count</span><span class="token punctuation">(</span>synTest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        thread1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        thread2<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>synTest<span class="token punctuation">.</span><span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>加锁除了 synchronized，还有显示锁 Lock。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LockDemo</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Lock lock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReentrantLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        lock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        LockDemo demo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LockDemo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Lock 是进行加锁，但是对于频繁读、少量写的 IO 操作，就会大大降低性能，ReadWriteLock 就是用来处理这类问题，性能至少是 10 倍提升，其实 ReadWriteLock 也很简单，先看看代码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ReadWriteLock</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Returns the lock used for reading.
+     *
+     * @return the lock used for reading
+     */</span>
+    Lock <span class="token function">readLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Returns the lock used for writing.
+     *
+     * @return the lock used for writing
+     */</span>
+    Lock <span class="token function">writeLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>就是由 1 把锁变为 2 把锁，读锁相互之间不干扰，写锁控制所有锁，这样就可能将性能大幅提升。</p>
+<p>先来展示 Synchronized 方式示例代码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UseSyn</span> <span class="token keyword">implements</span> <span class="token class-name">GoodsService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> GoodsInfo goodsInfo<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">UseSyn</span><span class="token punctuation">(</span>GoodsInfo goodsInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>goodsInfo <span class="token operator">=</span> goodsInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> GoodsInfo <span class="token function">getNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>goodsInfo<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">setNum</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            goodsInfo<span class="token punctuation">.</span><span class="token function">changeNumber</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 输出结果为：</span>
+Thread<span class="token operator">-</span><span class="token number">22</span>写商品数据耗时：<span class="token number">2247</span> ms<span class="token operator">--</span><span class="token operator">--</span>
+Thread<span class="token operator">-</span><span class="token number">26</span>读取商品数据耗时：<span class="token number">3051</span> ms
+Thread<span class="token operator">-</span><span class="token number">15</span>读取商品数据耗时：<span class="token number">5433</span> ms
+Thread<span class="token operator">-</span><span class="token number">13</span>读取商品数据耗时：<span class="token number">6265</span> ms
+Thread<span class="token operator">-</span><span class="token number">16</span>读取商品数据耗时：<span class="token number">6594</span> ms
+Thread<span class="token operator">-</span><span class="token number">21</span>读取商品数据耗时：<span class="token number">7508</span> ms
+Thread<span class="token operator">-</span><span class="token number">25</span>读取商品数据耗时：<span class="token number">7780</span> ms
+Thread<span class="token operator">-</span><span class="token number">30</span>读取商品数据耗时：<span class="token number">9123</span> ms
+Thread<span class="token operator">-</span><span class="token number">32</span>读取商品数据耗时：<span class="token number">9894</span> ms
+Thread<span class="token operator">-</span><span class="token number">9</span>读取商品数据耗时：<span class="token number">10379</span> ms
+Thread<span class="token operator">-</span><span class="token number">5</span>读取商品数据耗时：<span class="token number">11117</span> ms
+Thread<span class="token operator">-</span><span class="token number">4</span>读取商品数据耗时：<span class="token number">11264</span> ms
+Thread<span class="token operator">-</span><span class="token number">3</span>读取商品数据耗时：<span class="token number">11828</span> ms
+Thread<span class="token operator">-</span><span class="token number">7</span>读取商品数据耗时：<span class="token number">12215</span> ms
+Thread<span class="token operator">-</span><span class="token number">10</span>读取商品数据耗时：<span class="token number">12448</span> ms
+Thread<span class="token operator">-</span><span class="token number">11</span>写商品数据耗时：<span class="token number">12506</span> ms<span class="token operator">--</span><span class="token operator">--</span>
+Thread<span class="token operator">-</span><span class="token number">24</span>读取商品数据耗时：<span class="token number">12630</span> ms
+Thread<span class="token operator">-</span><span class="token number">0</span>写商品数据耗时：<span class="token number">12819</span> ms<span class="token operator">--</span><span class="token operator">--</span>
+Thread<span class="token operator">-</span><span class="token number">14</span>读取商品数据耗时：<span class="token number">13211</span> ms
+Thread<span class="token operator">-</span><span class="token number">17</span>读取商品数据耗时：<span class="token number">13617</span> ms
+Thread<span class="token operator">-</span><span class="token number">18</span>读取商品数据耗时：<span class="token number">14142</span> ms
+Thread<span class="token operator">-</span><span class="token number">23</span>读取商品数据耗时：<span class="token number">15084</span> ms
+Thread<span class="token operator">-</span><span class="token number">27</span>读取商品数据耗时：<span class="token number">15282</span> ms
+Thread<span class="token operator">-</span><span class="token number">29</span>读取商品数据耗时：<span class="token number">15700</span> ms
+Thread<span class="token operator">-</span><span class="token number">1</span>读取商品数据耗时：<span class="token number">16594</span> ms
+Thread<span class="token operator">-</span><span class="token number">8</span>读取商品数据耗时：<span class="token number">16966</span> ms
+Thread<span class="token operator">-</span><span class="token number">6</span>读取商品数据耗时：<span class="token number">17235</span> ms
+Thread<span class="token operator">-</span><span class="token number">31</span>读取商品数据耗时：<span class="token number">17336</span> ms
+Thread<span class="token operator">-</span><span class="token number">28</span>读取商品数据耗时：<span class="token number">17639</span> ms
+Thread<span class="token operator">-</span><span class="token number">20</span>读取商品数据耗时：<span class="token number">17919</span> ms
+Thread<span class="token operator">-</span><span class="token number">19</span>读取商品数据耗时：<span class="token number">18386</span> ms
+Thread<span class="token operator">-</span><span class="token number">2</span>读取商品数据耗时：<span class="token number">18631</span> ms
+Thread<span class="token operator">-</span><span class="token number">12</span>读取商品数据耗时：<span class="token number">18687</span> ms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接下来展示 ReadWriteLock 方式代码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UseRwLock</span> <span class="token keyword">implements</span> <span class="token class-name">GoodsService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> GoodsInfo goodsInfo<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ReadWriteLock lock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReentrantReadWriteLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> Lock readLock <span class="token operator">=</span> lock<span class="token punctuation">.</span><span class="token function">readLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> Lock writeLock <span class="token operator">=</span> lock<span class="token punctuation">.</span><span class="token function">writeLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">UseRwLock</span><span class="token punctuation">(</span>GoodsInfo goodsInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>goodsInfo <span class="token operator">=</span> goodsInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> GoodsInfo <span class="token function">getNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        readLock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> goodsInfo<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            readLock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNum</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        writeLock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            goodsInfo<span class="token punctuation">.</span><span class="token function">changeNumber</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            writeLock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 输出结果为：</span>
+Thread<span class="token operator">-</span><span class="token number">11</span>写商品数据耗时：<span class="token number">219</span> ms<span class="token operator">--</span><span class="token operator">--</span>
+Thread<span class="token operator">-</span><span class="token number">22</span>写商品数据耗时：<span class="token number">219</span> ms<span class="token operator">--</span><span class="token operator">--</span>
+Thread<span class="token operator">-</span><span class="token number">0</span>写商品数据耗时：<span class="token number">274</span> ms<span class="token operator">--</span><span class="token operator">--</span>
+Thread<span class="token operator">-</span><span class="token number">7</span>读取商品数据耗时：<span class="token number">780</span> ms
+Thread<span class="token operator">-</span><span class="token number">1</span>读取商品数据耗时：<span class="token number">781</span> ms
+Thread<span class="token operator">-</span><span class="token number">4</span>读取商品数据耗时：<span class="token number">780</span> ms
+Thread<span class="token operator">-</span><span class="token number">6</span>读取商品数据耗时：<span class="token number">780</span> ms
+Thread<span class="token operator">-</span><span class="token number">9</span>读取商品数据耗时：<span class="token number">781</span> ms
+Thread<span class="token operator">-</span><span class="token number">3</span>读取商品数据耗时：<span class="token number">782</span> ms
+Thread<span class="token operator">-</span><span class="token number">5</span>读取商品数据耗时：<span class="token number">786</span> ms
+Thread<span class="token operator">-</span><span class="token number">2</span>读取商品数据耗时：<span class="token number">787</span> ms
+Thread<span class="token operator">-</span><span class="token number">18</span>读取商品数据耗时：<span class="token number">780</span> ms
+Thread<span class="token operator">-</span><span class="token number">15</span>读取商品数据耗时：<span class="token number">780</span> ms
+Thread<span class="token operator">-</span><span class="token number">12</span>读取商品数据耗时：<span class="token number">780</span> ms
+Thread<span class="token operator">-</span><span class="token number">8</span>读取商品数据耗时：<span class="token number">786</span> ms
+Thread<span class="token operator">-</span><span class="token number">10</span>读取商品数据耗时：<span class="token number">786</span> ms
+Thread<span class="token operator">-</span><span class="token number">17</span>读取商品数据耗时：<span class="token number">780</span> ms
+Thread<span class="token operator">-</span><span class="token number">21</span>读取商品数据耗时：<span class="token number">785</span> ms
+Thread<span class="token operator">-</span><span class="token number">13</span>读取商品数据耗时：<span class="token number">785</span> ms
+Thread<span class="token operator">-</span><span class="token number">14</span>读取商品数据耗时：<span class="token number">785</span> ms
+Thread<span class="token operator">-</span><span class="token number">20</span>读取商品数据耗时：<span class="token number">785</span> ms
+Thread<span class="token operator">-</span><span class="token number">19</span>读取商品数据耗时：<span class="token number">785</span> ms
+Thread<span class="token operator">-</span><span class="token number">16</span>读取商品数据耗时：<span class="token number">785</span> ms
+Thread<span class="token operator">-</span><span class="token number">28</span>读取商品数据耗时：<span class="token number">784</span> ms
+Thread<span class="token operator">-</span><span class="token number">31</span>读取商品数据耗时：<span class="token number">783</span> ms
+Thread<span class="token operator">-</span><span class="token number">30</span>读取商品数据耗时：<span class="token number">784</span> ms
+Thread<span class="token operator">-</span><span class="token number">27</span>读取商品数据耗时：<span class="token number">784</span> ms
+Thread<span class="token operator">-</span><span class="token number">29</span>读取商品数据耗时：<span class="token number">784</span> ms
+Thread<span class="token operator">-</span><span class="token number">24</span>读取商品数据耗时：<span class="token number">784</span> ms
+Thread<span class="token operator">-</span><span class="token number">23</span>读取商品数据耗时：<span class="token number">784</span> ms
+Thread<span class="token operator">-</span><span class="token number">25</span>读取商品数据耗时：<span class="token number">784</span> ms
+Thread<span class="token operator">-</span><span class="token number">26</span>读取商品数据耗时：<span class="token number">790</span> ms
+Thread<span class="token operator">-</span><span class="token number">32</span>读取商品数据耗时：<span class="token number">789</span> ms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>做同样的时，耗时由 18687 ms 降低为 790 ms，由此可见性能提升之巨大，小伙伴们在加锁的时候，要注意选择合适的锁，避免性能浪费。</p>
 
   </div>
   <!--评论块-->
@@ -302,7 +555,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-基础概念"><span class="post-toc-text">1. 基础概念</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-查看线程信息示例"><span class="post-toc-text">2. 查看线程信息示例</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-线程的使用"><span class="post-toc-text">3. 线程的使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-线程的停止"><span class="post-toc-text">4. 线程的停止</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-线程常用方法"><span class="post-toc-text">5. 线程常用方法</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-基础概念"><span class="post-toc-text">1. 基础概念</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-查看线程信息示例"><span class="post-toc-text">2. 查看线程信息示例</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-线程的使用"><span class="post-toc-text">3. 线程的使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-线程的停止"><span class="post-toc-text">4. 线程的停止</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-线程常用方法"><span class="post-toc-text">5. 线程常用方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-线程锁"><span class="post-toc-text">6. 线程锁</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
