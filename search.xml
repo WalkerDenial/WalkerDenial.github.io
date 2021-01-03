@@ -404,6 +404,61 @@ Thread<span class="token operator">-</span><span class="token number">25</span>�
 Thread<span class="token operator">-</span><span class="token number">26</span>读取商品数据耗时：<span class="token number">790</span> ms
 Thread<span class="token operator">-</span><span class="token number">32</span>读取商品数据耗时：<span class="token number">789</span> ms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>做同样的时，耗时由 18687 ms 降低为 790 ms，由此可见性能提升之巨大，小伙伴们在加锁的时候，要注意选择合适的锁，避免性能浪费。</p>
+<h1 id="7-线程变量"><a href="#7-线程变量" class="headerlink" title="7. 线程变量"></a>7. 线程变量</h1><p>锁保证了操作资源的原子性，那么在一个类中，希望每个线程拿到的值都是一样的初始值，而不是被别的线程改变过后的值，如何解决呢？例子如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 期望每个线程拿到这个值都是指定值，然后进行处理，而不被其它线程所干扰</span>
+<span class="token keyword">static</span> Integer count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 启动 3 个线程</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">startThreadArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Thread<span class="token punctuation">[</span><span class="token punctuation">]</span> runs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> runs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        runs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TestTask</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> runs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        runs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述代码中，是无法满足要求的，如何处理呢？</p>
+<p>在翻阅了源码后发现，有一个 <strong>ThreadLocal</strong>，即 <code>线程变量</code>，是一个以 <strong>ThreadLocal</strong> 对象为键、任意对象为值的存储结构。这个结构被附带在线程上，也就是说一个线程可以根据一个 <strong>ThreadLocal</strong> 对象查询到绑定在这个线程上的一个值，用来实现变量在线程之间的隔离。</p>
+<p>修改后如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 改动后，即可满足要求</span>
+<span class="token keyword">static</span> ThreadLocal<span class="token operator">&lt;</span>Integer<span class="token operator">></span> count <span class="token operator">=</span> ThreadLocal<span class="token punctuation">.</span><span class="token function">withInitial</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="8-线程池"><a href="#8-线程池" class="headerlink" title="8. 线程池"></a>8. 线程池</h1><p><code>线程池</code> 是一种多线程处理形式，处理过程中将任务添加到队列，然后在创建线程后自动启动这些任务。</p>
+<p>简单一点来说，由于 <em>创建线程</em> 和 <em>销毁线程</em> 是比较消耗资源的，对于执行任务内容较少且数量较多时，效率偏低，如果将资源提前创建并缓存到资源池中，每次使用的时候即拿即用，效率会得到大幅提升，并且也能有效的管理线程资源。</p>
+<p>线程池优点：</p>
+<ol>
+<li>降低资源消耗；</li>
+<li>提高响应速度；</li>
+<li>提高线程的可管理性；</li>
+</ol>
+<p>在 Java 中，系统提供的有线程池：ThreadPoolExecutor，通过构造函数，我们知道线程池几个核心的控制数据。</p>
+<blockquote>
+<p>corePoolSize: 线程池中的核心线程数量，如果 <code>线程池</code> 中的线程数量大于等于这个数值后，继续提交的任务会被保存到阻塞队列中，等待被执行；</p>
+<p>maximumPoolSize: <strong>线程池</strong> 中允许的最大线程数，如果当前阻塞队列满了，并且继续提交任务，则创建新的线程执行任务，但是这个数量要小于 maximumPoolSize；</p>
+<p>keepAliveTime: 非核心线程空闲时存活时间；</p>
+<p>unit: keepAliveTime 的时间单位；</p>
+<p>workQueue: 必须是 BlockQuene 阻塞队列，当线程池中的线程数超过 corePoolSize 时，线程会进入阻塞队列进行阻塞等待。</p>
+<p>threadFactory: 创建线程的工厂，可以自定义增加更多控制、资源信息；</p>
+<p>handler: 饱和策略，当阻塞队列满了，且没有空闲的工作线程，如果继续提交任务，必须采用一种策略处理该任务，线程池提供了 4 种策略:</p>
+<ol>
+<li><p>AbortPolicy: 直接抛出异常，默认策略；</p>
+</li>
+<li><p>CallerRunsPolicy：用调用者所在的线程执行任务；</p>
+</li>
+<li><p>DiscardOldestPolicy：丢弃阻塞队列中靠最前的任务，并执行当前任务；</p>
+</li>
+<li><p>DiscardPolicy: 直接丢弃任务；</p>
+</li>
+</ol>
+<p>补充：除了这 4 种策略外，还可以自定义策略，哪怕不新增处理方案，可以记录到文件中，待合适时机从文件中读取任务继续执行，或者记录日志，留备以后分析使用。</p>
+</blockquote>
+<p>线程池清楚了，那么如何合理配置线程池呢？最终要的是分析任务特性，可以从以下几个方面进行分析：</p>
+<ol>
+<li>任务的性质：CPU 密集型、IO 密集型和混合任务型；</li>
+<li>任务的优先级：高、中和低；</li>
+<li>任务的执行时间：长、中和短；</li>
+<li>任务的依赖性：是否依赖其他的系统资源，如数据库连接；</li>
+</ol>
 ]]></content>
       
         <categories>
@@ -1995,11 +2050,11 @@ androidTestImplementation &#39;androidx.test.espresso:espresso-core:3.2.0&#39;</
         
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
         
@@ -2173,11 +2228,11 @@ app --&gt; build.gradle --&gt; dependencies out</code></pre><p>由此可知，�
         
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
         
@@ -4571,11 +4626,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
         
