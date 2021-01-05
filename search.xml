@@ -3,6 +3,171 @@
   
     
     <entry>
+      <title><![CDATA[从字节码分析 i++ 与 ++i 的区别]]></title>
+      <url>/2021/01/04/Java/%E4%BB%8E%E5%AD%97%E8%8A%82%E7%A0%81%E5%88%86%E6%9E%90%20i++%20%E4%B8%8E%20++i%20%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <content type="html"><![CDATA[<p>初学编程时，i++ 与 ++i 经常搞错，哪怕是在工作多年后，也只是知道 ++i 是先自增运算赋值再进行操作，i++ 是先进行操作，然后再进行自增运算赋值，只能说是知其然，却不知其所以然，作为研究 JVM 第一站，先剖析一下这个经典的问题。</p>
+<p>首先，先列出今天的测试代码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 从字节码层面分析 i++ 和 ++i 为什么不同
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AnalyseBytecode</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> num <span class="token operator">=</span> i<span class="token operator">++</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"num: "</span> <span class="token operator">+</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        num <span class="token operator">=</span> <span class="token operator">++</span>i<span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"num: "</span> <span class="token operator">+</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>代码很简单，就不过多介绍了。</p>
+<p>其次，执行 <code>javac -g:vars 具体文件路径/AnalyseBytecode .java</code> 将 java 文件编译成 class 文件。</p>
+<p><strong>注意，<span style="color:red">-g:vars</span> 一定要加上，要不然 LocalVariableTable 不会出现。</strong></p>
+<p>然后，通过执行 <code>javap -v 文件路径/AnalyseBytecode.class &gt; 指定路径/AnalyseBytecode.txt</code> 实现反汇编，就可以进入正题了。</p>
+<pre class="line-numbers language-java"><code class="language-java">Classfile <span class="token operator">~</span><span class="token operator">/</span>AnalyseBytecode<span class="token punctuation">.</span><span class="token keyword">class</span>
+  <span class="token class-name">Last</span> modified <span class="token number">2021</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">;</span> size <span class="token number">752</span> bytes
+  MD5 checksum 06e2e2dd5a25824e2d4033df5539f693
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">com<span class="token punctuation">.</span>wd<span class="token punctuation">.</span>clazz<span class="token punctuation">.</span>AnalyseBytecode</span>
+  minor version<span class="token operator">:</span> <span class="token number">0</span>
+  major version<span class="token operator">:</span> <span class="token number">52</span>
+  flags<span class="token operator">:</span> ACC_PUBLIC<span class="token punctuation">,</span> ACC_SUPER
+Constant pool<span class="token operator">:</span>
+   #<span class="token number">1</span> <span class="token operator">=</span> Methodref          #<span class="token number">11</span><span class="token punctuation">.</span>#<span class="token number">25</span>        <span class="token comment" spellcheck="true">// java/lang/Object."&lt;init>":()V</span>
+   #<span class="token number">2</span> <span class="token operator">=</span> Fieldref           #<span class="token number">26</span><span class="token punctuation">.</span>#<span class="token number">27</span>        <span class="token comment" spellcheck="true">// java/lang/System.out:Ljava/io/PrintStream;</span>
+   #<span class="token number">3</span> <span class="token operator">=</span> Class              #<span class="token number">28</span>            <span class="token comment" spellcheck="true">// java/lang/StringBuilder</span>
+   #<span class="token number">4</span> <span class="token operator">=</span> Methodref          #<span class="token number">3</span><span class="token punctuation">.</span>#<span class="token number">25</span>         <span class="token comment" spellcheck="true">// java/lang/StringBuilder."&lt;init>":()V</span>
+   #<span class="token number">5</span> <span class="token operator">=</span> String             #<span class="token number">29</span>            <span class="token comment" spellcheck="true">// num:</span>
+   #<span class="token number">6</span> <span class="token operator">=</span> Methodref          #<span class="token number">3</span><span class="token punctuation">.</span>#<span class="token number">30</span>         <span class="token comment" spellcheck="true">// java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+   #<span class="token number">7</span> <span class="token operator">=</span> Methodref          #<span class="token number">3</span><span class="token punctuation">.</span>#<span class="token number">31</span>         <span class="token comment" spellcheck="true">// java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;</span>
+   #<span class="token number">8</span> <span class="token operator">=</span> Methodref          #<span class="token number">3</span><span class="token punctuation">.</span>#<span class="token number">32</span>         <span class="token comment" spellcheck="true">// java/lang/StringBuilder.toString:()Ljava/lang/String;</span>
+   #<span class="token number">9</span> <span class="token operator">=</span> Methodref          #<span class="token number">33</span><span class="token punctuation">.</span>#<span class="token number">34</span>        <span class="token comment" spellcheck="true">// java/io/PrintStream.println:(Ljava/lang/String;)V</span>
+  #<span class="token number">10</span> <span class="token operator">=</span> Class              #<span class="token number">35</span>            <span class="token comment" spellcheck="true">// com/wd/clazz/AnalyseBytecode</span>
+  #<span class="token number">11</span> <span class="token operator">=</span> Class              #<span class="token number">36</span>            <span class="token comment" spellcheck="true">// java/lang/Object</span>
+  #<span class="token number">12</span> <span class="token operator">=</span> Utf8               <span class="token operator">&lt;</span>init<span class="token operator">></span>
+  #<span class="token number">13</span> <span class="token operator">=</span> <span class="token function">Utf8</span>               <span class="token punctuation">(</span><span class="token punctuation">)</span>V
+  #<span class="token number">14</span> <span class="token operator">=</span> Utf8               Code
+  #<span class="token number">15</span> <span class="token operator">=</span> Utf8               LocalVariableTable
+  #<span class="token number">16</span> <span class="token operator">=</span> Utf8               <span class="token keyword">this</span>
+  #<span class="token number">17</span> <span class="token operator">=</span> Utf8               Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>clazz<span class="token operator">/</span>AnalyseBytecode<span class="token punctuation">;</span>
+  #<span class="token number">18</span> <span class="token operator">=</span> Utf8               main
+  #<span class="token number">19</span> <span class="token operator">=</span> <span class="token function">Utf8</span>               <span class="token punctuation">(</span><span class="token punctuation">[</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>V
+  #<span class="token number">20</span> <span class="token operator">=</span> Utf8               args
+  #<span class="token number">21</span> <span class="token operator">=</span> Utf8               <span class="token punctuation">[</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span>
+  #<span class="token number">22</span> <span class="token operator">=</span> Utf8               i
+  #<span class="token number">23</span> <span class="token operator">=</span> Utf8               I
+  #<span class="token number">24</span> <span class="token operator">=</span> Utf8               num
+  #<span class="token number">25</span> <span class="token operator">=</span> NameAndType        #<span class="token number">12</span><span class="token operator">:</span>#<span class="token number">13</span>        <span class="token comment" spellcheck="true">// "&lt;init>":()V</span>
+  #<span class="token number">26</span> <span class="token operator">=</span> Class              #<span class="token number">37</span>            <span class="token comment" spellcheck="true">// java/lang/System</span>
+  #<span class="token number">27</span> <span class="token operator">=</span> NameAndType        #<span class="token number">38</span><span class="token operator">:</span>#<span class="token number">39</span>        <span class="token comment" spellcheck="true">// out:Ljava/io/PrintStream;</span>
+  #<span class="token number">28</span> <span class="token operator">=</span> Utf8               java<span class="token operator">/</span>lang<span class="token operator">/</span>StringBuilder
+  #<span class="token number">29</span> <span class="token operator">=</span> Utf8               num<span class="token operator">:</span>
+  #<span class="token number">30</span> <span class="token operator">=</span> NameAndType        #<span class="token number">40</span><span class="token operator">:</span>#<span class="token number">41</span>        <span class="token comment" spellcheck="true">// append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+  #<span class="token number">31</span> <span class="token operator">=</span> NameAndType        #<span class="token number">40</span><span class="token operator">:</span>#<span class="token number">42</span>        <span class="token comment" spellcheck="true">// append:(I)Ljava/lang/StringBuilder;</span>
+  #<span class="token number">32</span> <span class="token operator">=</span> NameAndType        #<span class="token number">43</span><span class="token operator">:</span>#<span class="token number">44</span>        <span class="token comment" spellcheck="true">// toString:()Ljava/lang/String;</span>
+  #<span class="token number">33</span> <span class="token operator">=</span> Class              #<span class="token number">45</span>            <span class="token comment" spellcheck="true">// java/io/PrintStream</span>
+  #<span class="token number">34</span> <span class="token operator">=</span> NameAndType        #<span class="token number">46</span><span class="token operator">:</span>#<span class="token number">47</span>        <span class="token comment" spellcheck="true">// println:(Ljava/lang/String;)V</span>
+  #<span class="token number">35</span> <span class="token operator">=</span> Utf8               com<span class="token operator">/</span>wd<span class="token operator">/</span>clazz<span class="token operator">/</span>AnalyseBytecode
+  #<span class="token number">36</span> <span class="token operator">=</span> Utf8               java<span class="token operator">/</span>lang<span class="token operator">/</span>Object
+  #<span class="token number">37</span> <span class="token operator">=</span> Utf8               java<span class="token operator">/</span>lang<span class="token operator">/</span>System
+  #<span class="token number">38</span> <span class="token operator">=</span> Utf8               out
+  #<span class="token number">39</span> <span class="token operator">=</span> Utf8               Ljava<span class="token operator">/</span>io<span class="token operator">/</span>PrintStream<span class="token punctuation">;</span>
+  #<span class="token number">40</span> <span class="token operator">=</span> Utf8               append
+  #<span class="token number">41</span> <span class="token operator">=</span> <span class="token function">Utf8</span>               <span class="token punctuation">(</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>StringBuilder<span class="token punctuation">;</span>
+  #<span class="token number">42</span> <span class="token operator">=</span> <span class="token function">Utf8</span>               <span class="token punctuation">(</span>I<span class="token punctuation">)</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>StringBuilder<span class="token punctuation">;</span>
+  #<span class="token number">43</span> <span class="token operator">=</span> Utf8               toString
+  #<span class="token number">44</span> <span class="token operator">=</span> <span class="token function">Utf8</span>               <span class="token punctuation">(</span><span class="token punctuation">)</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span>
+  #<span class="token number">45</span> <span class="token operator">=</span> Utf8               java<span class="token operator">/</span>io<span class="token operator">/</span>PrintStream
+  #<span class="token number">46</span> <span class="token operator">=</span> Utf8               println
+  #<span class="token number">47</span> <span class="token operator">=</span> <span class="token function">Utf8</span>               <span class="token punctuation">(</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>V
+<span class="token punctuation">{</span>
+  <span class="token keyword">public</span> com<span class="token punctuation">.</span>wd<span class="token punctuation">.</span>clazz<span class="token punctuation">.</span><span class="token function">AnalyseBytecode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    descriptor<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>V
+    flags<span class="token operator">:</span> ACC_PUBLIC
+    Code<span class="token operator">:</span>
+      stack<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> locals<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> args_size<span class="token operator">=</span><span class="token number">1</span>
+         <span class="token number">0</span><span class="token operator">:</span> aload_0
+         <span class="token number">1</span><span class="token operator">:</span> invokespecial #<span class="token number">1</span>                  <span class="token comment" spellcheck="true">// Method java/lang/Object."&lt;init>":()V</span>
+         <span class="token number">4</span><span class="token operator">:</span> <span class="token keyword">return</span>
+      LocalVariableTable<span class="token operator">:</span>
+        Start  Length  Slot  Name   Signature
+            <span class="token number">0</span>       <span class="token number">5</span>     <span class="token number">0</span>  <span class="token keyword">this</span>   Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>clazz<span class="token operator">/</span>AnalyseBytecode<span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    descriptor<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>V
+    flags<span class="token operator">:</span> ACC_PUBLIC<span class="token punctuation">,</span> ACC_STATIC
+    Code<span class="token operator">:</span>
+      stack<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> locals<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> args_size<span class="token operator">=</span><span class="token number">1</span>
+         <span class="token number">0</span><span class="token operator">:</span> iconst_0
+         <span class="token number">1</span><span class="token operator">:</span> istore_1
+         <span class="token number">2</span><span class="token operator">:</span> iload_1
+         <span class="token number">3</span><span class="token operator">:</span> iinc          <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span>
+         <span class="token number">6</span><span class="token operator">:</span> istore_2
+         <span class="token number">7</span><span class="token operator">:</span> getstatic     #<span class="token number">2</span>                  <span class="token comment" spellcheck="true">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+        <span class="token number">10</span><span class="token operator">:</span> <span class="token keyword">new</span>           #<span class="token number">3</span>                  <span class="token comment" spellcheck="true">// class java/lang/StringBuilder</span>
+        <span class="token number">13</span><span class="token operator">:</span> dup
+        <span class="token number">14</span><span class="token operator">:</span> invokespecial #<span class="token number">4</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder."&lt;init>":()V</span>
+        <span class="token number">17</span><span class="token operator">:</span> ldc           #<span class="token number">5</span>                  <span class="token comment" spellcheck="true">// String num:</span>
+        <span class="token number">19</span><span class="token operator">:</span> invokevirtual #<span class="token number">6</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+        <span class="token number">22</span><span class="token operator">:</span> iload_2
+        <span class="token number">23</span><span class="token operator">:</span> invokevirtual #<span class="token number">7</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;</span>
+        <span class="token number">26</span><span class="token operator">:</span> invokevirtual #<span class="token number">8</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span>
+        <span class="token number">29</span><span class="token operator">:</span> invokevirtual #<span class="token number">9</span>                  <span class="token comment" spellcheck="true">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span>
+        <span class="token number">32</span><span class="token operator">:</span> iinc          <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span>
+        <span class="token number">35</span><span class="token operator">:</span> iload_1
+        <span class="token number">36</span><span class="token operator">:</span> istore_2
+        <span class="token number">37</span><span class="token operator">:</span> getstatic     #<span class="token number">2</span>                  <span class="token comment" spellcheck="true">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+        <span class="token number">40</span><span class="token operator">:</span> <span class="token keyword">new</span>           #<span class="token number">3</span>                  <span class="token comment" spellcheck="true">// class java/lang/StringBuilder</span>
+        <span class="token number">43</span><span class="token operator">:</span> dup
+        <span class="token number">44</span><span class="token operator">:</span> invokespecial #<span class="token number">4</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder."&lt;init>":()V</span>
+        <span class="token number">47</span><span class="token operator">:</span> ldc           #<span class="token number">5</span>                  <span class="token comment" spellcheck="true">// String num:</span>
+        <span class="token number">49</span><span class="token operator">:</span> invokevirtual #<span class="token number">6</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+        <span class="token number">52</span><span class="token operator">:</span> iload_2
+        <span class="token number">53</span><span class="token operator">:</span> invokevirtual #<span class="token number">7</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;</span>
+        <span class="token number">56</span><span class="token operator">:</span> invokevirtual #<span class="token number">8</span>                  <span class="token comment" spellcheck="true">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span>
+        <span class="token number">59</span><span class="token operator">:</span> invokevirtual #<span class="token number">9</span>                  <span class="token comment" spellcheck="true">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span>
+        <span class="token number">62</span><span class="token operator">:</span> <span class="token keyword">return</span>
+      LocalVariableTable<span class="token operator">:</span>
+        Start  Length  Slot  Name   Signature
+            <span class="token number">0</span>      <span class="token number">63</span>     <span class="token number">0</span>  args   <span class="token punctuation">[</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span>
+            <span class="token number">2</span>      <span class="token number">61</span>     <span class="token number">1</span>     i   I
+            <span class="token number">7</span>      <span class="token number">56</span>     <span class="token number">2</span>   num   I
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>先看第一部分关键代码：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token number">0</span><span class="token operator">:</span> iconst_0 <span class="token comment" spellcheck="true">// 将 0 压入栈中</span>
+<span class="token number">1</span><span class="token operator">:</span> istore_1 <span class="token comment" spellcheck="true">// 将栈顶的值放入变量 1 中并出栈，从 LocalVariableTable 中查询，变量 1 为 i</span>
+<span class="token number">2</span><span class="token operator">:</span> iload_1 <span class="token comment" spellcheck="true">// 将变量 1 放入栈顶</span>
+<span class="token number">3</span><span class="token operator">:</span> iinc          <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token comment" spellcheck="true">// 将变量 1 的值加 1</span>
+<span class="token number">6</span><span class="token operator">:</span> istore_2 <span class="token comment" spellcheck="true">// 将栈顶的值放入变量 2 中并出栈，从 LocalVariableTable 中查询，变量 2 为 num</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>敲黑板，关键点解析，<strong>3: iinc</strong> 这一步虽然将 i 值递增了，但是并没有将递增后的结果重新入栈，所以此时栈顶的值还是旧值 0，<strong>6: istore_2</strong> 又将栈顶的值赋值给变量 2 ，此时的值还是变量 1 未被重新赋值时的数值，所以此时 num 为 0。</p>
+<p>再看第二部分：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token number">32</span><span class="token operator">:</span> iinc          <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token comment" spellcheck="true">// 变量 1 递增 1</span>
+<span class="token number">35</span><span class="token operator">:</span> iload_1 <span class="token comment" spellcheck="true">// 变量 1 入栈</span>
+<span class="token number">36</span><span class="token operator">:</span> istore_2 <span class="token comment" spellcheck="true">// 将栈顶的值赋值给变量 2 并出栈</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这里 num 的值就是 i 递增后的值。</p>
+<p>总结：i++ 操作，先入栈，再递增，此时栈中的值还是旧值；++i 操作，先递增，再入栈，此时栈中的值是最新值。<strong>iload_</strong> 和 <strong>iinc</strong> 的顺序导致了结果的不同。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> Bytecode </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[多线程]]></title>
       <url>/2020/12/30/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
       <content type="html"><![CDATA[<p>在开发过程中，遇到 IO 操作、网络请求等耗时操作，通常都会放到子线程中去处理，如果有多个操作，就涉及到了 <strong>多线程</strong>，现在就来扒一扒 <strong>多线程</strong>，然后基于扒皮之后的结果，进行线程优化。</p>
@@ -2050,11 +2215,11 @@ androidTestImplementation &#39;androidx.test.espresso:espresso-core:3.2.0&#39;</
         
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
         
@@ -2228,11 +2393,11 @@ app --&gt; build.gradle --&gt; dependencies out</code></pre><p>由此可知，�
         
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
         
@@ -4626,11 +4791,11 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
         
@@ -5342,9 +5507,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 原型 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 原型 </tag>
             
         </tags>
         
@@ -5524,9 +5689,9 @@ re<span class="token punctuation">.</span>flags <span class="token comment" spel
         
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 单例 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
         
