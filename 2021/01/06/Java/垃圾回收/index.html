@@ -125,27 +125,19 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)">
-  <h2>享元模式</h2>
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)">
+  <h2>垃圾回收</h2>
     
-  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-02-24T07:18:00.000Z">
-          2017-02-24
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-06T15:41:00.000Z">
+          2021-01-06
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <p><code>享元模式（Flyweight Pattern）</code>：运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细腻度对象，因此它又称为轻量级模式，是一种 <strong>对象结构性模式</strong>。</p>
-<p><code>单纯享元模式</code> 中，所有的具体享元类都是可以共享的，不存在非共享具体享元类。</p>
-<p><code>符合享元模式</code> 是将一些单纯享元对象使用组合模式加以组合。</p>
-<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1. 优点"></a>1. 优点</h3><ol>
-<li>可以极大减少内存中对象的数量，使得相同或相似对象在内存中只保存一份，从而可以节约系统资源，提高系统性能</li>
-<li>享元模式的外部状态相对独立，而且不会影响其内部状态，从而使得享元对象可以在不同的环节中被共享</li>
-</ol>
-<h3 id="2-缺点"><a href="#2-缺点" class="headerlink" title="2. 缺点"></a>2. 缺点</h3><ol>
-<li>享元模式使得系统变得复杂，需要分离出内部状态和外部状态，这使得程序的逻辑复杂化</li>
-<li>为了使对象可以共享，享元模式需要将享元对象的部分状态外部化，而读取外部状态将使得运行时间长</li>
-</ol>
+  <p>作为一门优秀的开发语言，Java 除了 <strong>安全性</strong>、<strong>跨平台/可移植性</strong>、<strong>动态性</strong>、<strong>高性能</strong>、<strong>多线程</strong> 等优点外，不得不提的还有 <strong>垃圾回收机制（GC）</strong>，好的 <strong>垃圾回收机制（GC）</strong> 能让开发人员更加专注于业务的开发，大幅提升开发效率。</p>
+<h1 id="1-垃圾回收，回收的到底是什么？"><a href="#1-垃圾回收，回收的到底是什么？" class="headerlink" title="1. 垃圾回收，回收的到底是什么？"></a>1. 垃圾回收，回收的到底是什么？</h1><p>进入正题之前，首先要了解需要回收的内容是什么，如果连待回收对象都不清楚，那么也就无法实现 <code>垃圾回收</code> 了。</p>
+<p>众所周知，Java 是一门优秀的面向对象语言，<strong>创建对象</strong> 是绕不开的话题，可是每个 <strong>对象</strong> 的生命周期不同，在不会再被使用的情况下，会对其进行回收，也就是传说中的 <strong>垃圾回收</strong>。</p>
 
   </div>
   <!--评论块-->
@@ -155,22 +147,19 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2017/02/24/设计模式/代理模式/" id="post_nav-newer" class="post-nav-content prev-content">
-      <上一篇 < a>
-    
 
 
   <!-- Next Nav -->
     
-  <a href="/2017/02/24/设计模式/外观模式/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2021/01/04/Java/从字节码分析 i++ 与 ++i 的区别/" id="post_nav-older" class="post-nav-content next-content">
       下一篇>
   </a>
     
-</上一篇></a></nav>
+</nav>
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-优点"><span class="post-toc-text">1. 优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-缺点"><span class="post-toc-text">2. 缺点</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-垃圾回收，回收的到底是什么？"><span class="post-toc-text">1. 垃圾回收，回收的到底是什么？</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
