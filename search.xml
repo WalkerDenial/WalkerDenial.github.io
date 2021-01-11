@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>算法笔记 1~99</title>
+      <link href="2021/01/10/Algorithm/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%201~99/"/>
+      <url>2021/01/10/Algorithm/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%201~99/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h1><p>题目描述：</p><blockquote><pre><code>给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出 **和为目标值** 的那 **两个** 整数，并返回它们的数组下标。</code></pre><p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p><p>你可以按任意顺序返回答案。</p><p>提示：<br>2 &lt;= nums.length &lt;= 103</p><p>-109 &lt;= nums[i] &lt;= 109</p><p>-109 &lt;= target &lt;= 109</p><p><strong>只会存在一个有效答案</strong></p></blockquote><p>解题思路一：</p><p>双重循环，时间复杂度为 T(n<sup>2</sup>)。</p><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/** * 冒泡方式 * 时间复杂度 T(n²) */</span><span class="token keyword">fun</span> <span class="token function">twoSum1</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> IntArray<span class="token punctuation">,</span> target<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> IntArray <span class="token punctuation">{</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> nums<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// 从剩余的数据中查找能相加等于 target 的数，如果存在，则返回</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token keyword">in</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> until nums<span class="token punctuation">.</span>size<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token keyword">return</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>解题思路二：</p><p>采用对已处理数据缓存的方式，可以降低时间复杂度，时间复杂度为 T(n)。</p><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/** * 采用 Map 作为缓存的方式 * 时间复杂度 T(n) */</span><span class="token keyword">fun</span> <span class="token function">twoSum2</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> IntArray<span class="token punctuation">,</span> target<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> IntArray <span class="token punctuation">{</span>    <span class="token keyword">val</span> paramMap <span class="token operator">=</span> mutableMapOf<span class="token operator">&lt;</span>Int<span class="token punctuation">,</span> Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> nums<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">val</span> diff <span class="token operator">=</span> target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>        <span class="token comment" spellcheck="true">// 如果数据匹配，则返回结果</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>paramMap<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>diff<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span>paramMap<span class="token punctuation">[</span>diff<span class="token punctuation">]</span><span class="token operator">!!</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">// 如果数据不匹配，则计入缓存中</span>        paramMap<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> i    <span class="token punctuation">}</span>    <span class="token keyword">return</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> Kotlin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>垃圾回收</title>
       <link href="2021/01/06/Java/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
       <url>2021/01/06/Java/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</url>
@@ -192,11 +219,11 @@
       
         <tags>
             
+            <tag> Kotlin </tag>
+            
             <tag> Android </tag>
             
             <tag> Java </tag>
-            
-            <tag> Kotlin </tag>
             
             <tag> 反射 </tag>
             
@@ -223,11 +250,11 @@
       
         <tags>
             
+            <tag> Kotlin </tag>
+            
             <tag> Android </tag>
             
             <tag> Java </tag>
-            
-            <tag> Kotlin </tag>
             
             <tag> 注解 </tag>
             
@@ -279,11 +306,11 @@
       
         <tags>
             
+            <tag> Kotlin </tag>
+            
             <tag> Android </tag>
             
             <tag> Java </tag>
-            
-            <tag> Kotlin </tag>
             
             <tag> 泛型 </tag>
             
@@ -337,11 +364,11 @@
       
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
       
@@ -366,11 +393,11 @@
       
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> Gradle </tag>
             
             <tag> Android </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
       
@@ -420,9 +447,9 @@
       
         <tags>
             
-            <tag> 计算机网络 </tag>
-            
             <tag> 概述 </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       
@@ -697,11 +724,11 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
@@ -1050,9 +1077,9 @@
       
         <tags>
             
-            <tag> 结构型模式 </tag>
-            
             <tag> 享元 </tag>
+            
+            <tag> 结构型模式 </tag>
             
         </tags>
       
@@ -1457,9 +1484,9 @@
       
         <tags>
             
-            <tag> 概述 </tag>
-            
             <tag> 模式 </tag>
+            
+            <tag> 概述 </tag>
             
         </tags>
       
