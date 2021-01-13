@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-5.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)">
   <h2>算法笔记 1~99</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-10T15:46:00.000Z">
@@ -178,6 +178,53 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="2-两数相加"><a href="#2-两数相加" class="headerlink" title="2. 两数相加"></a>2. 两数相加</h1><p>题目描述：</p>
+<blockquote>
+<p>给你两个 <strong>非空</strong> 的链表，表示两个非负的整数。它们每位数字都是按照 <strong>逆序</strong> 的方式存储的，并且每个节点只能存储 <strong>一位</strong> 数字。</p>
+<p>请你将两个数相加，并以相同形式返回一个表示和的链表。</p>
+<p>你可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+</blockquote>
+<p>解题思路一：</p>
+<p>将数据转换为正常数字，然后相加，最后倒序加入链表中，时间复杂度为 T(n<sup>2</sup>)。</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
+ * 方式一
+ * 转换成对应的整数再进行计算，然后逆序输出
+ * 时间复杂度 T(n)
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">addTwoNumbers1</span><span class="token punctuation">(</span>l1<span class="token operator">:</span> ListNode<span class="token operator">?</span><span class="token punctuation">,</span> l2<span class="token operator">:</span> ListNode<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> ListNode<span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> str1 <span class="token operator">=</span> l1<span class="token punctuation">.</span><span class="token function">contentToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// l1 逆序</span>
+    <span class="token keyword">val</span> str2 <span class="token operator">=</span> l2<span class="token punctuation">.</span><span class="token function">contentToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// l2 逆序</span>
+    <span class="token keyword">val</span> num1 <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>str1<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">0</span> <span class="token keyword">else</span> str1<span class="token punctuation">.</span><span class="token function">reversed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// l1 真实数值</span>
+    <span class="token keyword">val</span> num2 <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>str2<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">0</span> <span class="token keyword">else</span> str2<span class="token punctuation">.</span><span class="token function">reversed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// l2 真是数值</span>
+    <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token punctuation">(</span>num1 <span class="token operator">+</span> num2<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reversed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 求出结果并逆序</span>
+    <span class="token keyword">val</span> <span class="token keyword">data</span> <span class="token operator">=</span> <span class="token function">IntArray</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>length<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 转换成数组</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> result<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token keyword">data</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token function">getListNode</span><span class="token punctuation">(</span><span class="token keyword">data</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 获取返回结果</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解题思路二：</p>
+<p>将两个链表同步进行循环，相同位上的数据叠加，直到两个链表都到末尾为止，时间复杂度为 T(n)。</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
+ * 方式二
+ * 按节点进位处理
+ * 时间复杂度 T(n)
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">addTwoNumbers2</span><span class="token punctuation">(</span>l1<span class="token operator">:</span> ListNode<span class="token operator">?</span><span class="token punctuation">,</span> l2<span class="token operator">:</span> ListNode<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> ListNode<span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> node <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 待返回数据</span>
+    <span class="token keyword">var</span> curr<span class="token operator">:</span>ListNode<span class="token operator">?</span> <span class="token operator">=</span> node <span class="token comment" spellcheck="true">// 待返回数据当前节点</span>
+    <span class="token keyword">var</span> currNode1 <span class="token operator">=</span> l1 <span class="token comment" spellcheck="true">// l1 当前节点</span>
+    <span class="token keyword">var</span> currNode2 <span class="token operator">=</span> l2 <span class="token comment" spellcheck="true">// l2 当前节点</span>
+    <span class="token keyword">var</span> offset <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment" spellcheck="true">// 进位值</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>currNode1 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">||</span> currNode2 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token punctuation">(</span>currNode1<span class="token operator">?</span><span class="token punctuation">.</span>`<span class="token keyword">val</span>` <span class="token operator">?:</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>currNode2<span class="token operator">?</span><span class="token punctuation">.</span>`<span class="token keyword">val</span>` <span class="token operator">?:</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> offset
+        offset <span class="token operator">=</span> result <span class="token operator">/</span> <span class="token number">10</span>
+        curr<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span>result <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">)</span>
+        curr <span class="token operator">=</span> curr<span class="token operator">?</span><span class="token punctuation">.</span>next
+        currNode1 <span class="token operator">=</span> currNode1<span class="token operator">?</span><span class="token punctuation">.</span>next
+        currNode2 <span class="token operator">=</span> currNode2<span class="token operator">?</span><span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>offset <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> curr<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span>offset<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 虽然测试结束，如果有进位，需要增加一个节点</span>
+    <span class="token keyword">return</span> node<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <!--评论块-->
@@ -199,7 +246,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-两数之和"><span class="post-toc-text">1. 两数之和</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-两数之和"><span class="post-toc-text">1. 两数之和</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-两数相加"><span class="post-toc-text">2. 两数相加</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
