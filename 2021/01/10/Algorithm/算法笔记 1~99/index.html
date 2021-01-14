@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)">
   <h2>算法笔记 1~99</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-10T15:46:00.000Z">
@@ -160,7 +160,9 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// twoSum1 总计：测试次数 100000 次，耗时 515 ms, 内存开销：45.08 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>解题思路二：</p>
 <p>采用对已处理数据缓存的方式，可以降低时间复杂度，时间复杂度为 T(n)。</p>
 <pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
@@ -177,7 +179,9 @@
         paramMap<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> i
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token function">intArrayOf</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// twoSum2 总计：测试次数 100000 次，耗时 86 ms, 内存开销：5.44 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="2-两数相加"><a href="#2-两数相加" class="headerlink" title="2. 两数相加"></a>2. 两数相加</h1><p>题目描述：</p>
 <blockquote>
 <p>给你两个 <strong>非空</strong> 的链表，表示两个非负的整数。它们每位数字都是按照 <strong>逆序</strong> 的方式存储的，并且每个节点只能存储 <strong>一位</strong> 数字。</p>
@@ -200,7 +204,9 @@
     <span class="token keyword">val</span> <span class="token keyword">data</span> <span class="token operator">=</span> <span class="token function">IntArray</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>length<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 转换成数组</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> result<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token keyword">data</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token function">getListNode</span><span class="token punctuation">(</span><span class="token keyword">data</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 获取返回结果</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// addTwoNumbers1 总计：测试次数 100000 次，耗时 663 ms, 内存开销：5.13 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>解题思路二：</p>
 <p>将两个链表同步进行循环，相同位上的数据叠加，直到两个链表都到末尾为止，时间复杂度为 T(n)。</p>
 <pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
@@ -210,21 +216,23 @@
  */</span>
 <span class="token keyword">fun</span> <span class="token function">addTwoNumbers2</span><span class="token punctuation">(</span>l1<span class="token operator">:</span> ListNode<span class="token operator">?</span><span class="token punctuation">,</span> l2<span class="token operator">:</span> ListNode<span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">:</span> ListNode<span class="token operator">?</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> node <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 待返回数据</span>
-    <span class="token keyword">var</span> curr<span class="token operator">:</span>ListNode<span class="token operator">?</span> <span class="token operator">=</span> node <span class="token comment" spellcheck="true">// 待返回数据当前节点</span>
+    <span class="token keyword">var</span> curr<span class="token operator">:</span> ListNode<span class="token operator">?</span> <span class="token operator">=</span> node <span class="token comment" spellcheck="true">// 待返回数据当前节点</span>
     <span class="token keyword">var</span> currNode1 <span class="token operator">=</span> l1 <span class="token comment" spellcheck="true">// l1 当前节点</span>
     <span class="token keyword">var</span> currNode2 <span class="token operator">=</span> l2 <span class="token comment" spellcheck="true">// l2 当前节点</span>
-    <span class="token keyword">var</span> offset <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment" spellcheck="true">// 进位值</span>
+    <span class="token keyword">var</span> carry <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment" spellcheck="true">// 进位值</span>
     <span class="token keyword">while</span> <span class="token punctuation">(</span>currNode1 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">||</span> currNode2 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token punctuation">(</span>currNode1<span class="token operator">?</span><span class="token punctuation">.</span>`<span class="token keyword">val</span>` <span class="token operator">?:</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>currNode2<span class="token operator">?</span><span class="token punctuation">.</span>`<span class="token keyword">val</span>` <span class="token operator">?:</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> offset
-        offset <span class="token operator">=</span> result <span class="token operator">/</span> <span class="token number">10</span>
+        <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token punctuation">(</span>currNode1<span class="token operator">?</span><span class="token punctuation">.</span>`<span class="token keyword">val</span>` <span class="token operator">?:</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>currNode2<span class="token operator">?</span><span class="token punctuation">.</span>`<span class="token keyword">val</span>` <span class="token operator">?:</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> carry
+        carry <span class="token operator">=</span> result <span class="token operator">/</span> <span class="token number">10</span>
         curr<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span>result <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">)</span>
         curr <span class="token operator">=</span> curr<span class="token operator">?</span><span class="token punctuation">.</span>next
-        currNode1 <span class="token operator">=</span> currNode1<span class="token operator">?</span><span class="token punctuation">.</span>next
-        currNode2 <span class="token operator">=</span> currNode2<span class="token operator">?</span><span class="token punctuation">.</span>next
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode1 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> currNode1 <span class="token operator">=</span> currNode1<span class="token operator">?</span><span class="token punctuation">.</span>next
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode2 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> currNode2 <span class="token operator">=</span> currNode2<span class="token operator">?</span><span class="token punctuation">.</span>next
     <span class="token punctuation">}</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>offset <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> curr<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span>offset<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 虽然测试结束，如果有进位，需要增加一个节点</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>carry <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> curr<span class="token operator">?</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token function">ListNode</span><span class="token punctuation">(</span>carry<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 虽然测试结束，如果有进位，需要增加一个节点</span>
     <span class="token keyword">return</span> node<span class="token punctuation">.</span>next
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// addTwoNumbers2 总计：测试次数 100000 次，耗时 58 ms, 内存开销：28.07 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <!--评论块-->
