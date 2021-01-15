@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
   <h2>算法笔记 1~99</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-10T15:46:00.000Z">
@@ -233,6 +233,39 @@
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">// addTwoNumbers2 总计：测试次数 100000 次，耗时 58 ms, 内存开销：28.07 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a>3. 无重复字符的最长子串</h1><p>题目描述：</p>
+<blockquote>
+<p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+</blockquote>
+<p>解题思路一：</p>
+<p>将数据转换为正常数字，然后相加，最后倒序加入链表中，时间复杂度为 T(n<sup>2</sup>)。</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
+ * 方式一：暴力解法
+ * 逐个生产子字符串，看看是否含有重复的字符
+ * 时间复杂度 T(n³)
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">lengthOfLongestSubstring1</span><span class="token punctuation">(</span>s<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> max <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> s<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// addTwoNumbers1 总计：测试次数 100000 次，耗时 663 ms, 内存开销：5.13 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解题思路二：</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
+ * 方式二：滑动窗口及优化
+ * 向右递增，如果发现重复，则移动起始点下标，并记录当前长度
+ * 时间复杂度 T(n)
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">lengthOfLongestSubstring2</span><span class="token punctuation">(</span>s<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">return</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <!--评论块-->
@@ -254,7 +287,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-两数之和"><span class="post-toc-text">1. 两数之和</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-两数相加"><span class="post-toc-text">2. 两数相加</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-两数之和"><span class="post-toc-text">1. 两数之和</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-两数相加"><span class="post-toc-text">2. 两数相加</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-无重复字符的最长子串"><span class="post-toc-text">3. 无重复字符的最长子串</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
