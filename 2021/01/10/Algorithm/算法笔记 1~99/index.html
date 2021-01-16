@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)">
   <h2>算法笔记 1~99</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-10T15:46:00.000Z">
@@ -238,34 +238,54 @@
 <p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
 </blockquote>
 <p>解题思路一：</p>
-<p>将数据转换为正常数字，然后相加，最后倒序加入链表中，时间复杂度为 T(n<sup>2</sup>)。</p>
+<p>逐个生产子字符串，看看是否含有重复的字符，时间复杂度为 T(n<sup>2</sup>)。</p>
 <pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
  * 方式一：暴力解法
  * 逐个生产子字符串，看看是否含有重复的字符
- * 时间复杂度 T(n³)
+ * 时间复杂度 T(n²)
  */</span>
 <span class="token keyword">fun</span> <span class="token function">lengthOfLongestSubstring1</span><span class="token punctuation">(</span>s<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-    <span class="token keyword">var</span> max <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> s<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> endIndex <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> maxLength <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">val</span> <span class="token keyword">set</span> <span class="token operator">=</span> mutableSetOf<span class="token operator">&lt;</span>Char<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">0</span> <span class="token function">until</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">set</span><span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">set</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token keyword">in</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> until s<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            endIndex <span class="token operator">=</span> j
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">set</span><span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">break</span>
+            <span class="token keyword">else</span> <span class="token keyword">set</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        maxLength <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxLength<span class="token punctuation">,</span> endIndex <span class="token operator">-</span> i<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">return</span> maxLength
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// addTwoNumbers1 总计：测试次数 100000 次，耗时 663 ms, 内存开销：5.13 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// lengthOfLongestSubstring1 总计：测试次数 100000 次，耗时 510 ms, 内存开销：47.25 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>解题思路二：</p>
+<p>向右递增，如果发现重复，则移动起始点下标，并记录当前长度，时间复杂度 T(n)。</p>
 <pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
  * 方式二：滑动窗口及优化
  * 向右递增，如果发现重复，则移动起始点下标，并记录当前长度
  * 时间复杂度 T(n)
  */</span>
 <span class="token keyword">fun</span> <span class="token function">lengthOfLongestSubstring2</span><span class="token punctuation">(</span>s<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-    <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> startIndex <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> maxLength <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">val</span> map <span class="token operator">=</span> mutableMapOf<span class="token operator">&lt;</span>Char<span class="token punctuation">,</span> Int<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> s<span class="token punctuation">.</span>indices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            maxLength <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxLength<span class="token punctuation">,</span> i <span class="token operator">-</span> startIndex<span class="token punctuation">)</span>
+            startIndex <span class="token operator">=</span> map<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">!!</span> <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span>
+        map<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> i
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> maxLength
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// lengthOfLongestSubstring2 总计：测试次数 100000 次，耗时 51 ms, 内存开销：36.63 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <!--评论块-->
