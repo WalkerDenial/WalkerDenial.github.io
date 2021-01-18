@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-7.png)">
   <h2>代理与动态代理</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-25T15:23:00.000Z">
@@ -138,7 +138,8 @@
   <p>在前面学习 <code>设计模式</code> 的时候，学习过 <a href="https://walkerdenial.com/2017/02/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" target="_blank" rel="noopener">代理模式</a>，如果没看过的可以点击链接看一下。</p>
 <p>我们经常听到的是 <strong>没有中间商赚差价</strong>，<strong>代理</strong> 其实就相当于是 <strong>中间商</strong>，既然中间商会赚差价（额外增加开销），那么我们为什么要使用 <strong>代理</strong> 呢？</p>
 <p>举个栗子，现在需要购买食物大米，你是直接去超市、小卖部、粮油店等 <strong>中间商</strong> 处买呢？还是直接下乡，去种植户里购买？如果直接购买的话，你不仅要知道你需要的是大米，还需要知道大米产自哪里、哪个季节收获、哪个区域售卖等等一系列问题，会额外增加消费者负担，而这些，其实可以交给 <strong>代理</strong> 搞定就行了，省心、省力。</p>
-<h1 id="1-静态代理"><a href="#1-静态代理" class="headerlink" title="1. 静态代理"></a>1. 静态代理</h1><p>场景：购买大米。</p>
+<h1 id="1-静态代理"><a href="#1-静态代理" class="headerlink" title="1. 静态代理"></a>1. 静态代理</h1><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/static_proxy.jpg" alt="静态代理"></p>
+<p>场景：购买大米。</p>
 <p>Step. 1 定义食物接口</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IFood</span> <span class="token punctuation">{</span>
     <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
