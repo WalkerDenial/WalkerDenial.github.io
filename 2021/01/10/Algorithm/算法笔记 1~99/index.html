@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
   <h2>算法笔记 1~99</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-10T15:46:00.000Z">
@@ -298,7 +298,24 @@
 <p>进阶：你能设计一个时间复杂度为 <code>O(log (m+n))</code> 的算法解决此问题吗？</p>
 </blockquote>
 <p>解题思路一：</p>
-<p>两个数组合并成新数组，然后在新数组中查询中位数，时间复杂度为 T(n<sup>2</sup>)。</p>
+<p>两个数组合并成新数组，然后爬子虚，最后在新数组中查询中位数，时间复杂度为 T(n<sup>2</sup>)。</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
+ * 方式一：暴力解法
+ * 将 2 个数组合并，然后取中位数
+ * 时间复杂度 T(n²)
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">findMedianSortedArrays1</span><span class="token punctuation">(</span>nums1<span class="token operator">:</span> IntArray<span class="token punctuation">,</span> nums2<span class="token operator">:</span> IntArray<span class="token punctuation">)</span><span class="token operator">:</span> Double <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> nums <span class="token operator">=</span> nums1<span class="token punctuation">.</span><span class="token function">plus</span><span class="token punctuation">(</span>nums2<span class="token punctuation">)</span>
+    nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token keyword">when</span> <span class="token punctuation">{</span>
+        nums<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token number">0.0</span>
+        nums<span class="token punctuation">.</span>size <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">-></span> nums<span class="token punctuation">[</span>nums<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span> <span class="token operator">-></span> <span class="token punctuation">{</span>
+            <span class="token keyword">val</span> index <span class="token operator">=</span> nums<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token function">2</span>
+            <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <!--评论块-->
