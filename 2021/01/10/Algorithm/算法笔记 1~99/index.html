@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)">
   <h2>算法笔记 1~99</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-10T15:46:00.000Z">
@@ -302,20 +302,56 @@
 <pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
  * 方式一：暴力解法
  * 将 2 个数组合并，然后取中位数
- * 时间复杂度 T(n²)
+ * 时间复杂度 T(m + n)
  */</span>
 <span class="token keyword">fun</span> <span class="token function">findMedianSortedArrays1</span><span class="token punctuation">(</span>nums1<span class="token operator">:</span> IntArray<span class="token punctuation">,</span> nums2<span class="token operator">:</span> IntArray<span class="token punctuation">)</span><span class="token operator">:</span> Double <span class="token punctuation">{</span>
     <span class="token keyword">val</span> nums <span class="token operator">=</span> nums1<span class="token punctuation">.</span><span class="token function">plus</span><span class="token punctuation">(</span>nums2<span class="token punctuation">)</span>
     nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> index <span class="token operator">=</span> nums<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token number">2</span>
     <span class="token keyword">return</span> <span class="token keyword">when</span> <span class="token punctuation">{</span>
-        nums<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token number">0.0</span>
-        nums<span class="token punctuation">.</span>size <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">-></span> nums<span class="token punctuation">[</span>nums<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">else</span> <span class="token operator">-></span> <span class="token punctuation">{</span>
-            <span class="token keyword">val</span> index <span class="token operator">=</span> nums<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token function">2</span>
-            <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span>
-        <span class="token punctuation">}</span>
+        nums<span class="token punctuation">.</span>size <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">-></span> nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span> <span class="token operator">-></span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// findMedianSortedArrays1 总计：测试次数 100000 次，耗时 544 ms, 内存开销：48.92 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解题思路二：</p>
+<p>已知条件：</p>
+<ol>
+<li>数组升序排列；</li>
+<li>求中位数，中位数既不是最大值，也不是最小值，循环到中间位置即可；</li>
+</ol>
+<p>解：需要求两个数组中位数，那么中位数的位置基本上就是数组长度之和的中位数，并且区分奇偶情况，那么可以从 2 个数组同时进发，当数组 1 和数组 2 下标和为中位数下标时，就可以退出循环了，T(min(m, n))。</p>
+<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
+ * 方式二：二分查找
+ * 通过二分查找找出分割位置，然后比较左上、右下 和 左下、右上数据信息，符合条件即为对接点
+ * 时间复杂度 T(min(m, n))
+ */</span>
+<span class="token keyword">fun</span> <span class="token function">findMedianSortedArrays2</span><span class="token punctuation">(</span>nums1<span class="token operator">:</span> IntArray<span class="token punctuation">,</span> nums2<span class="token operator">:</span> IntArray<span class="token punctuation">)</span><span class="token operator">:</span> Double <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> totalNum <span class="token operator">=</span> nums1<span class="token punctuation">.</span>size <span class="token operator">+</span> nums2<span class="token punctuation">.</span>size
+    <span class="token keyword">val</span> isEven <span class="token operator">=</span> totalNum <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span>
+    <span class="token keyword">val</span> halfIndex <span class="token operator">=</span> totalNum <span class="token operator">/</span> <span class="token number">2</span>
+    <span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> left <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> right <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> middle <span class="token operator">=</span> <span class="token number">0.0</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> nums1<span class="token punctuation">.</span>size <span class="token operator">||</span> right <span class="token operator">&lt;</span> nums2<span class="token punctuation">.</span>size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> value <span class="token operator">=</span> <span class="token keyword">when</span> <span class="token punctuation">{</span>
+            left <span class="token operator">>=</span> nums1<span class="token punctuation">.</span>size <span class="token operator">-></span> nums2<span class="token punctuation">[</span>right<span class="token operator">++</span><span class="token punctuation">]</span>
+            right <span class="token operator">>=</span> nums2<span class="token punctuation">.</span>size <span class="token operator">-></span> nums1<span class="token punctuation">[</span>left<span class="token operator">++</span><span class="token punctuation">]</span>
+            nums1<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">></span> nums2<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">-></span> nums2<span class="token punctuation">[</span>right<span class="token operator">++</span><span class="token punctuation">]</span>
+            <span class="token keyword">else</span> <span class="token operator">-></span> nums1<span class="token punctuation">[</span>left<span class="token operator">++</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">toDouble</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> halfIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            middle <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>isEven<span class="token punctuation">)</span> <span class="token punctuation">(</span>middle <span class="token operator">+</span> value<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token keyword">else</span> value
+            <span class="token keyword">break</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> middle <span class="token operator">=</span> value
+        index<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> middle
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// findMedianSortedArrays2 总计：测试次数 100000 次，耗时 39 ms, 内存开销：9.37 Mb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
   </div>
   <!--评论块-->
