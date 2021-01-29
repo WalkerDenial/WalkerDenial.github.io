@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>gRPC 三部曲之 -- RPC</title>
+      <link href="2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/gRPC%20%E4%B8%89%E9%83%A8%E6%9B%B2%E4%B9%8B%20--%20RPC/"/>
+      <url>2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/gRPC%20%E4%B8%89%E9%83%A8%E6%9B%B2%E4%B9%8B%20--%20RPC/</url>
+      
+        <content type="html"><![CDATA[<p>RPC(Remote Procedure Call) 远程过程调用，是一个分布式系统间通信的必备技术。作为架构微服务化的基础组件，它能大大降低架构微服务化的成本，提高调用方与服务提供方的研发效率，屏蔽跨进程调用函数（服务）的各类复杂细节。让调用方感觉就像调用本地函数一样调用远端函数、让服务提供方感觉就像实现一个本地函数一样来实现服务。</p><h1 id="1-传输（Transport）"><a href="#1-传输（Transport）" class="headerlink" title="1. 传输（Transport）"></a>1. 传输（Transport）</h1><p>根据 RPC 名字来看，是为了调用远程函数（服务），既然是远程，当然逃脱不了 <strong>传输</strong> 了，如果没有 <strong>传输</strong>，那么又如何调用远程呢？所以，RPC 第一个关键词一定要想到 <strong>传输</strong>，<strong>传输</strong> 是 RPC 的基础。</p><p>既然作为基础，那么就一定要稳定、可靠，<strong>传输</strong> 并不是任意传输就可以的，而是需要 <em>可靠*，在 *可靠</em> 的前提下，后续其他的组件工作才有意义。</p><p>基于可靠、稳定的前提下，TCP 协议是首选，TCP 是面向连接的、全双工的、可靠的 <strong>传输协议</strong>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gRPC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gRPC 三部曲之 -- 基础篇</title>
       <link href="2021/01/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/gRPC%20%E4%B8%89%E9%83%A8%E6%9B%B2%E4%B9%8B%20--%20%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
       <url>2021/01/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/gRPC%20%E4%B8%89%E9%83%A8%E6%9B%B2%E4%B9%8B%20--%20%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
@@ -45,9 +70,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Kotlin </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -72,9 +97,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> GC </tag>
             
@@ -101,9 +126,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> Bytecode </tag>
             
@@ -130,9 +155,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 多线程 </tag>
             
@@ -159,9 +184,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 代理 </tag>
             
@@ -188,9 +213,9 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
@@ -244,9 +269,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> Kotlin </tag>
             
@@ -275,9 +300,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> Kotlin </tag>
             
@@ -331,9 +356,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> Kotlin </tag>
             
@@ -389,11 +414,11 @@
       
         <tags>
             
+            <tag> Android </tag>
+            
             <tag> 基础 </tag>
             
             <tag> Gradle </tag>
-            
-            <tag> Android </tag>
             
         </tags>
       
@@ -418,11 +443,11 @@
       
         <tags>
             
+            <tag> Android </tag>
+            
             <tag> 基础 </tag>
             
             <tag> Gradle </tag>
-            
-            <tag> Android </tag>
             
         </tags>
       
@@ -749,11 +774,11 @@
       
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
       
@@ -1102,9 +1127,9 @@
       
         <tags>
             
-            <tag> 享元 </tag>
-            
             <tag> 结构型模式 </tag>
+            
+            <tag> 享元 </tag>
             
         </tags>
       
