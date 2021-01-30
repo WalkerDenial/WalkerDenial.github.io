@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-7.png)">
   <h2>gRPC 三部曲之 -- RPC</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-01-28T15:56:00.000Z">
@@ -139,6 +139,60 @@
 <h1 id="1-传输（Transport）"><a href="#1-传输（Transport）" class="headerlink" title="1. 传输（Transport）"></a>1. 传输（Transport）</h1><p>根据 RPC 名字来看，是为了调用远程函数（服务），既然是远程，当然逃脱不了 <strong>传输</strong> 了，如果没有 <strong>传输</strong>，那么又如何调用远程呢？所以，RPC 第一个关键词一定要想到 <strong>传输</strong>，<strong>传输</strong> 是 RPC 的基础。</p>
 <p>既然作为基础，那么就一定要稳定、可靠，<strong>传输</strong> 并不是任意传输就可以的，而是需要 <em>可靠*，在 *可靠</em> 的前提下，后续其他的组件工作才有意义。</p>
 <p>基于可靠、稳定的前提下，TCP 协议是首选，TCP 是面向连接的、全双工的、可靠的 <strong>传输协议</strong>。</p>
+<p>TCP 就是可靠地把数据在不同的地址空间上搬运，例如在传统的阻塞 I/O 模型中，当有数据过来的时候，操作系统内核把数据从 I/O 中读出来存放在 kernal space，然后内核就通知 user space 可以拷贝走数据，用以腾出空间，让 TCP 滑动窗口向前移动，接收更多的数据。</p>
+<h1 id="2-I-O-模型"><a href="#2-I-O-模型" class="headerlink" title="2. I/O 模型"></a>2. I/O 模型</h1><p>前面提到了 <strong>传输</strong>，传输就是通过 I/O 流，那么高效、稳定的 I/O 模型就是首选，I/O 需要满足如下要求：</p>
+<ol>
+<li>服务端尽可能多的处理并发请求；</li>
+<li>同时尽可能短的处理完毕；</li>
+</ol>
+<p>如果 I/O 选择不好，就比如如果有线程或进程调用 I/O 模型没有响应，CPU 只能选择挂起，线程或者进程也被阻塞住，浪费了 CPU 的性能。并且，频繁地挂起、唤醒切换，也会浪费系统资源。</p>
+<p>如何协调 CPU 和 I/O 呢？这里需要 Socket I/O 做桥梁，协调二者。</p>
+<p>RPC 框架可选择的 I/O 模型有以下几种：</p>
+<ol>
+<li>Block I/O</li>
+<li>Non-Blocking I/O</li>
+<li>I/O Multiplexing</li>
+<li>Asynchronous I/O</li>
+<li>Signal Driven I/O</li>
+</ol>
+<p>这里不对 I/O 详细介绍，只是抛砖引玉，具体使用需要详细研究每一种模型。</p>
+<p>这里，需要注意的是 <strong>同步 I/O</strong> 和 <strong>异步 I/O</strong>：</p>
+<blockquote>
+<p>同步 I/O: 指用户线程发起 I/O 请求后需要等待或轮询内核 I/O 完成后再继续；</p>
+<p>异步 I/O: 指用户线程发起 I/O 请求后直接退出，当内核 I/O 操作完成后会通知用户线程来调用其回调函数；</p>
+</blockquote>
+<h1 id="3-进程、线程模型"><a href="#3-进程、线程模型" class="headerlink" title="3. 进程、线程模型"></a>3. 进程、线程模型</h1><p>基于 <strong>I/O 模型</strong>，对信息进行处理，需要在进程、线程中进行，好的进程、线程模型也能极大的影响效率，好的模型能极大的提升 I/O 性能。</p>
+<p>业界早期很多实用的方案是：Blocking I/O + ThreadPool 的方式实现的，比如 Tomcat/Jetty 的默认配置就是这个方案，但是：</p>
+<ol>
+<li>I/O 模型有可能会让工作线程卡在 I/O 上；</li>
+<li>线程的数量是有限制的，并不是线程可以无限量增加；</li>
+<li>线程之间上下文切换很耗时，如果线程频繁的挂起、加载，会做很多无用功，并且浪费系统性能；</li>
+</ol>
+<p>所以，针对于 I/O 阻塞，可以采用 <strong>异步 I/O</strong>；针对于线程问题，可以考 <strong>虑多路复用</strong>。</p>
+<h1 id="4-Schema-和序列化"><a href="#4-Schema-和序列化" class="headerlink" title="4. Schema 和序列化"></a>4. Schema 和序列化</h1><p>在前三步的配合下，传输假设完成，那么如何识别获取到的信息，也就是说发送方与接收方以何种方式交流呢？这里就使用到了 <strong>Schema</strong> 和 <strong>序列化</strong>。</p>
+<p>通过反序列化，将二进制数据转换成程序可理解的对象，对象一般含有 Schema 或者结构，基于这些语义来做特定的业务逻辑处理。</p>
+<p>一个序列化框架一般会关注以下几点：</p>
+<ol>
+<li>编码格式：是二进制呢，还是可读性高的格式；</li>
+<li>契约声明：基于 IDL 的还是自描述的；</li>
+<li>语言平台的中立性：不能局限于某种语言，要具有跨平台能力；</li>
+<li>新老契约的兼容性：比如增加了一个字段，旧协议能否反序列化成功；</li>
+<li>和压缩算法的契合度：结合压缩算法，能降低网络请求开销，加快响应速度；</li>
+<li>性能：序列化与反序列化速度快慢、稳定性是关键指标，序列化的好坏影响 I/O 的效率，进一步影响业务；</li>
+</ol>
+<p>常见的有 Protocol Buffers， Avro，Thrift，XML，JSON，MessagePack，Kyro，Hessian，Protostuff，Java Native Serialize，FST。如果对性能要求高，一般使用的较多的是 Protocol Buffers。</p>
+<h1 id="5-协议结构"><a href="#5-协议结构" class="headerlink" title="5. 协议结构"></a>5. 协议结构</h1><p>TCP 是二进制的可靠搬运工，但是却不关心搬运的内容是什么，只是在一个通道上传输 message，通道中的 message 可能有很多很多条，那么如何确定哪些才是真正需要的 message，这就涉及到 message 识别，同时也要避免 <strong>粘包</strong> 和 <strong>半包</strong> 的问题，定义好协议结构后，才能正确的获取 message 并进行后续操作。</p>
+<p>常用的方式有：</p>
+<ol>
+<li>分隔符：通过制定标识进行分割 message；</li>
+<li>换行符：通过换行符 <code>/r/n</code> 进行区分；</li>
+<li>固定长度：读取固定长度为一个完整的 message。RPC 常采用这种方式，使用 header + payload 的方式；</li>
+</ol>
+<p>HTTP 协议就是一种建立在 TCP 之上最广泛使用的 RPC，HTTP header 中就有 Content-Length 告知应用层如何正确读取一个 message。</p>
+<h1 id="6-可靠性"><a href="#6-可靠性" class="headerlink" title="6. 可靠性"></a>6. 可靠性</h1><p>前面讲的是大概需要使用的技术所考虑的点，衡量一个框架是否能够应用到商业项目中，就跟 <strong>传输</strong> 一样，还需要考虑稳定性，谁也不希望项目三天两头出问题是吧。</p>
+<p>除了技术使用方向的考虑外，还需要考虑心跳、断线恢复、重传、连接超时等等这些琐事，把琐事也处理好后，框架才能是一套可用、稳定的框架，才会有大批的人使用，让框架保持活力。</p>
+<h1 id="7-易用性"><a href="#7-易用性" class="headerlink" title="7. 易用性"></a>7. 易用性</h1><p>框架所包含的信息基本上已经介绍了。试想一下，如果一个框架需要使用很多配置，代码接入等等，想用起来非常麻烦，会有多少人使用？</p>
+<p>RPC 是需要让上层写业务逻辑来实现功能的，如何很方便的启停一个 server，注入 endpoint，客户端需要几步连接，重试调用，超时控制，版本升级后是否需要大改动等等，都决定了基于 RPC构建服务，甚至 SOA 的工程效率与生产率高低。</p>
 
   </div>
   <!--评论块-->
@@ -160,7 +214,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-传输（Transport）"><span class="post-toc-text">1. 传输（Transport）</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-传输（Transport）"><span class="post-toc-text">1. 传输（Transport）</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-I-O-模型"><span class="post-toc-text">2. I/O 模型</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-进程、线程模型"><span class="post-toc-text">3. 进程、线程模型</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-Schema-和序列化"><span class="post-toc-text">4. Schema 和序列化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-协议结构"><span class="post-toc-text">5. 协议结构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-可靠性"><span class="post-toc-text">6. 可靠性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-易用性"><span class="post-toc-text">7. 易用性</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
