@@ -95,9 +95,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Kotlin </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -122,9 +122,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> GC </tag>
             
@@ -151,11 +151,11 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
             
             <tag> Bytecode </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -180,9 +180,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 多线程 </tag>
             
@@ -209,9 +209,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 代理 </tag>
             
@@ -294,11 +294,11 @@
       
         <tags>
             
-            <tag> Kotlin </tag>
+            <tag> Java </tag>
             
             <tag> Android </tag>
             
-            <tag> Java </tag>
+            <tag> Kotlin </tag>
             
             <tag> 反射 </tag>
             
@@ -325,11 +325,11 @@
       
         <tags>
             
-            <tag> Kotlin </tag>
+            <tag> Java </tag>
             
             <tag> Android </tag>
             
-            <tag> Java </tag>
+            <tag> Kotlin </tag>
             
             <tag> 注解 </tag>
             
@@ -381,11 +381,11 @@
       
         <tags>
             
-            <tag> Kotlin </tag>
+            <tag> Java </tag>
             
             <tag> Android </tag>
             
-            <tag> Java </tag>
+            <tag> Kotlin </tag>
             
             <tag> 泛型 </tag>
             
@@ -441,9 +441,9 @@
             
             <tag> 基础 </tag>
             
-            <tag> Gradle </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -470,9 +470,9 @@
             
             <tag> 基础 </tag>
             
-            <tag> Gradle </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -1341,9 +1341,9 @@
       
         <tags>
             
-            <tag> 原型 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 原型 </tag>
             
         </tags>
       
@@ -1476,9 +1476,9 @@
       
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 单例 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
       
