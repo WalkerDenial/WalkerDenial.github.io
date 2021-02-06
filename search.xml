@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>计算机系统结构-概论</title>
+      <link href="2021/02/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-%E6%A6%82%E8%AE%BA/"/>
+      <url>2021/02/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-%E6%A6%82%E8%AE%BA/</url>
+      
+        <content type="html"><![CDATA[<p>计算机系统结构是一门从组织和结构的角度学习、领会计算机系统的课程。计算机系统是一个软、硬件综合体。本文学习的目的是了解计算机系统结构的基本概念和知识，为后面进一步学习后续知识打好基础。</p><h1 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h1><ol><li>理解一个完整的计算机系统可被看成是由多个机器级构成的多级层次结构，知道层次的划分；</li><li>掌握结构、组成、实现三者的定义和内涵，对透明性能做出正确的判断；</li><li>理解软、硬件取舍的基本原则和计算机系统的定量设计原理；</li><li>掌握计算机系统设计的 3 种思路及各自的优缺点，理解「从中间向两边」设计是好的思路；</li><li>掌握实现软件移植的途径、方法、适用场合、存在问题和对策；</li><li>了解应用和器件的发展对系统结构的影响；</li><li>掌握并行性概念，以及计算机系统结构中并行性开发的途径和结构分类；</li><li>了解计算机系统的分类；</li></ol><h1 id="1-计算机系统的多级层次结构"><a href="#1-计算机系统的多级层次结构" class="headerlink" title="1. 计算机系统的多级层次结构"></a>1. 计算机系统的多级层次结构</h1><h1 id="2-计算机系统结构、组成和实现"><a href="#2-计算机系统结构、组成和实现" class="headerlink" title="2. 计算机系统结构、组成和实现"></a>2. 计算机系统结构、组成和实现</h1><h1 id="3-软、硬件取舍及定量设计原理"><a href="#3-软、硬件取舍及定量设计原理" class="headerlink" title="3. 软、硬件取舍及定量设计原理"></a>3. 软、硬件取舍及定量设计原理</h1><h1 id="4-系统结构设计要解决实现软件移植"><a href="#4-系统结构设计要解决实现软件移植" class="headerlink" title="4. 系统结构设计要解决实现软件移植"></a>4. 系统结构设计要解决实现软件移植</h1><h1 id="5-软件、应用、器件的发展对系统结构的影响"><a href="#5-软件、应用、器件的发展对系统结构的影响" class="headerlink" title="5. 软件、应用、器件的发展对系统结构的影响"></a>5. 软件、应用、器件的发展对系统结构的影响</h1><h1 id="6-系统结构中的并行性开发及计算机系统的分类"><a href="#6-系统结构中的并行性开发及计算机系统的分类" class="headerlink" title="6. 系统结构中的并行性开发及计算机系统的分类"></a>6. 系统结构中的并行性开发及计算机系统的分类</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机系统结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机系统结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gRPC 三部曲之 -- gRPC</title>
       <link href="2021/01/30/RPC/gRPC%20%E4%B8%89%E9%83%A8%E6%9B%B2%E4%B9%8B%20--%20gRPC/"/>
       <url>2021/01/30/RPC/gRPC%20%E4%B8%89%E9%83%A8%E6%9B%B2%E4%B9%8B%20--%20gRPC/</url>
@@ -95,9 +120,9 @@
       
         <tags>
             
-            <tag> Kotlin </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> Kotlin </tag>
             
         </tags>
       
@@ -122,9 +147,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Java </tag>
             
             <tag> GC </tag>
             
@@ -151,11 +176,11 @@
       
         <tags>
             
+            <tag> Android </tag>
+            
             <tag> Java </tag>
             
             <tag> Bytecode </tag>
-            
-            <tag> Android </tag>
             
         </tags>
       
@@ -180,9 +205,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Java </tag>
             
             <tag> 多线程 </tag>
             
@@ -209,9 +234,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Java </tag>
             
             <tag> 代理 </tag>
             
@@ -294,11 +319,11 @@
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> Kotlin </tag>
             
             <tag> Android </tag>
             
-            <tag> Kotlin </tag>
+            <tag> Java </tag>
             
             <tag> 反射 </tag>
             
@@ -325,11 +350,11 @@
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> Kotlin </tag>
             
             <tag> Android </tag>
             
-            <tag> Kotlin </tag>
+            <tag> Java </tag>
             
             <tag> 注解 </tag>
             
@@ -381,11 +406,11 @@
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> Kotlin </tag>
             
             <tag> Android </tag>
             
-            <tag> Kotlin </tag>
+            <tag> Java </tag>
             
             <tag> 泛型 </tag>
             
@@ -439,11 +464,11 @@
       
         <tags>
             
-            <tag> 基础 </tag>
+            <tag> Gradle </tag>
             
             <tag> Android </tag>
             
-            <tag> Gradle </tag>
+            <tag> 基础 </tag>
             
         </tags>
       
@@ -468,11 +493,11 @@
       
         <tags>
             
-            <tag> 基础 </tag>
+            <tag> Gradle </tag>
             
             <tag> Android </tag>
             
-            <tag> Gradle </tag>
+            <tag> 基础 </tag>
             
         </tags>
       
@@ -522,9 +547,9 @@
       
         <tags>
             
-            <tag> 概述 </tag>
-            
             <tag> 计算机网络 </tag>
+            
+            <tag> 概述 </tag>
             
         </tags>
       
@@ -799,11 +824,11 @@
       
         <tags>
             
+            <tag> 基础 </tag>
+            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
-            
-            <tag> 基础 </tag>
             
         </tags>
       
@@ -1152,9 +1177,9 @@
       
         <tags>
             
-            <tag> 享元 </tag>
-            
             <tag> 结构型模式 </tag>
+            
+            <tag> 享元 </tag>
             
         </tags>
       
@@ -1341,9 +1366,9 @@
       
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 原型 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
       
@@ -1476,9 +1501,9 @@
       
         <tags>
             
-            <tag> 单例 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 单例 </tag>
             
         </tags>
       
@@ -1559,9 +1584,9 @@
       
         <tags>
             
-            <tag> 模式 </tag>
-            
             <tag> 概述 </tag>
+            
+            <tag> 模式 </tag>
             
         </tags>
       
