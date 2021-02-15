@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)">
   <h2>计算机系统结构-概论</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-02-05T15:33:00.000Z">
@@ -274,7 +274,31 @@ ADD B<span class="token punctuation">,</span> C<span class="token punctuation">,
 </tr>
 <tr>
 <td align="center">软件</td>
-<td align="center"></td>
+<td align="center">1. 设计容易；<br>2. 修改容易；<br>3. 有灵活的适应性；</td>
+<td align="center">1. 速度慢；<br>2. 性能低；</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">设计方法</th>
+<th align="center">描述</th>
+<th align="center">问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">由上往下/由顶向底</td>
+<td align="center">先考虑如何满足应用要求，定好面向应用的那个虚拟机器级的特性和工作环境，再逐级的向下设计，每设计下一级都考虑对上一级是优化的。</td>
+<td align="center">1. 串行设计，设计周期较长；<br>2. 一旦环境改变，软、硬件分配就会很不适应，使系统效率急剧下降；<br>3. 厂家为了经济效益，尽量避免研发生产批量少、专用性强、适用面窄的硬件；</td>
+</tr>
+<tr>
+<td align="center">由下往上/由底向顶</td>
+<td align="center">先不管应用要求，只根据目前能用的器件，参照、吸收已有各种机器的特点，将微程序机器级（如果采用微程序控制）和传统机器级研制出来，然后，加配适用于不同应用领域的多种操作系统和编译系统软件，使应用人员可以根据不同的语言类型、数据形式，采用合适的系统软件和算法来满足应用的需要。</td>
+<td align="center">1. 串行设计，设计周期较长；<br>2. 软硬件脱节，软件因得不到硬件支持而显得繁杂；<br>3. 有些性能指标往往是虚假的；</td>
+</tr>
+<tr>
+<td align="center">从中间开始</td>
+<td align="center">选择从层次结构的主要软、硬界面开始设计，即在传统机器语言机器级与操作系统机器级之间进行合理的软、硬件功能分配。即考虑到硬、器件的现状和发展，又考虑到可能使用的算法和数据结构，定义好这个界面，确定哪些功能由硬件实现，哪些功能由软件实现。同时，考虑硬件能对操作系统、编译系统的实现提供什么样的支持。然后，由这个中间界面分别向上、向下同时进行软、硬件的设计。</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
