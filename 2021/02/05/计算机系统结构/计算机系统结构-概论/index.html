@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)">
   <h2>计算机系统结构-概论</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-02-05T15:33:00.000Z">
@@ -409,6 +409,24 @@ ADD B<span class="token punctuation">,</span> C<span class="token punctuation">,
 <li>多指令流单数据流（Multiple Instruction Stream Single Data Stream，MISD）</li>
 <li>多指令流多数据流（Multiple Instruction Stream Multiple Data Stream，MIMD）</li>
 </ol>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_flynn.png" alt="弗林分类法"></p>
+<p>弗林分类法能反映出大多数计算机的并行工作方式和结构特点，使用范围较广，但只能对控制流机器分类。像数据流计算机就无法用这种方法分类，而且对广泛使用的流水线处理机的分类也不确切。这种分类有时难以反映系统工作原理上的特色。</p>
+<p>1978 年，美国的库克（David J. Kuck）提出用 <strong>指令流</strong> 和 <strong>执行流（Execution Stream）</strong>及其 <strong>多倍性</strong> 来描述计算机系统总控制器的结构特点。分类如下：</p>
+<ol>
+<li>单指令流单执行流（SISE）：典型的单处理机系统；</li>
+<li>单指令流多执行流（SIME）：带多操作部件的处理机；</li>
+<li>多指令流单执行流（MISE）：带指令级多道程序的单处理机；</li>
+<li>多指令流多执行流（MIME）：典型的多处理机系统；</li>
+</ol>
+<p>1972 年，美籍华人冯泽云（Tse-yun Feng）提出了用 <strong>数据处理</strong> 的 <strong>并行度</strong> 来定量地描述各种计算机系统特征的冯氏分类法。他把计算机分成四类：</p>
+<ol>
+<li>字串位串（WSBS）– 称位串处理方式。每次只处理一个字中的一位，如早期的位串行机。</li>
+<li>字串位并（WSBP）– 称字（字片）处理方式。每次处理一个字中的 n 位，如传统的位并行机。</li>
+<li>字并位串（WPBS）– 称位（为片）处理方式。一次处理 m 个字中的 1 位，如某些相连处理机及阵列处理机。</li>
+<li>字并位并（WPBP）– 称全并行处理方式。一次处理 m 个字，每个字为 n 位，如某些相连处理机、大多数阵列处理机及多处理机。</li>
+</ol>
+<p>1977 年，联邦德国的汉德勒（Wolfgang Handler）又在冯氏分类法基础上提出了基于硬件结构所含可并行处理单元数和可流水处理的级数的分类方法。</p>
+<p>此外，还可以从对执行程序或指令的控制方式上，将计算机系统分为 <strong>有控制驱动的控制流方式</strong>，<strong>由数据驱动的数据流方式</strong>，<strong>按需求驱动的归约（Reduction）方式</strong>，以及 <strong>按模式驱动（Pattern Driven）的匹配（Matching）方式</strong> 等。</p>
 
   </div>
   <!--评论块-->
