@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Walker Denial">
+  <meta name="description" content="This is Walker Denial&#39;s blog!">
+  
+  <title>Walker Denial</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu"><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav">
+    <div class="nav-header" style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/profile.png" ondragstart="return false;"></div>
+    <p>Walker Denial</p>
+    <div class="nav-link">
+        
+        <a href="https://twitter.com/WalkerDenial" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a href="https://github.com/WalkerDenial" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:mailto:WalkerDenial@gmail.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://weibo.com/u/3213135930" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="https://www.zhihu.com/people/walkerdenial/activities" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off">
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class="no-result">无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2021/03/">March 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/02/">February 2021<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/12/">December 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Algorithm/">Algorithm<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">6</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/RPC/">RPC<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/其他/">其他<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机系统结构/">计算机系统结构<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
+  <h2>存储、中断、总线与 I/O 系统</h2>
+    
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-01T15:10:00.000Z">
+          2021-03-01
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h1 id="1-存储系统"><a href="#1-存储系统" class="headerlink" title="1 存储系统"></a>1 存储系统</h1><p>对存储系统的基本要求是 <strong>大容量</strong>、<strong>高速度</strong> 和 <strong>低价格</strong>。</p>
+<blockquote>
+<p>存储器容量：S<sub>M</sub> = W * L * m。</p>
+<p>W：存储体的字长（单位是位或字节）<br><br>L：存储体的字数<br><br>m：并行工作的存储体数</p>
+<p>T<sub>A</sub>：访问时间（速度）<br><br>T<sub>M</sub>：存储周期<br><br>B<sub>m</sub>：频宽（也称带宽）</p>
+</blockquote>
+<p><strong>T<sub>A</sub></strong> 是存储器从接收访存读申请至信息被读到数据总线上的时间，是处理机启动访存后必须等待的时间，它是确定处理机与存储器时间关系的一个重要参数。</p>
+<p><strong>T<sub>M</sub></strong> 是连续启动一个存储体所需要的间隔时间，它一般总比 T<sub>A</sub> 大。</p>
+<p>存储器价格包含了存储体及为该存储器操作所必须的外围电路的价格，可用总价格 C 和每位价格 c 来表示。有 S<sub>M</sub> 位的存储器每位价格 c = C/S<sub>M</sub>。</p>
+<p>主存和辅存之间并不能构成完整的整体的系统为存储器系统。</p>
+<h2 id="1-1-领会并行主存系统的组成形式，极限频宽和实际频宽的计算"><a href="#1-1-领会并行主存系统的组成形式，极限频宽和实际频宽的计算" class="headerlink" title="1.1 领会并行主存系统的组成形式，极限频宽和实际频宽的计算"></a>1.1 领会并行主存系统的组成形式，极限频宽和实际频宽的计算</h2><p>能并行读出多个 CPU 字的单体多字和多体单字、多体多字的交叉访问主存系统被称为并行主存系统。</p>
+<p><strong>B<sub>m</sub></strong> 是存储器可提供的数据传送速率，用每秒传送的信息位数或字节数衡量，又有最大频宽（或极限频宽）和实际频宽之分，最大频宽 B<sub>m</sub> 是存储器连续访问时的频宽。单体的 B<sub>m</sub> = W/T<sub>M</sub>，m 个存储体并行的最大频宽 B<sub>m</sub> = W x m/T<sub>M</sub>。由于存储器不一定能满负荷工作，因此，实际频宽往往低于最大频宽。</p>
+<h2 id="1-2-领会通过使用并行主存的组成技术，提高主存实际频宽的可能性、局限性和发展存储体系的必要性"><a href="#1-2-领会通过使用并行主存的组成技术，提高主存实际频宽的可能性、局限性和发展存储体系的必要性" class="headerlink" title="1.2 领会通过使用并行主存的组成技术，提高主存实际频宽的可能性、局限性和发展存储体系的必要性"></a>1.2 领会通过使用并行主存的组成技术，提高主存实际频宽的可能性、局限性和发展存储体系的必要性</h2><p>并行主存的组成技术：</p>
+<ol>
+<li>多体单字；</li>
+<li>多体单字；</li>
+<li>多体多字；</li>
+</ol>
+<p>提高模 m 值，是能提高主存系统的最大频宽的，单主存实际频宽并不是随 m 增大而线性提高，也就是说其实际效率并不像所希望的那么高。</p>
+<p>因为程序的转移概率不会很低，数据发布的离散性较大，所以单纯靠增大 m 来提高并行主存系统的频宽是有限的，而且性能价格比还会随 m 的增大而下降。如果采用并行主存西戎仍不能满足速度上的要求，就必须从系统结构上进行改进，采用存储体系。</p>
+<h1 id="2-中断系统"><a href="#2-中断系统" class="headerlink" title="2 中断系统"></a>2 中断系统</h1><p>CPU 中止正在执行的程序，转去处理随机提出的请求，待处理完后，再回到原先被打断的程序继续恢复执行的过程称为 <strong>中断</strong>。响应和处理各种中断的软、硬件总体称为 <strong>中断系统</strong>。</p>
+<p>引起中断的各种事件称为 <strong>中断源</strong>。<strong>中断源</strong> 向中断系统发出请求中断的申请，称为 <strong>中断请求</strong>。同时可能有多个 <strong>中断请求</strong>，中断系统需按事先确定的中断响应优先次序对优先级高的中断请求给予响应。<strong>中断响应</strong> 就是允许其中断 CPU 现行程序的运行，转去对该请求进行预处理，包括保存好断点及其现场，调出有关处理该中断的中断服务程序，准备运行。这部分工作在多数计算机上都用交换新旧程序状态字 PSW 来实现。为了某种需要，中断系统也可以对中断请求进行屏蔽，使之暂时得不到响应。</p>
+<h2 id="2-1-中断分类和分级的目的，一般分为哪几类、哪几级"><a href="#2-1-中断分类和分级的目的，一般分为哪几类、哪几级" class="headerlink" title="2.1 中断分类和分级的目的，一般分为哪几类、哪几级"></a>2.1 中断分类和分级的目的，一般分为哪几类、哪几级</h2><p>对中、大型多用途计算机，中断源数多达数十至数百个。如果为每个中断源单独形成入口，不仅硬件实现困难，代价大，就是在中断处理上也没有这种必要。因为不少中断源的性质比较接近，可以将它们归成几类。对每一类给定一个中断服务程序入口，再由软件分支转入相应的中断处理部分，就可以大大简化中断处理程序入口地址形成硬件。</p>
+<p>在计算机中，中断可分为 <strong>内部中断</strong>、<strong>外部中断</strong>、<strong>软件中断</strong> 三类。</p>
+<p>由于中断源相互独立而随机地发出中断请求，因此常常会同时发生多个中断请求。同一类的各中断请求的响应和处理的优先次序，一般不是由中断系统的硬件管理，而是由其软件或通道来管理的。而不同类的中断就要根据中断的性质、紧迫性、重要性以及软件处理的方便性把它们分成不同的级别。中断系统按中断源的级别高低来响应。</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_interrupt.png" alt></p>
+<h2 id="2-2-设置中断级屏蔽位的作用及中断嵌套的原则"><a href="#2-2-设置中断级屏蔽位的作用及中断嵌套的原则" class="headerlink" title="2.2 设置中断级屏蔽位的作用及中断嵌套的原则"></a>2.2 设置中断级屏蔽位的作用及中断嵌套的原则</h2><h2 id="2-3-按中断处理要求的次序设置中断级屏蔽状态位状态，正确画出发生中断请求时，CPU-程序执行状态的转切过程图"><a href="#2-3-按中断处理要求的次序设置中断级屏蔽状态位状态，正确画出发生中断请求时，CPU-程序执行状态的转切过程图" class="headerlink" title="2.3 按中断处理要求的次序设置中断级屏蔽状态位状态，正确画出发生中断请求时，CPU 程序执行状态的转切过程图"></a>2.3 按中断处理要求的次序设置中断级屏蔽状态位状态，正确画出发生中断请求时，CPU 程序执行状态的转切过程图</h2><h2 id="2-4-中断系统硬件功能分配状况"><a href="#2-4-中断系统硬件功能分配状况" class="headerlink" title="2.4 中断系统硬件功能分配状况"></a>2.4 中断系统硬件功能分配状况</h2><h1 id="3-总线设计"><a href="#3-总线设计" class="headerlink" title="3 总线设计"></a>3 总线设计</h1><h2 id="3-1-专用和非专用总线的定义、优缺点及适用场合"><a href="#3-1-专用和非专用总线的定义、优缺点及适用场合" class="headerlink" title="3.1 专用和非专用总线的定义、优缺点及适用场合"></a>3.1 专用和非专用总线的定义、优缺点及适用场合</h2><h2 id="3-2-非专用总线中-3-种总线控制方式的总线分配过程、优缺点、所增加的控制线线数及适用场合"><a href="#3-2-非专用总线中-3-种总线控制方式的总线分配过程、优缺点、所增加的控制线线数及适用场合" class="headerlink" title="3.2 非专用总线中 3 种总线控制方式的总线分配过程、优缺点、所增加的控制线线数及适用场合"></a>3.2 非专用总线中 3 种总线控制方式的总线分配过程、优缺点、所增加的控制线线数及适用场合</h2><h2 id="3-3-同步和异步通信控制方式的通信过程、优缺点及适用场合"><a href="#3-3-同步和异步通信控制方式的通信过程、优缺点及适用场合" class="headerlink" title="3.3 同步和异步通信控制方式的通信过程、优缺点及适用场合"></a>3.3 同步和异步通信控制方式的通信过程、优缺点及适用场合</h2><h2 id="3-4-数据宽度的定义、分类及优缺点。数据宽度与数据通路宽度的不同"><a href="#3-4-数据宽度的定义、分类及优缺点。数据宽度与数据通路宽度的不同" class="headerlink" title="3.4 数据宽度的定义、分类及优缺点。数据宽度与数据通路宽度的不同"></a>3.4 数据宽度的定义、分类及优缺点。数据宽度与数据通路宽度的不同</h2><h1 id="4-输入-输出系统的基本概念"><a href="#4-输入-输出系统的基本概念" class="headerlink" title="4 输入/输出系统的基本概念"></a>4 输入/输出系统的基本概念</h1><h2 id="4-1-高性能多用户计算机系统中，I-O-系统应当面向操作系统设计"><a href="#4-1-高性能多用户计算机系统中，I-O-系统应当面向操作系统设计" class="headerlink" title="4.1 高性能多用户计算机系统中，I/O 系统应当面向操作系统设计"></a>4.1 高性能多用户计算机系统中，I/O 系统应当面向操作系统设计</h2><h2 id="4-2-I-O-系统的-3-种方式，I-O-处理机的两种形式"><a href="#4-2-I-O-系统的-3-种方式，I-O-处理机的两种形式" class="headerlink" title="4.2 I/O 系统的 3 种方式，I/O 处理机的两种形式"></a>4.2 I/O 系统的 3 种方式，I/O 处理机的两种形式</h2><h1 id="5-通道处理机"><a href="#5-通道处理机" class="headerlink" title="5 通道处理机"></a>5 通道处理机</h1><h2 id="5-1-通道处理机的输入-输出过程"><a href="#5-1-通道处理机的输入-输出过程" class="headerlink" title="5.1 通道处理机的输入/输出过程"></a>5.1 通道处理机的输入/输出过程</h2><h2 id="5-2-通道的-3-种类型，相应采用的数据宽度及适用场合"><a href="#5-2-通道的-3-种类型，相应采用的数据宽度及适用场合" class="headerlink" title="5.2 通道的 3 种类型，相应采用的数据宽度及适用场合"></a>5.2 通道的 3 种类型，相应采用的数据宽度及适用场合</h2><h1 id="6-通道流量计算"><a href="#6-通道流量计算" class="headerlink" title="6 通道流量计算"></a>6 通道流量计算</h1><h2 id="6-1-通道的极限流量计算，外设对通道要求的流量计算"><a href="#6-1-通道的极限流量计算，外设对通道要求的流量计算" class="headerlink" title="6.1 通道的极限流量计算，外设对通道要求的流量计算"></a>6.1 通道的极限流量计算，外设对通道要求的流量计算</h2><h2 id="6-2-I-O-系统的流量计算"><a href="#6-2-I-O-系统的流量计算" class="headerlink" title="6.2 I/O 系统的流量计算"></a>6.2 I/O 系统的流量计算</h2><h2 id="6-3-带多台外设的字节多路通道的流量计算、通道工作周期设计，画出通道响应和处理各台外设请求时刻的时空图"><a href="#6-3-带多台外设的字节多路通道的流量计算、通道工作周期设计，画出通道响应和处理各台外设请求时刻的时空图" class="headerlink" title="6.3 带多台外设的字节多路通道的流量计算、通道工作周期设计，画出通道响应和处理各台外设请求时刻的时空图"></a>6.3 带多台外设的字节多路通道的流量计算、通道工作周期设计，画出通道响应和处理各台外设请求时刻的时空图</h2>
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2021/02/23/计算机系统结构/数据表示、寻址方式与指令系统/" id="post_nav-older" class="post-nav-content next-content">
+      下一篇>
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-存储系统"><span class="post-toc-text">1 存储系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-领会并行主存系统的组成形式，极限频宽和实际频宽的计算"><span class="post-toc-text">1.1 领会并行主存系统的组成形式，极限频宽和实际频宽的计算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-领会通过使用并行主存的组成技术，提高主存实际频宽的可能性、局限性和发展存储体系的必要性"><span class="post-toc-text">1.2 领会通过使用并行主存的组成技术，提高主存实际频宽的可能性、局限性和发展存储体系的必要性</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-中断系统"><span class="post-toc-text">2 中断系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-中断分类和分级的目的，一般分为哪几类、哪几级"><span class="post-toc-text">2.1 中断分类和分级的目的，一般分为哪几类、哪几级</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-设置中断级屏蔽位的作用及中断嵌套的原则"><span class="post-toc-text">2.2 设置中断级屏蔽位的作用及中断嵌套的原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-3-按中断处理要求的次序设置中断级屏蔽状态位状态，正确画出发生中断请求时，CPU-程序执行状态的转切过程图"><span class="post-toc-text">2.3 按中断处理要求的次序设置中断级屏蔽状态位状态，正确画出发生中断请求时，CPU 程序执行状态的转切过程图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-4-中断系统硬件功能分配状况"><span class="post-toc-text">2.4 中断系统硬件功能分配状况</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-总线设计"><span class="post-toc-text">3 总线设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-专用和非专用总线的定义、优缺点及适用场合"><span class="post-toc-text">3.1 专用和非专用总线的定义、优缺点及适用场合</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-非专用总线中-3-种总线控制方式的总线分配过程、优缺点、所增加的控制线线数及适用场合"><span class="post-toc-text">3.2 非专用总线中 3 种总线控制方式的总线分配过程、优缺点、所增加的控制线线数及适用场合</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-同步和异步通信控制方式的通信过程、优缺点及适用场合"><span class="post-toc-text">3.3 同步和异步通信控制方式的通信过程、优缺点及适用场合</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-4-数据宽度的定义、分类及优缺点。数据宽度与数据通路宽度的不同"><span class="post-toc-text">3.4 数据宽度的定义、分类及优缺点。数据宽度与数据通路宽度的不同</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-输入-输出系统的基本概念"><span class="post-toc-text">4 输入/输出系统的基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-1-高性能多用户计算机系统中，I-O-系统应当面向操作系统设计"><span class="post-toc-text">4.1 高性能多用户计算机系统中，I/O 系统应当面向操作系统设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-2-I-O-系统的-3-种方式，I-O-处理机的两种形式"><span class="post-toc-text">4.2 I/O 系统的 3 种方式，I/O 处理机的两种形式</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-通道处理机"><span class="post-toc-text">5 通道处理机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-1-通道处理机的输入-输出过程"><span class="post-toc-text">5.1 通道处理机的输入/输出过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-2-通道的-3-种类型，相应采用的数据宽度及适用场合"><span class="post-toc-text">5.2 通道的 3 种类型，相应采用的数据宽度及适用场合</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-通道流量计算"><span class="post-toc-text">6 通道流量计算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-1-通道的极限流量计算，外设对通道要求的流量计算"><span class="post-toc-text">6.1 通道的极限流量计算，外设对通道要求的流量计算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-2-I-O-系统的流量计算"><span class="post-toc-text">6.2 I/O 系统的流量计算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-3-带多台外设的字节多路通道的流量计算、通道工作周期设计，画出通道响应和处理各台外设请求时刻的时空图"><span class="post-toc-text">6.3 带多台外设的字节多路通道的流量计算、通道工作周期设计，画出通道响应和处理各台外设请求时刻的时空图</span></a></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p style="line-height: 30px">Copyright ©  2017 ~ 2020  Walker Denial</p>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>
