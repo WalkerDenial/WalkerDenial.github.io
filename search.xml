@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>存储体系</title>
+      <link href="2021/03/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/"/>
+      <url>2021/03/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-存储体系概念"><a href="#1-存储体系概念" class="headerlink" title="1 存储体系概念"></a>1 存储体系概念</h1><h2 id="1-1-存储体系的定义、分支及依据"><a href="#1-1-存储体系的定义、分支及依据" class="headerlink" title="1.1 存储体系的定义、分支及依据"></a>1.1 存储体系的定义、分支及依据</h2><p>存储体系（即存储层次）是让构成存储系统的几种不同的存储器（M<sub>1</sub> ~ M<sub>n</sub>）之间，配上辅助软、硬件或辅助硬件，使之从应用程序员角度来看，它们在逻辑上是一个整体。让存储层次的等效访问速度是接近于 M<sub>1</sub> 的，容量是 M<sub>n</sub> 的，每位价格是接近于 M<sub>n</sub> 的。基本的二级存储体系是 <strong>虚拟存储器</strong> 和 <strong>Cache 存储器</strong>，这是存储体系的两个不同的分支。</p><p><strong>虚拟存储器</strong> 是因主存容量满足不了要求而提出来的。在主存和辅存之间，增设辅助的软、硬件设备，让它们构成一个整体，所以也称为主存-辅存存储层次。</p><p>因主存速度满足不了要求而引出了 Cache 存储器。在 CPU 和主存之间增设高速、小容量、每位价格较高的 Cache，用辅助硬件将 Cache 和主存构成整体，称为 Cache 存储器（或称为 Cache-主存存储器层次）。</p><p>应用程序员可用机器指令的地址对整个程序统一编址，称该地址为虚地址（程序地址），而把实际主存地址称为实地址（实存地址）。</p><p><strong>虚拟存储器</strong> 只能适用于多道程序（多用户）环境，而 Cache 存储器既可以是单用户环境，也可以是多用户环境。</p><h2 id="1-2-存储体系主要指标参数的计算"><a href="#1-2-存储体系主要指标参数的计算" class="headerlink" title="1.2 存储体系主要指标参数的计算"></a>1.2 存储体系主要指标参数的计算</h2><p>设有存储器 ，变量如下：</p><blockquote><p>c<sub>i</sub>：每位价格；<br><br>S<sub>M<sub>i</sub></sub>：以位计算的存储容量；<br><br>T<sub>A<sub>i</sub></sub>：CPU 访问到 M<sub>i</sub> 中信息所需的时间；<br><br>H：命中率；</p></blockquote><p>存储层次的每位价格：</p><p>c = (c<sub>1</sub>S<sub>M<sub>1</sub></sub> + c<sub>2</sub>S<sub>M<sub>2</sub></sub> + … + c<sub>i</sub>S<sub>M<sub>i</sub></sub>)/(S<sub>M<sub>1</sub></sub> + S<sub>M<sub>2</sub></sub> + … + S<sub>M<sub>i</sub></sub>)</p><p>命中率 H 定义为 CPU 产生的逻辑地址在 M<sub>1</sub> 中访问到（命中到）的概率。</p><p>存储层次的等效访问时间 T<sub>A</sub> = H<sub>1</sub>T<sub>A<sub>1</sub></sub> + H<sub>2</sub>T<sub>A<sub>2</sub></sub> + … + H<sub>i</sub>T<sub>A<sub>i</sub></sub>，希望 T<sub>A<sub>i</sub></sub> 越接近于 T<sub>A<sub>1</sub></sub>。</p><h1 id="2-虚拟存储器"><a href="#2-虚拟存储器" class="headerlink" title="2 虚拟存储器"></a>2 虚拟存储器</h1><h2 id="2-1-3-种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题"><a href="#2-1-3-种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题" class="headerlink" title="2.1 3 种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题"></a>2.1 3 种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题</h2><h2 id="2-2-段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效"><a href="#2-2-段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效" class="headerlink" title="2.2 段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效"></a>2.2 段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效</h2><h2 id="2-3-页式虚拟存储器的虚、实地址字段对应关系、地址映像规则，由虚地址差映像表计算出主存地址，或判断是否页失效"><a href="#2-3-页式虚拟存储器的虚、实地址字段对应关系、地址映像规则，由虚地址差映像表计算出主存地址，或判断是否页失效" class="headerlink" title="2.3 页式虚拟存储器的虚、实地址字段对应关系、地址映像规则，由虚地址差映像表计算出主存地址，或判断是否页失效"></a>2.3 页式虚拟存储器的虚、实地址字段对应关系、地址映像规则，由虚地址差映像表计算出主存地址，或判断是否页失效</h2><h2 id="2-4-用-FIFO、LRU、OPT-算法页替换的过程模拟，计算命中率"><a href="#2-4-用-FIFO、LRU、OPT-算法页替换的过程模拟，计算命中率" class="headerlink" title="2.4 用 FIFO、LRU、OPT 算法页替换的过程模拟，计算命中率"></a>2.4 用 FIFO、LRU、OPT 算法页替换的过程模拟，计算命中率</h2><h2 id="2-5-堆栈型替换算法定义、种类，给出程序运行时的虚页地址流用-LRU-替换算法进行堆栈模拟处理，求得不同实页数时的命中率"><a href="#2-5-堆栈型替换算法定义、种类，给出程序运行时的虚页地址流用-LRU-替换算法进行堆栈模拟处理，求得不同实页数时的命中率" class="headerlink" title="2.5 堆栈型替换算法定义、种类，给出程序运行时的虚页地址流用 LRU 替换算法进行堆栈模拟处理，求得不同实页数时的命中率"></a>2.5 堆栈型替换算法定义、种类，给出程序运行时的虚页地址流用 LRU 替换算法进行堆栈模拟处理，求得不同实页数时的命中率</h2><h2 id="2-6-PFF-替换算法的原理，二道程序给出各自程序运行中的虚页地址流，合理分配给它们的实主存页数，使系统效率最高"><a href="#2-6-PFF-替换算法的原理，二道程序给出各自程序运行中的虚页地址流，合理分配给它们的实主存页数，使系统效率最高" class="headerlink" title="2.6 PFF 替换算法的原理，二道程序给出各自程序运行中的虚页地址流，合理分配给它们的实主存页数，使系统效率最高"></a>2.6 PFF 替换算法的原理，二道程序给出各自程序运行中的虚页地址流，合理分配给它们的实主存页数，使系统效率最高</h2><h2 id="2-7-分析虚拟存储器的页面大小-Sp、分配给主存容量-S1-与主存命中率-H-的变化趋势，给出综合评估和改进页式虚拟存储器性能的办法"><a href="#2-7-分析虚拟存储器的页面大小-Sp、分配给主存容量-S1-与主存命中率-H-的变化趋势，给出综合评估和改进页式虚拟存储器性能的办法" class="headerlink" title="2.7 分析虚拟存储器的页面大小 Sp、分配给主存容量 S1 与主存命中率 H 的变化趋势，给出综合评估和改进页式虚拟存储器性能的办法"></a>2.7 分析虚拟存储器的页面大小 S<sub>p</sub>、分配给主存容量 S<sub>1</sub> 与主存命中率 H 的变化趋势，给出综合评估和改进页式虚拟存储器性能的办法</h2><h1 id="3-Cache-存储器"><a href="#3-Cache-存储器" class="headerlink" title="3 Cache 存储器"></a>3 Cache 存储器</h1><h2 id="3-1-Cache-存储器的组成与工作原理，与虚拟存储器对比"><a href="#3-1-Cache-存储器的组成与工作原理，与虚拟存储器对比" class="headerlink" title="3.1 Cache 存储器的组成与工作原理，与虚拟存储器对比"></a>3.1 Cache 存储器的组成与工作原理，与虚拟存储器对比</h2><h2 id="3-2-全相联、直接、组相联地址映像规则，地址变换过程，相应所用映像表的组织"><a href="#3-2-全相联、直接、组相联地址映像规则，地址变换过程，相应所用映像表的组织" class="headerlink" title="3.2 全相联、直接、组相联地址映像规则，地址变换过程，相应所用映像表的组织"></a>3.2 全相联、直接、组相联地址映像规则，地址变换过程，相应所用映像表的组织</h2><h2 id="3-3-比较对法实现-Cache-块替换的原理，比较对触发器数的计算"><a href="#3-3-比较对法实现-Cache-块替换的原理，比较对触发器数的计算" class="headerlink" title="3.3 比较对法实现 Cache 块替换的原理，比较对触发器数的计算"></a>3.3 比较对法实现 Cache 块替换的原理，比较对触发器数的计算</h2><h2 id="3-4-给出主存块地址流，用组相联或直接映像、LRU-或-FIFO-替换时，画出程序运行中各块装入或替换的过程图，计算出-Cache-的块命中率"><a href="#3-4-给出主存块地址流，用组相联或直接映像、LRU-或-FIFO-替换时，画出程序运行中各块装入或替换的过程图，计算出-Cache-的块命中率" class="headerlink" title="3.4 给出主存块地址流，用组相联或直接映像、LRU 或 FIFO 替换时，画出程序运行中各块装入或替换的过程图，计算出 Cache 的块命中率"></a>3.4 给出主存块地址流，用组相联或直接映像、LRU 或 FIFO 替换时，画出程序运行中各块装入或替换的过程图，计算出 Cache 的块命中率</h2><h2 id="3-5-解决-Cache-存储器透明的各种算法和措施"><a href="#3-5-解决-Cache-存储器透明的各种算法和措施" class="headerlink" title="3.5 解决 Cache 存储器透明的各种算法和措施"></a>3.5 解决 Cache 存储器透明的各种算法和措施</h2><h2 id="3-6-提高-Cache-存储器命中率的预取算法"><a href="#3-6-提高-Cache-存储器命中率的预取算法" class="headerlink" title="3.6 提高 Cache 存储器命中率的预取算法"></a>3.6 提高 Cache 存储器命中率的预取算法</h2><h2 id="3-7-影响-Cache-存储器性能的因素及变化趋势"><a href="#3-7-影响-Cache-存储器性能的因素及变化趋势" class="headerlink" title="3.7 影响 Cache 存储器性能的因素及变化趋势"></a>3.7 影响 Cache 存储器性能的因素及变化趋势</h2><h2 id="3-8-Cache-存储器的等效访问速度与-Cache-容量及速度的关系"><a href="#3-8-Cache-存储器的等效访问速度与-Cache-容量及速度的关系" class="headerlink" title="3.8 Cache 存储器的等效访问速度与 Cache 容量及速度的关系"></a>3.8 Cache 存储器的等效访问速度与 Cache 容量及速度的关系</h2><h1 id="4-三级存储体系的组织"><a href="#4-三级存储体系的组织" class="headerlink" title="4 三级存储体系的组织"></a>4 三级存储体系的组织</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机系统结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机系统结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>存储、中断、总线与 I/O 系统</title>
       <link href="2021/03/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%20I:O%20%E7%B3%BB%E7%BB%9F/"/>
       <url>2021/03/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%20I:O%20%E7%B3%BB%E7%BB%9F/</url>
@@ -170,9 +195,9 @@
       
         <tags>
             
-            <tag> 算法 </tag>
-            
             <tag> Kotlin </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -197,9 +222,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> GC </tag>
             
@@ -226,9 +251,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> Bytecode </tag>
             
@@ -255,9 +280,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 多线程 </tag>
             
@@ -284,9 +309,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 代理 </tag>
             
@@ -369,11 +394,11 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> Android </tag>
             
             <tag> Kotlin </tag>
-            
-            <tag> Java </tag>
             
             <tag> 反射 </tag>
             
@@ -400,11 +425,11 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> Android </tag>
             
             <tag> Kotlin </tag>
-            
-            <tag> Java </tag>
             
             <tag> 注解 </tag>
             
@@ -456,11 +481,11 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> Android </tag>
             
             <tag> Kotlin </tag>
-            
-            <tag> Java </tag>
             
             <tag> 泛型 </tag>
             
@@ -514,11 +539,11 @@
       
         <tags>
             
-            <tag> Gradle </tag>
+            <tag> 基础 </tag>
             
             <tag> Android </tag>
             
-            <tag> 基础 </tag>
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -543,11 +568,11 @@
       
         <tags>
             
-            <tag> Gradle </tag>
+            <tag> 基础 </tag>
             
             <tag> Android </tag>
             
-            <tag> 基础 </tag>
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -874,11 +899,11 @@
       
         <tags>
             
-            <tag> 基础 </tag>
-            
             <tag> ES6 </tag>
             
             <tag> 简介 </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
@@ -1416,9 +1441,9 @@
       
         <tags>
             
-            <tag> 创建型模式 </tag>
-            
             <tag> 原型 </tag>
+            
+            <tag> 创建型模式 </tag>
             
         </tags>
       
@@ -1551,9 +1576,9 @@
       
         <tags>
             
-            <tag> 单例 </tag>
-            
             <tag> 创建型模式 </tag>
+            
+            <tag> 单例 </tag>
             
         </tags>
       
