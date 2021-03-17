@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Walker Denial">
+  <meta name="description" content="This is Walker Denial&#39;s blog!">
+  
+  <title>Walker Denial</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu"><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav">
+    <div class="nav-header" style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/profile.png" ondragstart="return false;"></div>
+    <p>Walker Denial</p>
+    <div class="nav-link">
+        
+        <a href="https://twitter.com/WalkerDenial" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a href="https://github.com/WalkerDenial" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:mailto:WalkerDenial@gmail.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://weibo.com/u/3213135930" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="https://www.zhihu.com/people/walkerdenial/activities" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off">
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class="no-result">无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2021/03/">March 2021<span class="archive-count">9</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/02/">February 2021<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/12/">December 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a class target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown">
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Algorithm/">Algorithm<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">6</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/RPC/">RPC<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/其他/">其他<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/操作系统/">操作系统<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/自学/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机系统结构/">计算机系统结构<span class="category-count">8</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/计算机网络/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/设计模式/">设计模式<span class="category-count">27</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)">
+  <h2>进程与线程</h2>
+    
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-17T15:04:00.000Z">
+          2021-03-17
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>一个程序要能够在计算机系统中运行，除了程序本身必须是机器可执行的目标代码之外，还要有相应的数据。程序和数据还要提前被存储在存储器中，即需要报一定的存储空间分配给这个程序和数据。另外，在执行该程序前，处理器中的指令计数器必须指向存储器中被执行程序的首地址。另外，在执行该程序前，处理器中的指令计数器必须指向存储器中被执行程序的首地址。如果在程序执行过程中还需要其他的资源，比如需要从磁盘的一个文件中接收一批数据，那么在申请使用磁盘时，还要知道车牌的设备编号、文件的名称以及文件在磁盘中的物理位置、文件长度等资源信息，所有这些信息均需要有存储空间对它们加以保存，以便在运行时使用。显然，如果有多个程序要同时进入内存并运行，那么每个要运行的程序也需要准备程序代码、数据、资源信息以及保存这些代码、数据、资源信息的存储空间。</p>
+<p>为了能够从技术上较为准确地描述正在运行、将要运行或者刚刚推出运行的各个程序的执行代码、数据以及所需的资源信息等，人们引进了进程（Process）这个概念。</p>
+<h1 id="1-多道程序设计"><a href="#1-多道程序设计" class="headerlink" title="1 多道程序设计"></a>1 多道程序设计</h1><p>采用多道程序设计可以提高处理器的利用率。多道程序设计技术充分发挥了处理器与外围设备以及外围设备之间的并行工作能力，从而提高处理器和其他各种资源的利用率。</p>
+<p>我们把一个具有独立功能的程序独占处理器直到得到最终结果的过程称为程序的顺序执行。程序的顺序执行具有如下特点：</p>
+<ol>
+<li>顺序性；</li>
+<li>封闭性；</li>
+<li>程序执行结果的确定性；</li>
+<li>程序执行结果的可再现性；</li>
+</ol>
+<p>并发执行是指两个或两个以上程序在计算机系统中，同时处于已开始执行且尚未结束的状态。能够参与并发执行的程序称为并发程序。程序的并发执行，可以充分利用系统的资源，提高计算机的处理能力。但是，程序的并发执行产生了一些和程序顺序执行时不同的特征。程序的并发执行有如下特征：</p>
+<ol>
+<li>在执行期间并发程序相互制约；</li>
+<li>程序与计算不再一一对应；</li>
+<li>并发程序的执行结果不可再现；</li>
+<li>程序的并行执行与程序的并发执行；</li>
+</ol>
+<p>在现代计算机系统中，为了提高系统中各种资源的利用效率，缩短程序执行的周转时间，广泛采用了多道程序技术，使多种硬件资源能并行工作。</p>
+<p>所谓多道程序设计，就是允许多个程序同时进入内存并运行。多道程序设计是操作系统所采用的最基本、最重要的技术，其根本目的是提高整个系统的效率。</p>
+<p>衡量系统效率的尺度是系统吞吐量。所谓吞吐量是指单位时间内系统所处理进程（程序）的道数（数量）。</p>
+<p>多道程序设计环境具有以下特点：</p>
+<ol>
+<li>独立性；</li>
+<li>随机性；</li>
+<li>资源共享性；</li>
+</ol>
+<p>采用多道程序设计也存在一些问题：</p>
+<ol>
+<li>可能延长程序的执行时间；</li>
+<li>系统效率的提高有一定限度；</li>
+</ol>
+<h1 id="2-进程的概念"><a href="#2-进程的概念" class="headerlink" title="2 进程的概念"></a>2 进程的概念</h1><h2 id="2-1-进程的定义"><a href="#2-1-进程的定义" class="headerlink" title="2.1 进程的定义"></a>2.1 进程的定义</h2><p>进程是具有一定独立功能程序在某个数据集合上的一次运行活动，是系统进行资源分配和调度的一个独立单位。</p>
+<p>从操作系统角度来看，可将进程分为系统进程和用户进程两类。系统进程执行操作系统程序，完成操作系统的某些功能。用户进程运行用户程序，直接为用户服务。系统进程的优先级通常高于一般用户进程的优先级。</p>
+<h2 id="2-2-进程与程序的联系和区别"><a href="#2-2-进程与程序的联系和区别" class="headerlink" title="2.2 进程与程序的联系和区别"></a>2.2 进程与程序的联系和区别</h2><ol>
+<li>进程和程序的联系：程序时构成进程的组成部分之一，一个进程的运行目标是执行它所对应的程序，如果没有程序，进程就失去了其存在的意义。从静态的角度看，进程是由程序、数据和进程控制块（PCB）三部分组成的。</li>
+<li>进程和程序的区别：程序是静态的，而进程是动态的。进程是程序的一个执行过程。程序的存在是永久的。而进程是为了程序的一次执行而暂时存在的。进程有生命周期，有诞生，亦有消亡。一个进程可以包括若干程序的执行，而一个程序亦可以产生多个进程。进程具有创建其他进程的功能。</li>
+</ol>
+<h2 id="2-3-进程的组成和特征"><a href="#2-3-进程的组成和特征" class="headerlink" title="2.3 进程的组成和特征"></a>2.3 进程的组成和特征</h2><p>进程具有两个基本属性。首先，进程是一个可拥有资源的独立单位；其次，进程同时又是一个可以独立调度和分派的基本单位。正是由于进程具有这两个基本属性，才使之成为一个能独立运行的基本单位，从而也构成了进程并发执行的基础。</p>
+<p>进程具有以下特性：</p>
+<ol>
+<li>并发性；</li>
+<li>动态性；</li>
+<li>独立性；</li>
+<li>交往性；</li>
+<li>异步性；</li>
+<li>结构性；</li>
+</ol>
+<h1 id="3-进程的状态"><a href="#3-进程的状态" class="headerlink" title="3 进程的状态"></a>3 进程的状态</h1><h2 id="3-1-进程的三种基本状态"><a href="#3-1-进程的三种基本状态" class="headerlink" title="3.1 进程的三种基本状态"></a>3.1 进程的三种基本状态</h2><h2 id="3-2-进程状态间的转换"><a href="#3-2-进程状态间的转换" class="headerlink" title="3.2 进程状态间的转换"></a>3.2 进程状态间的转换</h2><h2 id="3-3-进程的五状态模型"><a href="#3-3-进程的五状态模型" class="headerlink" title="3.3 进程的五状态模型"></a>3.3 进程的五状态模型</h2><h2 id="3-4-进程的七状态模型"><a href="#3-4-进程的七状态模型" class="headerlink" title="3.4 进程的七状态模型"></a>3.4 进程的七状态模型</h2><h1 id="4-进程控制块"><a href="#4-进程控制块" class="headerlink" title="4 进程控制块"></a>4 进程控制块</h1><h2 id="4-1-进程控制块的作用"><a href="#4-1-进程控制块的作用" class="headerlink" title="4.1 进程控制块的作用"></a>4.1 进程控制块的作用</h2><h2 id="4-2-进程控制块的基本内容"><a href="#4-2-进程控制块的基本内容" class="headerlink" title="4.2 进程控制块的基本内容"></a>4.2 进程控制块的基本内容</h2><h2 id="4-3-进程队列"><a href="#4-3-进程队列" class="headerlink" title="4.3 进程队列"></a>4.3 进程队列</h2><h1 id="5-进程控制"><a href="#5-进程控制" class="headerlink" title="5 进程控制"></a>5 进程控制</h1><h2 id="5-1-进程创建"><a href="#5-1-进程创建" class="headerlink" title="5.1 进程创建"></a>5.1 进程创建</h2><h2 id="5-2-进程撤销"><a href="#5-2-进程撤销" class="headerlink" title="5.2 进程撤销"></a>5.2 进程撤销</h2><h2 id="5-3-进程等待"><a href="#5-3-进程等待" class="headerlink" title="5.3 进程等待"></a>5.3 进程等待</h2><h2 id="5-4-进程唤醒"><a href="#5-4-进程唤醒" class="headerlink" title="5.4 进程唤醒"></a>5.4 进程唤醒</h2><h1 id="6-线程模型"><a href="#6-线程模型" class="headerlink" title="6 线程模型"></a>6 线程模型</h1><h2 id="6-1-线程的基本概念"><a href="#6-1-线程的基本概念" class="headerlink" title="6.1 线程的基本概念"></a>6.1 线程的基本概念</h2><h2 id="6-2-线程的属性"><a href="#6-2-线程的属性" class="headerlink" title="6.2 线程的属性"></a>6.2 线程的属性</h2><h2 id="6-3-为什么引入线程的概念"><a href="#6-3-为什么引入线程的概念" class="headerlink" title="6.3 为什么引入线程的概念"></a>6.3 为什么引入线程的概念</h2><h1 id="7-线程机制的实现"><a href="#7-线程机制的实现" class="headerlink" title="7 线程机制的实现"></a>7 线程机制的实现</h1><h2 id="7-1-用户级线程"><a href="#7-1-用户级线程" class="headerlink" title="7.1 用户级线程"></a>7.1 用户级线程</h2><h2 id="7-2-内核级线程"><a href="#7-2-内核级线程" class="headerlink" title="7.2 内核级线程"></a>7.2 内核级线程</h2><h2 id="7-3-混合模型"><a href="#7-3-混合模型" class="headerlink" title="7.3 混合模型"></a>7.3 混合模型</h2><h2 id="7-4-Pthread-线程包"><a href="#7-4-Pthread-线程包" class="headerlink" title="7.4 Pthread 线程包"></a>7.4 Pthread 线程包</h2><h1 id="8-进程调度"><a href="#8-进程调度" class="headerlink" title="8 进程调度"></a>8 进程调度</h1><h2 id="8-1-进程调度的层次和任务"><a href="#8-1-进程调度的层次和任务" class="headerlink" title="8.1 进程调度的层次和任务"></a>8.1 进程调度的层次和任务</h2><h2 id="8-2-进程的调度时机"><a href="#8-2-进程的调度时机" class="headerlink" title="8.2 进程的调度时机"></a>8.2 进程的调度时机</h2><h2 id="8-3-进程的调度过程"><a href="#8-3-进程的调度过程" class="headerlink" title="8.3 进程的调度过程"></a>8.3 进程的调度过程</h2><h2 id="8-4-进程调度算法的设计思想"><a href="#8-4-进程调度算法的设计思想" class="headerlink" title="8.4 进程调度算法的设计思想"></a>8.4 进程调度算法的设计思想</h2><h2 id="8-5-进程调度算法的应用"><a href="#8-5-进程调度算法的应用" class="headerlink" title="8.5 进程调度算法的应用"></a>8.5 进程调度算法的应用</h2>
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2021/03/16/操作系统/操作系统运行环境/" id="post_nav-older" class="post-nav-content next-content">
+      下一篇>
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-多道程序设计"><span class="post-toc-text">1 多道程序设计</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-进程的概念"><span class="post-toc-text">2 进程的概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-进程的定义"><span class="post-toc-text">2.1 进程的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-进程与程序的联系和区别"><span class="post-toc-text">2.2 进程与程序的联系和区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-3-进程的组成和特征"><span class="post-toc-text">2.3 进程的组成和特征</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-进程的状态"><span class="post-toc-text">3 进程的状态</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-进程的三种基本状态"><span class="post-toc-text">3.1 进程的三种基本状态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-进程状态间的转换"><span class="post-toc-text">3.2 进程状态间的转换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-进程的五状态模型"><span class="post-toc-text">3.3 进程的五状态模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-4-进程的七状态模型"><span class="post-toc-text">3.4 进程的七状态模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-进程控制块"><span class="post-toc-text">4 进程控制块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-1-进程控制块的作用"><span class="post-toc-text">4.1 进程控制块的作用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-2-进程控制块的基本内容"><span class="post-toc-text">4.2 进程控制块的基本内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-3-进程队列"><span class="post-toc-text">4.3 进程队列</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-进程控制"><span class="post-toc-text">5 进程控制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-1-进程创建"><span class="post-toc-text">5.1 进程创建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-2-进程撤销"><span class="post-toc-text">5.2 进程撤销</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-3-进程等待"><span class="post-toc-text">5.3 进程等待</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-4-进程唤醒"><span class="post-toc-text">5.4 进程唤醒</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-线程模型"><span class="post-toc-text">6 线程模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-1-线程的基本概念"><span class="post-toc-text">6.1 线程的基本概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-2-线程的属性"><span class="post-toc-text">6.2 线程的属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-3-为什么引入线程的概念"><span class="post-toc-text">6.3 为什么引入线程的概念</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-线程机制的实现"><span class="post-toc-text">7 线程机制的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-1-用户级线程"><span class="post-toc-text">7.1 用户级线程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-2-内核级线程"><span class="post-toc-text">7.2 内核级线程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-3-混合模型"><span class="post-toc-text">7.3 混合模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-4-Pthread-线程包"><span class="post-toc-text">7.4 Pthread 线程包</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#8-进程调度"><span class="post-toc-text">8 进程调度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-1-进程调度的层次和任务"><span class="post-toc-text">8.1 进程调度的层次和任务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-2-进程的调度时机"><span class="post-toc-text">8.2 进程的调度时机</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-3-进程的调度过程"><span class="post-toc-text">8.3 进程的调度过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-4-进程调度算法的设计思想"><span class="post-toc-text">8.4 进程调度算法的设计思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-5-进程调度算法的应用"><span class="post-toc-text">8.5 进程调度算法的应用</span></a></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p style="line-height: 30px">Copyright ©  2017 ~ 2020  Walker Denial</p>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>
