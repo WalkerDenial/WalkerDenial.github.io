@@ -522,9 +522,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> GC </tag>
             
@@ -551,11 +551,11 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
             
             <tag> Bytecode </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -580,9 +580,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 多线程 </tag>
             
@@ -609,9 +609,9 @@
       
         <tags>
             
-            <tag> Android </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Android </tag>
             
             <tag> 代理 </tag>
             
@@ -694,11 +694,11 @@
       
         <tags>
             
-            <tag> Android </tag>
+            <tag> Kotlin </tag>
             
             <tag> Java </tag>
             
-            <tag> Kotlin </tag>
+            <tag> Android </tag>
             
             <tag> 反射 </tag>
             
@@ -725,11 +725,11 @@
       
         <tags>
             
-            <tag> Android </tag>
+            <tag> Kotlin </tag>
             
             <tag> Java </tag>
             
-            <tag> Kotlin </tag>
+            <tag> Android </tag>
             
             <tag> 注解 </tag>
             
@@ -781,11 +781,11 @@
       
         <tags>
             
-            <tag> Android </tag>
+            <tag> Kotlin </tag>
             
             <tag> Java </tag>
             
-            <tag> Kotlin </tag>
+            <tag> Android </tag>
             
             <tag> 泛型 </tag>
             
@@ -841,9 +841,9 @@
             
             <tag> 基础 </tag>
             
-            <tag> Gradle </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -870,9 +870,9 @@
             
             <tag> 基础 </tag>
             
-            <tag> Gradle </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Gradle </tag>
             
         </tags>
       
