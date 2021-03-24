@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)">
   <h2>操作系统运行环境</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-16T14:57:00.000Z">
@@ -136,6 +136,7 @@
   </div>
   <div class="post-page-content">
   <p>操作系统作为一个程序要在处理器上执行。如果一个计算机系统只有一个处理器，我们称之为单机系统，如果有多个处理器则称之为多处理器系统。</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/OS_chapter_2.png" alt></p>
 <h1 id="1-处理器状态及状态转换"><a href="#1-处理器状态及状态转换" class="headerlink" title="1 处理器状态及状态转换"></a>1 处理器状态及状态转换</h1><h2 id="1-1-特权指令和非特权指令"><a href="#1-1-特权指令和非特权指令" class="headerlink" title="1.1 特权指令和非特权指令"></a>1.1 特权指令和非特权指令</h2><p>特权指令：是指令系统中那些只能由操作系统使用的指令。这些特权指令是不允许一般的用户使用的，因为如果允许用户随便使用这些指令，就有可能是系统陷入混乱。</p>
 <p>用户只能使用非特权指令，只有操作系统才能使用所有的指令。</p>
 <p>如果一个用户程序需要使用特权指令，一般将引起一次处理器状态的切换，这时处理器通过特殊的机制，将处理器状态切换到操作系统运行的特权状态，然后将处理权移交给操作系统中的一段特殊代码。这一过程通常形象地称为 <strong>陷入（Trap）</strong>。</p>
