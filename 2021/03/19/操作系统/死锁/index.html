@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)">
   <h2>死锁</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-19T14:30:00.000Z">
@@ -136,6 +136,7 @@
   </div>
   <div class="post-page-content">
   <p>在多道程序系统中，同时有多个进程并发运行，共享系统资源，从而提高了系统资源利用率，提高了系统的处理能力。但是，当一个进程提出资源申请在进行分配使用时，在一定条件下会导致系统发生一种随机性错误 — 死锁（Deadlock）。这是因为，一方面，资源总是有限的，并且有些资源是独占型的，进程对资源的占用是互斥的；另一方面，进程使用多个资源有先后顺序，在一个进程申请与释放资源的过程中，其他的进程也不断地申请资源与释放资源。异步前进的各个进程会因申请与释放资源顺序安排不当，造成这种僵局。另外，在进程使用某种同步或通信工具时发送、接收的次序安排不当，也会造成类似现象。</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/OS_chapter_5.png" alt></p>
 <h1 id="1-死锁的产生"><a href="#1-死锁的产生" class="headerlink" title="1 死锁的产生"></a>1 死锁的产生</h1><h2 id="1-1-死锁的定义"><a href="#1-1-死锁的定义" class="headerlink" title="1.1 死锁的定义"></a>1.1 死锁的定义</h2><p>所谓死锁是指在多道程序系统中的一种现象，一组进程中的每一个进程均无限期地等待被该组进程中的另一个进程所占有且永远不会释放的资源。系统发生这种现象称为系统处于死锁状态，简称死锁。处于死锁状态的进程称为死锁进程。</p>
 <h2 id="1-2-死锁产生的原因"><a href="#1-2-死锁产生的原因" class="headerlink" title="1.2 死锁产生的原因"></a>1.2 死锁产生的原因</h2><ol>
 <li>竞争资源，系统资源在分配时出现失误，进程间对资源的相互争夺而造成僵局；</li>
