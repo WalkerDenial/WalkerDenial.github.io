@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-5.png)">
   <h2>存储体系</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-04T15:33:00.000Z">
@@ -135,7 +135,8 @@
     
   </div>
   <div class="post-page-content">
-  <h1 id="1-存储体系概念"><a href="#1-存储体系概念" class="headerlink" title="1 存储体系概念"></a>1 存储体系概念</h1><h2 id="1-1-存储体系的定义、分支及依据"><a href="#1-1-存储体系的定义、分支及依据" class="headerlink" title="1.1 存储体系的定义、分支及依据"></a>1.1 存储体系的定义、分支及依据</h2><p>存储体系（即存储层次）是让构成存储系统的几种不同的存储器（M<sub>1</sub> ~ M<sub>n</sub>）之间，配上辅助软、硬件或辅助硬件，使之从应用程序员角度来看，它们在逻辑上是一个整体。让存储层次的等效访问速度是接近于 M<sub>1</sub> 的，容量是 M<sub>n</sub> 的，每位价格是接近于 M<sub>n</sub> 的。基本的二级存储体系是 <strong>虚拟存储器</strong> 和 <strong>Cache 存储器</strong>，这是存储体系的两个不同的分支。</p>
+  <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_chapter_4.png" alt></p>
+<h1 id="1-存储体系概念"><a href="#1-存储体系概念" class="headerlink" title="1 存储体系概念"></a>1 存储体系概念</h1><h2 id="1-1-存储体系的定义、分支及依据"><a href="#1-1-存储体系的定义、分支及依据" class="headerlink" title="1.1 存储体系的定义、分支及依据"></a>1.1 存储体系的定义、分支及依据</h2><p>存储体系（即存储层次）是让构成存储系统的几种不同的存储器（M<sub>1</sub> ~ M<sub>n</sub>）之间，配上辅助软、硬件或辅助硬件，使之从应用程序员角度来看，它们在逻辑上是一个整体。让存储层次的等效访问速度是接近于 M<sub>1</sub> 的，容量是 M<sub>n</sub> 的，每位价格是接近于 M<sub>n</sub> 的。基本的二级存储体系是 <strong>虚拟存储器</strong> 和 <strong>Cache 存储器</strong>，这是存储体系的两个不同的分支。</p>
 <p><strong>虚拟存储器</strong> 是因主存容量满足不了要求而提出来的。在主存和辅存之间，增设辅助的软、硬件设备，让它们构成一个整体，所以也称为主存-辅存存储层次。</p>
 <p>因主存速度满足不了要求而引出了 Cache 存储器。在 CPU 和主存之间增设高速、小容量、每位价格较高的 Cache，用辅助硬件将 Cache 和主存构成整体，称为 Cache 存储器（或称为 Cache-主存存储器层次）。</p>
 <p>应用程序员可用机器指令的地址对整个程序统一编址，称该地址为虚地址（程序地址），而把实际主存地址称为实地址（实存地址）。</p>
