@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-17.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-12.png)">
   <h2>标量处理机</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-08T14:31:00.000Z">
@@ -135,7 +135,8 @@
     
   </div>
   <div class="post-page-content">
-  <h1 id="1-重叠方式"><a href="#1-重叠方式" class="headerlink" title="1 重叠方式"></a>1 重叠方式</h1><h2 id="1-1-顺序方式与重叠方式的定义和特点"><a href="#1-1-顺序方式与重叠方式的定义和特点" class="headerlink" title="1.1 顺序方式与重叠方式的定义和特点"></a>1.1 顺序方式与重叠方式的定义和特点</h2><p>顺序解释值得是各条指令之间顺序串行（执行完一条指令后才取下条指令）地进行，每条指令内部的各个微操作也顺序串行地进行。</p>
+  <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_chapter_5.png" alt></p>
+<h1 id="1-重叠方式"><a href="#1-重叠方式" class="headerlink" title="1 重叠方式"></a>1 重叠方式</h1><h2 id="1-1-顺序方式与重叠方式的定义和特点"><a href="#1-1-顺序方式与重叠方式的定义和特点" class="headerlink" title="1.1 顺序方式与重叠方式的定义和特点"></a>1.1 顺序方式与重叠方式的定义和特点</h2><p>顺序解释值得是各条指令之间顺序串行（执行完一条指令后才取下条指令）地进行，每条指令内部的各个微操作也顺序串行地进行。</p>
 <p>解释一条机器指令的未操作可归并成 <strong>取指令</strong>、<strong>分析</strong> 和 <strong>执行</strong> 三部分。</p>
 <p><strong>取指</strong> 是按指令计数器的内容访主存，取出该指令送到指令寄存器。</p>
 <p><strong>分析</strong> 是对指令的操作码进行译码，按寻址方式和地址字段形成操作数真地址，并用此真地址去取操作数（可能访主存，也可能访寄存器），为取下一条指令还要形成下一条指令的地址。</p>
