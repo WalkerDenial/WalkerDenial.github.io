@@ -125,7 +125,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-4.png)">
+  <div class="post-page-title" style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)">
   <h2>数据流计算机和规约机</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-14T05:53:00.000Z">
@@ -136,6 +136,7 @@
   </div>
   <div class="post-page-content">
   <p>传统的 Von Neumann 型计算机采用控制驱动方式，顺序地执行指令，这很难最大限度地开发出计算机的并行性。为此，提出若干非 Neumann 型计算机。这类计算机结构包括：使用数据流语言，基于数据驱动的数据流计算机；使用函数式语言，基于需求驱动的归约机。</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_chapter_8.png" alt></p>
 <h1 id="1-数据流计算机的工作原理、构形、特点、近年来的发展"><a href="#1-数据流计算机的工作原理、构形、特点、近年来的发展" class="headerlink" title="1 数据流计算机的工作原理、构形、特点、近年来的发展"></a>1 数据流计算机的工作原理、构形、特点、近年来的发展</h1><p>Von Neumann 型计算机的基本特点是在程序计数器集中控制下，顺次地执行指令，因此，它是以控制流（Control Flow）方式工作的。虽然可以在系统结构、程序语言、编译技术等方面进行改进，发展流水线机、阵列机或多处理机，但本质上仍是指令在程序计数器控制下顺序执行，这就很难最大限度地发掘出计算的并行性。</p>
 <p>数据驱动的数据流方式指的是，只要一条或一组指令所要求的操作数全部准备就绪，就可以立即激发相应的指令或指令组执行。执行结果的输出将送往等待这一数据的下一条或下一组指令。如果其中一些指令因此而使所需用到的数据全部准备就绪，就可以被激发执行。因此，在这种计算机上不需要程序计数器。指令的执行基本上是无序的，完全受数据流的驱动，与指令在程序中出现的先后顺序无关。也就是说，部分有序的操作也不是由程序员指定的，而是受数据相关所制约。程序设计者完全摆脱了检查和定义程序中所有可能存在的并行性这一繁重工作。只要数据不相关和资源可以利用，就可以并行，因而最有利于计算并行性的开发。</p>
 <p>控制驱动的控制流方式的特点是：</p>
