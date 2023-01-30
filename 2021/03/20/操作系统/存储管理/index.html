@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)" >
   <h2>存储管理</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-19T16:06:00.000Z">
@@ -248,7 +248,7 @@
 </ol>
 <h1 id="5-典型的页面置换算法"><a href="#5-典型的页面置换算法" class="headerlink" title="5 典型的页面置换算法"></a>5 典型的页面置换算法</h1><h2 id="5-1-最佳页面置换算法（OPT）"><a href="#5-1-最佳页面置换算法（OPT）" class="headerlink" title="5.1 最佳页面置换算法（OPT）"></a>5.1 最佳页面置换算法（OPT）</h2><p>OPT 算法淘汰以后不再需要的或者在最长时间以后才会用到的页面。这一算法一般不可能实现，但它可以作为衡量其他页面淘汰算法优劣的一个标准。</p>
 <h2 id="5-2-先进先出算法（FIFO）"><a href="#5-2-先进先出算法（FIFO）" class="headerlink" title="5.2 先进先出算法（FIFO）"></a>5.2 先进先出算法（FIFO）</h2><p>总是选择最先装入内存的一页调出，或者说是把驻留在内存中时间最长的一页调出。</p>
-<h2 id="5-3-第二次机会算法（Second-Chance）"><a href="#5-3-第二次机会算法（Second-Chance）" class="headerlink" title="5.3 第二次机会算法（Second Chance）"></a>5.3 第二次机会算法（Second Chance）</h2><p>检查进入内存时间最久页面的 R 位，如果是 0，那么这个页面既老有没有被使用，可以立刻置换掉；如果是 1，就将 R 位清 0，并把该页面放到链表的尾端，修改其进入时间，然后继续搜索。</p>
+<h2 id="5-3-第二次机会算法（Second-Chance）"><a href="#5-3-第二次机会算法（Second-Chance）" class="headerlink" title="5.3 第二次机会算法（Second Chance）"></a>5.3 第二次机会算法（Second Chance）</h2><p>检查进入内存时间最久页面的 R 位，如果是 0，那么这个页面既老又没有被使用，可以立刻置换掉；如果是 1，就将 R 位清 0，并把该页面放到链表的尾端，修改其进入时间，然后继续搜索。</p>
 <p>这一算法称为第二次机会算法，其基本思想是寻找一个最佳的时钟间隔以来没有被访问过的页面。如果所有的页面都被访问过了，该算法就退化为 FIFO 算法。</p>
 <h2 id="5-4-时钟算法（Clock）"><a href="#5-4-时钟算法（Clock）" class="headerlink" title="5.4 时钟算法（Clock）"></a>5.4 时钟算法（Clock）</h2><p>把所有的页面都保存在一个类似时钟面的环形链表中，一个表针指向最老的页面。当发生缺页时，算法首先检查表针指向的页面，如果它的 R 为是 0 就置换该页面，并把新的页面插入这个位置，然后把表针前移一个位置；如果 R 位是 1 就清除 R 位并把表针前移一个位置，重复这个过程直到找到了一个 R 位为 0 的页面为止。由于这个算法的工作方式，就将它称为时钟算法。</p>
 <h2 id="5-5-最近最少使用算法（LRU）"><a href="#5-5-最近最少使用算法（LRU）" class="headerlink" title="5.5 最近最少使用算法（LRU）"></a>5.5 最近最少使用算法（LRU）</h2><p>在缺页发生时，首先淘汰掉最长时间未被使用过的页面。</p>
