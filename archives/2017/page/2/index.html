@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Walker Denial">
+  <meta name="description" content="This is Walker Denial&#39;s blog!">
+  
+  <title>Walker Denial</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/profile.png" ondragstart="return false;"></div>
+    <p>Walker Denial</p>
+    <div class="nav-link">
+        
+        <a href="https://twitter.com/WalkerDenial" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/WalkerDenial" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:mailto:WalkerDenial@gmail.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://weibo.com/u/3213135930" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="https://www.zhihu.com/people/walkerdenial/activities" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2022/06/">June 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/05/">May 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/04/">April 2022<span class="archive-count">4</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/03/">March 2022<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/12/">December 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/11/">November 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/09/">September 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/08/">August 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/04/">April 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/03/">March 2021<span class="archive-count">12</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/02/">February 2021<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/12/">December 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a   class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Algorithm/">Algorithm<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Flutter/">Flutter<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">6</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/RPC/">RPC<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%86%99%E4%BD%9C/">写作<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端<span class="category-count">10</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%87%AA%E5%AD%A6/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">计算机系统结构<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式<span class="category-count">27</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+
+
+<div class="tags">
+  
+</div>
+
+<div id="recent-posts">
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-1.png"  >
+        <a class="recent-post-link" href="/2017/02/28/设计模式/中介者模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/28/设计模式/中介者模式/" >中介者模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-28T06:29:00.000Z">
+              2017-02-28
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E4%BB%8B%E8%80%85/" rel="tag">中介者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                中介者模式（Mediator Pattern）：用一个中介对象（中介者）来封装一系列的对象交互，中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为 调停者模式，它是一种 对象行为型模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/28/设计模式/中介者模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-7.png"  >
+        <a class="recent-post-link" href="/2017/02/27/设计模式/迭代器模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/27/设计模式/迭代器模式/" >迭代器模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-27T10:20:00.000Z">
+              2017-02-27
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/" rel="tag">迭代器</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                迭代器模式（Iterator）：提供一种方法来访问聚合对象，而不用暴露这个对象的内部表示，其别名为游标（Cursor）。迭代器模式是一种 对象行为型模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/27/设计模式/迭代器模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-5.png"  >
+        <a class="recent-post-link" href="/2017/02/27/设计模式/解释器模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/27/设计模式/解释器模式/" >解释器模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-27T07:41:00.000Z">
+              2017-02-27
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/" rel="tag">解释器</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                解释器模式（Interpreter Pattern）：定义一个语言的文法，并且建立一个解释器来解释该语言中的句子，这里的「语言」是指使用规定格式和语法的代码。解释器模式是一种 类行为型模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/27/设计模式/解释器模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-5.png"  >
+        <a class="recent-post-link" href="/2017/02/27/设计模式/命令模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/27/设计模式/命令模式/" >命令模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-27T07:02:00.000Z">
+              2017-02-27
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4/" rel="tag">命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                命令模式（Command Pattern）：将一个请求封装为一个对象，从而可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种 对象行为型模式，其别名为 动作（Action）模式 或 事务模式（...
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/27/设计模式/命令模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-17.png"  >
+        <a class="recent-post-link" href="/2017/02/27/设计模式/职责链模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/27/设计模式/职责链模式/" >职责链模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-27T05:46:00.000Z">
+              2017-02-27
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%81%8C%E8%B4%A3%E9%93%BE/" rel="tag">职责链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                职责链模式（Chain of Responsibility Pattern）：避免将请求发送者与接收者耦合在一起，让多个对象都有机会接收请求，将这些对象链接成一条链，并且沿着这条链传递请求，知道有对象处理它为止。职责链模式是一种 对象行为型模式。
+职责链模式可分为纯的职责链...
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/27/设计模式/职责链模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-9.png"  >
+        <a class="recent-post-link" href="/2017/02/24/设计模式/代理模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/24/设计模式/代理模式/" >代理模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-24T07:24:00.000Z">
+              2017-02-24
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">结构型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                代理模式（Proxy Pattern）：给某一个对象提供一个代理，并由代理对象控制对原对象的应用。代理模式是一种 对象结构性模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/24/设计模式/代理模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-15.png"  >
+        <a class="recent-post-link" href="/2017/02/24/设计模式/享元模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/24/设计模式/享元模式/" >享元模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-24T07:18:00.000Z">
+              2017-02-24
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%AB%E5%85%83/" rel="tag">享元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">结构型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                享元模式（Flyweight Pattern）：运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细腻度对象，因此它又称为轻量级模式，是一种 对象结构性模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/24/设计模式/享元模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-5.png"  >
+        <a class="recent-post-link" href="/2017/02/24/设计模式/外观模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/24/设计模式/外观模式/" >外观模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-24T07:12:00.000Z">
+              2017-02-24
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%96%E8%A7%82/" rel="tag">外观</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">结构型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                外观模式（Facade Pattern）：外部与一个子系统的通信通过一个统一的外观角色进行，为子系统中的一组接口提供一个一致的入口，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种 对象结构性模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/24/设计模式/外观模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-13.png"  >
+        <a class="recent-post-link" href="/2017/02/23/设计模式/装饰模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/23/设计模式/装饰模式/" >装饰模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-23T09:50:00.000Z">
+              2017-02-23
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">结构型模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A3%85%E9%A5%B0/" rel="tag">装饰</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                装饰模式（Decorator Pattern）：动态地给一个对象增加一些额外的职责，就增加对象功能来说，装饰模式比生产子类实现更为灵活。装饰模式是一种 对象结构型模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/23/设计模式/装饰模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-4.png"  >
+        <a class="recent-post-link" href="/2017/02/23/设计模式/组合模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/23/设计模式/组合模式/" >组合模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-23T08:19:00.000Z">
+              2017-02-23
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E5%90%88/" rel="tag">组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">结构型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                组合模式（Composite Pattern）：组合多个对象形成树形结构以表示具有「整体一部分」关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为 「整体-部分」模式，它是一种 对象结构性模式。
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/23/设计模式/组合模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-6.png"  >
+        <a class="recent-post-link" href="/2017/02/21/设计模式/桥接模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/21/设计模式/桥接模式/" >桥接模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-21T03:25:00.000Z">
+              2017-02-21
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%A5%E6%8E%A5/" rel="tag">桥接</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">结构型模式</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                桥接模式（Bridge Pattern）：将抽象部分与其实现部分分离，使他们都可以独立地变化。它是一种 对象结构型模式，又称为 柄体（Handle and Body）模式 或 接口（Interface）模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/21/设计模式/桥接模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-11.png"  >
+        <a class="recent-post-link" href="/2017/02/20/设计模式/适配器模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/20/设计模式/适配器模式/" >适配器模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-20T06:21:00.000Z">
+              2017-02-20
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">结构型模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D%E5%99%A8/" rel="tag">适配器</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                适配器模式（Adapter Pattern）：将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作，其别名为包装器（Wrapper）。适配器模式既可以作为类结构型模式，也可以作为对象结构型模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/20/设计模式/适配器模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-9.png"  >
+        <a class="recent-post-link" href="/2017/02/17/设计模式/建造者模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/17/设计模式/建造者模式/" >建造者模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-17T08:54:00.000Z">
+              2017-02-17
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BB%BA%E9%80%A0%E8%80%85/" rel="tag">建造者</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                建造者模式（Builder Pattern）：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种 对象创建型模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/17/设计模式/建造者模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-8.png"  >
+        <a class="recent-post-link" href="/2017/02/16/设计模式/原型模式/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/16/设计模式/原型模式/" >原型模式</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-16T06:40:00.000Z">
+              2017-02-16
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                原型模式（Prototype Pattern）：使用原型实例指定创建对象的种类，并且通过克隆这些原型创建新的对象。原型模式是一种 对象创建型模式。
+
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/16/设计模式/原型模式/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="recent-post-item lazy" style="background-color:#26A69A"  data-original="/images/random/vateral-3.png"  >
+        <a class="recent-post-link" href="/2017/02/16/设计模式/3种工厂模式对比/">
+        <div class="post-hover">
+          <!--title-->
+          <p class="post-title"><a href="/2017/02/16/设计模式/3种工厂模式对比/" >3种工厂模式对比</a></p>
+
+          <!--date-->
+          
+            <p class="post-time">Walker Denial &nbsp &nbsp 发布于:<time datetime="2017-02-16T06:14:00.000Z">
+              2017-02-16
+            </time>
+            </p>
+          
+
+          <!--tags-->
+
+          标签:
+            
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%8E%82/" rel="tag">工厂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E6%80%BB/" rel="tag">汇总</a></li></ul>
+            
+          <!--分类-->
+
+          分类:
+            
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+            
+
+          <!--excerpt-->
+          <div class="post-excerpt">
+            <p>
+              摘要：
+              
+                
+
+
+模式名称
+优点
+缺点
+
+
+
+简单工厂模式（Simple Factory Pattern）...
+              
+            </p>
+          </div>
+          <div class="post-more"><a href="/2017/02/16/设计模式/3种工厂模式对比/" >全文阅读 >></a></div>
+        </div>
+        </a>
+      </div>
+  
+  <nav class="paging">
+    <a class="extend prev" rel="prev" href="/archives/2017/">&lt;-</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/3/">-&gt;</a>
+</nav>
+<!-- prev_text: '<div class="prev-text"><i class="material-icons">chevron_left</i></div>',
+next_text: '<div class="next-text"><i class="material-icons">chevron_right</i></div>' -->
+</div>
+
+
+
+
+
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p >Copyright ©  2017  Walker Denial</p>
+<!-- <p >Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> & Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p> -->
+<p style="font-size: 10px; margin-top: 0" id="footer-times" data-time="01/10/2017 00:00:00"></p>
+<script>
+    var beginTime=document.getElementById("footer-times").dataset.time
+    function show_date_time(){
+        var span=document.getElementById("footer-times")
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date(beginTime);//初始日期
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span.innerHTML="本站已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</script>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>

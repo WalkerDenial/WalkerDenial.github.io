@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Walker Denial">
+  <meta name="description" content="This is Walker Denial&#39;s blog!">
+  
+  <title>Walker Denial</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/profile.png" ondragstart="return false;"></div>
+    <p>Walker Denial</p>
+    <div class="nav-link">
+        
+        <a href="https://twitter.com/WalkerDenial" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/WalkerDenial" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:mailto:WalkerDenial@gmail.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://weibo.com/u/3213135930" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="https://www.zhihu.com/people/walkerdenial/activities" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2022/06/">June 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/05/">May 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/04/">April 2022<span class="archive-count">4</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/03/">March 2022<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/12/">December 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/11/">November 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/09/">September 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/08/">August 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/04/">April 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/03/">March 2021<span class="archive-count">12</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/02/">February 2021<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/12/">December 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a   class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Algorithm/">Algorithm<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Flutter/">Flutter<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">6</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/RPC/">RPC<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%86%99%E4%BD%9C/">写作<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端<span class="category-count">10</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%87%AA%E5%AD%A6/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">计算机系统结构<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式<span class="category-count">27</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)" >
+  <h2>文件系统</h2>
+    
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-20T10:51:00.000Z">
+          2021-03-20
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/OS_chapter_7.png"></p>
+<h1 id="1-文件管理的基本概念"><a href="#1-文件管理的基本概念" class="headerlink" title="1 文件管理的基本概念"></a>1 文件管理的基本概念</h1><h2 id="1-1-文件管理的任务"><a href="#1-1-文件管理的任务" class="headerlink" title="1.1 文件管理的任务"></a>1.1 文件管理的任务</h2><p>研究文件系统有两种不同的观点，一种是用户的观点，另一种是操作系统的观点。</p>
+<p>从用户的观点看文件系统，主要关系文件由什么组成，如何命名，如何保护文件，可以进行何种操作等等。</p>
+<p>从操作系统的观点看文件系统，主要关心文件目录是怎样实现的，怎样管理存储空间，文件存储位置，磁盘实际运作方式（与设备管理的接口），存取速度，磁盘利用率等等。</p>
+<p>什么是文件？在计算机系统中，程序或数据都可以是文件，但这是一种较为模糊的说法。文件可以被解释为一组带标识的、在逻辑上有完整意义的信息项的序列。这里所谓「标识」是指文件名，「信息项」构成了文件的内容。</p>
+<p>所谓文件系统，是操作系统中统一管理信息资源的一种软件。它管理文件的存储、检索、更新，提供安全可靠的共享和保护手段，并且方便用户使用。</p>
+<p>作为一个统一的文件管理机构，文件系统应具有下述功能：</p>
+<ol>
+<li>统一管理文件的存储空间，试试存储空间的分配与回收；</li>
+<li>实现文件从名字空间到外存地址空间的映射。即实现文件的按名称存取，以对用户透明的方式管理名字空间；</li>
+<li>实现文件信息的共享，并提供文件的保护和保密措施；</li>
+<li>向用户提供一个方便使用的接口（提供对文件系统操作命令，以及提供对文件的操作命令：信息存取、加工等）；</li>
+<li>系统维护及向用户提供有关信息；</li>
+<li>保持文件系统的执行效率。文件系统在操作系统接口中占的比例最大，用户使用操作系统的感觉在很大程度上取决于对文件系统的使用效果；</li>
+<li>提供与 I/O 的统一接口；</li>
+</ol>
+<h2 id="1-2-文件的存储介质及存取方式"><a href="#1-2-文件的存储介质及存取方式" class="headerlink" title="1.2 文件的存储介质及存取方式"></a>1.2 文件的存储介质及存取方式</h2><p>文件系统是建立在大容量外存设备上的，因此文件的组织方式与存储介质存在千丝万缕的联系，没有存储设备，就没有文件系统。</p>
+<p>常见的外存储设备有一下几种介质：</p>
+<ol>
+<li>磁带；</li>
+<li>磁盘：分为硬盘和软盘，软盘由于存储容量小，易磨损，保存不便已经被淘汰，磁盘由于其存储容量大以及成本低而得到广泛应用；</li>
+<li>光盘；</li>
+<li>闪存；</li>
+</ol>
+<p>文件常用的存取方法有：</p>
+<ol>
+<li>顺序存取：按从前到后的次序依次访问文件的各个信息项；</li>
+<li>随机存取：又称直接存取，即允许用户按任意的次序、直接存取文件中的任意一个记录，或者根据存取命令把读写指针移到文件中的指定记录处读写；</li>
+</ol>
+<h2 id="1-3-文件的分类"><a href="#1-3-文件的分类" class="headerlink" title="1.3 文件的分类"></a>1.3 文件的分类</h2><h3 id="1-3-1-按文件的用途分类"><a href="#1-3-1-按文件的用途分类" class="headerlink" title="1.3.1 按文件的用途分类"></a>1.3.1 按文件的用途分类</h3><ol>
+<li>系统文件：操作系统和各种系统应用程序和数据所组成的文件；</li>
+<li>库函数文件：标准子程序及常用应用程序组成的文件允许用户对其进行读取、执行，但不允许对其进行修改；</li>
+<li>用户文件：用户委托文件系统保存的文件；</li>
+</ol>
+<h3 id="1-3-2-按文件的组织形式分类"><a href="#1-3-2-按文件的组织形式分类" class="headerlink" title="1.3.2 按文件的组织形式分类"></a>1.3.2 按文件的组织形式分类</h3><ol>
+<li>普通文件：主要指文件的组织格式为文件系统中所规定的最一般格式的文件，文件的内容是一般的数据或程序，例如由字符流组成的文件。普通文件既包括系统文件，也包括用户文件、库函数文件和用户实用程序文件等；</li>
+<li>目录文件：由文件的目录构成的特殊文件；</li>
+<li>特殊文件：以文件形成存在和访问的设备，可进行查找目录等操作，但对文件的读写会对应于对设备的读写，并由设备驱动程序来完成具体的读写操作；</li>
+</ol>
+<h3 id="1-3-3-一些常见的文件分类方式"><a href="#1-3-3-一些常见的文件分类方式" class="headerlink" title="1.3.3 一些常见的文件分类方式"></a>1.3.3 一些常见的文件分类方式</h3><p>按文件的保护方式：</p>
+<ol>
+<li>只读文件；</li>
+<li>读写文件；</li>
+<li>可执行文件；</li>
+<li>无保护文件；</li>
+</ol>
+<p>按信息的流向分类：</p>
+<ol>
+<li>输入文件；</li>
+<li>输出文件；</li>
+<li>输入输出文件；</li>
+</ol>
+<p>按文件的存放时间可划分为：</p>
+<ol>
+<li>临时文件；</li>
+<li>永久文件；</li>
+<li>档案文件；</li>
+</ol>
+<p>按文件所使用的介质类型分类：</p>
+<ol>
+<li>磁盘文件；</li>
+<li>磁带文件；</li>
+<li>卡片文件；</li>
+<li>打印文件；</li>
+</ol>
+<p>按文件的组织结构分类：</p>
+<ol>
+<li>逻辑文件；</li>
+<li>物理文件；</li>
+<li>顺序文件；</li>
+<li>链接文件；</li>
+<li>索引文件；</li>
+</ol>
+<h3 id="1-3-4-UNIX-类操作系统中文件的分类"><a href="#1-3-4-UNIX-类操作系统中文件的分类" class="headerlink" title="1.3.4 UNIX 类操作系统中文件的分类"></a>1.3.4 UNIX 类操作系统中文件的分类</h3><ol>
+<li>普通文件：内部无结构的一串平滑的字符所组成的文件；</li>
+<li>目录文件：由文件目录项所构成的文件；</li>
+<li>特殊文件：在 UNIX 类操作系统中，把 I/O 设备也看成是一种文件 — 特殊文件；</li>
+</ol>
+<p>上述种种文件系统的分类，其目的是：</p>
+<ol>
+<li>对不同文件进行管理，提高系统效率；</li>
+<li>提高文件系统的用户界面友好性；</li>
+</ol>
+<h1 id="2-文件的逻辑结构和物理结构"><a href="#2-文件的逻辑结构和物理结构" class="headerlink" title="2 文件的逻辑结构和物理结构"></a>2 文件的逻辑结构和物理结构</h1><p>任何一种文件都有其内在的文件结构。用户看到的是经过抽象的文件结构，这就是文件的逻辑结构。实际上，文件的逻辑结构就是从用户角度看文件，研究文件的组织形式。</p>
+<p>除了文件的逻辑结构，文件还有其物理结构，也就是文件子啊实际的存储空间存储时的结构。</p>
+<h2 id="2-1-文件的逻辑结构"><a href="#2-1-文件的逻辑结构" class="headerlink" title="2.1 文件的逻辑结构"></a>2.1 文件的逻辑结构</h2><p>文件的逻辑结构是面向用户的文件的组织结构，是用户看到的文件的组织结构。操作系统在设计时需要掌握如下原则。</p>
+<h3 id="2-1-1-设计文件逻辑结构的原则"><a href="#2-1-1-设计文件逻辑结构的原则" class="headerlink" title="2.1.1 设计文件逻辑结构的原则"></a>2.1.1 设计文件逻辑结构的原则</h3><p>与文件的逻辑结构相联系的是逻辑文件的存取方式，即用户如何访问文件。</p>
+<ol>
+<li>易于操作：用户对文件的操作是经常的，而且是大量的。因此，文件系统提供给用户的对文件的操作手段应当方便，用户易学易用；</li>
+<li>查找快捷：用户经常需要进行对文件的查找或对文件内信息的查找，设计的文件逻辑结构应便于在尽可能短时间内完成查找；</li>
+<li>修改方便：当用户需要对文件信息进行修改时，给定的逻辑结构应使文件系统尽可能少地变动文件中的记录或基本信息单位；</li>
+<li>空间紧凑：应使文件的信息占据尽可能小的存储空间；</li>
+</ol>
+<p>显然，对于字符流的无结构文件来说，查找文件中的基本信息单位，例如某个单词，是比较困难的。但反过来，字符流的无结构文件管理简单，用户可以方便地对其进行操作。所以，对基本信息单位操作不多的文件较适于采用字符流的无结构形式，例如，源程序文件、目标代码文件等。</p>
+<h3 id="2-1-2-文件的逻辑结构"><a href="#2-1-2-文件的逻辑结构" class="headerlink" title="2.1.2 文件的逻辑结构"></a>2.1.2 文件的逻辑结构</h3><p>文件的逻辑结构就是用户所看到的文件的组织形式。文件逻辑结构是一种经过抽象的结构，所描述的是文件中信息的组织形式，与文件在物理介质上的具体存储结构不同。</p>
+<p>可以按逻辑结构把文件划分成三类：</p>
+<ol>
+<li>无结构的字符流式文件；</li>
+<li>定长记录文件和不定长记录文件构成的记录树；</li>
+</ol>
+<p>定长记录文件和不定长记录文件可以统称为记录式文件。</p>
+<p>下面介绍这些逻辑结构：</p>
+<p><strong>1. 流式文件</strong></p>
+<p>流式文件是有序字符的集合，其长度为该文件所包含的字符个数，所以又称为字符流文件。在流式文件中，构成文件的基本单位是字符。</p>
+<p>可以任务流式文件就是一串有开头和结尾的连续字符。在这串字符中，不存在任何可以视为结构的组织形式，所以可以说，流式文件无结构。</p>
+<p><strong>2. 记录式文件</strong></p>
+<p>记录式文件是一组有序记录的集合。在记录式文件中，构成文件的基本单位是记录。</p>
+<p>记录是一个具有特定意义的信息单位，它由该记录在文件中的逻辑地址（相对位置）与记录名所对应的一组键、属性及其属性值所组成，可按键进行查找。</p>
+<p>记录式文件可分定长记录文件和不定长记录文件两种。</p>
+<p>在定长记录文件中，各个记录长度相等。在检索时，可以根据记录号 i 及记录长度 L 就可以确定该记录的逻辑地址。</p>
+<p>在不定长记录文件汇总，各个记录的长度不等，在查找时，必须从第一个记录起一个记录一个记录地查找，直到找到所需的记录。</p>
+<p>记录式的有结构文件可把文件中的记录按各种不同的方式排列，构成不同的逻辑结构，以便用户对文件中的记录进行修改、追加、查找和管理等操作。</p>
+<h2 id="2-2-文件的物理结构"><a href="#2-2-文件的物理结构" class="headerlink" title="2.2 文件的物理结构"></a>2.2 文件的物理结构</h2><ol>
+<li>顺序结构；</li>
+<li>链接结构；</li>
+<li>索引结构；</li>
+</ol>
+<h2 id="2-3-UNIX-的三级索引结构"><a href="#2-3-UNIX-的三级索引结构" class="headerlink" title="2.3 UNIX 的三级索引结构"></a>2.3 UNIX 的三级索引结构</h2><p>UNIX 操作系统的 i 结点是一种多级索引文件结构，是多级索引结构文件在 UNIX 中的具体实现。i 结点在一般多级索引结构文件的基础上，进行了结构上的变化，克服了索引结构的缺点。掌握了 i 结点也就掌握了多级索引文件结构的工作原理。</p>
+<p>i 结点的基本思想是，给每个文件赋予一张称为 i 结点的小表，在这张小表中列出了文件属性和文件中各块在磁盘上的地址。</p>
+<h1 id="3-文件目录的实现"><a href="#3-文件目录的实现" class="headerlink" title="3 文件目录的实现"></a>3 文件目录的实现</h1><h2 id="3-1-文件控制块"><a href="#3-1-文件控制块" class="headerlink" title="3.1 文件控制块"></a>3.1 文件控制块</h2><p>在操作系统中，为了管理大量的文件，为每个文件都设置一个描述性数据结构 — 文件控制块（FCB，File Control Block），把所有文件的文件控制块有机地组织起来，就构成了文件控制块的一个有序集合，称为文件目录。</p>
+<p>文件目录实际就是文件符号名刀文件物理地址之间的一种映射机制。</p>
+<p>文件控制块 FCB 是系统为管理文件而设置的一个数据结构。FCB 是文件存在的标志，它记录了系统管理文件所需要的全部信息。</p>
+<p>在文件控制块中的信息可以分成文件存取控制信息、文件结构信息和文件管理信息。</p>
+<p>FCB 通常应包括以下内容：</p>
+<ol>
+<li>文件名：用户给文件取的名称；</li>
+<li>文件号：是系统在文件创建时所指定的一个编号，文件号唯一地标识一个文件，即在一个文件系统中，文件号是不重复的；</li>
+<li>用户名：记录了该文件创建者的名称；</li>
+<li>文件地址：记录了与文件在存储介质中的物理位置有关的信息；</li>
+<li>文件长度：保存有该文件的长度；</li>
+<li>文件类型：这与该文件系统的文件类型的划分方法有关；</li>
+<li>文件属性：指出文件是只读式文件、可读写文件还是只可执行文件；</li>
+<li>共享计数；</li>
+<li>文件的建立日期；</li>
+<li>保存期限：指预计该文件的保管时间；</li>
+<li>最后修改日期；</li>
+<li>最后访问日期；</li>
+<li>口令：指为了文件的安全和文件信息的保密所设置的访问文件的密码；</li>
+<li>文件逻辑结构：指出该文件是流式文件还是记录式文件；</li>
+<li>文件物理结构：标识了该文件内部的物理结构是顺序结构、链接结构还是索引结构；</li>
+</ol>
+<h2 id="3-2-文件目录和当前目录"><a href="#3-2-文件目录和当前目录" class="headerlink" title="3.2 文件目录和当前目录"></a>3.2 文件目录和当前目录</h2><p>文件目录是实现用户按名存取文件的一种手段。在用户要求读一个文件时，系统便从文件目录中查找用户所指定文件是否存在，并核对是否有权使用。一个好的目录结构应该既能方便用户的检索，又能保证文件的安全。</p>
+<p>文件数量较少时，在文件目录中朝招文件比较简单。在文件数量比较多时，文件目录的组织与管理的重要性就突出了。为了能够方便用户的检索和文件的管理，根据实际的需要，一般把文件目录设计成一级（单级）目录结构、二级目录结构和多级目录结构。</p>
+<p>文件系统向用户提供了一个当前正在使用的目录，称为「当前目录」，又称「工作目录」。如果需要，用户可随意更改当前目录。</p>
+<h2 id="3-3-目录项和目录文件"><a href="#3-3-目录项和目录文件" class="headerlink" title="3.3 目录项和目录文件"></a>3.3 目录项和目录文件</h2><p>目录项是用于管理目录的基本数据结构，一般而言是定长的记录。目录文件就是目录项的有序集合，通常可以保存到外存储设备上。</p>
+<h3 id="3-3-1-目录项"><a href="#3-3-1-目录项" class="headerlink" title="3.3.1 目录项"></a>3.3.1 目录项</h3><p>当用户建立一个新文件时，与该文件有关的一些信息与属性记录在该文件的文件控制块内。为了便于管理，通常将文件控制块做成定长数据结构的一个记录，存储在目录文件中。而这样的每一个记录称为目录项。若文件控制块的数据量较大，还可以采用目录项分解法来进行存储，在目录项中存储重要的信息，其余信息存储子啊其他数据块中。</p>
+<p>所以，一个目录项必定对应一个文件。</p>
+<h3 id="3-3-2-目录文件"><a href="#3-3-2-目录文件" class="headerlink" title="3.3.2 目录文件"></a>3.3.2 目录文件</h3><p>多个文件的文件控制块集中在一起组成了文件的目录。通常，文件目录以文件形式保存起来，这个文件就被称为目录文件。目录文件是每项纪录长度固定的记录式文件。</p>
+<p>在目录文件中，每一条定长的记录就是目录项。如果某个系统中的文件比较多，对应的目录文件显然也比较长。有时，为了节省内存的控件，就把目录文件保存在外存储器上，在需要时，才把目录文件调入内存。</p>
+<h2 id="3-4-目录项分解法"><a href="#3-4-目录项分解法" class="headerlink" title="3.4 目录项分解法"></a>3.4 目录项分解法</h2><p>为了加快目录检索可采用目录项分解法，即把目录项（FCB）分为两部分，符号目录项（次部）和基本目录项（主部）。其中，符号目录项包含文件名以及相应的文件号；而基本目录项包含了除文件名外文件控制块的其他全部信息。</p>
+<h2 id="3-5-UNIX-的文件目录实现"><a href="#3-5-UNIX-的文件目录实现" class="headerlink" title="3.5 UNIX 的文件目录实现"></a>3.5 UNIX 的文件目录实现</h2><p>UNIX 目录中为每个文件保留了一项，每个目录项包含了两个域，文件名（14 个字节）和 i 结点的编号（2 个字节）。</p>
+<p>UNIX 的 i 结点包含一些属性。这些属性包括文件大小、三个时间（创建时间、最后访问时间，最后修改时间）、所有者、所在组、保护信息以及一个计数（用户记录指向 i 结点的目录项的数量）。最后一个域是为了连接而设的。当一个新的连接加到一个 i 结点上，i 结点里的计数就会加 1。当移走一个连接时，该计数就减 1。当计数为 0 时，就收回该 i 结点，并将对于的磁盘块放进空闲表。</p>
+<p>UNIX 普通文件的物理结构是三级索引结构。</p>
+<h2 id="3-6-FAT-文件系统的实现"><a href="#3-6-FAT-文件系统的实现" class="headerlink" title="3.6 FAT 文件系统的实现"></a>3.6 FAT 文件系统的实现</h2><p>FAT 是 File Allocation Table（文件分配表）的缩写。FAT 是一个简单的文件系统，最初为 DOS 操作系统设计，适用于小容量的磁盘，具有简单的目录结构。为了向后兼容，也为了方便用户升级，目前新版本的 Windows 仍然提供对 FAT 的支持。</p>
+<p>文件分配表位于卷的开头，为了防止文件系统遭到破坏，FAT 文件系统保存了两个文件分配表，这样当其中一个遭到破坏时可以保护卷。此外，文件分配表和根目录必须存储在磁盘上一个固定的位置，这样才可以正确地找到启动系统所需要的文件。</p>
+<p><strong>（1）引导扇区</strong></p>
+<p>引导扇区（Boot Sector）包含用于描述卷的各种信息，利用这些信息才可以访问文件系统。</p>
+<p><strong>（2）文件分配表</strong></p>
+<p>文件分配表包含关于卷上每个簇的如下类型信息：</p>
+<ol>
+<li>未使用（0x0000）；</li>
+<li>被文件所使用的的簇；</li>
+<li>坏簇（0XFFF7）；</li>
+<li>文件中的最后一簇（0XFFF8~0XFFFF）；</li>
+</ol>
+<p><strong>（3）根目录</strong></p>
+<p>在 FAT16 文件系统中，位于根目录下的每个文件和子目录在根目录区中都包含一个目录项。根目录与其他目录之间唯一的区别是根目录位于磁盘上一个特殊的位置并且具有固定的大小。每个目录项的大小为 32 字节，其内容包括文件名、扩展名、属性字节、最后一次修改时间和日期、文件长度、第一簇的编号等。</p>
+<h1 id="4-文件存储空间管理"><a href="#4-文件存储空间管理" class="headerlink" title="4 文件存储空间管理"></a>4 文件存储空间管理</h1><h2 id="4-1-磁盘空间管理"><a href="#4-1-磁盘空间管理" class="headerlink" title="4.1 磁盘空间管理"></a>4.1 磁盘空间管理</h2><p>在计算机系统中，存储空间是一种宝贵的资源。外存储设备中的空间容量虽然比较大，但也不是无限的，故对文件删除之后而不再使用的空间，必须加以回收，然后在建立文件等操作中重新利用。</p>
+<p>对于制度的存储设备（如 CD-ROM 光盘），无所谓回收，也无所谓动态分配，这种存储设备在物理上就是不可重用的。</p>
+<p>为了进行存储空间的分配与回收，在外存储设备上设置有空闲空间登记表，该表动态跟踪该外存储设备上所有还没有分配给任何文件的空闲块的数据和块号。</p>
+<p>该空闲空间等级表虽然称为表，但不一定是以一个二维表格的形式实现。从方便、高效和安全的角度考虑，通常把空间空间登记表放在存储介质上。</p>
+<p>对空闲空间表的访问与修改工作是经常发生的。在进行文件删除、文件建立、写文件等等操作中都会访问和修改空闲空间表。</p>
+<h2 id="4-2-磁盘空间的分配回收算法"><a href="#4-2-磁盘空间的分配回收算法" class="headerlink" title="4.2 磁盘空间的分配回收算法"></a>4.2 磁盘空间的分配回收算法</h2><ol>
+<li>位示图：利用一串二进制位（bit）的值来反映磁盘空间的分配使用情况。</li>
+<li>空闲块表：专门为空闲块建立一张表，该表记录外存储器全部空闲的物理块：包括每个空闲块的第一个空闲物理块号和该空闲块中空闲物理块的个数。</li>
+<li>空闲块链表：将外存储器中所有的空闲物理块连成一个链表，用一个空闲块首指针指向第一个空闲块，随后的每个空闲块中都含有指向下一个空闲块的指针，最后一块的指针为空，表示链尾，这样就构成了一个空闲块链表。</li>
+</ol>
+<h1 id="5-文件系统的实现"><a href="#5-文件系统的实现" class="headerlink" title="5 文件系统的实现"></a>5 文件系统的实现</h1><h2 id="5-1-系统打开文件表"><a href="#5-1-系统打开文件表" class="headerlink" title="5.1 系统打开文件表"></a>5.1 系统打开文件表</h2><p>系统打开文件表专门用于保存已打开文件的文件控制块，通常放在内存。除了保存已打开文件的文件控制块之外，在该表格中还保存了共享计数、修改标志灯信息。其中，由于允许多个进程同时打开同一个文件，所以共享计数标出有几个进程打开同一个文件；修改标志是指文件控制块或 i 结点的内容是否被修改过，如果修改过，则关闭文件时需要将文件控制块写回磁盘。</p>
+<h2 id="5-2-用户打开文件表"><a href="#5-2-用户打开文件表" class="headerlink" title="5.2 用户打开文件表"></a>5.2 用户打开文件表</h2><p>每个进程都有一个「用户打开文件表」。以 UNIX 为例，该表的内容有文件描述符、打开方式、读写指针、系统打开文件表入口等。</p>
+<p>另外在进程的进程控制块 PCB 中，还记录了「用户打开文件表」的位置。</p>
+<h1 id="6-文件及文件目录的操作"><a href="#6-文件及文件目录的操作" class="headerlink" title="6 文件及文件目录的操作"></a>6 文件及文件目录的操作</h1><h2 id="6-1-典型的文件操作"><a href="#6-1-典型的文件操作" class="headerlink" title="6.1 典型的文件操作"></a>6.1 典型的文件操作</h2><p>文件系统是提供给用户使用的、用户可以进行按名存取所需要的文件。在文件系统的实现中，为用户提供使用文件的手段是文件系统的重要任务之一。下面介绍几个常用的进行文件操作的系统调用。</p>
+<p><strong>1. 建立文件</strong></p>
+<p>用户首先调用文件系统的「建立文件」操作，在请求调用该操作时，提供所要创建的文件的文件名及若干参数：用户名、文件名、存取方式、存储设备类型、记录格式、记录长度等。</p>
+<p>系统依据用户提供的文件名及若干参数，为这一新创建的文件分配一个文件控制块，填写文件控制块中的有关项。</p>
+<p>建立文件的实质是建立文件的文件控制块 FCB，并建立必要的存储空间，分配空的 FCB。从而建立起系统与文件的联系。</p>
+<p><strong>2. 打开文件</strong></p>
+<p>打开文件，是使用文件的第一步，任何一个文件使用前都要先打开，即把文件控制块 FCB 送到内存。</p>
+<p>打开文件的系统调用的一般格式为空：fd = open（文件路径名，打开方式）</p>
+<p>打开文件时，系统主要完成以下工作：</p>
+<ol>
+<li>根据文件路径名查目录，找到 FCB 主部；</li>
+<li>根据打开方式、共享说明和用户身份检查访问合法性；</li>
+<li>根据文件号查系统打开文件表，看文件是否已被打开。如果是，共享计数加 1；否则，将外存中的 FCB 主部等信息填入系统打开文件表空表项，共享计数置为 1；</li>
+<li>在用户打开文件表中取以空表项，填写打开方式等，并指向系统打开文件表对应表项；</li>
+</ol>
+<p>返回信息：fd：文件描述符，是一个非负整数，用于以后读写文件；</p>
+<p><strong>3. 读文件</strong></p>
+<p>打开文件后，就可以读取文件中的信息。</p>
+<p>读文件系统调用的一般格式为：read（文件名，（文件内位置），要读的长度，内存目的地址）。</p>
+<p>隐含参数：文件主。</p>
+<p>读写方式可为读、写和既读又写等。</p>
+<p>读文件时，系统主要完成以下工作：</p>
+<ol>
+<li>检查长度是否问正整数：若是，进行下一步 2)，否则，转向 10)；</li>
+<li>根据文件名查找目录，确定该文件在目录中的位置；</li>
+<li>根据隐含参数中的文件主和目录中该文件的存储权限数据，检查是否有读权，若是，则进行下一步 4)；否则转向 10)；</li>
+<li>由文件内位置与要读的长度计算最末位置，将其余目录中的文件长度比较，超过否？若是，则转向 10)；否则进行下一步 5)。也可将参数中的长度修正为目录中的文件长度；</li>
+<li>根据参数中的位置、长度和目录中的映射信息，确定物理块号、需要独处的块数等读盘参数（参数准备完毕后，进行物理的读盘操作，读盘操作可能要进行多次）；</li>
+<li>根据下一块号读至内存缓冲区；</li>
+<li>取出要读的内容，也许要进行成组的分解，将取出的内容送至参数中的内存目的地址；</li>
+<li>根据块内长度或起始块号 + 块数，确定是否还读下一块，同时确定下一块块号，若是，则转向 5)；否则，进行下一步 9)；</li>
+<li>正常返回；</li>
+<li>错误返回，返回相应的错误号；</li>
+</ol>
+<p><strong>4. 写文件</strong></p>
+<p>写文件系统调用的一般格式为：write（文件名，纪录键，内存位置）。</p>
+<p>把内存中指定单元的数据作为指定的一个记录写入指定文件中，系统还将为其分配物理块，以便把记录信息写到外存上。</p>
+<p><strong>5. 关闭文件</strong></p>
+<p>若文件暂时不用，则应将它关闭。文件关闭后一般不能存取，若要存取，则必须再次打开。</p>
+<p>关闭文件系统调用的一般格式为：close（文件名）。</p>
+<p>系统根据用户提供的文件名或文件描述符，在该文件的文件控制块上做修改。例如，将该文件的共享用户数减 1，减 1 后若值为 0，则将文件控制块置上「非活跃」标志，若该文件控制块内容被修改过，则要写回外存。</p>
+<p><strong>6. 删除文件</strong></p>
+<p>删除文件系统调用的一般格式为：delete（文件名）。</p>
+<p>系统根据用户提供的文件名或文件描述符，检查此次删除的合法性，若合法，则收回该文件所占用的文件控制块及物理块等资源。</p>
+<p><strong>7. 指针定位</strong></p>
+<p>指针定位的一般格式为：seek（fd，新指针的位置）。</p>
+<p>指针定位时，系统主要完成以下工作：</p>
+<ol>
+<li>由 fd 检查用户打开文件表，找到对应的入口；</li>
+<li>将用户打开文件表中文件读写指针位置设为新指针的位置，供后续读写命令存取该指针处文件内容；</li>
+</ol>
+<p>在不同的文件系统中，文件操作的种类是不同的，文件操作的命令种类会有所变化，调用名和参数也都不同。上述这些类型，只是文件操作中的一些典型例子。其他的文件操作如：读取文件属性，设置文件属性，修改文件名称等。</p>
+<h2 id="6-2-典型的目录操作"><a href="#6-2-典型的目录操作" class="headerlink" title="6.2 典型的目录操作"></a>6.2 典型的目录操作</h2><ol>
+<li>create：创建目录；</li>
+<li>delete：删除目录；</li>
+<li>opendir：打开目录；</li>
+<li>closedir：关闭目录；</li>
+<li>readdir：系统调用 readdir 返回打开目录的下一目录项；</li>
+<li>rename：文件可换名；</li>
+<li>link：链接技术允许在多个目录中出现同一文件；</li>
+<li>unlink：删除目录项；</li>
+</ol>
+<h1 id="7-文件系统的性能"><a href="#7-文件系统的性能" class="headerlink" title="7 文件系统的性能"></a>7 文件系统的性能</h1><h2 id="7-1-磁盘高速缓存"><a href="#7-1-磁盘高速缓存" class="headerlink" title="7.1 磁盘高速缓存"></a>7.1 磁盘高速缓存</h2><p>其基本思想是，系统在内存中保存一些磁盘块，这些磁盘块在逻辑上属于磁盘，内存的这一区域被称为块高速缓存。运行时，系统检查所有的读请求，看所需的文件块是否在块高速缓存中。如果在，则可直接在内存中进行读操作；否则，首先要启动磁盘，将所需块读到高速缓存中，再复制到其他内存区域。如果内存区域中的高速缓存已满，则需要按照一定的算法淘汰一些较少使用的磁盘块，让出高速缓存空间。</p>
+<p>块高速缓存的内容需要定期写回到磁盘上，以保存对磁盘块的修改。但是，如果在修改过的磁盘块写回磁盘之前，系统出现故障，则文件系统有可能会处于不一致的状态。特别是一些未被写回的块是 i 结点块、目录块或者包含空闲表的磁盘块时，这个问题尤为严重。这一问题称为文件系统一致性问题。</p>
+<p>缓存的一种应用是记录的成组。</p>
+<p><strong>记录的成组：</strong> 把若干个逻辑记录合成一组存储一物理块的工作称「记录的成组」，每块中的逻辑记录个数称「块因子」。</p>
+<p><strong>记录的分解：</strong>对应前述纪录成组的操作，有必要考虑从一组逻辑记录中把一个逻辑记录分离出来的操作，这种操作称为「记录的分解」。</p>
+<h2 id="7-2-RAID-技术"><a href="#7-2-RAID-技术" class="headerlink" title="7.2 RAID 技术"></a>7.2 RAID 技术</h2><p>磁盘是机械设备，一方面速度慢，另一方面会出现故障。为解决此问题，RAID 技术被提了出来，RAID 技术主要是解决上述两个问题，因此，在组成 RAID 的结构上有多种方法。</p>
+<p>RAID0 采用多个磁盘并行以提高读写速度；</p>
+<p>RAID1 用磁盘镜像的方法来提高存储的可靠性；</p>
+<p>RAID2 和 RAID3 以「位」或「字节」作为并行单位；</p>
+<p>RAID4 的并行单位是「块」，为提高可靠性加入了校验，校验码是独立存储的；</p>
+<p>RAID5 与 RAID4 相同，但是检验码以「块」为单位与数据块一起随机存储在磁盘块中；</p>
+<p>其他的 RAID 结构都是上述各种方法的组合或扩展，最常用的是 RAID1 + 0 以及 RAID5。</p>
+<h1 id="8-文件共享、保护和保密"><a href="#8-文件共享、保护和保密" class="headerlink" title="8 文件共享、保护和保密"></a>8 文件共享、保护和保密</h1><h2 id="8-1-文件共享"><a href="#8-1-文件共享" class="headerlink" title="8.1 文件共享"></a>8.1 文件共享</h2><p>文件共享是指一个文件可以允许多个用户共同使用。文件共享不仅是完成共同任务所必须的，而且还带来许多好处：</p>
+<ol>
+<li>节省文件所占用的存储空间；</li>
+<li>免除系统复制文件的工作；</li>
+<li>减少用户大量重复性劳动；</li>
+<li>减少实际输入输出文件的次数；</li>
+<li>实现进程间相互通信；</li>
+</ol>
+<p>在允许文件共享的系统中，必须对共享文件进行管理。从共享的时间段上看，共享文件的使用有两种情况：</p>
+<ol>
+<li>文件可以同时使用；</li>
+<li>文件不允许同时使用；</li>
+</ol>
+<p>在文件共享的具体方式上，有三种文件的共享形式：</p>
+<ol>
+<li>文件被多个用户使用，由存取权限控制；</li>
+<li>文件被多个程序使用，但分别用自己的读写指针；</li>
+<li>文件被多个程序使用，但共享读写指针；</li>
+</ol>
+<h2 id="8-2-文件存取控制"><a href="#8-2-文件存取控制" class="headerlink" title="8.2 文件存取控制"></a>8.2 文件存取控制</h2><ol>
+<li>建立副本：把同一个文件保存到多个存储介质上，这些存储介质可以是同类的，也可以是不同类型的；</li>
+<li>定时转储：每隔一定的时间就把文件转储到其他的存储介质上；</li>
+<li>规定文件的存储权限：① 采用树形目录结构；② 存取控制表；</li>
+</ol>
+<h2 id="8-3-UNIX-的文件使用权限管理方案"><a href="#8-3-UNIX-的文件使用权限管理方案" class="headerlink" title="8.3 UNIX 的文件使用权限管理方案"></a>8.3 UNIX 的文件使用权限管理方案</h2><ol>
+<li>存取控制矩阵：系统以一个二维矩阵来试试文件的存储控制。其中一维代表所有的用户，另一维代表所有的文件；</li>
+<li>二级存取控制：设立两个存取级别。在低一级，把用户按某种关系划分为若干用户组，进行对访问者的识别；在第二集，进行对操作权限的识别；</li>
+</ol>
+<h2 id="8-4-文件的保密措施"><a href="#8-4-文件的保密措施" class="headerlink" title="8.4 文件的保密措施"></a>8.4 文件的保密措施</h2><ol>
+<li>隐藏文件目录；</li>
+<li>设置口令；</li>
+<li>使用密码；</li>
+<li>病毒防范；</li>
+</ol>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2021/04/21/前端/基础知识/" id="post_nav-newer" class="post-nav-content prev-content">
+      <上一篇
+  </a>
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2021/03/20/操作系统/存储管理/" id="post_nav-older" class="post-nav-content next-content">
+      下一篇>
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="post-toc-text">1 文件管理的基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="post-toc-text">1.1 文件管理的任务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8%E5%8F%8A%E5%AD%98%E5%8F%96%E6%96%B9%E5%BC%8F"><span class="post-toc-text">1.2 文件的存储介质及存取方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-3-%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-text">1.3 文件的分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-1-%E6%8C%89%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%A8%E9%80%94%E5%88%86%E7%B1%BB"><span class="post-toc-text">1.3.1 按文件的用途分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-2-%E6%8C%89%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%84%E7%BB%87%E5%BD%A2%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="post-toc-text">1.3.2 按文件的组织形式分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-3-%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E6%96%87%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E5%BC%8F"><span class="post-toc-text">1.3.3 一些常见的文件分类方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-4-UNIX-%E7%B1%BB%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-text">1.3.4 UNIX 类操作系统中文件的分类</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E5%92%8C%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="post-toc-text">2 文件的逻辑结构和物理结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="post-toc-text">2.1 文件的逻辑结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-1-%E8%AE%BE%E8%AE%A1%E6%96%87%E4%BB%B6%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E7%9A%84%E5%8E%9F%E5%88%99"><span class="post-toc-text">2.1.1 设计文件逻辑结构的原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-2-%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="post-toc-text">2.1.2 文件的逻辑结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-%E6%96%87%E4%BB%B6%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="post-toc-text">2.2 文件的物理结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-3-UNIX-%E7%9A%84%E4%B8%89%E7%BA%A7%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84"><span class="post-toc-text">2.3 UNIX 的三级索引结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">3 文件目录的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="post-toc-text">3.1 文件控制块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E5%92%8C%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95"><span class="post-toc-text">3.2 文件目录和当前目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-%E7%9B%AE%E5%BD%95%E9%A1%B9%E5%92%8C%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6"><span class="post-toc-text">3.3 目录项和目录文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-1-%E7%9B%AE%E5%BD%95%E9%A1%B9"><span class="post-toc-text">3.3.1 目录项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-2-%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6"><span class="post-toc-text">3.3.2 目录文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-4-%E7%9B%AE%E5%BD%95%E9%A1%B9%E5%88%86%E8%A7%A3%E6%B3%95"><span class="post-toc-text">3.4 目录项分解法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-5-UNIX-%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">3.5 UNIX 的文件目录实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-6-FAT-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">3.6 FAT 文件系统的实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="post-toc-text">4 文件存储空间管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-1-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="post-toc-text">4.1 磁盘空间管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-2-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E7%9A%84%E5%88%86%E9%85%8D%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="post-toc-text">4.2 磁盘空间的分配回收算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">5 文件系统的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-1-%E7%B3%BB%E7%BB%9F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E8%A1%A8"><span class="post-toc-text">5.1 系统打开文件表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-2-%E7%94%A8%E6%88%B7%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E8%A1%A8"><span class="post-toc-text">5.2 用户打开文件表</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-text">6 文件及文件目录的操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-1-%E5%85%B8%E5%9E%8B%E7%9A%84%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="post-toc-text">6.1 典型的文件操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-2-%E5%85%B8%E5%9E%8B%E7%9A%84%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="post-toc-text">6.2 典型的目录操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%80%A7%E8%83%BD"><span class="post-toc-text">7 文件系统的性能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-1-%E7%A3%81%E7%9B%98%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98"><span class="post-toc-text">7.1 磁盘高速缓存</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-2-RAID-%E6%8A%80%E6%9C%AF"><span class="post-toc-text">7.2 RAID 技术</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#8-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E3%80%81%E4%BF%9D%E6%8A%A4%E5%92%8C%E4%BF%9D%E5%AF%86"><span class="post-toc-text">8 文件共享、保护和保密</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-1-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB"><span class="post-toc-text">8.1 文件共享</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-2-%E6%96%87%E4%BB%B6%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6"><span class="post-toc-text">8.2 文件存取控制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-3-UNIX-%E7%9A%84%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88"><span class="post-toc-text">8.3 UNIX 的文件使用权限管理方案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-4-%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E5%AF%86%E6%8E%AA%E6%96%BD"><span class="post-toc-text">8.4 文件的保密措施</span></a></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p >Copyright ©  2017  Walker Denial</p>
+<!-- <p >Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> & Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p> -->
+<p style="font-size: 10px; margin-top: 0" id="footer-times" data-time="01/10/2017 00:00:00"></p>
+<script>
+    var beginTime=document.getElementById("footer-times").dataset.time
+    function show_date_time(){
+        var span=document.getElementById("footer-times")
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date(beginTime);//初始日期
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span.innerHTML="本站已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</script>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>

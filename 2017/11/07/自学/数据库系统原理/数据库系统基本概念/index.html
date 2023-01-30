@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Walker Denial">
+  <meta name="description" content="This is Walker Denial&#39;s blog!">
+  
+  <title>Walker Denial</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/profile.png" ondragstart="return false;"></div>
+    <p>Walker Denial</p>
+    <div class="nav-link">
+        
+        <a href="https://twitter.com/WalkerDenial" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/WalkerDenial" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:mailto:WalkerDenial@gmail.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://weibo.com/u/3213135930" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="https://www.zhihu.com/people/walkerdenial/activities" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2022/06/">June 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/05/">May 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/04/">April 2022<span class="archive-count">4</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/03/">March 2022<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/12/">December 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/11/">November 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/09/">September 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/08/">August 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/04/">April 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/03/">March 2021<span class="archive-count">12</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/02/">February 2021<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/12/">December 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a   class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Algorithm/">Algorithm<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Flutter/">Flutter<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">6</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/RPC/">RPC<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%86%99%E4%BD%9C/">写作<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端<span class="category-count">10</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%87%AA%E5%AD%A6/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">计算机系统结构<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式<span class="category-count">27</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)" >
+  <h2>数据库系统基本概念</h2>
+    
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-11-07T02:54:00.000Z">
+          2017-11-07
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h3 id="1-数据管理技术的发展"><a href="#1-数据管理技术的发展" class="headerlink" title="1. 数据管理技术的发展"></a>1. 数据管理技术的发展</h3><h4 id="1-1-人工管理阶段"><a href="#1-1-人工管理阶段" class="headerlink" title="1.1 人工管理阶段"></a>1.1 人工管理阶段</h4><p><strong>特点:</strong></p>
+<pre><code>1. 数据不保存在计算机内；
+2. 没有专用的软件对数据进行管理；
+3. 只有程序 (Program) 的概念，没有文件 (File) 的概念；
+4. 数据库面向程序；
+</code></pre>
+<h4 id="1-2-文件系统阶段"><a href="#1-2-文件系统阶段" class="headerlink" title="1.2 文件系统阶段"></a>1.2 文件系统阶段</h4><p><strong>特点:</strong></p>
+<pre><code>1. 数据以「文件」形式可长期保存在外部存储器的磁盘上；
+2. 数据的逻辑结构与物理结构有了区别，但比较简单；
+3. 文件组织已多样化；
+4. 数据不再属于某个特定的程序，可以重复使用，即数据面向应用；
+5. 对数据的操作以记录为单位；
+</code></pre>
+<p><strong>缺陷:</strong></p>
+<pre><code>1. 数据冗余（Redundancy）；
+2. 数据不一致（Inconsistency）；
+3. 数据联系弱（Poor Data Relationship）；
+</code></pre>
+<h4 id="1-3-数据库阶段"><a href="#1-3-数据库阶段" class="headerlink" title="1.3 数据库阶段"></a>1.3 数据库阶段</h4><p><strong>特点:</strong></p>
+<pre><code>1. 采用数据模型表示复杂的数据结构；
+2. 有较高的数据独立性；
+3. 数据库系统为用户提供了方便的用户接口；
+4. 数据库系统提供以下四方面的数据控制功能：
+    ① 数据库的恢复：在数据库被破坏或数据不可靠时，系统有能力把数据库恢复到最近某个正确状态；
+    ② 数据库的并发控制：对程序的并发操作加以控制，防止数据库被破坏，杜绝提供给用户不正确的数据；
+    ③ 数据的完整性：保证数据库中数据始终是正确的；
+    ④ 数据安全性：保证数据的安全，防止数据丢失或被窃取、破坏；
+5. 增加了系统的灵活性：对数据的操作不一定以记录为单位，可以以数据项为单位；
+</code></pre>
+<h4 id="1-4-高级数据库阶段"><a href="#1-4-高级数据库阶段" class="headerlink" title="1.4 高级数据库阶段"></a>1.4 高级数据库阶段</h4><p>主要标识是 20 世纪 80 年代的 <code>分布式数据库系统</code>、90 年代的 <code>对象数据库系统</code> 以及 21 世纪的 <code>Web 数据库系统</code>。</p>
+<h3 id="2-数据库描述"><a href="#2-数据库描述" class="headerlink" title="2. 数据库描述"></a>2. 数据库描述</h3><h4 id="2-1-概念设计中的数据描述"><a href="#2-1-概念设计中的数据描述" class="headerlink" title="2.1 概念设计中的数据描述"></a>2.1 概念设计中的数据描述</h4><ol>
+<li>实体（Entity）：客观存在，可以相互区别的事务称为实体；</li>
+<li>实体集（Entity Set）：性质相同的同类实体的集合，称为实体集；</li>
+<li>属性（Attribute）：实体有很多特性，每一个特性称为属性；</li>
+<li>实体标识符（Identifier）：能唯一标识实体的属性或属性集，称为实体标识符；</li>
+</ol>
+<h4 id="2-2-逻辑设计中的数据描述"><a href="#2-2-逻辑设计中的数据描述" class="headerlink" title="2.2 逻辑设计中的数据描述"></a>2.2 逻辑设计中的数据描述</h4><ol>
+<li>字段（Field）：标记实体属性的命名单位称为字段，或数据项；</li>
+<li>记录（Record）：字段的有序集合称为记录；</li>
+<li>文件（File）：同一类记录的集合称为文件；</li>
+<li>关键码（Key）：能唯一标识文件中每个记录的字段或字段集，称为记录的关键码（简称为键）；</li>
+</ol>
+<p><strong>术语的对应关系</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">概念设计</th>
+<th align="center"></th>
+<th align="right">逻辑设计</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">实体</td>
+<td align="center">·····</td>
+<td align="right">记录</td>
+</tr>
+<tr>
+<td align="left">属性</td>
+<td align="center">·····</td>
+<td align="right">字段（数据项）</td>
+</tr>
+<tr>
+<td align="left">实体集</td>
+<td align="center">·····</td>
+<td align="right">文件</td>
+</tr>
+<tr>
+<td align="left">实体标识符</td>
+<td align="center">·····</td>
+<td align="right">关键码</td>
+</tr>
+</tbody></table>
+<p>在数据库技术中，每个概念都有 <strong>类型（type）</strong> 和 <strong>值（value）</strong> 之区分。<strong>类型</strong> 是概念的内涵，而 <strong>值</strong> 是概念的外延。</p>
+<p>数据描述有两种形式：<strong>物理数据描述</strong> 和 <strong>逻辑数据描述</strong>。</p>
+<p><code>物理数据描述</code> 是指数据在存储设备上的存储方式的描述，物理数据是实际存放在存储设备上的数据。例如，物理联系、物理结构、物理文件、物理记录等术语，都是用来描述存储数据的细节。</p>
+<p><code>逻辑数据描述</code> 是指程序员或用户用以操作的数据形式的描述，是抽象的概念化数据。例如，逻辑联系、逻辑结构、逻辑文件、逻辑记录等术语，都是用户观点的数据描述。</p>
+<h4 id="2-3-物理设计中的数据描述"><a href="#2-3-物理设计中的数据描述" class="headerlink" title="2.3 物理设计中的数据描述"></a>2.3 物理设计中的数据描述</h4><p><strong>1. 物理存储介质层次</strong></p>
+<p>根据访问数据的速度、成本和可靠性，计算机系统的存储介质可分为以下六类：</p>
+<ol>
+<li>高速缓冲存储器（Cache）：Cache 是访问速度最快，也是最昂贵的存储器，其容量小，由 CPU 直接管理；</li>
+<li>主存储器（Main Memory）：又称为内存。机器指令可以直接对内存中的数据进行修改。但致命的一点是，在掉电或者系统崩溃时，内存数据立即全部丢失。它由操作系统管理；</li>
+<li>快擦写存储器（Flash Memory）：又称为「电可擦可编程只读存储器」（即 EEP-ROM），简称为「快闪存」。快闪存在掉电后仍能保持数据部丢失，其操作速度略低于内存；</li>
+<li>磁盘存储器（Magnetic Disk）：磁盘是目前最流行的外部存储器。能长时间地练级存储数据，并能直接读取数据，所以又称为「直接存取存储器」；</li>
+<li>光存储器（Optical Storage）：目前流行的光存储器是「光盘存储器」（CD - ROM、CD - RW、DVD - RW 等）。数据以光的形式存储在盘里，然后用一个激光器去读；</li>
+<li>磁带（Tape Storage）：磁带用于存储拷贝的数据或归档的数据；</li>
+</ol>
+<p><img src="http://personal-blog.oss-cn-hangzhou.aliyuncs.com/db_stroage.png" alt="存储介质层次"></p>
+<p><strong>2. 物理存储中的数据描述</strong></p>
+<ol>
+<li>位（Bit，比特）：一个二进制位称为「位」。一位只能取 0 或 1 两个状态；</li>
+<li>字节（Byte，简记为 B）：8 个比特称为一个字节，可以存放一个字符所对应的 ASCII 码；</li>
+<li>字（Word）：若干个字节组成一个字。一个字所含的二进制位的位数称为字长。各种计算机的字长是不一样的，例如有 8 位、16 位、24 位、32 位等；</li>
+<li>块（Block）：又称为物理块或物理记录。块是内存和外存交换信息的最小单位，每块的大小，通常为 2<sup>10</sup> ~ 2<sup>14</sup> 字节。内、外存信息交换是由操作系统的文件系统管理的；</li>
+<li>桶（Bucket）：外存的逻辑单位，一个桶可以包含一个物理块或多个在空间上不一定连续的物理块；</li>
+<li>卷（Volume）：一个输入输出设备所能装载的全部有用信息，称为「卷」。例如磁带机的一盘磁带就是一卷，磁带的一个盘组也是一卷；</li>
+</ol>
+<h4 id="2-4-数据联系的描述"><a href="#2-4-数据联系的描述" class="headerlink" title="2.4 数据联系的描述"></a>2.4 数据联系的描述</h4><p><code>联系（Relationship）</code>是实体之间的相互关系。与一个联系有关的实体集个数，称为联系的元数。</p>
+<p>二元联系有以下三种类型：</p>
+<ol>
+<li>一对一联系</li>
+<li>一对多联系</li>
+<li>多对多联系</li>
+</ol>
+<h3 id="3-数据抽象的级别"><a href="#3-数据抽象的级别" class="headerlink" title="3. 数据抽象的级别"></a>3. 数据抽象的级别</h3><h4 id="3-1-数据抽象的过程"><a href="#3-1-数据抽象的过程" class="headerlink" title="3.1 数据抽象的过程"></a>3.1 数据抽象的过程</h4><p>根据数据抽象的级别定义了四种模型：概念数据模型、逻辑数据模型、外部数据模型和内部数据模型。</p>
+<blockquote>
+<p>表达用户需求观点的数据全局逻辑结构的模型，称为「概念模型」。</p>
+</blockquote>
+<blockquote>
+<p>表达计算机实现观点的 DB 全局逻辑结构的模型，称为「逻辑模型」。</p>
+</blockquote>
+<blockquote>
+<p>表达用户使用观点的 DB 局部逻辑结构的模型，称为「外部模型」。</p>
+</blockquote>
+<blockquote>
+<p>表达 DB 物理结构的模型，称为「内部模型」。</p>
+</blockquote>
+<p><img src="http://personal-blog.oss-cn-hangzhou.aliyuncs.com/db_model_describe.png" alt="四种模型之间的相互关系"></p>
+<p>数据抽象过程，也就是数据库设计的过程，具体步骤如下：</p>
+<blockquote>
+<p>第一步：根据用户需求，设计数据库的概念模型，这是一个「综合」过程；</p>
+<p>第二步：根据转换规则，把概念模型转换成数据库的逻辑模型，这是一个「转换」的过程；</p>
+<p>第三步：根据用户的业务特点，设计不同的外部模型，给程序员使用。也就是应用程序使用的是数据库的外部模型。外部模型与逻辑模型之间的对应性称为映像；</p>
+<p>第四步：数据库实现时，要根据逻辑模型设计其内部模型。内部模型与逻辑模型之间的对应性称为映像；</p>
+</blockquote>
+<p>一般，上述第一步称为 DB 的概念设计，第二、三步称为 DB 的逻辑设计，第四步称为 DB 的物理设计。</p>
+<h4 id="3-2-概念模型"><a href="#3-2-概念模型" class="headerlink" title="3.2 概念模型"></a>3.2 概念模型</h4><p>这四种模型中，概念模型的抽象级别最高。其特点如下所述：</p>
+<ol>
+<li>概念模型表达了数据的整体逻辑结构，它是系统用户对整个应用项目涉及的数据的全面描述；</li>
+<li>概念模型是从用户需求的观点出发，对数据建模；</li>
+<li>概念模型独立于硬件和软件；</li>
+<li>概念模型是数据库设计人员与用户之间进行交流的工具；</li>
+</ol>
+<h4 id="3-3-逻辑模型"><a href="#3-3-逻辑模型" class="headerlink" title="3.3 逻辑模型"></a>3.3 逻辑模型</h4><p>逻辑模型具有下列特点：</p>
+<ol>
+<li>逻辑模型表达了 DB 的整体逻辑结构，但它是设计人员对整个应用项目数据库的全面描述；</li>
+<li>逻辑模型是从数据库实现的观点出发，对数据建模；</li>
+<li>逻辑模型独立于硬件，但依赖于软件（DDMS）；</li>
+<li>逻辑模型是数据库设计人员与应用程序员之间进行交流的工具</li>
+</ol>
+<p>逻辑模型主要有 <code>层次</code>、<code>网状</code> 和 <code>关系</code> 模型等三种。</p>
+<p><strong>1. 层次模型（Hierarchical Model）</strong></p>
+<p>用树型（层次）结构表示实体类型及实体间联系的数据模型称为 <code>层次模型</code>。树种的节点是记录类型，每个非根节点有且只有一个父节点。上一层记录类型和下一层记录类型之间的联系是 1:N 联系。</p>
+<p>层次模型的 <strong>特点</strong> 是记录之间的联系通过指针来实现，查询效率高。</p>
+<p>层次模型的 <strong>缺点</strong>：</p>
+<ol>
+<li>只能表示 1:N 联系；</li>
+<li>由于层次顺序的严格和复杂，引起数据的查询和更新操作很复杂，因此应用程序的编写也比较复杂；</li>
+</ol>
+<p><strong>2. 网状模型（Network Model）</strong></p>
+<p> 用有向图结构表示实体类型及实体间联系的数据模型称为 <code>网状模型</code>。</p>
+<p>网状模型的 <strong>特点</strong> 是记录之间的联系通过指针实现，M:N 联系也容易实现（一个 M:N 联系可拆成两个 1:N 联系），查询效率较高。</p>
+<p><strong>缺点</strong>：数据结构复杂和编程复杂。</p>
+<p><strong>3. 关系模型（Relational Model）</strong></p>
+<p><code>关系模型（Relational Model）</code> 的主要特征是用二维表格表达实体集。</p>
+<p><strong>三种逻辑数据模型的比较</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">层次模型</th>
+<th align="left">网状模型</th>
+<th align="left">关系模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>数据结构</strong></td>
+<td align="left">复杂（树结构）</td>
+<td align="left">复杂（有向图结构）</td>
+<td align="left">简单（二维表）</td>
+</tr>
+<tr>
+<td align="left"><strong>数据联系</strong></td>
+<td align="left">通过指针</td>
+<td align="left">通过指针</td>
+<td align="left">通过表间的公共属性</td>
+</tr>
+<tr>
+<td align="left"><strong>查询语言</strong></td>
+<td align="left">过程性语言</td>
+<td align="left">过程性语言</td>
+<td align="left">非过程性语言</td>
+</tr>
+<tr>
+<td align="left"><strong>典型产品</strong></td>
+<td align="left">IMS</td>
+<td align="left">IDMS、TOTAL</td>
+<td align="left">Oracle、Sybase</td>
+</tr>
+</tbody></table>
+<h4 id="3-4-外部模型"><a href="#3-4-外部模型" class="headerlink" title="3.4 外部模型"></a>3.4 外部模型</h4><p>外部模型具有如下 <strong>特点</strong>：</p>
+<ol>
+<li>外部模型是逻辑模型的一个逻辑子集；</li>
+<li>外部模型独立于硬件，依赖于软件；</li>
+<li>外部模型反映了用户使用数据库的观点；</li>
+</ol>
+<p>外部模型 <strong>优点</strong>：</p>
+<ol>
+<li>简化了用户的观点；</li>
+<li>有助于数据库的安全性保护；</li>
+<li>外部模型是对概念模型的支持；</li>
+</ol>
+<h4 id="3-5-内部模型"><a href="#3-5-内部模型" class="headerlink" title="3.5 内部模型"></a>3.5 内部模型</h4><p><code>内部模型</code> 又称为物理模型，是数据库最低层的抽象，它描述数据在磁盘或磁带上的存储方式（文件的结构）、存取设备（外存的空间分配）和存取方法（主索引和辅助索引）。</p>
+<h4 id="3-6-三层模式和两级映像"><a href="#3-6-三层模式和两级映像" class="headerlink" title="3.6 三层模式和两级映像"></a>3.6 三层模式和两级映像</h4><p><strong>1. 三层模式体系结构</strong></p>
+<p>在用户（或应用程序）到数据库之间，DB 的数据结构有三个层次：<strong>外部模型</strong>、<strong>逻辑模型</strong> 和 <strong>内部模型</strong>。这三个层次要用 DB 的数据定义语言（Data Definition Language，简记为 DDL）定义，定义以后的内容称为「模式」（Schema），即外模式、逻辑模式和内模式。这三种模式的形式定义如下：</p>
+<ol>
+<li><code>外模式</code> 是用户与数据库系统的接口，是用户用到的那部分数据的描述。外模式由若干个外部记录类型组成；</li>
+<li><code>逻辑模式</code> 是数据库中全部数据的整体逻辑结构的描述。它由若干个逻辑记录类型组成，还包含记录间联系、数据的完整性安全性等要求；</li>
+<li><code>内模式</code> 是数据库在物理存储方面的描述，定义所有内部记录类型、索引和文件的组织方式，以及数据控制方面的细节；</li>
+</ol>
+<p>三层模式体系结构具有以下 <strong>特点</strong>：</p>
+<ol>
+<li>用户使用 DB 的数据操纵语言（Data Manipulation Language，简记为 DML）语句对数据库进行操作，实际上是对外模式的外部记录进行操作；</li>
+<li>逻辑模式必须不涉及到存储结构、访问技术等细节；</li>
+<li>内模式并不涉及到物理设备的约束；</li>
+</ol>
+<p><strong>2. 两级映像</strong></p>
+<p>三层模式之间存在着两级映像：</p>
+<ol>
+<li>外模式/逻辑模式映像存在于外模式和逻辑模式之间，用于定义外模式和逻辑模式之间的对应性。这个映像一般是放在外模式中描述的；</li>
+<li>逻辑模式/内模式映像存在于逻辑模式和内模式之间，用于定义逻辑模式和内模式之间的对应性。这个映像一般是放在内模式中描述的；</li>
+</ol>
+<h4 id="3-7-高度的数据独立性"><a href="#3-7-高度的数据独立性" class="headerlink" title="3.7 高度的数据独立性"></a>3.7 高度的数据独立性</h4><p><code>数据独立性（Data Independence）</code> 是指应用程序和数据库的数据结构之间相互独立，不受影响。</p>
+<p>数据独立性分成 <strong>物理数据独立性</strong> 和 <strong>逻辑数据独立性</strong> 两个级别。</p>
+<p><strong>1. 物理数据独立性</strong></p>
+<p>如果数据库的内模式要修改，即数据库的物理结构有所变化，那么只要对逻辑模式/内模式映像（即「对应性」）作相应的修改，可以使逻辑模式尽可能保持不变。</p>
+<p><strong>2. 逻辑数据独立性</strong><br>如果数据库的逻辑模式要修改，譬如增加记录类型或增加数据项，那么只要对外模式/逻辑模式映像作相应的修改，可以使外模式和应用程序尽可能保持不变。这样，我们称数据库达到了逻辑数据独立性（简称逻辑独立性）。</p>
+<h3 id="4-数据库管理系统（DBMS）"><a href="#4-数据库管理系统（DBMS）" class="headerlink" title="4. 数据库管理系统（DBMS）"></a>4. 数据库管理系统（DBMS）</h3><h4 id="4-1-DBMS-的工作模式如下："><a href="#4-1-DBMS-的工作模式如下：" class="headerlink" title="4.1 DBMS 的工作模式如下："></a>4.1 DBMS 的工作模式如下：</h4><ol>
+<li>接受应用程序的数据请求和处理请求；</li>
+<li>将用户的数据请求（高级指令）转换成复杂的机器代码（低层指令）；</li>
+<li>实现对数据库的操作；</li>
+<li>从对数据库的操作中接受查询结果；</li>
+<li>对查询结果进行处理（格式转换）；</li>
+<li>将处理结果返回给用户；</li>
+</ol>
+<h4 id="4-2-DBMS-的主要功能"><a href="#4-2-DBMS-的主要功能" class="headerlink" title="4.2 DBMS 的主要功能"></a>4.2 DBMS 的主要功能</h4><p><strong>1. 数据库的定义功能</strong></p>
+<p> DBMS 提供 DDL 定义数据库的三级结构、两级映像，定义数据的完整性约束、保密限制等约束。因此，在 DBMS 中应包括 DDL 的编译程序。</p>
+<p><strong>2. 数据库的操纵功能</strong></p>
+<p> DBMS 提供 DML 实现对数据的操作。基本的数据操作有两类：检索（查询）和更新（包括插入、删除、更新）。因此，在 DBMS 中应包括 DML 的编译程序或解释程序。</p>
+<p><strong>3. 数据库的保护功能</strong></p>
+<ol>
+<li>数据库的恢复；</li>
+<li>数据库的并发控制；</li>
+<li>数据完整性控制；</li>
+<li>数据安全性控制；</li>
+</ol>
+<p><strong>4. 数据库的维护功能</strong></p>
+<p>这一部分包括数据库的数据载入、转换、转储，数据库的改组以及性能监控等功能。这些功能分别由各个使用程序（Utilities）完成。</p>
+<p><strong>5. 数据字典</strong></p>
+<p>数据库系统中存放三级结构定义的数据库称为 <code>数据字典（Data Dictionary，DD）</code>。对数据库的操作都要通过都要通过 DD 才能实现。DD 中还存放数据库运行时的统计信息，例如记录个数、访问次数等。管理 DD 的子系统称为「DD 系统」。</p>
+<h3 id="5-数据库系统（DBS）"><a href="#5-数据库系统（DBS）" class="headerlink" title="5. 数据库系统（DBS）"></a>5. 数据库系统（DBS）</h3><h4 id="5-1-DBS-的组成"><a href="#5-1-DBS-的组成" class="headerlink" title="5.1 DBS 的组成"></a>5.1 DBS 的组成</h4><p> DBS 是采用了数据库技术的计算机系统。</p>
+<p>DBS 是一个实际可运行的，按照数据库方法存储、维护和向应用系统提供数据支持的系统，它是 <code>数据库</code>、<code>硬件</code>、<code>软件</code>和 <code>数据库管理员</code> 的集合体。</p>
+<p>DBA 的主要职责有以下六点：</p>
+<ol>
+<li>定义模式</li>
+<li>定义内模式</li>
+<li>与用户联络。包括定义外模式、应用程序的设计、提供技术培训等专业服务</li>
+<li>定义安全性规则，对用户访问数据库的授权</li>
+<li>定义完整性的规则，监督数据库的运行</li>
+<li>数据库的转储和恢复工作</li>
+</ol>
+<h4 id="5-2-DBS-的全局结构"><a href="#5-2-DBS-的全局结构" class="headerlink" title="5.2 DBS 的全局结构"></a>5.2 DBS 的全局结构</h4><p><strong>1. 数据库用户</strong></p>
+<ol>
+<li> DBA：DBA 负责三级结构的定义和修改，以及访问授权、日常维护等工作。DBA 和 DBMS 之间的界面是数据库模式；</li>
+<li>专业用户：指数据库设计中的上层人士（例如系统分析员）；</li>
+<li>应用程序员：指使用主语言和 DML 语言编写应用程序的计算机工作者；</li>
+<li>终端用户：指应用程序的非计算机人员；</li>
+</ol>
+<p><strong>2. DBMS 的查询处理器</strong></p>
+<ol>
+<li>DDL 解释器：解释 DDL 语句，并将这些定义登录在数据字典中；</li>
+<li>DML 编译器：对 DML 语句进行优化，并转换成查询求值引擎能执行的低层指令；</li>
+<li>嵌入式 DML 的预编译器：把嵌入在主语言中的 DML 语句处理成规范的过程调用形式；</li>
+<li>查询求值引擎：执行由 DML 编译器编译器产生的低层指令；</li>
+</ol>
+<p><strong>3. DBMS 的存储管理器</strong></p>
+<ol>
+<li>权限和完整性管理器：测试应用程序对数据库的修改是否满足完整性约束，检查用户访问数据的合法性；</li>
+<li>事务管理器：DBS 的逻辑工作单元称为事务（Transaction），事务由对 DB 的操作序列组成。事务管理器用于确保 DB 一致性（正确性）状态，保证并发操作正确执行；</li>
+<li>文件管理器：负责磁盘空间的合理分配，管理吴丽文件的存储结构和存取方式</li>
+<li>缓冲区管理器：为应用程序开辟 DB 的系统缓冲区，负责将从磁盘中读出的数据送入内存的缓冲区；</li>
+</ol>
+<p><strong>4. 磁盘存储器中的数据结构</strong></p>
+<ol>
+<li>数据文件：存储数据库管理的用户数据自身。数据库在磁盘上的基本组织形式是文件，这样可以充分利用 OS 管理外存的功能；</li>
+<li>数据字典：存储三级结构的描述（一般称为元数据 Metadata）；</li>
+<li>索引：为提高查询速度而设置的逻辑排序手段；</li>
+<li>统计数据：存储 DBS 运行时统计分析的数据。查询处理器可使用这些信息更有效地进行查询处理；</li>
+<li>日志：存储 DBS 运行时对 DB 的操作情况，以备以后查阅数据库的使用情况及数据库恢复时使用；</li>
+</ol>
+<h4 id="5-3-DBS-的效益"><a href="#5-3-DBS-的效益" class="headerlink" title="5.3 DBS 的效益"></a>5.3 DBS 的效益</h4><ol>
+<li>灵活性。数据库容易扩充，以适应用户新的要求；也容易移植，以适应新的硬件环境和更大的数据容量；</li>
+<li>简易型。由于精心设计的数据库能模拟用户单位的运转情况，并提供用户单位详细的数据资料，因此能使管理部门和使用部门方便地运用和理解数据库；</li>
+<li>面向用户。由于数据库能反映用户单位的实际运转情况，因此基本上能满足用户的要求，为用户的信息系统和信息化奠定了基础；</li>
+<li>有效的数据控制。对数据实现集中控制能保证所有用户在同样的数据上操作，而且数据对所有部门具有相同的语义。数据的冗余减少到最小程度，消除了数据的不一致性；</li>
+<li>加快应用系统的开发速度。系统分析员和程序员可以集中精力于应用的逻辑方面，而不必关心物理设计和文件设计的细节，后援和恢复问题均由系统来保证。由于 DML 命令功能强，因此编写应用程序较方便，进一步提高了程序员的生产效率；</li>
+<li>维护方便。数据独立性使得修改数据库结构时尽量不影响已有的应用程序，使得程序维护的工作量大为减少；</li>
+<li>标准化。数据库方法能促进整个用户单位乃至全社会的数据一致性和使用的标准化工作；</li>
+</ol>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2017/11/13/自学/数据库系统原理/数据库设计和 ER 模型/" id="post_nav-newer" class="post-nav-content prev-content">
+      <上一篇
+  </a>
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2017/08/03/ES6/Proxy/" id="post_nav-older" class="post-nav-content next-content">
+      下一篇>
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95"><span class="post-toc-text">1. 数据管理技术的发展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-%E4%BA%BA%E5%B7%A5%E7%AE%A1%E7%90%86%E9%98%B6%E6%AE%B5"><span class="post-toc-text">1.1 人工管理阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%98%B6%E6%AE%B5"><span class="post-toc-text">1.2 文件系统阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-3-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%98%B6%E6%AE%B5"><span class="post-toc-text">1.3 数据库阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-4-%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E9%98%B6%E6%AE%B5"><span class="post-toc-text">1.4 高级数据库阶段</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%8F%E8%BF%B0"><span class="post-toc-text">2. 数据库描述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-%E6%A6%82%E5%BF%B5%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8F%8F%E8%BF%B0"><span class="post-toc-text">2.1 概念设计中的数据描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8F%8F%E8%BF%B0"><span class="post-toc-text">2.2 逻辑设计中的数据描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-3-%E7%89%A9%E7%90%86%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8F%8F%E8%BF%B0"><span class="post-toc-text">2.3 物理设计中的数据描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4-%E6%95%B0%E6%8D%AE%E8%81%94%E7%B3%BB%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="post-toc-text">2.4 数据联系的描述</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E7%9A%84%E7%BA%A7%E5%88%AB"><span class="post-toc-text">3. 数据抽象的级别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="post-toc-text">3.1 数据抽象的过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-2-%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">3.2 概念模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-%E9%80%BB%E8%BE%91%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">3.3 逻辑模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-4-%E5%A4%96%E9%83%A8%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">3.4 外部模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-5-%E5%86%85%E9%83%A8%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">3.5 内部模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-6-%E4%B8%89%E5%B1%82%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%B8%A4%E7%BA%A7%E6%98%A0%E5%83%8F"><span class="post-toc-text">3.6 三层模式和两级映像</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-7-%E9%AB%98%E5%BA%A6%E7%9A%84%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="post-toc-text">3.7 高度的数据独立性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88DBMS%EF%BC%89"><span class="post-toc-text">4. 数据库管理系统（DBMS）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-1-DBMS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="post-toc-text">4.1 DBMS 的工作模式如下：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-2-DBMS-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="post-toc-text">4.2 DBMS 的主要功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%EF%BC%88DBS%EF%BC%89"><span class="post-toc-text">5. 数据库系统（DBS）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-1-DBS-%E7%9A%84%E7%BB%84%E6%88%90"><span class="post-toc-text">5.1 DBS 的组成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-2-DBS-%E7%9A%84%E5%85%A8%E5%B1%80%E7%BB%93%E6%9E%84"><span class="post-toc-text">5.2 DBS 的全局结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-3-DBS-%E7%9A%84%E6%95%88%E7%9B%8A"><span class="post-toc-text">5.3 DBS 的效益</span></a></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p >Copyright ©  2017  Walker Denial</p>
+<!-- <p >Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> & Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p> -->
+<p style="font-size: 10px; margin-top: 0" id="footer-times" data-time="01/10/2017 00:00:00"></p>
+<script>
+    var beginTime=document.getElementById("footer-times").dataset.time
+    function show_date_time(){
+        var span=document.getElementById("footer-times")
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date(beginTime);//初始日期
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span.innerHTML="本站已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</script>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>

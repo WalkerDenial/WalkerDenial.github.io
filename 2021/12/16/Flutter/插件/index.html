@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Walker Denial">
+  <meta name="description" content="This is Walker Denial&#39;s blog!">
+  
+  <title>Walker Denial</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/profile.png" ondragstart="return false;"></div>
+    <p>Walker Denial</p>
+    <div class="nav-link">
+        
+        <a href="https://twitter.com/WalkerDenial" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/WalkerDenial" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:mailto:WalkerDenial@gmail.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://weibo.com/u/3213135930" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="https://www.zhihu.com/people/walkerdenial/activities" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2022/06/">June 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/05/">May 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/04/">April 2022<span class="archive-count">4</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/03/">March 2022<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/12/">December 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/11/">November 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/09/">September 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/08/">August 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/04/">April 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/03/">March 2021<span class="archive-count">12</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/02/">February 2021<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/12/">December 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a   class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Algorithm/">Algorithm<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Flutter/">Flutter<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">6</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/RPC/">RPC<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%86%99%E4%BD%9C/">写作<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端<span class="category-count">10</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%87%AA%E5%AD%A6/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">计算机系统结构<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式<span class="category-count">27</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-18.png)" >
+  <h2>插件</h2>
+    
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-12-16T15:27:00.000Z">
+          2021-12-16
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>在 Flutter 提供的丰富能力场景之外，有时还需要一些系统提供的能力，比如 Android 中使用 Logcat、陀螺仪传感器、推送等等，这些 Flutter 都不能提供有力的支持，因此，需要有一个桥梁去沟通 Flutter 和原生的能力，这就需要 <code>插件</code>。</p>
+<h2 id="什么是插件"><a href="#什么是插件" class="headerlink" title="什么是插件"></a>什么是插件</h2><p>在 Flutter 中，一个插件叫做一个 package，使用 package 的目的就是为了达到模块化，可以创建出可被复用的共享的代码。这和大多数编程语言中的模块、包的概念相同，创建出来的 package 可以在 pubspec.yaml 中直接依赖。</p>
+<p>一个最小化的 package 包含了两部分：</p>
+<ol>
+<li>一个 pubspec.yaml：一个元数据文件，声明了 package 的名称、版本、作者信息等。</li>
+<li>一个 lib 文件夹：包含 package 的公开代码，文件至少要存在 <package-name>.dart 这个文件。（<pakcage-name>.dart 这个文件必须存在，因为这是方便使用的人快速 import 这个 package 来使用它，可以把它理解成一种必须要遵守的规则。）</li>
+</ol>
+<h2 id="package-的种类"><a href="#package-的种类" class="headerlink" title="package 的种类"></a>package 的种类</h2><p>package 可以分为两种：<code>纯 dart 代码</code> 的和 <code>带有特定平台代码</code> 的 package。</p>
+<ol>
+<li>Dart package：这是一个只有 dart 代码的 package，里面包含了 Flutter 的特定功能，所以它依赖于 Flutter 的 Framework，也决定了它只能用在 Flutter 上。</li>
+<li>plugin package：这是一个既包含了 dart 代码编写的 API，又包含了平台特定实现的 package，可以被 Android 和 iOS 调用。</li>
+</ol>
+<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><h3 id="开发-Dart-package"><a href="#开发-Dart-package" class="headerlink" title="开发 Dart package"></a>开发 Dart package</h3><p>创建 Dart 包，需使用 <code>--template=package</code> 来执行 <code>flutter create</code></p>
+<pre class="line-numbers language-dart"><code class="language-dart">flutter create <span class="token operator">--</span>template<span class="token operator">=</span>package hello
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这将在 hello 文件夹下创建一个具有以下专用内容的 package 工程：</p>
+<ul>
+<li><code>lib/hello.dart:</code><ul>
+<li>Package 的 Dart 代码</li>
+</ul>
+</li>
+<li><code>test/hello_test.dart:</code><ul>
+<li>Package 的单元测试代码.</li>
+</ul>
+</li>
+<li>实现 package<ul>
+<li>对于纯 Dart 包，只需在主 lib/<package name>.dart 文件内或 lib 目录中的文件中添加功能 。</li>
+<li>要测试软件包，请在 test 目录中添加 unit tests。</li>
+</ul>
+</li>
+</ul>
+<h3 id="开发-plugin-package"><a href="#开发-plugin-package" class="headerlink" title="开发 plugin package"></a>开发 plugin package</h3><h4 id="Step-1-创建-package"><a href="#Step-1-创建-package" class="headerlink" title="Step 1: 创建 package"></a>Step 1: 创建 package</h4><ul>
+<li><p>要创建插件包，请使用 <code>--template=plugin</code> 参数执行 <code>flutter create</code></p>
+</li>
+<li><p>使用 <code>--org</code> 选项指定您的组织，并使用反向域名表示法。该值用于生成的 Android 和 iOS 代码中的各种包和包标识符。</p>
+</li>
+</ul>
+<p><code>flutter create --org com.example --template=plugin hello</code></p>
+<ul>
+<li><p>这将在 hello/ 文件夹下创建一个具有以下专用内容的插件工程：</p>
+</li>
+<li><p>lib/hello.dart:</p>
+<ul>
+<li>插件包的 Dart API.</li>
+</ul>
+</li>
+<li><p>android/src/main/java/com/yourcompany/​hello/HelloPlugin.java:</p>
+<ul>
+<li>插件包 API 的 Android 实现.</li>
+</ul>
+</li>
+<li><p>ios/Classes/HelloPlugin.m:</p>
+<ul>
+<li>插件包 API 的 ios 实现.</li>
+</ul>
+</li>
+<li><p>example/:</p>
+<ul>
+<li>一个依赖于该插件的 Flutter 应用程序，来说明如何使用它。默认情况下，插件项目针对 iOS 代码使用 Objective-C，Android 代码使用 Java。如果您更喜欢 Swift 或 Kotlin，则可以使用 -i 或 -a 为 iOS 或 Android 指定语言。例如：</li>
+</ul>
+</li>
+</ul>
+<p><code>flutter create --template=plugin -i swift -a kotlin hello</code></p>
+<h4 id="Step-2-实现包-package"><a href="#Step-2-实现包-package" class="headerlink" title="Step 2: 实现包 package"></a>Step 2: 实现包 package</h4><ul>
+<li><p>由于插件包中包含用多种编程语言编写的多个平台的代码，因此需要一些特定的步骤来确保顺畅的体验。</p>
+</li>
+<li><p>Step 2a: 定义包 API（.dart）插件包的 API 在 Dart 代码中定义。打开主文件夹hello/ 。找到lib/hello.dart。</p>
+</li>
+<li><p>Step 2b: 添加 Android 平台代码（.java / .kt）我们建议您使用 Android Studio 编辑 Android 代码。</p>
+</li>
+</ul>
+<p>在 Android Studio 中编辑 Android 平台代码之前，首先确保代码至少已经构建过一次（例如，从 IntelliJ 运行示例应用程序或在终端执行 cd hello/example; flutter build apk）。</p>
+<ol>
+<li>启动 Android Studio</li>
+<li>在 ’Welcome to Android Studio’ 对话框选择 ‘Import project’, 或者在菜单栏 ‘File &gt; New &gt; Import Project…‘，然后选择 hello/example/android/build.gradle 文件.</li>
+<li>在 ’Gradle Sync’ 对话框, 选择 ‘OK’.</li>
+<li>在 ’Android Gradle Plugin Update’ 对话框, 选择 ‘Don’t remind me again for this project’.<br>您插件的 Android 平台代码位于 hello/java/com.yourcompany.hello/​HelloPlugin.</li>
+</ol>
+<p>您可以通过按下 ▶ 按钮从 Android Studio 运行示例应用程序.</p>
+<ul>
+<li>Step 2d: 连接 API 和平台代码<br>最后，您需要将用 Dart 代码编写的 API 与平台特定的实现连接起来。这是通过 platform channels 完成的。</li>
+</ul>
+<h4 id="添加文档"><a href="#添加文档" class="headerlink" title="添加文档"></a>添加文档</h4><p>建议将以下文档添加到所有软件包：</p>
+<ol>
+<li>README.md：介绍包的文件</li>
+<li>CHANGELOG.md：记录每个版本中的更改</li>
+<li>LICENSE：包含软件包许可条款的文件</li>
+</ol>
+<h3 id="发布-packages"><a href="#发布-packages" class="headerlink" title="发布 packages"></a>发布 packages</h3><p>一旦你实现了一个包，你可以在 Pub 上发布它 ，这样其他开发人员就可以轻松使用它</p>
+<p>在发布之前，检查 <code>pubspec.yaml</code>、<code>README.md</code> 以及 <code>CHANGELOG.md</code>  文件，以确保其内容的完整性和正确性。</p>
+<p>然后, 运行 dry-run 命令以查看是否都准备 OK 了:</p>
+<p><code>flutter packages pub publish --dry-run</code></p>
+<p>最后, 运行发布命令:</p>
+<p><code>flutter packages pub publish</code></p>
+<h2 id="Plugin-通信原理"><a href="#Plugin-通信原理" class="headerlink" title="Plugin 通信原理"></a>Plugin 通信原理</h2><ul>
+<li>在介绍 Plugin 前，我们先简单了解一下 Flutter：</li>
+</ul>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/flutter_design.png"> </p>
+<ul>
+<li>Flutter 框架包括：Framework 和 Engine，他们运行在各自的 Platform 上。</li>
+<li>Framework 是 Dart 语言开发的，包括 Material Design 风格的 Widgets 和 Cupertino(iOS-style) 风格的 Widgets，以及文本、图片、按钮等基础 Widgets；还包括渲染、动画、绘制、手势等基础能力。</li>
+<li>Engine 是 C++ 实现的，包括 Skia（二维图形库）；Dart VM（Dart Runtime）；Text（文本渲染）等。<blockquote>
+<p>实际上，Flutter 的上层能力都是 Engine 提供的。Flutter 正是通过 Engine 将各个 Platform 的差异化抹平。而我们今天要讲的 Plugin，正是通过 Engine 提供的 Platform Channel 实现的通信。</p>
+</blockquote>
+</li>
+<li>Plugin 其实就是一个特殊的 Package。Flutter Plugin 提供 Android 或者 iOS 的底层封装，在 Flutter 层提供组件功能，使 Flutter 可以较方便的调取 Native 的模块。很多平台相关性或者对于 Flutter 实现起来比较复杂的部分，都可以封装成 Plugin。其原理如下</li>
+</ul>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/flutter_channel.png"> </p>
+<p>通过上图，我们看到 Flutter App 是通过 Plugin 创建的 Platform Channel 调用的 Native APIs。</p>
+<h4 id="Platform-Channel："><a href="#Platform-Channel：" class="headerlink" title="Platform Channel："></a>Platform Channel：</h4><ol>
+<li>Flutter App (Client)，通过 MethodChannel 类向 Platform 发送调用消息；</li>
+<li>Android Platform (Host)，通过 MethodChannel 类接收调用消息；</li>
+<li>iOS Platform (Host)，通过 FlutterMethodChannel 类接收调用消息。</li>
+</ol>
+<blockquote>
+<p>PS：消息编解码器，是 JSON 格式的二进制序列化，所以调用方法的参数类型必须是可 JSON 序列化的。<br>PS：方法调用，也可以反向发送调用消息。</p>
+</blockquote>
+<ul>
+<li>Android Platform<blockquote>
+<p>FlutterActivity，是 Android 的 Plugin 管理器，它记录了所有的 Plugin，并将 Plugin 绑定到 FlutterView。</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>理解 Platform Channel 工作原理</li>
+</ol>
+<ul>
+<li><p>Flutter 定义了三种不同类型的 Channel，它们分别是</p>
+<ul>
+<li>BasicMessageChannel：用于传递字符串和半结构化的信息。</li>
+<li>MethodChannel：用于传递方法调用（method invocation）。</li>
+<li>EventChannel: 用于数据流（event streams）的通信。</li>
+</ul>
+</li>
+</ul>
+<p>三种 Channel 之间互相独立，各有用途，但它们在设计上却非常相近。每种 Channel 均有三个重要成员变量：</p>
+<ul>
+<li>name:  String 类型，代表 Channel 的名字，也是其唯一标识符。</li>
+<li>messager：BinaryMessenger 类型，代表消息信使，是消息的发送与接收的工具。</li>
+<li>codec: MessageCodec 类型或 MethodCodec 类型，代表消息的编解码器。</li>
+<li> Channel name： 一个 Flutter 应用中可能存在多个 Channel，每个 Channel 在创建时必须指定一个独一无二的 name，Channel 之间使用 name 来区分彼此。当有消息从 Flutter 端发送到 Platform 端时，会根据其传递过来的 channel name 找到该 Channel 对应的 Handler（消息处理器）。</li>
+<li>消息信使：BinaryMessenger</li>
+<li>平台通道数据类型支持和解码器</li>
+<li>标准平台通道使用标准消息编解码器，以支持简单的类似 JSON 值的高效二进制序列化，例如 booleans、numbers,、Strings,、byte buffers,、List,、Maps（请参阅StandardMessageCodec 了解详细信息）。 当您发送和接收值时，这些值在消息中的序列化和反序列化会自动进行。</li>
+</ul>
+<p>下表显示了如何在宿主上接收 Dart 值，反之亦然：</p>
+<table>
+<thead>
+<tr>
+<th>Dart</th>
+<th>Android</th>
+<th>iOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>null</td>
+<td>null</td>
+<td>nil (NSNull when nested)</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>java.lang.Boolean</td>
+<td>NSNumber numberWithBool:</td>
+</tr>
+<tr>
+<td>int</td>
+<td>java.lang.Integer</td>
+<td>NSNumber numberWithInt:</td>
+</tr>
+<tr>
+<td>int, if 32 bits not enough</td>
+<td>java.lang.Long</td>
+<td>NSNumber numberWithLong:</td>
+</tr>
+<tr>
+<td>int, if 64 bits not enough</td>
+<td>java.math.BigInteger</td>
+<td>FlutterStandardBigInteger</td>
+</tr>
+<tr>
+<td>double</td>
+<td>java.lang.Double</td>
+<td>NSNumber numberWithDouble:</td>
+</tr>
+<tr>
+<td>String    j</td>
+<td>ava.lang.String</td>
+<td>NSString</td>
+</tr>
+<tr>
+<td>Uint8List</td>
+<td>byte[]</td>
+<td>FlutterStandardTypedData typedDataWithBytes:</td>
+</tr>
+<tr>
+<td>Int32List</td>
+<td>int[]</td>
+<td>FlutterStandardTypedData typedDataWithInt32:</td>
+</tr>
+<tr>
+<td>Int64List</td>
+<td>long[]</td>
+<td>FlutterStandardTypedData typedDataWithInt64:</td>
+</tr>
+<tr>
+<td>Float64List</td>
+<td>double[]</td>
+<td>FlutterStandardTypedData typedDataWithFloat64:</td>
+</tr>
+<tr>
+<td>List</td>
+<td>java.util.ArrayList</td>
+<td>NSArray</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>java.util.HashMap</td>
+<td>NSDictionary</td>
+</tr>
+</tbody></table>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2021/12/18/Flutter/动画/" id="post_nav-newer" class="post-nav-content prev-content">
+      <上一篇
+  </a>
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2021/12/15/Flutter/路由与导航/" id="post_nav-older" class="post-nav-content next-content">
+      下一篇>
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8F%92%E4%BB%B6"><span class="post-toc-text">什么是插件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#package-%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="post-toc-text">package 的种类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">开发步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%80%E5%8F%91-Dart-package"><span class="post-toc-text">开发 Dart package</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%80%E5%8F%91-plugin-package"><span class="post-toc-text">开发 plugin package</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Step-1-%E5%88%9B%E5%BB%BA-package"><span class="post-toc-text">Step 1: 创建 package</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Step-2-%E5%AE%9E%E7%8E%B0%E5%8C%85-package"><span class="post-toc-text">Step 2: 实现包 package</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3"><span class="post-toc-text">添加文档</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%91%E5%B8%83-packages"><span class="post-toc-text">发布 packages</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Plugin-%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86"><span class="post-toc-text">Plugin 通信原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Platform-Channel%EF%BC%9A"><span class="post-toc-text">Platform Channel：</span></a></li></ol></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p >Copyright ©  2017  Walker Denial</p>
+<!-- <p >Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> & Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p> -->
+<p style="font-size: 10px; margin-top: 0" id="footer-times" data-time="01/10/2017 00:00:00"></p>
+<script>
+    var beginTime=document.getElementById("footer-times").dataset.time
+    function show_date_time(){
+        var span=document.getElementById("footer-times")
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date(beginTime);//初始日期
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span.innerHTML="本站已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</script>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>

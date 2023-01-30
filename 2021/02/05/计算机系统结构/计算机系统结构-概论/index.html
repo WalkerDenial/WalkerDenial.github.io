@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="Walker Denial">
+  <meta name="description" content="This is Walker Denial&#39;s blog!">
+  
+  <title>Walker Denial</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/profile.png" ondragstart="return false;"></div>
+    <p>Walker Denial</p>
+    <div class="nav-link">
+        
+        <a href="https://twitter.com/WalkerDenial" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/WalkerDenial" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:mailto:WalkerDenial@gmail.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://weibo.com/u/3213135930" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="https://www.zhihu.com/people/walkerdenial/activities" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2022/06/">June 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/05/">May 2022<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/04/">April 2022<span class="archive-count">4</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2022/03/">March 2022<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/12/">December 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/11/">November 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/09/">September 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/08/">August 2021<span class="archive-count">3</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/04/">April 2021<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/03/">March 2021<span class="archive-count">12</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/02/">February 2021<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/12/">December 2020<span class="archive-count">5</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/11/">November 2020<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2020/04/">April 2020<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2018/01/">January 2018<span class="archive-count">2</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/12/">December 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/11/">November 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/08/">August 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/07/">July 2017<span class="archive-count">1</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/03/">March 2017<span class="archive-count">6</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/02/">February 2017<span class="archive-count">20</span></a></li><li class="nav-dropdown-list"><a class="archive-link" href="/archives/2017/01/">January 2017<span class="archive-count">2</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<li class="nav-list dropdown-btn">
+    <a   class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/Algorithm/">Algorithm<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/ES6/">ES6<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Flutter/">Flutter<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Gradle/">Gradle<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Java/">Java<span class="category-count">6</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/Kotlin/">Kotlin<span class="category-count">4</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/RPC/">RPC<span class="category-count">3</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/UML/">UML<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%86%99%E4%BD%9C/">写作<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端<span class="category-count">10</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%87%AA%E5%AD%A6/">自学<span class="category-count">9</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">计算机系统结构<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络<span class="category-count">2</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式<span class="category-count">27</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+<li class="nav-list">
+    <a href="/about" target="_self">
+        <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+    </a>
+</li>
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)" >
+  <h2>计算机系统结构-概论</h2>
+    
+  <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-02-05T15:33:00.000Z">
+          2021-02-05
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <p>计算机系统结构是一门从组织和结构的角度学习、领会计算机系统的课程。计算机系统是一个软、硬件综合体。本文学习的目的是了解计算机系统结构的基本概念和知识，为后面进一步学习后续知识打好基础。</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_chapter_1.png"></p>
+<h1 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h1><ol>
+<li>理解一个完整的计算机系统可被看成是由多个机器级构成的多级层次结构，知道层次的划分；</li>
+<li>掌握结构、组成、实现三者的定义和内涵，对透明性能做出正确的判断；</li>
+<li>理解软、硬件取舍的基本原则和计算机系统的定量设计原理；</li>
+<li>掌握计算机系统设计的 3 种思路及各自的优缺点，理解「从中间向两边」设计是好的思路；</li>
+<li>掌握实现软件移植的途径、方法、适用场合、存在问题和对策；</li>
+<li>了解应用和器件的发展对系统结构的影响；</li>
+<li>掌握并行性概念，以及计算机系统结构中并行性开发的途径和结构分类；</li>
+<li>了解计算机系统的分类；</li>
+</ol>
+<h1 id="1-计算机系统的多级层次结构"><a href="#1-计算机系统的多级层次结构" class="headerlink" title="1. 计算机系统的多级层次结构"></a>1. 计算机系统的多级层次结构</h1><h2 id="1-1-现代通用计算机系统可分成哪几级，它们的相对位置"><a href="#1-1-现代通用计算机系统可分成哪几级，它们的相对位置" class="headerlink" title="1.1 现代通用计算机系统可分成哪几级，它们的相对位置"></a>1.1 现代通用计算机系统可分成哪几级，它们的相对位置</h2><p>从使用语言的角度，一台由软、硬件组成的通用计算机系统可以被看成是按功能划分的多层机器级组成的层次结构，可参考下图：</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_layer_struct.png" alt="计算机系统的多级层次结构"></p>
+<p>具体的计算机系统，其层次的多少可以有所不同。</p>
+<h2 id="1-2-各机器级的实现所用的是翻译技术还是解释技术"><a href="#1-2-各机器级的实现所用的是翻译技术还是解释技术" class="headerlink" title="1.2 各机器级的实现所用的是翻译技术还是解释技术"></a>1.2 各机器级的实现所用的是翻译技术还是解释技术</h2><blockquote>
+<p>翻译（Translation）技术是先用转换程序将高一级机器上的程序整个地变换成低一级机器级上等效的程序，然后在低一级机器级上实现的技术。</p>
+<p>解释（Interpretation）技术是在低级机器级上用它的一串语句或指令来仿真高级机器级上的一条语句或指令的功能，是通过对高级机器级语言程序中的每条语句或指令系统逐条解析来实现的技术。</p>
+</blockquote>
+<p>传统机器语言机器级 M1 采用组合逻辑电路控制，其指令可直接用硬件来实现，也可以采用微程序控制，用微指令（L0）程序来解释实现。微指令直接控制硬件电路的动作。</p>
+<table>
+<thead>
+<tr>
+<th align="center">机器级</th>
+<th align="center">实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">M0</td>
+<td align="center">硬件</td>
+</tr>
+<tr>
+<td align="center">M1</td>
+<td align="center">微程序（固件）</td>
+</tr>
+<tr>
+<td align="center">M2~M5</td>
+<td align="center">软件</td>
+</tr>
+</tbody></table>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_layer_language.png" alt="各机器级采用的技术"></p>
+<p><code>固件</code>：是一种具有软件功能的硬件。</p>
+<p><code>虚拟机</code>：以软件为主实现的机器。</p>
+<h1 id="2-计算机系统结构、组成和实现"><a href="#2-计算机系统结构、组成和实现" class="headerlink" title="2. 计算机系统结构、组成和实现"></a>2. 计算机系统结构、组成和实现</h1><h2 id="2-1-计算机系统结构、组成和实现的定义和研究方向"><a href="#2-1-计算机系统结构、组成和实现的定义和研究方向" class="headerlink" title="2.1 计算机系统结构、组成和实现的定义和研究方向"></a>2.1 计算机系统结构、组成和实现的定义和研究方向</h2><blockquote>
+<p>从计算机的层次结构角度来看，系统结构（System Architecture）是对计算机系统中各级界面的定义及其上下的功能分配。</p>
+</blockquote>
+<p>计算机系统结构研究的是软、硬件之间的功能分配以及对传统机器级界面的确定。为机器语言、汇编语言程序设计者或编译程序生成系统设计或生成的程序能在机器上正确运行提供应看到和遵循的计算机属性。</p>
+<p>就目前通用机来说，计算机系统结构的属性包括：</p>
+<ol>
+<li>硬件能直接识别和处理的数据类型及格式等的数据表示；</li>
+<li>最小可寻址单位、寻址种类、地址计算等寻址方式；</li>
+<li>通用/专用寄存器的设置、数量、字长、使用约定等的寄存器组织；</li>
+<li>二进制或汇编指令的操作类型、格式、排序方式、控制机构等的指令系统；</li>
+<li>主存的最小编址单位、编址方式、容量、最大可编址空间等的存储系统组织；</li>
+<li>中断的分类与分级、中断处理程序功能及入口地址等的中断机构；</li>
+<li>系统机器级的管态和用户态的定义与切换；</li>
+<li>输入/输出设备的连接、使用方式、流量、操作结束、出错指示等的机器级 I/O 结构；</li>
+<li>系统各部分的信息保护方式和保护机构属性；</li>
+</ol>
+<p>从计算机系统结构的内涵可以看出，机器级内部的数据流和控制流的组成、逻辑设计和器件设计等都不属于计算机系统结构，就是说，它们对计算机系统结构设计时透明的。</p>
+<blockquote>
+<p>计算机组成（Computer Organization）指的是计算机系统结构的逻辑实现，包括机器级内部的数据流和控制流的组成以及逻辑设计等。</p>
+</blockquote>
+<p>计算机组成着眼于机器级内部各事件的排序方式与控制结构、各部件的功能及各部件间的联系。它要解决的问题是在希望达到的吸能和价格的情况下，如何更好、更合理地把各种设备和部件组织成计算机，实现所确定的系统结构。</p>
+<p>计算机组成设计要确定的方面一般包括：</p>
+<ol>
+<li>数据通路宽度（数据总线一次并行传送的信息位数）；</li>
+<li>专用部件的设置（是否设置乘除法、浮点运算、字符处理、地址运算等专用部件，设置的数量与机器要达到的速度、价格及专用部件的使用频率等有关）；</li>
+<li>各种操作对部件的共享程度（分时共享使用程度高，虽然限制的速度，但价格便宜；设置部件多降低共享程度，因操作并行度提高，可提高速度，但价格也会更高）；</li>
+<li>功能部件的并行度（是用顺序串行，还是用叠、流水或分布式控制和管理）；</li>
+<li>控制机构的组成方式（用硬件还是微程序控制，是单击处理还是多机或功能分布处理）；</li>
+<li>缓冲和排队技术（部件间如何设置及设置多大容量的缓冲器来协调它们的速度差。是用随机、先进先出、先进后出、优先级，还是用循环方式来安排事件处理的顺序）；</li>
+<li>预估、预判技术（用什么原则为优化性能预测未来行为）；</li>
+<li>可靠性技术（用何种冗余和容错技术来提高可靠性）；</li>
+</ol>
+<blockquote>
+<p>计算机实现（Computer Implementation）指的是计算机组成的物理实现，包括处理机、主存等部件的物理结构，器件的集成度和速度，器件、模块、插件、底板的划分与连接，专用器件的设计，微组装技术，信号传输，电源、冷却及整机装配技术等。</p>
+</blockquote>
+<p>计算机实现的设计着眼于器件技术和微组装技术，其中，器件技术起着主导作用。</p>
+<p>以主存与编址方式举个🌰：</p>
+<p>主存容量与编址方式（按位、字节、字访问等）的确定属于 <strong>计算机系统结构</strong>。</p>
+<p>为达到性能价格要求，主存速度应该为多少，以及逻辑结构是否采用多体交叉属于 <strong>计算机组成</strong>。</p>
+<p>主存器件的选定、逻辑设计、微组装技术的使用属于 <strong>计算机实现</strong>。</p>
+<h2 id="2-2-计算机系统结构是软、硬件的主要界面"><a href="#2-2-计算机系统结构是软、硬件的主要界面" class="headerlink" title="2.2 计算机系统结构是软、硬件的主要界面"></a>2.2 计算机系统结构是软、硬件的主要界面</h2><p>计算机系统结构也称计算机系统的体系结构（Computer Architecture），它只是系统结构中的一部分，指的是传统机器语言机器级的系统结构。其界面之上包括操作系统级、汇编语言级、高级语言级和应用语言级中所有软件的功能，该界面之下包括所有硬件和固件的功能。因此，它是软件和硬件/固件的交界面，是机器语言、汇编语言程序设计者或编译程序设计者看到的机器物理系统的抽象。</p>
+<h2 id="2-3-系统结构、组成和实现的关系和影响"><a href="#2-3-系统结构、组成和实现的关系和影响" class="headerlink" title="2.3 系统结构、组成和实现的关系和影响"></a>2.3 系统结构、组成和实现的关系和影响</h2><p>计算机系统结构、组成和实现三者互不相同，但又相互影响。相同结构的计算机可以采用不同的组成；同样，一种组成可有多种不同的实现方法。</p>
+<p>结构不同会使可能采用的组成技术不同。</p>
+<pre class="line-numbers language-java"><code class="language-java">示例：A <span class="token operator">=</span> B <span class="token operator">+</span> C
+
+<span class="token comment" spellcheck="true">// 采用面向寄存器的系统结构</span>
+LOAD R1<span class="token punctuation">,</span> B
+ADD R1<span class="token punctuation">,</span> C
+STORE A<span class="token punctuation">,</span> R1
+
+<span class="token comment" spellcheck="true">// 采用面向主存的三地址寻址方式的结构</span>
+ADD B<span class="token punctuation">,</span> C<span class="token punctuation">,</span> A
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>组成也会影响结构。组成设计向上决定于结构，向下受限于实现技术。然而，它们是可以与实现折中权衡的。例如，为达到所要求的速度，可用较简单的组成，但却是复杂的实现技术；也可用复杂的组成，但却是一般速度的实现技术。</p>
+<p>计算机系统结构设计的任务是进行软、硬件的功能分配，确定传统机器级的软、硬件界面，但作为「计算机系统结构」这门学科来讲，实际上包括了系统结构和组成两个方面的内容。因此，它研究的是软、硬件的功能分配以及如何更好、更合理地实现分配给硬件的功能。可把着眼于软、硬件功能分配和确定程序设计者所看到的机器级界面的计算机系统结构，称为程序设计者看到的计算机系统结构；而把着眼于如何更好、更合理地实现分配给硬件的功能的计算机组成，称为计算机设计者看到的计算机系统结构。</p>
+<h2 id="2-4-透明性概念，对具体问题能正确给出是否应透明的选择"><a href="#2-4-透明性概念，对具体问题能正确给出是否应透明的选择" class="headerlink" title="2.4 透明性概念，对具体问题能正确给出是否应透明的选择"></a>2.4 透明性概念，对具体问题能正确给出是否应透明的选择</h2><blockquote>
+<p><code>透明</code>：如果客观存在的事务或属性从某个角度看不到，则称它为透明（Transparent）的。</p>
+</blockquote>
+<h1 id="3-软、硬件取舍及定量设计原理"><a href="#3-软、硬件取舍及定量设计原理" class="headerlink" title="3. 软、硬件取舍及定量设计原理"></a>3. 软、硬件取舍及定量设计原理</h1><h2 id="3-1-软、硬件实现的优缺点"><a href="#3-1-软、硬件实现的优缺点" class="headerlink" title="3.1 软、硬件实现的优缺点"></a>3.1 软、硬件实现的优缺点</h2><p>软件的功能可以用硬件或固件完成，硬件的功能也可以用软件模拟完成，只是它们在性能、价格、实现的难易程度上是不同的。</p>
+<p>一般来说，提高硬件功能的比例可提高解题速度，减少程序所需的存储空间，但会增加硬件成本，降低硬件利用率和计算机系统的灵活性及适应性；而提高软件功能的比例可降低硬件成本，提高系统的灵活性、适应性，但解题速度会下降，软件设计费用和所需存储器用量增加。</p>
+<h2 id="3-2-软、硬件取舍的基本原则"><a href="#3-2-软、硬件取舍的基本原则" class="headerlink" title="3.2 软、硬件取舍的基本原则"></a>3.2 软、硬件取舍的基本原则</h2><p><strong>原则一</strong>：应考虑在现有硬、器件（主要是逻辑器件和存储器件）条件下，系统要有高的性价比，主要从实现费用、速度和其他性能要求来综合考虑。</p>
+<p>只有对产量大的计算机系统，增大硬件功能实现的比例才是适宜的。如果用硬件实现不能给用户带来明显的好处，产量仍较低，则系统是不会有生命力的。</p>
+<p><strong>原则二</strong>：要考虑到准备采用和可能采用的组成技术，使之尽可能不要过多或不合理地限制各种组成、实现技术的采用。</p>
+<p><strong>原则三</strong>：不能仅从「硬」的角度考虑如何便于应用组成技术的成果和便于发挥器件技术的进展，还应从「软」的角度把如何为编译和操作系统的实现以及为高级语言程序的设计提供更多、更好的硬件支持放在首位。</p>
+<p>应当进一步缩短高级语言与机器语言、操作系统与计算机系统结构、程序设计环境（如模块化、数据类型抽象）等计算机系统结构之间存在的语义差距。计算机系统结构、机器语言是用硬件和固件实现的，而这些语义差距是用软件来填补的。语义差距的大小实质上取决于软、硬件功能的分配，差距缩小了，系统结构对软件设计的支持就加强了。</p>
+<h2 id="3-3-计算机系统的定量设计原理"><a href="#3-3-计算机系统的定量设计原理" class="headerlink" title="3.3 计算机系统的定量设计原理"></a>3.3 计算机系统的定量设计原理</h2><h3 id="3-3-1-哈夫曼（Huffman）压缩原理"><a href="#3-3-1-哈夫曼（Huffman）压缩原理" class="headerlink" title="3.3.1 哈夫曼（Huffman）压缩原理"></a>3.3.1 哈夫曼（Huffman）压缩原理</h3><p>尽可能加速处理高概率的事件远比加速处理概论很低的事件对性能的提高要显著。</p>
+<p>例如：CPU 在运算中发生溢出的概率是很低的，为此，设计时可考虑加快不溢出时的运算速度，而对溢出时的速度不予考虑。</p>
+<h3 id="3-3-2-Amdahl-定律"><a href="#3-3-2-Amdahl-定律" class="headerlink" title="3.3.2 Amdahl 定律"></a>3.3.2 Amdahl 定律</h3><p>该定律可用于确定对系统中性能瓶颈部件采取措施提高速度后系统性能改进的程度，即系统加速比 S<sub>p</sub>。系统加速比 S<sub>p</sub> 定义为系统改进后的性能与未改进时的性能的比值，或者定义为系统未改进时的程序执行时间 T<sub>old</sub> 与改进后的程序执行时间 T<sub>new</sub> 的比值。系统加速比 S<sub>p</sub> 与两个因素有关，即性能可改进比 f<sub>new</sub> 和部件加速比 r<sub>new</sub>。</p>
+<p>性能可改进比 f<sub>new</sub> 是系统性能可改进部分占用的时间与未改进时系统总总执行时间的比值，显然 0 ≤ f<sub>new</sub> ≤ 1。部件加速比 r<sub>new</sub> 是系统性能可改进部分在改进后性能提高的比值，不难看出，r<sub>new</sub> ≥ 1。</p>
+<p>这样，系统加速比为</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_Amdahl.jpeg" alt="系统加速比公式"></p>
+<p>其中 (1 - f<sub>new</sub>) 为不嫩改进性能这部分的比例。性能提高的复读受限于性能改进部分所占的比例大小，而性能改善的极限又受性能可改进比 f<sub>new</sub> 的约束。</p>
+<p>例如：当 r<sub>new</sub> 趋近于 +∞ 时，f<sub>new</sub>/r<sub>new</sub> ≈ 0，此时系统加速比只受限于 f<sub>new</sub> 了。</p>
+<h3 id="3-3-3-程序访问的局部性定律"><a href="#3-3-3-程序访问的局部性定律" class="headerlink" title="3.3.3 程序访问的局部性定律"></a>3.3.3 程序访问的局部性定律</h3><p>程序访问的局部性包括了时间上和空间上的两个局部性。时间上的局部性指的是现在正使用的信息可能不久还要使用，这是因为程序存在着循环。空间上的局部性指的是最近的将来要用到的信息可能与现在正在使用的信息在程序位置上是邻近的，这是因为指令通常是顺序存放、顺序执行的，数据也通常是以向量、阵列、树、表等形式簇聚地存放在一起的。</p>
+<p>统计表明，程序执行时，90% 的时间只访问整个程序的 10% 的那一部分，而其余 10% 的时间才访问另外 90% 的那部分程序。甚至有的程序部分访问时间连 1% 都不到。这为设计指令系统提供了重要的依据，即指令硬件的设计应尽量加速高频指令的执行。</p>
+<h2 id="3-4-计算机系统的-3-种设计思路和存在的问题"><a href="#3-4-计算机系统的-3-种设计思路和存在的问题" class="headerlink" title="3.4 计算机系统的 3 种设计思路和存在的问题"></a>3.4 计算机系统的 3 种设计思路和存在的问题</h2><p>计算机系统设计的主要任务包括 <strong>系统结构</strong>、<strong>组成</strong> 和 <strong>实现</strong> 的设计。它涉及软硬件功能分配、计算机指令系统设计、功能组织、逻辑设计、集成电路设计、封装、电源、冷却等许多方面。优化设计时，还要熟悉编译系统和操作系统的设计技术。</p>
+<p>计算机系统设计首先要根据市场和应用情况，确定用户对计算机系统的功能、性能和价格的要求。需要注意以下事项：</p>
+<ol>
+<li>要弄清楚其应用领域是专用的还是通用的；</li>
+<li>要弄清软件兼容是放在哪级层次；</li>
+<li>要弄清楚对操作系统有何种要求；</li>
+<li>要如何保证有高的标准化程度；</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">实现方式</th>
+<th align="center">优点</th>
+<th align="center">缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">硬件</td>
+<td align="center">1. 速度往往较快；<br/>2. 性能好；</td>
+<td align="center">1. 不灵活；<br/>2. 适应性差；</td>
+</tr>
+<tr>
+<td align="center">软件</td>
+<td align="center">1. 设计容易；<br/>2. 修改容易；<br/>3. 有灵活的适应性；</td>
+<td align="center">1. 速度慢；<br/>2. 性能低；</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">设计方法</th>
+<th align="center">描述</th>
+<th align="center">问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">由上往下/由顶向底</td>
+<td align="center">先考虑如何满足应用要求，定好面向应用的那个虚拟机器级的特性和工作环境，再逐级的向下设计，每设计下一级都考虑对上一级是优化的。</td>
+<td align="center">1. 串行设计，设计周期较长；<br/>2. 一旦环境改变，软、硬件分配就会很不适应，使系统效率急剧下降；<br/>3. 厂家为了经济效益，尽量避免研发生产批量少、专用性强、适用面窄的硬件；</td>
+</tr>
+<tr>
+<td align="center">由下往上/由底向顶</td>
+<td align="center">先不管应用要求，只根据目前能用的器件，参照、吸收已有各种机器的特点，将微程序机器级（如果采用微程序控制）和传统机器级研制出来，然后，加配适用于不同应用领域的多种操作系统和编译系统软件，使应用人员可以根据不同的语言类型、数据形式，采用合适的系统软件和算法来满足应用的需要。</td>
+<td align="center">1. 串行设计，设计周期较长；<br/>2. 软硬件脱节，软件因得不到硬件支持而显得繁杂；<br/>3. 有些性能指标往往是虚假的；</td>
+</tr>
+<tr>
+<td align="center">从中间开始</td>
+<td align="center">选择从层次结构的主要软、硬界面开始设计，即在传统机器语言机器级与操作系统机器级之间进行合理的软、硬件功能分配。即考虑到硬、器件的现状和发展，又考虑到可能使用的算法和数据结构，定义好这个界面，确定哪些功能由硬件实现，哪些功能由软件实现。同时，考虑硬件能对操作系统、编译系统的实现提供什么样的支持。然后，由这个中间界面分别向上、向下同时进行软、硬件的设计。</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>计算机设计的大体步骤：</p>
+<ol>
+<li>需求分析：对系统的应用环境（科学计算、事务处理、实时处理、分时处理、网络、远程处理、容错、高保密性、高可靠性等）、所用语言的种类特性、对操作系统的要求、所用到的外围设备特征等，进行技术经济分析和市场分析；</li>
+<li>需求分析说明书：需求分析说明书应包括设计准则、速度、造价、可行性、可扩性、兼容性、可靠性、灵活性、安全性、功能、所用芯片、新结构引入的风险、程序设计的方便性等的说明；</li>
+<li>概念设计：对机器级界面，如数据表示、指令系统、寻址方式、存储机构、中断系统、输入/输出系统、总线结构等进行具体细致的定义和设计，同时应提供几种方案，以便选择和比较；</li>
+<li>模拟、测试：反复对所设计的系统进行优化和性能评价，使系统获得尽可能高的性能价格比；</li>
+</ol>
+<h2 id="3-5-计算机系统「由中间开始」设计的方法和优点"><a href="#3-5-计算机系统「由中间开始」设计的方法和优点" class="headerlink" title="3.5 计算机系统「由中间开始」设计的方法和优点"></a>3.5 计算机系统「由中间开始」设计的方法和优点</h2><p>选择从层次结构的主要软、硬界面开始设计，即在传统机器语言机器级与操作系统机器级之间进行合理的软、硬件功能分配。即考虑到硬、器件的现状和发展，又考虑到可能使用的算法和数据结构，定义好这个界面，确定哪些功能由硬件实现，哪些功能由软件实现。同时，考虑硬件能对操作系统、编译系统的实现提供什么样的支持。然后，由这个中间界面分别向上、向下同时进行软、硬件的设计。软件人员依次设计操作系统级、汇编语言级、高级语言级和应用语言级；硬件人员依次设计传统机器语言机器级、微程序机器级和数字逻辑级。软件和硬件并行设计，大大缩短了系统的设计周期，设计过程中两部分人可交流协调，适当微调软、硬件实现的比例。</p>
+<p>优点：</p>
+<ol>
+<li>软、硬件并行设计，缩短了系统的设计周期；</li>
+<li>软、硬件设计合理的分配；</li>
+</ol>
+<h1 id="4-系统结构设计要解决实现软件移植"><a href="#4-系统结构设计要解决实现软件移植" class="headerlink" title="4. 系统结构设计要解决实现软件移植"></a>4. 系统结构设计要解决实现软件移植</h1><p>由于软件相对于硬件的成本越来越高，产量和可靠性的提高越来越困难，所以，要改变过去那种把主要功能负担加在软件上以简化硬件的做法，就要重新分配软、硬件功能，充分利用硬、器件技术发展带来的好处，为程序设计日工更好的支持。</p>
+<h2 id="4-1-软件可移植性的定义、实现途径，为什么要实现软件可移植"><a href="#4-1-软件可移植性的定义、实现途径，为什么要实现软件可移植" class="headerlink" title="4.1 软件可移植性的定义、实现途径，为什么要实现软件可移植"></a>4.1 软件可移植性的定义、实现途径，为什么要实现软件可移植</h2><p>由于目前已积累了大量成熟的软件，加上软件生产效率又很低，软件的排错比编写难，所以除非特殊情况，程序设计者一般不愿意，也不应该在短时间里按新的系统结构、新的指令系统去重新设计软件。为此，在系统结构设计时，提出应在新的系统结构上解决好软件的可移植性问题。</p>
+<p><strong>软件的可以执行（Portability）</strong>指的是软件不修改或只经少量修改旧可由一台机器移到另一台机器上运行，同一软件可应用于不同的环境。</p>
+<p>实现软件移植的技术主要有以下几种：</p>
+<ol>
+<li>统一高级语言；</li>
+<li>采用系列机；</li>
+<li>模拟和仿真；</li>
+</ol>
+<h2 id="4-2-采用统一高级语言实现软件移植的方法、适用场合、存在问题和对策"><a href="#4-2-采用统一高级语言实现软件移植的方法、适用场合、存在问题和对策" class="headerlink" title="4.2 采用统一高级语言实现软件移植的方法、适用场合、存在问题和对策"></a>4.2 采用统一高级语言实现软件移植的方法、适用场合、存在问题和对策</h2><p>由于高级语言是面向题目和算法的，与机器的具体结构意义不大，如果能统一出一种可满足各种应用需要的通用高级语言，那么用这种高级语言编写的应用软件就可以移植于不同的机器。如果操作系统的全部或一部分用这种高级语言编写，则系统软件中的这部分也可以移植。所以实现软件移植的一种技术就是统一高级语言，设计出一种完全 通用的高级语言，为所有程序员所使用。</p>
+<p>这种技术应用于结构相同以至完全不同的机器之间高级语言程序的软件移植。</p>
+<p>目前没有一种是对各种应用真正通用的高级语言原因如下：</p>
+<ol>
+<li>不同的用途要求语言的语法、语义结构不同；</li>
+<li>人们对语言的基本结构看法不一；</li>
+<li>即使同一种高级语言在不同厂家机器上也不能完全通用；</li>
+<li>受习惯势力阻挠，人们不愿抛弃惯用的语言，因为熟悉、有经验，也不远抛弃长期积累的、用原有语言编写并已被实践证明是正确的软件；</li>
+</ol>
+<h2 id="4-3-采用系列机实现软件移植的方法、适用场合、存在问题和对策"><a href="#4-3-采用系列机实现软件移植的方法、适用场合、存在问题和对策" class="headerlink" title="4.3 采用系列机实现软件移植的方法、适用场合、存在问题和对策"></a>4.3 采用系列机实现软件移植的方法、适用场合、存在问题和对策</h2><p>在软、硬件界面上设定好一种系统系统结构（系列机中称系列结构），其后，软件设计者按此设计软件；硬件设计者根据机器速度、性能、价格的不同，选择不同的器件、硬件和组成、实现技术，研制并提供不同档次的机器。</p>
+<p>只能应用在结构相同或相似的机器之间的汇编程序的软件移植。</p>
+<p>在要求汇编语言程序兼容的前提下，系统结构的发展是很有限的，有时连突破性的组成技术都无法采用。所以这种软件兼容性要求到一定时候会反过来阻碍计算机系统结构的进一步变革。</p>
+<p>因此，已积累的大量汇编语言应用软件资源不应轻易抛弃。同时为使新的系统结构有生命力，系列机概念和软件兼容性约束仍是设计新机器或新系列时所必须遵循的，只是到一定是会，不能固守旧系列，而要发展新系列。</p>
+<h2 id="4-4-软件向前、向后、向下、向上兼容的定义，系列机对软件兼容的要求"><a href="#4-4-软件向前、向后、向下、向上兼容的定义，系列机对软件兼容的要求" class="headerlink" title="4.4 软件向前、向后、向下、向上兼容的定义，系列机对软件兼容的要求"></a>4.4 软件向前、向后、向下、向上兼容的定义，系列机对软件兼容的要求</h2><p>向前（后）兼容指的是在按某个时期投入市场的该型号机器上编制的软件，不加修改就能运行于在它之前（后）投入市场的机器上。</p>
+<p>向上（下）兼容指的是按某档机器编制的软件，不加修改就能运行于比它高（低）的机器上。</p>
+<p>同一系列内的软件一般应做到向上兼容，但向下兼容就不一定，特别是与机器速度有关的实时性软件向下兼容就难以做到。</p>
+<p>让现在编制的程序以后都能用，这是系列机软件兼容的最基本要求和特征，即系列机软件必须保证向后兼容，力争向前兼容。</p>
+<h2 id="4-5-正确判断系列机发展新型号机器的哪些做法可取"><a href="#4-5-正确判断系列机发展新型号机器的哪些做法可取" class="headerlink" title="4.5 正确判断系列机发展新型号机器的哪些做法可取"></a>4.5 正确判断系列机发展新型号机器的哪些做法可取</h2><p>对于那些不属于计算机系统结构，而属于计算机组成和实现的内容，不管是增加、删除还是修改，都不会影响到汇编语言程序和机器语言程序在系列机上的兼容。但是，对于属于计算机系统结构的内容，为保证软件的向后兼容，则只能为其增加新的功能和部件，而不能删掉或更改已有的功能或部件。否则，就保证不了原有的程序能在新机器上正确运行。</p>
+<h2 id="4-6-采用模拟与仿真实现软件移植的方法、适用场合、优点、存在问题和对策"><a href="#4-6-采用模拟与仿真实现软件移植的方法、适用场合、优点、存在问题和对策" class="headerlink" title="4.6 采用模拟与仿真实现软件移植的方法、适用场合、优点、存在问题和对策"></a>4.6 采用模拟与仿真实现软件移植的方法、适用场合、优点、存在问题和对策</h2><h3 id="4-6-1-模拟"><a href="#4-6-1-模拟" class="headerlink" title="4.6.1 模拟"></a>4.6.1 模拟</h3><p>系列机只能在系统结构相同或相近（允许向后稍许发展）的机器之间实现汇编语言软件的移植。为实现不同系统结构的机器之间的机器语言软件移植，就必须做到在一种机器的系统结构上实现另一种机器的系统结构。从系统结构的主要方面—指令系统来看，就是要在一种机器上实现另一种机器的指令系统，即另一种机器语言。</p>
+<p>例如，要求原来在 B 机器上运行的应用软件，能移植到有不同系统结构的 A 机器上，根据层次结构概念，可把 B 机器的机器语言看成是在 A 机器的机器语言级之上的一个虚拟机器语言，在 A 机器上用虚拟机概念来实现 B 机器的指令系统。B 机器的每条机器指令用 A 机器的一段机器语言程序解释，如同 A 机器上也有 B 机器的指令系统一样。这种用机器语言程序解释实现软件移植的方法称为 <code>模拟（Simulation）</code>。进行模拟的 A 机器称为宿主机，被模拟的 B 机器称为虚拟机。</p>
+<p>为了使虚拟机的应用软件能在宿主机上运行，除了模拟虚拟机的机器语言外，还得模拟其存储体系、I/O 系统和控制台的操作，以及形成虚拟机的操作系统。让虚拟机的操作系统受宿主机操作系统的控制。实际上是把它作为宿主机的一道应用程序，使原来分别在宿主机和虚拟机上运行的应用软件可以再宿主机上共同执行。所有为各种模拟所编制的解释程序统称为模拟程序。</p>
+<p>模拟程序的编制是非常复杂和费时的。同时，虚拟机的每条机器指令是不能直接被宿主机的硬件执行的，需要经相应的由多条宿主机机器指令构成的解释程序来解释，这使得模拟的运行速度显著降低，实时性变差。</p>
+<p>模拟方法只适合于移植运行时间短、使用次数少，而且在时间关系上没有约束和受限制的条件。</p>
+<h3 id="4-6-2-仿真"><a href="#4-6-2-仿真" class="headerlink" title="4.6.2 仿真"></a>4.6.2 仿真</h3><p>如果宿主机本身采用微程序控制，那么模拟时，一条 B 机器指令的执行就需要通过二重解释：先经 A 机器的机器语言程序解释，然后每条 A 机器指令又经一段微程序解释。如果能直接用微程序去解释 B 机器的指令，显然就会加快这一解释过程。这种用微程序直接解释另一种机器指令系统的方法就称为 <code>仿真（Emulation）</code>。进行仿真的 A 机器称为宿主机，被仿真的 B 机器称为目标机。为仿真所写的解释程序称为仿真微程序。与模拟一样，除了仿真目标机的指令系统之外，还要仿真其存储体系、I/O 系统和控制台的操作。</p>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_simulation_emulator.png"></p>
+<p><code>模拟</code> 和 <code>仿真</code> 的主要区别在于解释用的语言。仿真用的微程序解释，其解释程序存储于控制存储器中；而模拟时用机器语言程序解释，其解释程序存储于主存中。</p>
+<p><code>仿真</code> 方法可以提高被移植软件的运行速度，但由于微程序机器级结构深深依赖于传统机器结构，故当两种机器结构差别较大时，就很难仿真，特别是 I/O 系统差别较大时更是如此。</p>
+<h3 id="4-6-3-模拟和仿真的选择"><a href="#4-6-3-模拟和仿真的选择" class="headerlink" title="4.6.3 模拟和仿真的选择"></a>4.6.3 模拟和仿真的选择</h3><p>不同系列间的软件移植一般是 <strong>仿真</strong> 和 <strong>模拟</strong> 并行。频繁使用的易于仿真的机器指令宜用 <strong>仿真</strong>，以提高速度；很少使用的、难以仿真的指令及 I/O 操作宜用 <strong>模拟</strong>。即使两种机器系统差别不大，往往也需要用模拟来完成机器间的映像。</p>
+<h2 id="4-7-软件移植手段综述"><a href="#4-7-软件移植手段综述" class="headerlink" title="4.7 软件移植手段综述"></a>4.7 软件移植手段综述</h2><p>就软件移植问题提出了统一高级语言、设计系列机及模拟与仿真等方法。统一高级语言可以解决结构相同或完全不同的机器间的软件移植，从长远看是方向，但目前难以解决，只能做相对统一。系列机时当前普遍采用的方法，但只能实现同一系列内的软件兼容，虽然允许发展、变化，但兼容的约束反过来会阻碍系统结构取得突破性的进展。模拟灵活，可实现不同系统间的软件移植，但结构差异太大时，效率、速度会急剧下降。仿真在速度上损失小，但不灵活，只能在差别不大的系统之间使用，否则效率也会过低且难以仿真，需与模拟结合才行。此外，发展异种机联网也是实现软件移植的一种途径。</p>
+<h1 id="5-软件、应用、器件的发展对系统结构的影响"><a href="#5-软件、应用、器件的发展对系统结构的影响" class="headerlink" title="5. 软件、应用、器件的发展对系统结构的影响"></a>5. 软件、应用、器件的发展对系统结构的影响</h1><p>各种应用对结构设计会提出范围广泛的要求。其中，程序可移植、高性能价格比、便于使用、减少命令种类、简化操作步骤、高可靠性、便于维护等都是基本的要求。</p>
+<p>计算机的性能是硬件性能（主频、CPU 运算速度、字长、数据类型、主存容量、寻址范围、存储体系、I/O 处理能力、I/O 设备量、指令系统等）、软件性能（高级语言状况、操作系统功能、用户程序包的配置等）、可靠性、可用性等多种指标的综合。</p>
+<p>微型机发展的两个趋势：</p>
+<ol>
+<li>利用 VLSI 的发展，维持价格提高性能，向小型机靠拢；</li>
+<li>维持性能降低价格，发展更抵挡的亚微型和微微型（掌上型）计算机，进一步扩大应用；</li>
+</ol>
+<p>计算机应用可归纳为向上升级的 4 类：</p>
+<ol>
+<li>数据处理（Data Processing）；</li>
+<li>信息处理（Information Processing）；</li>
+<li>只是处理（Knowledge Processing）；</li>
+<li>智能处理（Intelligence Processing）；</li>
+</ol>
+<p>软件、应用、器件对计算机系统结构的发展有着很大的影响，反过来，计算机系统结构的发展又会对软件、应用、器件提出新的发展要求。结构设计不仅要了解结构、组成、实现，还要充分了解软件、应用、器件的发展，这样才能对计算机系统结构进行有效的设计、研究和探索。</p>
+<h2 id="5-1-明白非用户片、现场片、用户片的定义"><a href="#5-1-明白非用户片、现场片、用户片的定义" class="headerlink" title="5.1 明白非用户片、现场片、用户片的定义"></a>5.1 明白非用户片、现场片、用户片的定义</h2><p><code>非用户片</code>：也称通用片，其功能是由器件厂家生产时固定的，器件的用户（即机器设计者）只能使用，不能改变器件内部功能。其中，门电路、触发器、多路开关、加法器、译码器、寄存器、计数器等逻辑类器件的继承度难以提高。</p>
+<p><code>现场片</code>：用户根据需要可改变器件内部功能。</p>
+<p><code>用户片</code>：专门按用户要求生产的高集成度的 VLSI 器件，完全按用户要求设计的用户片称为全用户片。全用户片由于设计周期长，设计费用高，销量小，成本高，器件厂家一般不愿生产。为解决器件厂与整机厂的矛盾，发展门阵列、门-触发器阵列等半用户片不失为一种好的选择。生产工序基本按通用片进行，仅最后在门电路或触发器间连线时按用户要求制作。</p>
+<h2 id="5-2-概述器件发展是推动系统结构和组成前进的因素"><a href="#5-2-概述器件发展是推动系统结构和组成前进的因素" class="headerlink" title="5.2 概述器件发展是推动系统结构和组成前进的因素"></a>5.2 概述器件发展是推动系统结构和组成前进的因素</h2><p>计算机所用器件已从电子管、晶体管、小规模集成电路、大规模集成电路迅速发展到超大规模集成电路，并使用或开始使用砷化镓器件、高密度组装技术和光电子集成技术。计算机器件从电子管到小规模集成电路经历了 18 年，之后只用了 8 年就发展到使用大规模集成电路。在此期间，器件的功能和使用方法发生了很大变化，由早先使用非用户片，发展到现场片和用户片，它影响着结构和组成技术的发展。</p>
+<h2 id="5-3-器件发展如何改变逻辑设计的方法"><a href="#5-3-器件发展如何改变逻辑设计的方法" class="headerlink" title="5.3 器件发展如何改变逻辑设计的方法"></a>5.3 器件发展如何改变逻辑设计的方法</h2><p>器件的发展改变了逻辑设计的传统方法。过去，逻辑设计主要是逻辑化简，节省门的个数、门电路的输入端数及门电路的级数，以节省功耗、降低成本、提高速度。但对于 VLSI 来说，这样做反而使设计周期延长，组成实现不规整，故障诊断困难，机器产量低，这些都将使成本反而增大。</p>
+<h1 id="6-系统结构中的并行性开发及计算机系统的分类"><a href="#6-系统结构中的并行性开发及计算机系统的分类" class="headerlink" title="6. 系统结构中的并行性开发及计算机系统的分类"></a>6. 系统结构中的并行性开发及计算机系统的分类</h1><h2 id="6-1-并行性定义、二重含义及开发途径"><a href="#6-1-并行性定义、二重含义及开发途径" class="headerlink" title="6.1 并行性定义、二重含义及开发途径"></a>6.1 并行性定义、二重含义及开发途径</h2><p>解题中具有可以同时进行运算或操作的特性，称为 <code>并行性（Parallelism）</code>。</p>
+<p><code>并行性</code> 包含 <strong>同时性</strong> 和 <strong>并发性</strong> 二重含义。<strong>同时性（Simultaneity）</strong> 指两个或多个事件在同一时刻发生。<strong>并发性（Concurrency）</strong>指两个或多个事件在同一时间间隔内发生。</p>
+<h2 id="6-2-并行性等级划分"><a href="#6-2-并行性等级划分" class="headerlink" title="6.2 并行性等级划分"></a>6.2 并行性等级划分</h2><h3 id="6-2-1-从计算机系统执行程序的角度来看，并行性-等级由低到高可分为四级"><a href="#6-2-1-从计算机系统执行程序的角度来看，并行性-等级由低到高可分为四级" class="headerlink" title="6.2.1 从计算机系统执行程序的角度来看，并行性 等级由低到高可分为四级"></a>6.2.1 从计算机系统执行程序的角度来看，<strong>并行性</strong> 等级由低到高可分为四级</h3><ol>
+<li>指令内部：一条指令内部各个微操作之间的并行执行；</li>
+<li>指令之间：多条指令的并行执行；</li>
+<li>任务或进程之间：多个任务或程序段的并行执行；</li>
+<li>作业或程序之间：多个作业或多道程序的并行执行；</li>
+</ol>
+<h3 id="6-2-2-从计算机系统中处理数据的角度来看，并行性-等级从低到高可以分为四级"><a href="#6-2-2-从计算机系统中处理数据的角度来看，并行性-等级从低到高可以分为四级" class="headerlink" title="6.2.2 从计算机系统中处理数据的角度来看，并行性 等级从低到高可以分为四级"></a>6.2.2 从计算机系统中处理数据的角度来看，<strong>并行性</strong> 等级从低到高可以分为四级</h3><ol>
+<li>位串子串：同时只对一个字的一位进行处理，这通常是指传统的串行单机处理机，没有并行性；</li>
+<li>位并子串：同时对一个字的全部位进行处理，这通常是指传统的并行单机处理机，开始出现并行性；</li>
+<li>位片串字并：同时对许多字的同一位（称位片）进行处理，开始进入并行处理领域；</li>
+<li>全并行：同时对许多字的全部或部分位组进行处理；</li>
+</ol>
+<h3 id="6-2-3-并行性是贯穿于计算机信息加工的各个步骤和阶段的，从这个角度来看，并行性等级又分为"><a href="#6-2-3-并行性是贯穿于计算机信息加工的各个步骤和阶段的，从这个角度来看，并行性等级又分为" class="headerlink" title="6.2.3 并行性是贯穿于计算机信息加工的各个步骤和阶段的，从这个角度来看，并行性等级又分为"></a>6.2.3 并行性是贯穿于计算机信息加工的各个步骤和阶段的，从这个角度来看，并行性等级又分为</h3><ol>
+<li>存储器操作并行：可用单体单字、多体单字或多体多字方式在一个存储周期内访问多个字，进而采用按内容访问方式在一个存储周期内用位片串字并或全并行方式实现对存储器中大量字的高速并行比较、检索、更新、变换等操作；</li>
+<li>处理器操作步骤并行：指令的取指、分析、执行，浮点假发的求阶差、対阶、尾加、舍入、规格化等操作，执行步骤在时间上重叠流水地进行；</li>
+<li>处理器操作并行：通过重复设置大量处理单元，让它们在同一控制器控制下按同一指令要求对向量、数组中各元素同时操作；</li>
+<li>指令、任务、作业并行：这是高级的并行。虽然它也可以包含操作、操作步骤等较低级的并行，但与操作级并行不同。指令级以上的并行是多个处理器同时对多条指令和相关的多数据组进行处理，操作级并行是对同一指令及其相关的数据组进行处理。前者属于多指令流多数据流计算机，后者属于但指令流多数据计算机；</li>
+</ol>
+<h2 id="6-3-沿-3-种-并行性开发途径的多机系统类型和特点"><a href="#6-3-沿-3-种-并行性开发途径的多机系统类型和特点" class="headerlink" title="6.3 沿 3 种 并行性开发途径的多机系统类型和特点"></a>6.3 沿 3 种 并行性开发途径的多机系统类型和特点</h2><p>开发并行性的途径有时间重叠、资源重复和资源共享等。</p>
+<h3 id="6-3-1-时间重叠"><a href="#6-3-1-时间重叠" class="headerlink" title="6.3.1 时间重叠"></a>6.3.1 时间重叠</h3><p>时间重叠（Time Interleaving）是在并行性概念中引入时间因素，让多个处理过程在时间上相互错开，轮流重叠地使用同一套硬件设备的各个部分，加快硬件周转来赢得速度。</p>
+<h3 id="6-3-2-资源重复"><a href="#6-3-2-资源重复" class="headerlink" title="6.3.2 资源重复"></a>6.3.2 资源重复</h3><p>资源重复（Resource Replication）是在并行概念中引入空间因素，通过重复设置硬件资源来提高可靠性或性能。双工系统是通过使用两台相同的计算机完成同一任务来提高可靠性的。</p>
+<h3 id="6-3-3-资源共享"><a href="#6-3-3-资源共享" class="headerlink" title="6.3.3 资源共享"></a>6.3.3 资源共享</h3><p>资源共享（Resource Sharing）是用软件方法，让多个用户按一定时间顺序轮流使用同一套资源来提高资源利用率，相应地也就提高了系统性能。</p>
+<p>计算机系统通过各种技术途径，从不同角度和不同并行性等级上同时采用多种并行性措施，可以是执行程序方面的，也可以是处理数据方面的，还可以是在信息加工不同步骤和阶段上的。当并行性上升到一定级别形成新的结构时，就进入到并行处理的专门领域，如执行程序的并行性达到任务或进程级，处理数据的并行性达到位片串字并。并行处理是信息处理的一种有效形式，它着重发掘解题过程中的并行性。并行性的开发和并行处理技术的研究实际上是硬件、软件、语言、算法、性能评价研究的综合。</p>
+<h2 id="6-4-耦合度概念"><a href="#6-4-耦合度概念" class="headerlink" title="6.4 耦合度概念"></a>6.4 耦合度概念</h2><p>一般同耦合度反映多级系统中各机器之间物理连接的紧密度和交叉作用能力的强弱，有最低耦合、松散耦合和紧密耦合之分。</p>
+<p>各种脱机处理系统是最低耦合系统（Least Coupled System），其耦合度最低，除通过某种存储介质外，各计算机之间无物理连接，也无共享的联机硬件资源。</p>
+<p>如果多台计算机通过通道或通信线路实现互连，共享某些如磁带、磁盘等外围设备，以较低频带在文件或数据集一级相互作用，则这种系统被称为松散耦合系统（Loosely Coupled System）或间接耦合系统（Indirectly Coupled System）。它有两种形式：一种是多台功能专用的计算机通过通道和共享的外围设备相连，各计算机以文件或数据集形式将结果发送到共享的外设，供其他计算机继续处理，使系统获得较高效率；另一种是各计算机经通信线路互连成计算机网，各尽所长，求得更大范围内的资源共享。这两种形式一般都是非对称的（由不同类型的计算机组成），并采用异步工作方式，结构较灵活，系统易于扩展，但需花费辅助操作开销，且系统信息的传输频带较窄，难以满足任务一级的并行处理，因而特别适合于分布处理。</p>
+<p>如果多台计算机经总线或高速开关互连，共享主存，有较高的信息传输效率，可实现数据集一级、任务级、作业级并行，则称此系统为紧密耦合系统（Tightly Coupled System）或直接耦合系统（Directly Coupled System）。它可以是主辅机方式配合工作的非对称型系统，但更多的是对称型多处理机系统，在统一的操作系统管理下追求各处理机的高效率和负荷的均衡。</p>
+<h2 id="6-5-计算机系统弗林分类法"><a href="#6-5-计算机系统弗林分类法" class="headerlink" title="6.5 计算机系统弗林分类法"></a>6.5 计算机系统弗林分类法</h2><p>1966 年，弗林（Michael J. Flynn）提出按 <strong>指令流</strong> 和 <strong>数据流</strong> 的 <strong>多倍性</strong> 对计算机系统分类。<strong>指令流</strong> 是指机器执行的指令序列。<strong>数据流</strong> 是指由 <strong>指令流</strong> 调用的数据序列，包括输入数据和中间结果。<strong>多倍性</strong>是指在系统性能瓶颈部件上处于同一执行阶段的指令或数据的最大可能个数。据此，把计算机系统分成如下类别：</p>
+<ol>
+<li>单指令流单数据流（Single Instruction Stream Single Data Stream，SISD）</li>
+<li>单指令流多数据流（Single Instruction Stream Multiple Data Stream，SIMD）</li>
+<li>多指令流单数据流（Multiple Instruction Stream Single Data Stream，MISD）</li>
+<li>多指令流多数据流（Multiple Instruction Stream Multiple Data Stream，MIMD）</li>
+</ol>
+<p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_flynn.png" alt="弗林分类法"></p>
+<p>弗林分类法能反映出大多数计算机的并行工作方式和结构特点，使用范围较广，但只能对控制流机器分类。像数据流计算机就无法用这种方法分类，而且对广泛使用的流水线处理机的分类也不确切。这种分类有时难以反映系统工作原理上的特色。</p>
+<p>1978 年，美国的库克（David J. Kuck）提出用 <strong>指令流</strong> 和 <strong>执行流（Execution Stream）</strong>及其 <strong>多倍性</strong> 来描述计算机系统总控制器的结构特点。分类如下：</p>
+<ol>
+<li>单指令流单执行流（SISE）：典型的单处理机系统；</li>
+<li>单指令流多执行流（SIME）：带多操作部件的处理机；</li>
+<li>多指令流单执行流（MISE）：带指令级多道程序的单处理机；</li>
+<li>多指令流多执行流（MIME）：典型的多处理机系统；</li>
+</ol>
+<p>1972 年，美籍华人冯泽云（Tse-yun Feng）提出了用 <strong>数据处理</strong> 的 <strong>并行度</strong> 来定量地描述各种计算机系统特征的冯氏分类法。他把计算机分成四类：</p>
+<ol>
+<li>字串位串（WSBS）– 称位串处理方式。每次只处理一个字中的一位，如早期的位串行机。</li>
+<li>字串位并（WSBP）– 称字（字片）处理方式。每次处理一个字中的 n 位，如传统的位并行机。</li>
+<li>字并位串（WPBS）– 称位（为片）处理方式。一次处理 m 个字中的 1 位，如某些相连处理机及阵列处理机。</li>
+<li>字并位并（WPBP）– 称全并行处理方式。一次处理 m 个字，每个字为 n 位，如某些相连处理机、大多数阵列处理机及多处理机。</li>
+</ol>
+<p>1977 年，联邦德国的汉德勒（Wolfgang Handler）又在冯氏分类法基础上提出了基于硬件结构所含可并行处理单元数和可流水处理的级数的分类方法。</p>
+<p>此外，还可以从对执行程序或指令的控制方式上，将计算机系统分为 <strong>有控制驱动的控制流方式</strong>，<strong>由数据驱动的数据流方式</strong>，<strong>按需求驱动的归约（Reduction）方式</strong>，以及 <strong>按模式驱动（Pattern Driven）的匹配（Matching）方式</strong> 等。</p>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2021/02/23/计算机系统结构/数据表示、寻址方式与指令系统/" id="post_nav-newer" class="post-nav-content prev-content">
+      <上一篇
+  </a>
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2021/01/30/RPC/gRPC 三部曲之 -- gRPC/" id="post_nav-older" class="post-nav-content next-content">
+      下一篇>
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E7%9A%84"><span class="post-toc-text">学习目的</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%A4%9A%E7%BA%A7%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="post-toc-text">1. 计算机系统的多级层次结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-%E7%8E%B0%E4%BB%A3%E9%80%9A%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%8F%AF%E5%88%86%E6%88%90%E5%93%AA%E5%87%A0%E7%BA%A7%EF%BC%8C%E5%AE%83%E4%BB%AC%E7%9A%84%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE"><span class="post-toc-text">1.1 现代通用计算机系统可分成哪几级，它们的相对位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-%E5%90%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%89%80%E7%94%A8%E7%9A%84%E6%98%AF%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF%E8%BF%98%E6%98%AF%E8%A7%A3%E9%87%8A%E6%8A%80%E6%9C%AF"><span class="post-toc-text">1.2 各机器级的实现所用的是翻译技术还是解释技术</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E3%80%81%E7%BB%84%E6%88%90%E5%92%8C%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">2. 计算机系统结构、组成和实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E3%80%81%E7%BB%84%E6%88%90%E5%92%8C%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="post-toc-text">2.1 计算机系统结构、组成和实现的定义和研究方向</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E6%98%AF%E8%BD%AF%E3%80%81%E7%A1%AC%E4%BB%B6%E7%9A%84%E4%B8%BB%E8%A6%81%E7%95%8C%E9%9D%A2"><span class="post-toc-text">2.2 计算机系统结构是软、硬件的主要界面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-3-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E3%80%81%E7%BB%84%E6%88%90%E5%92%8C%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%85%B3%E7%B3%BB%E5%92%8C%E5%BD%B1%E5%93%8D"><span class="post-toc-text">2.3 系统结构、组成和实现的关系和影响</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-4-%E9%80%8F%E6%98%8E%E6%80%A7%E6%A6%82%E5%BF%B5%EF%BC%8C%E5%AF%B9%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98%E8%83%BD%E6%AD%A3%E7%A1%AE%E7%BB%99%E5%87%BA%E6%98%AF%E5%90%A6%E5%BA%94%E9%80%8F%E6%98%8E%E7%9A%84%E9%80%89%E6%8B%A9"><span class="post-toc-text">2.4 透明性概念，对具体问题能正确给出是否应透明的选择</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-%E8%BD%AF%E3%80%81%E7%A1%AC%E4%BB%B6%E5%8F%96%E8%88%8D%E5%8F%8A%E5%AE%9A%E9%87%8F%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86"><span class="post-toc-text">3. 软、硬件取舍及定量设计原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1-%E8%BD%AF%E3%80%81%E7%A1%AC%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="post-toc-text">3.1 软、硬件实现的优缺点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-2-%E8%BD%AF%E3%80%81%E7%A1%AC%E4%BB%B6%E5%8F%96%E8%88%8D%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="post-toc-text">3.2 软、硬件取舍的基本原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9A%E9%87%8F%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86"><span class="post-toc-text">3.3 计算机系统的定量设计原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-1-%E5%93%88%E5%A4%AB%E6%9B%BC%EF%BC%88Huffman%EF%BC%89%E5%8E%8B%E7%BC%A9%E5%8E%9F%E7%90%86"><span class="post-toc-text">3.3.1 哈夫曼（Huffman）压缩原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-2-Amdahl-%E5%AE%9A%E5%BE%8B"><span class="post-toc-text">3.3.2 Amdahl 定律</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-3-%E7%A8%8B%E5%BA%8F%E8%AE%BF%E9%97%AE%E7%9A%84%E5%B1%80%E9%83%A8%E6%80%A7%E5%AE%9A%E5%BE%8B"><span class="post-toc-text">3.3.3 程序访问的局部性定律</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84-3-%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E5%92%8C%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text">3.4 计算机系统的 3 种设计思路和存在的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-5-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E3%80%8C%E7%94%B1%E4%B8%AD%E9%97%B4%E5%BC%80%E5%A7%8B%E3%80%8D%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E4%BC%98%E7%82%B9"><span class="post-toc-text">3.5 计算机系统「由中间开始」设计的方法和优点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E8%A6%81%E8%A7%A3%E5%86%B3%E5%AE%9E%E7%8E%B0%E8%BD%AF%E4%BB%B6%E7%A7%BB%E6%A4%8D"><span class="post-toc-text">4. 系统结构设计要解决实现软件移植</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-1-%E8%BD%AF%E4%BB%B6%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7%E7%9A%84%E5%AE%9A%E4%B9%89%E3%80%81%E5%AE%9E%E7%8E%B0%E9%80%94%E5%BE%84%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9E%E7%8E%B0%E8%BD%AF%E4%BB%B6%E5%8F%AF%E7%A7%BB%E6%A4%8D"><span class="post-toc-text">4.1 软件可移植性的定义、实现途径，为什么要实现软件可移植</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-2-%E9%87%87%E7%94%A8%E7%BB%9F%E4%B8%80%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%BD%AF%E4%BB%B6%E7%A7%BB%E6%A4%8D%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%81%E9%80%82%E7%94%A8%E5%9C%BA%E5%90%88%E3%80%81%E5%AD%98%E5%9C%A8%E9%97%AE%E9%A2%98%E5%92%8C%E5%AF%B9%E7%AD%96"><span class="post-toc-text">4.2 采用统一高级语言实现软件移植的方法、适用场合、存在问题和对策</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-3-%E9%87%87%E7%94%A8%E7%B3%BB%E5%88%97%E6%9C%BA%E5%AE%9E%E7%8E%B0%E8%BD%AF%E4%BB%B6%E7%A7%BB%E6%A4%8D%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%81%E9%80%82%E7%94%A8%E5%9C%BA%E5%90%88%E3%80%81%E5%AD%98%E5%9C%A8%E9%97%AE%E9%A2%98%E5%92%8C%E5%AF%B9%E7%AD%96"><span class="post-toc-text">4.3 采用系列机实现软件移植的方法、适用场合、存在问题和对策</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-4-%E8%BD%AF%E4%BB%B6%E5%90%91%E5%89%8D%E3%80%81%E5%90%91%E5%90%8E%E3%80%81%E5%90%91%E4%B8%8B%E3%80%81%E5%90%91%E4%B8%8A%E5%85%BC%E5%AE%B9%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%AF%B9%E8%BD%AF%E4%BB%B6%E5%85%BC%E5%AE%B9%E7%9A%84%E8%A6%81%E6%B1%82"><span class="post-toc-text">4.4 软件向前、向后、向下、向上兼容的定义，系列机对软件兼容的要求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-5-%E6%AD%A3%E7%A1%AE%E5%88%A4%E6%96%AD%E7%B3%BB%E5%88%97%E6%9C%BA%E5%8F%91%E5%B1%95%E6%96%B0%E5%9E%8B%E5%8F%B7%E6%9C%BA%E5%99%A8%E7%9A%84%E5%93%AA%E4%BA%9B%E5%81%9A%E6%B3%95%E5%8F%AF%E5%8F%96"><span class="post-toc-text">4.5 正确判断系列机发展新型号机器的哪些做法可取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-6-%E9%87%87%E7%94%A8%E6%A8%A1%E6%8B%9F%E4%B8%8E%E4%BB%BF%E7%9C%9F%E5%AE%9E%E7%8E%B0%E8%BD%AF%E4%BB%B6%E7%A7%BB%E6%A4%8D%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%81%E9%80%82%E7%94%A8%E5%9C%BA%E5%90%88%E3%80%81%E4%BC%98%E7%82%B9%E3%80%81%E5%AD%98%E5%9C%A8%E9%97%AE%E9%A2%98%E5%92%8C%E5%AF%B9%E7%AD%96"><span class="post-toc-text">4.6 采用模拟与仿真实现软件移植的方法、适用场合、优点、存在问题和对策</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-6-1-%E6%A8%A1%E6%8B%9F"><span class="post-toc-text">4.6.1 模拟</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-6-2-%E4%BB%BF%E7%9C%9F"><span class="post-toc-text">4.6.2 仿真</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-6-3-%E6%A8%A1%E6%8B%9F%E5%92%8C%E4%BB%BF%E7%9C%9F%E7%9A%84%E9%80%89%E6%8B%A9"><span class="post-toc-text">4.6.3 模拟和仿真的选择</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-7-%E8%BD%AF%E4%BB%B6%E7%A7%BB%E6%A4%8D%E6%89%8B%E6%AE%B5%E7%BB%BC%E8%BF%B0"><span class="post-toc-text">4.7 软件移植手段综述</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-%E8%BD%AF%E4%BB%B6%E3%80%81%E5%BA%94%E7%94%A8%E3%80%81%E5%99%A8%E4%BB%B6%E7%9A%84%E5%8F%91%E5%B1%95%E5%AF%B9%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="post-toc-text">5. 软件、应用、器件的发展对系统结构的影响</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-1-%E6%98%8E%E7%99%BD%E9%9D%9E%E7%94%A8%E6%88%B7%E7%89%87%E3%80%81%E7%8E%B0%E5%9C%BA%E7%89%87%E3%80%81%E7%94%A8%E6%88%B7%E7%89%87%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="post-toc-text">5.1 明白非用户片、现场片、用户片的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-2-%E6%A6%82%E8%BF%B0%E5%99%A8%E4%BB%B6%E5%8F%91%E5%B1%95%E6%98%AF%E6%8E%A8%E5%8A%A8%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%92%8C%E7%BB%84%E6%88%90%E5%89%8D%E8%BF%9B%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="post-toc-text">5.2 概述器件发展是推动系统结构和组成前进的因素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-3-%E5%99%A8%E4%BB%B6%E5%8F%91%E5%B1%95%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-text">5.3 器件发展如何改变逻辑设计的方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E5%B9%B6%E8%A1%8C%E6%80%A7%E5%BC%80%E5%8F%91%E5%8F%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-text">6. 系统结构中的并行性开发及计算机系统的分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-1-%E5%B9%B6%E8%A1%8C%E6%80%A7%E5%AE%9A%E4%B9%89%E3%80%81%E4%BA%8C%E9%87%8D%E5%90%AB%E4%B9%89%E5%8F%8A%E5%BC%80%E5%8F%91%E9%80%94%E5%BE%84"><span class="post-toc-text">6.1 并行性定义、二重含义及开发途径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-2-%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86"><span class="post-toc-text">6.2 并行性等级划分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-2-1-%E4%BB%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A7%92%E5%BA%A6%E6%9D%A5%E7%9C%8B%EF%BC%8C%E5%B9%B6%E8%A1%8C%E6%80%A7-%E7%AD%89%E7%BA%A7%E7%94%B1%E4%BD%8E%E5%88%B0%E9%AB%98%E5%8F%AF%E5%88%86%E4%B8%BA%E5%9B%9B%E7%BA%A7"><span class="post-toc-text">6.2.1 从计算机系统执行程序的角度来看，并行性 等级由低到高可分为四级</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-2-2-%E4%BB%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%92%E5%BA%A6%E6%9D%A5%E7%9C%8B%EF%BC%8C%E5%B9%B6%E8%A1%8C%E6%80%A7-%E7%AD%89%E7%BA%A7%E4%BB%8E%E4%BD%8E%E5%88%B0%E9%AB%98%E5%8F%AF%E4%BB%A5%E5%88%86%E4%B8%BA%E5%9B%9B%E7%BA%A7"><span class="post-toc-text">6.2.2 从计算机系统中处理数据的角度来看，并行性 等级从低到高可以分为四级</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-2-3-%E5%B9%B6%E8%A1%8C%E6%80%A7%E6%98%AF%E8%B4%AF%E7%A9%BF%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%B7%A5%E7%9A%84%E5%90%84%E4%B8%AA%E6%AD%A5%E9%AA%A4%E5%92%8C%E9%98%B6%E6%AE%B5%E7%9A%84%EF%BC%8C%E4%BB%8E%E8%BF%99%E4%B8%AA%E8%A7%92%E5%BA%A6%E6%9D%A5%E7%9C%8B%EF%BC%8C%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%AD%89%E7%BA%A7%E5%8F%88%E5%88%86%E4%B8%BA"><span class="post-toc-text">6.2.3 并行性是贯穿于计算机信息加工的各个步骤和阶段的，从这个角度来看，并行性等级又分为</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-3-%E6%B2%BF-3-%E7%A7%8D-%E5%B9%B6%E8%A1%8C%E6%80%A7%E5%BC%80%E5%8F%91%E9%80%94%E5%BE%84%E7%9A%84%E5%A4%9A%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%89%B9%E7%82%B9"><span class="post-toc-text">6.3 沿 3 种 并行性开发途径的多机系统类型和特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-3-1-%E6%97%B6%E9%97%B4%E9%87%8D%E5%8F%A0"><span class="post-toc-text">6.3.1 时间重叠</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-3-2-%E8%B5%84%E6%BA%90%E9%87%8D%E5%A4%8D"><span class="post-toc-text">6.3.2 资源重复</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-3-3-%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB"><span class="post-toc-text">6.3.3 资源共享</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-4-%E8%80%A6%E5%90%88%E5%BA%A6%E6%A6%82%E5%BF%B5"><span class="post-toc-text">6.4 耦合度概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-5-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%BC%97%E6%9E%97%E5%88%86%E7%B1%BB%E6%B3%95"><span class="post-toc-text">6.5 计算机系统弗林分类法</span></a></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p >Copyright ©  2017  Walker Denial</p>
+<!-- <p >Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> & Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p> -->
+<p style="font-size: 10px; margin-top: 0" id="footer-times" data-time="01/10/2017 00:00:00"></p>
+<script>
+    var beginTime=document.getElementById("footer-times").dataset.time
+    function show_date_time(){
+        var span=document.getElementById("footer-times")
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date(beginTime);//初始日期
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span.innerHTML="本站已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</script>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>
