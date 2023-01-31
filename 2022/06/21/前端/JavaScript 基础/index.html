@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-17.png)" >
   <h2>JavaScript 基础</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2022-06-21T15:18:00.000Z">
@@ -667,7 +667,7 @@ Symbol<span class="token punctuation">.</span><span class="token keyword">for</s
 <ol>
 <li>只能复制普通键的属性，Symbol类型的无能为力</li>
 <li>循环引用对象，例如 window 不能复制（可参考使用 WeakMap 解决）</li>
-<li>函数、Date、Regex、Blob等类型不能复制</li>
+<li>函数、Date、Regex、Blob等类型不能复制（可通过构造函数识别）</li>
 <li>性能低</li>
 <li>可能爆栈（循环代替递归）</li>
 </ol>
@@ -685,7 +685,7 @@ Symbol<span class="token punctuation">.</span><span class="token keyword">for</s
     <span class="token keyword">var</span> ch1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BroadcastChannel</span><span class="token punctuation">(</span>cname<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">var</span> ch2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BroadcastChannel</span><span class="token punctuation">(</span>cname<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        ch2<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span> ev <span class="token operator">=</span><span class="token operator">></span> <span class="token function">resolve</span><span class="token punctuation">(</span>ev<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> once<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ch2<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span> ev <span class="token operator">=</span><span class="token operator">></span> <span class="token function">resolve</span><span class="token punctuation">(</span>ev<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> once<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         chi1<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
@@ -694,6 +694,34 @@ Symbol<span class="token punctuation">.</span><span class="token keyword">for</s
 <li><p>手写深度克隆</p>
 </li>
 </ol>
+<table>
+<thead>
+<tr>
+<th align="left">深度克隆</th>
+<th align="left">循环引用</th>
+<th align="left">递归爆栈</th>
+<th align="left">特殊类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">JSON 方式</td>
+<td align="left">❌</td>
+<td align="left">❌</td>
+<td align="left">❌</td>
+</tr>
+<tr>
+<td align="left">消息通讯方式</td>
+<td align="left">❌</td>
+<td align="left">❌</td>
+<td align="left">✅（大部分）</td>
+</tr>
+<tr>
+<td align="left">手写方式</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+<td align="left">✅</td>
+</tr>
+</tbody></table>
 
   </div>
   <!--评论块-->
