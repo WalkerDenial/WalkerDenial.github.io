@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-5.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-10.png)" >
   <h2>计算机系统结构-概论</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-02-05T15:33:00.000Z">
@@ -255,7 +255,7 @@ ADD B<span class="token punctuation">,</span> C<span class="token punctuation">,
 <p>性能可改进比 f<sub>new</sub> 是系统性能可改进部分占用的时间与未改进时系统总总执行时间的比值，显然 0 ≤ f<sub>new</sub> ≤ 1。部件加速比 r<sub>new</sub> 是系统性能可改进部分在改进后性能提高的比值，不难看出，r<sub>new</sub> ≥ 1。</p>
 <p>这样，系统加速比为</p>
 <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/CA_Amdahl.jpeg" alt="系统加速比公式"></p>
-<p>其中 (1 - f<sub>new</sub>) 为不嫩改进性能这部分的比例。性能提高的复读受限于性能改进部分所占的比例大小，而性能改善的极限又受性能可改进比 f<sub>new</sub> 的约束。</p>
+<p>其中 (1 - f<sub>new</sub>) 为不能改进性能这部分的比例。性能提高的复读受限于性能改进部分所占的比例大小，而性能改善的极限又受性能可改进比 f<sub>new</sub> 的约束。</p>
 <p>例如：当 r<sub>new</sub> 趋近于 +∞ 时，f<sub>new</sub>/r<sub>new</sub> ≈ 0，此时系统加速比只受限于 f<sub>new</sub> 了。</p>
 <h3 id="3-3-3-程序访问的局部性定律"><a href="#3-3-3-程序访问的局部性定律" class="headerlink" title="3.3.3 程序访问的局部性定律"></a>3.3.3 程序访问的局部性定律</h3><p>程序访问的局部性包括了时间上和空间上的两个局部性。时间上的局部性指的是现在正使用的信息可能不久还要使用，这是因为程序存在着循环。空间上的局部性指的是最近的将来要用到的信息可能与现在正在使用的信息在程序位置上是邻近的，这是因为指令通常是顺序存放、顺序执行的，数据也通常是以向量、阵列、树、表等形式簇聚地存放在一起的。</p>
 <p>统计表明，程序执行时，90% 的时间只访问整个程序的 10% 的那一部分，而其余 10% 的时间才访问另外 90% 的那部分程序。甚至有的程序部分访问时间连 1% 都不到。这为设计指令系统提供了重要的依据，即指令硬件的设计应尽量加速高频指令的执行。</p>
