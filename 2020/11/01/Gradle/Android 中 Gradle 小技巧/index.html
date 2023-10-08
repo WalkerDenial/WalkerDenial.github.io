@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)" >
   <h2>Android 中 Gradle 小技巧</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-01T15:49:00.000Z">
@@ -152,56 +152,19 @@
 <p>那么这其中就涉及到各个 module 中 gradle 依赖的管理，如果管理不到位，就会出现重复包、不同版本包，甚至冲突等问题，那么如何做到版本统一呢？</p>
 <p>常用方式如下：</p>
 <p>1、新建 config.gradle，在里面定义 ext 信息，示例代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java">ext<span class="token punctuation">.</span>deps <span class="token operator">=</span> <span class="token punctuation">[</span>
-        kt    <span class="token operator">:</span> <span class="token punctuation">[</span>
-                core<span class="token operator">:</span> <span class="token string">"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        andX  <span class="token operator">:</span> <span class="token punctuation">[</span>
-                core      <span class="token operator">:</span> <span class="token string">'androidx.core:core-ktx:1.2.0'</span><span class="token punctuation">,</span>
-                appcompat <span class="token operator">:</span> <span class="token string">'androidx.appcompat:appcompat:1.1.0'</span><span class="token punctuation">,</span>
-                constraint<span class="token operator">:</span> <span class="token string">'androidx.constraintlayout:constraintlayout:1.1.3'</span><span class="token punctuation">,</span>
-                livedata  <span class="token operator">:</span> <span class="token string">'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'</span><span class="token punctuation">,</span>
-                viewmodel <span class="token operator">:</span> <span class="token string">'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        google<span class="token operator">:</span> <span class="token punctuation">[</span>
-                material<span class="token operator">:</span> <span class="token string">'com.google.android.material:material:1.1.0'</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        test  <span class="token operator">:</span> <span class="token punctuation">[</span>
-                junit   <span class="token operator">:</span> <span class="token string">'junit:junit:4.12'</span><span class="token punctuation">,</span>
-                ext     <span class="token operator">:</span> <span class="token string">'androidx.test.ext:junit:1.1.1'</span><span class="token punctuation">,</span>
-                espresso<span class="token operator">:</span> <span class="token string">'androidx.test.espresso:espresso-core:3.2.0'</span>
-        <span class="token punctuation">]</span>
-<span class="token punctuation">]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ext.deps = [</span><br><span class="line">        kt    : [</span><br><span class="line">                core: <span class="string">&quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        andX  : [</span><br><span class="line">                core      : <span class="string">&#x27;androidx.core:core-ktx:1.2.0&#x27;</span>,</span><br><span class="line">                appcompat : <span class="string">&#x27;androidx.appcompat:appcompat:1.1.0&#x27;</span>,</span><br><span class="line">                constraint: <span class="string">&#x27;androidx.constraintlayout:constraintlayout:1.1.3&#x27;</span>,</span><br><span class="line">                livedata  : <span class="string">&#x27;androidx.lifecycle:lifecycle-livedata-ktx:2.2.0&#x27;</span>,</span><br><span class="line">                viewmodel : <span class="string">&#x27;androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">        google: [</span><br><span class="line">                material: <span class="string">&#x27;com.google.android.material:material:1.1.0&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">        test  : [</span><br><span class="line">                junit   : <span class="string">&#x27;junit:junit:4.12&#x27;</span>,</span><br><span class="line">                ext     : <span class="string">&#x27;androidx.test.ext:junit:1.1.1&#x27;</span>,</span><br><span class="line">                espresso: <span class="string">&#x27;androidx.test.espresso:espresso-core:3.2.0&#x27;</span></span><br><span class="line">        ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
 <p>2、通过 <strong>apply from: “config.gradle”</strong> 引入，使用 <strong>deps.andX.core</strong> 引入，便可以做到引用同一处定义信息，避免版本错乱问题。</p>
 <p>到这里看起来像是问题解决了，那么…又来了一个新问题，如下图所示：</p>
-<pre><code>implementation &#39;androidx.core:core-ktx:1.2.0&#39;
-implementation &#39;androidx.appcompat:appcompat:1.1.0&#39;
-testImplementation &#39;junit:junit:4.12&#39;
-androidTestImplementation &#39;androidx.test.ext:junit:1.1.1&#39;
-androidTestImplementation &#39;androidx.test.espresso:espresso-core:3.2.0&#39;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">implementation &#x27;androidx.core:core-ktx:1.2.0&#x27;</span><br><span class="line">implementation &#x27;androidx.appcompat:appcompat:1.1.0&#x27;</span><br><span class="line">testImplementation &#x27;junit:junit:4.12&#x27;</span><br><span class="line">androidTestImplementation &#x27;androidx.test.ext:junit:1.1.1&#x27;</span><br><span class="line">androidTestImplementation &#x27;androidx.test.espresso:espresso-core:3.2.0&#x27;</span><br></pre></td></tr></table></figure>
+
 <p>这几行代码有没有那么一丝丝的眼熟？应该、好像、大概、差不多、也许…每个 build.gradle 里面都要写一遍，哪怕引用 config.gradle 里面的同一配置，可是这几个重复的代码还是没有减少，那么…我们…能不能再优化一下呢，答案当然是肯定的啦。</p>
 <p>3、在 <strong>config.gradle</strong> 中定义方法，在方法里面做引用聚合，这样就能减少重复代码了，show me code：</p>
-<pre class="line-numbers language-java"><code class="language-java">ext<span class="token punctuation">.</span>baseDeps <span class="token operator">=</span> <span class="token punctuation">{</span> handler <span class="token operator">-</span><span class="token operator">></span>
-    handler<span class="token punctuation">.</span>implementation deps<span class="token punctuation">.</span>kt<span class="token punctuation">.</span>core
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ext.baseDeps = &#123; handler -&gt;</span><br><span class="line">    handler.implementation deps.kt.core</span><br><span class="line"></span><br><span class="line">    handler.implementation deps.andX.core</span><br><span class="line">    handler.implementation deps.andX.appcompat</span><br><span class="line">    handler.implementation deps.andX.constraint</span><br><span class="line">    handler.implementation deps.andX.livedata</span><br><span class="line">    handler.implementation deps.andX.viewmodel</span><br><span class="line"></span><br><span class="line">    handler.testImplementation deps.test.junit</span><br><span class="line">    handler.androidTestImplementation deps.test.ext</span><br><span class="line">    handler.androidTestImplementation deps.test.espresso</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    handler<span class="token punctuation">.</span>implementation deps<span class="token punctuation">.</span>andX<span class="token punctuation">.</span>core
-    handler<span class="token punctuation">.</span>implementation deps<span class="token punctuation">.</span>andX<span class="token punctuation">.</span>appcompat
-    handler<span class="token punctuation">.</span>implementation deps<span class="token punctuation">.</span>andX<span class="token punctuation">.</span>constraint
-    handler<span class="token punctuation">.</span>implementation deps<span class="token punctuation">.</span>andX<span class="token punctuation">.</span>livedata
-    handler<span class="token punctuation">.</span>implementation deps<span class="token punctuation">.</span>andX<span class="token punctuation">.</span>viewmodel
-
-    handler<span class="token punctuation">.</span>testImplementation deps<span class="token punctuation">.</span>test<span class="token punctuation">.</span>junit
-    handler<span class="token punctuation">.</span>androidTestImplementation deps<span class="token punctuation">.</span>test<span class="token punctuation">.</span>ext
-    handler<span class="token punctuation">.</span>androidTestImplementation deps<span class="token punctuation">.</span>test<span class="token punctuation">.</span>espresso
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>相应的，<strong>build.gradle</strong> 里面的代码可以写成这样：</p>
-<pre><code>dependencies &#123;
-    baseDeps(dependencies)
-&#125;
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    baseDeps(dependencies)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>就是这样，一行代码即可搞定公共基础依赖，就是这么简单。</p>
 <p>总结：</p>
 <pre><code>1. 配置 config.gradle 依赖组件/版本信息；

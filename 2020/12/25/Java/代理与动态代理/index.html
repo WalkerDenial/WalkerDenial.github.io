@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-7.png)" >
   <h2>代理与动态代理</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-25T15:23:00.000Z">
@@ -147,58 +147,17 @@
 <h1 id="1-静态代理"><a href="#1-静态代理" class="headerlink" title="1. 静态代理"></a>1. 静态代理</h1><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/static_proxy.jpg" alt="静态代理"></p>
 <p>场景：购买大米。</p>
 <p>Step. 1 定义食物接口</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IFood</span> <span class="token punctuation">{</span>
-    <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">IFood</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">buyFood</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Step. 2 定义大米</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RiceFood</span> <span class="token keyword">implements</span> <span class="token class-name">IFood</span><span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"buy food for rice"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RiceFood</span> <span class="keyword">implements</span> <span class="title class_">IFood</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">buyFood</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;buy food for rice&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Step. 3 代理入场</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * 食物代理类
- * 作用：用户只需要通过代理商购买食物，而不需要去农田里购买
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NormalFoodProxy</span> <span class="token keyword">implements</span> <span class="token class-name">IFood</span> <span class="token punctuation">{</span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 食物代理类</span></span><br><span class="line"><span class="comment"> * 作用：用户只需要通过代理商购买食物，而不需要去农田里购买</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NormalFoodProxy</span> <span class="keyword">implements</span> <span class="title class_">IFood</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> IFood food;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">NormalFoodProxy</span><span class="params">(IFood food)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.food = food; <span class="comment">// 设置具体代理商</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过委托代理商购买商品</span></span><br><span class="line"><span class="comment">     * 好处：可以对商品进行加工处理</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">buyFood</span><span class="params">()</span> &#123;</span><br><span class="line">        beforeSale();</span><br><span class="line">        food.buyFood();</span><br><span class="line">        afterSale();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 售前服务</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">beforeSale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;代理商检查食物是否安全&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 售后服务</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">afterSale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;代理商提供送货上门服务&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    <span class="token keyword">private</span> IFood food<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token function">NormalFoodProxy</span><span class="token punctuation">(</span>IFood food<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>food <span class="token operator">=</span> food<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置具体代理商</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 通过委托代理商购买商品
-     * 好处：可以对商品进行加工处理
-     */</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">beforeSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        food<span class="token punctuation">.</span><span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">afterSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">// 售前服务</span>
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">beforeSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"代理商检查食物是否安全"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">// 售后服务</span>
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">afterSale</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"代理商提供送货上门服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Step. 4 消费者购买</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 1. 找到代理商并告诉 ta，需要购买大米</span>
-NormalFoodProxy proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">new</span> <span class="token function">NormalFoodProxy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RiceFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 2. 购买大米</span>
-proxy<span class="token punctuation">.</span><span class="token function">buyRice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 找到代理商并告诉 ta，需要购买大米</span></span><br><span class="line"><span class="type">NormalFoodProxy</span> <span class="variable">proxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">new</span> NormalFoodProxy(<span class="keyword">new</span> <span class="title class_">RiceFood</span>());</span><br><span class="line"><span class="comment">// 2. 购买大米</span></span><br><span class="line">proxy.buyRice();</span><br></pre></td></tr></table></figure>
+
 <p>就是这么简单，2 步就搞定了，花费一些可以接受的代价，尽快满足需求，何乐而不为呢？</p>
 <p>做过支付的同学应该深有体会，是对接支付宝、微信支付呢，还是分别对接几百家银行方便，相比不用多说了吧。</p>
 <p>优点：</p>
@@ -226,113 +185,22 @@ proxy<span class="token punctuation">.</span><span class="token function">buyRic
 <p>Each proxy instance has an associated invocation handler. When a method is invoked on a proxy instance, the method invocation is encoded and dispatched to the invoke method of its invocation handler.</p>
 </blockquote>
 <p>代码也很简单，就只有一个方法。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-        <span class="token keyword">throws</span> Throwable<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span></span><br><span class="line">        <span class="keyword">throws</span> Throwable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>那么，<strong>Proxy</strong> 倒是是如何结合 <strong>InvocationHandler</strong> 的呢，接下来看一下源码：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Proxy</span> <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 省略若干代码</span>
-    
-    <span class="token comment" spellcheck="true">// parameter types of a proxy class constructor</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> constructorParams <span class="token operator">=</span> <span class="token punctuation">{</span> InvocationHandler<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// a cache of proxy classes</span>
-    <span class="token keyword">protected</span> InvocationHandler h<span class="token punctuation">;</span>
-    
-    <span class="token keyword">public</span> <span class="token keyword">static</span> Object <span class="token function">newProxyInstance</span><span class="token punctuation">(</span>ClassLoader loader<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> interfaces<span class="token punctuation">,</span> InvocationHandler h<span class="token punctuation">)</span> <span class="token keyword">throws</span> IllegalArgumentException <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// 省略若干代码</span>
-        
-        <span class="token comment" spellcheck="true">// 通过反射的方式将 InvocationHandler 对象 h 传递给实例化的类</span>
-        <span class="token keyword">return</span> cons<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span>h<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Proxy</span> <span class="keyword">implements</span> <span class="title class_">java</span>.io.Serializable &#123;</span><br><span class="line">	<span class="comment">// 省略若干代码</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// parameter types of a proxy class constructor</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Class&lt;?&gt;[] constructorParams = &#123; InvocationHandler.class &#125;;</span><br><span class="line">	<span class="comment">// a cache of proxy classes</span></span><br><span class="line">	<span class="keyword">protected</span> InvocationHandler h;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title function_">newProxyInstance</span><span class="params">(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h)</span> <span class="keyword">throws</span> IllegalArgumentException &#123;</span><br><span class="line">		<span class="comment">// 省略若干代码</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 通过反射的方式将 InvocationHandler 对象 h 传递给实例化的类</span></span><br><span class="line">		<span class="keyword">return</span> cons.newInstance(<span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;h&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后看一下动态生成的类中 <strong>InvocationHandler</strong> 如何工作的。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span>  <span class="token punctuation">{</span>
-    <span class="token keyword">try</span> <span class="token punctuation">{</span>
-          <span class="token comment" spellcheck="true">// 调用 InvocationHandler 的 invoke 方法进行处理</span>
-          <span class="token comment" spellcheck="true">// 由此可见，自定义动态代理需要实现 InvocationHandler 的，要不然流程无法走通</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span>h<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> m3<span class="token punctuation">,</span> <span class="token punctuation">(</span>Object<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RuntimeException</span> <span class="token operator">|</span> Error var2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">throw</span> var2<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> var3<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UndeclaredThrowableException</span><span class="token punctuation">(</span>var3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">buyFood</span><span class="params">()</span> <span class="keyword">throws</span>  &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">    	  <span class="comment">// 调用 InvocationHandler 的 invoke 方法进行处理</span></span><br><span class="line">    	  <span class="comment">// 由此可见，自定义动态代理需要实现 InvocationHandler 的，要不然流程无法走通</span></span><br><span class="line">        <span class="built_in">super</span>.h.invoke(<span class="built_in">this</span>, m3, (Object[])<span class="literal">null</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (RuntimeException | Error var2) &#123;</span><br><span class="line">        <span class="keyword">throw</span> var2;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable var3) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UndeclaredThrowableException</span>(var3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>整体 JDK 实现流程如下图：</p>
 <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/dynamic_proxy.png" alt="动态代理"></p>
 <h1 id="3-动态代理示例"><a href="#3-动态代理示例" class="headerlink" title="3. 动态代理示例"></a>3. 动态代理示例</h1><p>由上面源码分析，自定义动态代理类需要 implements InvocationHandler，先定义一个代理。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 除了 InvocationHandler，不需要实现额外接口</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DynamicProxy</span> <span class="token keyword">implements</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{</span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 除了 InvocationHandler，不需要实现额外接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DynamicProxy</span> <span class="keyword">implements</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Object factory;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFactory</span><span class="params">(Object factory)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.factory = factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">getFactory</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过 Proxy 获得动态代理对象</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">getProxyInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(factory.getClass().getClassLoader(),</span><br><span class="line">                factory.getClass().getInterfaces(), <span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过动态代理方法进行增强</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> proxy</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> method</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Throwable</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        doBefore();</span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> method.invoke(factory, args);</span><br><span class="line">        doAfter();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">doBefore</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;提供代理前服务&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">doAfter</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;提供代理后服务&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    <span class="token keyword">private</span> Object factory<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setFactory</span><span class="token punctuation">(</span>Object factory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>factory <span class="token operator">=</span> factory<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> Object <span class="token function">getFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> factory<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 通过 Proxy 获得动态代理对象
-     *
-     * @return
-     */</span>
-    <span class="token keyword">public</span> Object <span class="token function">getProxyInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                factory<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 通过动态代理方法进行增强
-     *
-     * @param proxy
-     * @param method
-     * @param args
-     * @return
-     * @throws Throwable
-     */</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
-        <span class="token function">doBefore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Object result <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>factory<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">doAfter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">doBefore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"提供代理前服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">doAfter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"提供代理后服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>测试代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 初始化动态代理类</span>
-    DynamicProxy proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DynamicProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// 初始化动态代理类</span></span><br><span class="line">    <span class="type">DynamicProxy</span> <span class="variable">proxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DynamicProxy</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 代理 RiceFood（此时动态代理类里面没有实现 IFood 接口）</span></span><br><span class="line">    <span class="type">RiceFood</span> <span class="variable">riceFood</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RiceFood</span>();</span><br><span class="line">    proxy.setFactory(riceFood);</span><br><span class="line">    <span class="comment">// 获取动态代理类实例</span></span><br><span class="line">    <span class="type">IFood</span> <span class="variable">riceProxy</span> <span class="operator">=</span> (IFood) proxy.getProxyInstance();</span><br><span class="line">    riceProxy.buyFood();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出信息如下：</span><br><span class="line"></span><br><span class="line">提供代理前服务</span><br><span class="line">buy food <span class="keyword">for</span> rice</span><br><span class="line">提供代理后服务</span><br></pre></td></tr></table></figure>
 
-    <span class="token comment" spellcheck="true">// 代理 RiceFood（此时动态代理类里面没有实现 IFood 接口）</span>
-    RiceFood riceFood <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RiceFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    proxy<span class="token punctuation">.</span><span class="token function">setFactory</span><span class="token punctuation">(</span>riceFood<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 获取动态代理类实例</span>
-    IFood riceProxy <span class="token operator">=</span> <span class="token punctuation">(</span>IFood<span class="token punctuation">)</span> proxy<span class="token punctuation">.</span><span class="token function">getProxyInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    riceProxy<span class="token punctuation">.</span><span class="token function">buyFood</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-输出信息如下：
-
-提供代理前服务
-buy food <span class="token keyword">for</span> rice
-提供代理后服务
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>总结：相较于静态代理，动态代理可扩展性更强，Retrofit 使用的就是 动态代理，Spring 中也大量使用到动态代理，掌握好动态代理，能提升框架搭建的能力。</p>
 
   </div>

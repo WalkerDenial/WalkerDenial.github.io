@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-4.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-10.png)" >
   <h2>MarkDown 介绍</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-16T15:53:00.000Z">
@@ -167,8 +167,7 @@
 <h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><hr>
 <p>标题有两种方式</p>
 <ol>
-<li><p>使用文字 + 一行 <code>=</code> 号，表示 1 级标题，文字 + 一行 <code>---</code> 减号，2 级标题；</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title=" 一级标题"></a> 一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title=" 二级标题"></a> 二级标题</h2></li>
+<li><h1 id="使用文字-一行-号，表示-1-级标题，文字-一行-减号，2-级标题；-一级标题"><a href="#使用文字-一行-号，表示-1-级标题，文字-一行-减号，2-级标题；-一级标题" class="headerlink" title="使用文字 + 一行 = 号，表示 1 级标题，文字 + 一行 --- 减号，2 级标题； 一级标题"></a>使用文字 + 一行 <code>=</code> 号，表示 1 级标题，文字 + 一行 <code>---</code> 减号，2 级标题；<br> 一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title=" 二级标题"></a> 二级标题</h2></li>
 <li><p>多个 <code>#</code> 号 + 文字</p>
 <pre><code> # 标题
  ## 标题
@@ -184,7 +183,7 @@
 <li><strong>粗体</strong> <code>**</code> 粗体 <code>**</code></li>
 <li><em>斜体</em> <code>*</code> 斜体 <code>*</code></li>
 <li><del>删除线</del> <code>~~</code> 删除线 <code>~~</code></li>
-<li>==高亮== <code>==</code> 高亮 <code>==</code></li>
+<li>&#x3D;&#x3D;高亮&#x3D;&#x3D; <code>==</code> 高亮 <code>==</code></li>
 <li>段落 段落与段落之间一定要空一行</li>
 <li>水平线 <code>--</code> 两个减号表示实现， <code>---</code> 三个减号表示虚线</li>
 </ul>
@@ -194,9 +193,9 @@
 <p>本地连接，需要在 <code>()</code> 小括号里面需要填写图片在本地的地址。</p>
 <p>图片路径：</p>
 <blockquote>
-<p>/images/coverpic.png</p>
+<p>&#x2F;images&#x2F;coverpic.png</p>
 </blockquote>
-<p><img src="../../../../../images/coverpic.png" alt="本地图片链接"></p>
+<p><img src="/../../../../../images/coverpic.png" alt="本地图片链接"></p>
 <p>如果是网络图片链接，小括号里面直接填写图片的网络链接即可。</p>
 <p>例如：网络图片</p>
 <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/img_nature.jpg" alt="网络图片"></p>
@@ -213,16 +212,13 @@
 </blockquote>
 <h3 id="插入代码"><a href="#插入代码" class="headerlink" title="插入代码"></a>插入代码</h3><hr>
 <p>MarkDown 支持插入代码，使用三个上点号 ``` 开头，和三个上点号结尾 ```，代码放在中间，例如：</p>
-<pre class="line-numbers language-java"><code class="language-java">System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MacDown"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MarkDown"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;MacDown&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;MarkDown&quot;</span>);</span><br></pre></td></tr></table></figure>
+
 <h3 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h3><hr>
 <p>MarkDown 插入表格，使用以下语法：<code>|列名|</code> <code>|:----:|</code> 水平排列模式。</p>
 <p><code>| :--- |</code> 居左，<code>| :---: |</code> 居中， <code>| ---: |</code> 居右。</p>
-<pre><code>| 列1 | 列2 | 列3 |
-|:--- |:---:|---:|
-| 居左 | 居中 | 居右 |
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">| 列1 | 列2 | 列3 |</span><br><span class="line">|:--- |:---:|---:|</span><br><span class="line">| 居左 | 居中 | 居右 |</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
@@ -262,7 +258,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MarkDown-%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">MarkDown 介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A4%E8%AF%86-MarkDown"><span class="post-toc-text">一、认识 MarkDown</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MarkDown-%E4%BC%98%E7%82%B9"><span class="post-toc-text">MarkDown 优点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81MacDown-%E7%BC%96%E8%BE%91%E5%99%A8"><span class="post-toc-text">二、MacDown 编辑器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MacDown-%E7%89%B9%E6%80%A7"><span class="post-toc-text">MacDown 特性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="post-toc-text">三、常用语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8D%A2%E8%A1%8C"><span class="post-toc-text">换行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E9%A2%98"><span class="post-toc-text">标题</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="post-toc-text"> 一级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="post-toc-text"> 二级标题</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Header-1"><span class="post-toc-text">Header 1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Header-2"><span class="post-toc-text">Header 2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Header-3"><span class="post-toc-text">Header 3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Header-4"><span class="post-toc-text">Header 4</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Header-5"><span class="post-toc-text">Header 5</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Header-6"><span class="post-toc-text">Header 6</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F"><span class="post-toc-text">文本样式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E2%80%93"><span class="post-toc-text">–</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%BE%E7%89%87"><span class="post-toc-text">图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%95%E7%94%A8"><span class="post-toc-text">引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81"><span class="post-toc-text">插入代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E8%A1%A8%E6%A0%BC"><span class="post-toc-text">插入表格</span></a></li></ol></li></ol></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MarkDown-%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">MarkDown 介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A4%E8%AF%86-MarkDown"><span class="post-toc-text">一、认识 MarkDown</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MarkDown-%E4%BC%98%E7%82%B9"><span class="post-toc-text">MarkDown 优点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81MacDown-%E7%BC%96%E8%BE%91%E5%99%A8"><span class="post-toc-text">二、MacDown 编辑器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MacDown-%E7%89%B9%E6%80%A7"><span class="post-toc-text">MacDown 特性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="post-toc-text">三、常用语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8D%A2%E8%A1%8C"><span class="post-toc-text">换行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E9%A2%98"><span class="post-toc-text">标题</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%87%E5%AD%97-%E4%B8%80%E8%A1%8C-%E5%8F%B7%EF%BC%8C%E8%A1%A8%E7%A4%BA-1-%E7%BA%A7%E6%A0%87%E9%A2%98%EF%BC%8C%E6%96%87%E5%AD%97-%E4%B8%80%E8%A1%8C-%E5%87%8F%E5%8F%B7%EF%BC%8C2-%E7%BA%A7%E6%A0%87%E9%A2%98%EF%BC%9B-%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="post-toc-text">使用文字 + 一行 &#x3D; 号，表示 1 级标题，文字 + 一行 --- 减号，2 级标题； 一级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="post-toc-text"> 二级标题</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Header-1"><span class="post-toc-text">Header 1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Header-2"><span class="post-toc-text">Header 2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Header-3"><span class="post-toc-text">Header 3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Header-4"><span class="post-toc-text">Header 4</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Header-5"><span class="post-toc-text">Header 5</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Header-6"><span class="post-toc-text">Header 6</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F"><span class="post-toc-text">文本样式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E2%80%93"><span class="post-toc-text">–</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%BE%E7%89%87"><span class="post-toc-text">图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%95%E7%94%A8"><span class="post-toc-text">引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81"><span class="post-toc-text">插入代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8F%92%E5%85%A5%E8%A1%A8%E6%A0%BC"><span class="post-toc-text">插入表格</span></a></li></ol></li></ol></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">

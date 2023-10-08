@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-5.png)" >
   <h2>原型模式</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-02-16T06:40:00.000Z">
@@ -154,7 +154,7 @@
 <li>浅克隆克隆的是内存指向地址，如果是 <strong>基本数据类型</strong>，影响不大，如果是 <strong>引用类型</strong>，则 clone 对象中属性的修改，会引起被克隆对象数据的修改，导致数据紊乱</li>
 <li>深 clone，即将整个对象 clone 并且生成新的对象，不论是对象内存指向地址还是属性内存指向地址，都不相同，可以进行需求操作而不影响被 clone 体</li>
 </ol>
-<p><strong>浅克隆</strong> 的实现方案是：利用 java 的 cloneable 接口，可以快速实现克隆；或者创建一个新对象，并且赋值即可。    </p>
+<p><strong>浅克隆</strong> 的实现方案是：利用 java 的 cloneable 接口，可以快速实现克隆；或者创建一个新对象，并且赋值即可。	</p>
 <p><strong>深克隆</strong> 的实现方案是：利用 Serializable 接口，克隆对象流并生成新对象即可。</p>
 <h3 id="3-优点"><a href="#3-优点" class="headerlink" title="3. 优点"></a>3. 优点</h3><ol>
 <li>当创建新的对象实例较为复杂时，使用原型模式可以简化对象的创建过程，通过复制一个已有实例可以提高新实例的创建效率</li>

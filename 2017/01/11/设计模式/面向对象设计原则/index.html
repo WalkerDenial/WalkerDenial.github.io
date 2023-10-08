@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-4.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)" >
   <h2>面向对象设计原则</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-01-11T07:01:00.000Z">
@@ -182,17 +182,7 @@
 <h4 id="6-合成复用原则（Composite-Reuse-Principle-CRP）"><a href="#6-合成复用原则（Composite-Reuse-Principle-CRP）" class="headerlink" title="6. 合成复用原则（Composite Reuse Principle, CRP）"></a>6. 合成复用原则（Composite Reuse Principle, CRP）</h4><p><code>合成复用原则</code>：尽量使用对象组合，而不是继承来达到复用的目的。</p>
 <h4 id="7-迪米特原则（Law-of-Demeter-LOD）"><a href="#7-迪米特原则（Law-of-Demeter-LOD）" class="headerlink" title="7. 迪米特原则（Law of Demeter, LOD）"></a>7. 迪米特原则（Law of Demeter, LOD）</h4><p><code>迪米特原则</code> 的定义是：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道的最少，类的内部如何实现与调用者或者依赖者只需要知道它需要的方法即可，其它的可一概不用管。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
 <p>简单一点来说，局部变量中，不要引入新的类，错误示例代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Order</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> Product product <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> Customer customer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Customer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">book</span><span class="token punctuation">(</span><span class="token keyword">int</span> productId<span class="token punctuation">,</span> <span class="token keyword">int</span> userId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Worker worker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在局部变量中，引入了新的类 Worker，违反了迪米特原则</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Order</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="type">Product</span> <span class="variable">product</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Product</span>();</span><br><span class="line">	<span class="keyword">private</span> <span class="type">Customer</span> <span class="variable">customer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Customer</span>();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">book</span><span class="params">(<span class="type">int</span> productId, <span class="type">int</span> userId)</span> &#123;</span><br><span class="line">		<span class="type">Worker</span> <span class="variable">worker</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Worker</span>(); <span class="comment">// 在局部变量中，引入了新的类 Worker，违反了迪米特原则</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   </div>
   <!--评论块-->

@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)" >
   <h2>死锁</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-19T14:30:00.000Z">
@@ -151,7 +151,7 @@
 <p>按照资源的使用性质，一般把系统中的资源分成两类：</p>
 <ol>
 <li>永久性资源（可重用资源），是指系统中可供进程重复使用、长期存在的资源，如内存、外部设备、处理器等硬件资源，以及各种数据文件、表格、共享程序代码等软件资源；</li>
-<li>临时性资源（消耗性资源），是指由某个进程所产生、只为另一个进程使用一次或经过短暂时间后便不再使用的资源，如 I/O 和时钟中断信号、同步信号、消息等；</li>
+<li>临时性资源（消耗性资源），是指由某个进程所产生、只为另一个进程使用一次或经过短暂时间后便不再使用的资源，如 I&#x2F;O 和时钟中断信号、同步信号、消息等；</li>
 </ol>
 <p>永久性资源和临时性资源都可能导致死锁发生。</p>
 <h2 id="1-3-死锁产生的必要条件"><a href="#1-3-死锁产生的必要条件" class="headerlink" title="1.3 死锁产生的必要条件"></a>1.3 死锁产生的必要条件</h2><ol>
@@ -182,12 +182,12 @@
 <li>算法规则：当任一进程 P<sub>j</sub> 申请一个已被其他进程占用的资源 r<sub>i</sub> 时，进行死锁检测算法通过反复查找资源分配表和进程等待表，来确定进程 P<sub>j</sub> 对资源 r<sub>i</sub> 的请求是否导致形成环路，若是，便确定出现死锁。</li>
 </ol>
 <h2 id="4-3-死锁的解除方法"><a href="#4-3-死锁的解除方法" class="headerlink" title="4.3 死锁的解除方法"></a>4.3 死锁的解除方法</h2><ol>
-<li>剥夺资源：使用挂起/激活机制挂起一些进程，剥夺它们占有的资源给死锁进程，以解除死锁，待以后条件满足时，再激活被挂起的进程；</li>
+<li>剥夺资源：使用挂起&#x2F;激活机制挂起一些进程，剥夺它们占有的资源给死锁进程，以解除死锁，待以后条件满足时，再激活被挂起的进程；</li>
 <li>撤销进程：撤销死锁进程，将它们占有的资源分配给另一些死锁进程，直到死锁解除为止；</li>
 </ol>
 <h1 id="5-资源分配图"><a href="#5-资源分配图" class="headerlink" title="5 资源分配图"></a>5 资源分配图</h1><p>资源分配图是死锁的一种准确而形象地描述，通过资源分配图，可以对当前系统资源分配和申请情况一目了然，便于对死锁进行分析并采取对策。</p>
-<h2 id="5-1-资源分配图"><a href="#5-1-资源分配图" class="headerlink" title="5.1 资源分配图"></a>5.1 资源分配图</h2><p>资源分配图是一张有向图，一个系统资源分配图 SRAG（System Resource Allocation Graph）可定义为一个二元组，即 SRAG = （V，E），其中 V 是顶点的集合，而 E 是有向边的集合。</p>
-<p>顶点集合可分为两种部分：P = （P<sub>1</sub>，···，P<sub>n</sub>），是由系统内的所有进程组成的集合，每一个 P<sub>i</sub> 代表一个进程；R = （r<sub>1</sub>，···，r<sub>n</sub>），是系统内所有资源组成的集合，每一个 r<sub>i</sub> 代表一类资源。</p>
+<h2 id="5-1-资源分配图"><a href="#5-1-资源分配图" class="headerlink" title="5.1 资源分配图"></a>5.1 资源分配图</h2><p>资源分配图是一张有向图，一个系统资源分配图 SRAG（System Resource Allocation Graph）可定义为一个二元组，即 SRAG &#x3D; （V，E），其中 V 是顶点的集合，而 E 是有向边的集合。</p>
+<p>顶点集合可分为两种部分：P &#x3D; （P<sub>1</sub>，···，P<sub>n</sub>），是由系统内的所有进程组成的集合，每一个 P<sub>i</sub> 代表一个进程；R &#x3D; （r<sub>1</sub>，···，r<sub>n</sub>），是系统内所有资源组成的集合，每一个 r<sub>i</sub> 代表一类资源。</p>
 <h2 id="5-2-死锁定理"><a href="#5-2-死锁定理" class="headerlink" title="5.2 死锁定理"></a>5.2 死锁定理</h2><ol>
 <li>如果资源分配图中没有环路，则系统没有死锁；</li>
 <li>如果资源分配图中出现了环路，则系统中可能存在死锁；</li>

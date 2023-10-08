@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)" >
   <h2>数据库管理</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-11-28T06:15:00.000Z">
@@ -244,9 +244,8 @@
 <li>READ ONLY（只读型）：事务对数据库的操作只能是读操作。定义这个模式后，表示随后的事务均是只读型。</li>
 <li>READ WRITE（读写型）：事务对数据库的操作可以是读操作，也可以是写操作。定义这个模式后，表示随后的事务均是读写型。在程序开始时默认这种模式。</li>
 </ol>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SET</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">READ</span> ONLY
-<span class="token keyword">SET</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">READ</span> <span class="token keyword">WRITE</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> TRANSACTION READ <span class="keyword">ONLY</span></span><br><span class="line"><span class="keyword">SET</span> TRANSACTION READ WRITE</span><br></pre></td></tr></table></figure>
+
 <p><strong>2. 事务的隔离级别</strong></p>
 <p>SQL2 提供事务的四种隔离级别让用户选择。这四个级别从高到低如下所述：</p>
 <ol>
@@ -255,11 +254,8 @@
 <li>READ COMMITTED（读提交数据）：允许事务读已提交的数据，但不要求「可重复读」。</li>
 <li>READ UNCOMMITTED（可以读未提交的数据）：允许事务读已提交或未提交的数据。</li>
 </ol>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SET</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">ISOLATION LEVEL</span> <span class="token keyword">SERIALIZABLE</span>
-<span class="token keyword">SET</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">ISOLATION LEVEL</span> <span class="token keyword">REPEATABLE</span> <span class="token keyword">READ</span>
-<span class="token keyword">SET</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">ISOLATION LEVEL</span> <span class="token keyword">READ</span> <span class="token keyword">COMMITTED</span>
-<span class="token keyword">SET</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">ISOLATION LEVEL</span> <span class="token keyword">READ</span> <span class="token keyword">UNCOMMITTED</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> TRANSACTION ISOLATION LEVEL SERIALIZABLE</span><br><span class="line"><span class="keyword">SET</span> TRANSACTION ISOLATION LEVEL REPEATABLE READ</span><br><span class="line"><span class="keyword">SET</span> TRANSACTION ISOLATION LEVEL READ COMMITTED</span><br><span class="line"><span class="keyword">SET</span> TRANSACTION ISOLATION LEVEL READ UNCOMMITTED</span><br></pre></td></tr></table></figure>
+
 <h3 id="4-数据库的完整性"><a href="#4-数据库的完整性" class="headerlink" title="4. 数据库的完整性"></a>4. 数据库的完整性</h3><h4 id="4-1-完整性子系统"><a href="#4-1-完整性子系统" class="headerlink" title="4.1 完整性子系统"></a>4.1 完整性子系统</h4><blockquote>
 <p>数据库中完整性（Integrity）一词是指数据的正确性（Correctness）、有效性（Validity）和相容性（Consistency），防止错误的数据进入数据库。</p>
 </blockquote>
@@ -275,11 +271,11 @@
 <p>SQL 的基本表约束主要有三种形式：候选键定义、外键定义和「检查约束」定义。这些定义都可以再前面加「CONSTRAINT&lt;约束名&gt;」，由此为新约束起个名字。</p>
 <p><strong>3. 断言</strong></p>
 <p>如果完整性的约束牵涉面较广，与多个关系有关，或者与聚合操作有关，那么 SQL2 提供「断言」（Assertions）机制让用户书写完整性约束。断言可以像关系一样，用 CREATE 语句定义，其句法如下：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">CHECK</span> ASSERTION <span class="token operator">&lt;</span>断言名<span class="token operator">></span> <span class="token keyword">CHECK</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>条件<span class="token operator">></span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CHECK</span> ASSERTION <span class="operator">&lt;</span>断言名<span class="operator">&gt;</span> <span class="keyword">CHECK</span> (<span class="operator">&lt;</span>条件<span class="operator">&gt;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>撤销断言的句法是：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">DROP</span> ASSERTION <span class="token operator">&lt;</span>断言名<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> ASSERTION <span class="operator">&lt;</span>断言名<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="4-3-SQL3-的触发器"><a href="#4-3-SQL3-的触发器" class="headerlink" title="4.3 SQL3 的触发器"></a>4.3 SQL3 的触发器</h4><blockquote>
 <p>触发器（Trigger）是一个能由系统自动执行对数据库修改的语句。触发器有时也称为主动规则（Active Rule）或事件—条件—动作规则（Event-Condition-Action Rule，ECA 规则）。</p>
 </blockquote>

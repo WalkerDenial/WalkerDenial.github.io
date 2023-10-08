@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)" >
   <h2>Coroutine 协程简单使用</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-03T15:35:00.000Z">
@@ -153,15 +153,8 @@
 在协程中，是没有并发、并行概念的。
 </code></pre>
 <p><strong>在 kotlin for Android 中，kotlin 只是一个线程框架，线程所具有的并发、并行等问题，协程也会一个不落。究其原因在于在 Android 开发中 kotlin 需要编译成能被 JVM 识别的字节码，是基于 <code>线程</code> 的，所以不存在协程效率比线程高等情况，协程只是对线程的一个包装，是无法绕开线程的问题的。</strong></p>
-<h1 id="2-协程怎么写？"><a href="#2-协程怎么写？" class="headerlink" title="2. 协程怎么写？"></a>2. 协程怎么写？</h1><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 使用 GlobalScope 作用域，通过 launch 开启一段协程</span>
-GlobalScope<span class="token punctuation">.</span><span class="token function">launch</span> <span class="token punctuation">{</span>
-    <span class="token function">printThreadInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<h1 id="2-协程怎么写？"><a href="#2-协程怎么写？" class="headerlink" title="2. 协程怎么写？"></a>2. 协程怎么写？</h1><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用 GlobalScope 作用域，通过 launch 开启一段协程</span></span><br><span class="line">GlobalScope.launch &#123;</span><br><span class="line">    printThreadInfo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">printThreadInfo</span><span class="params">(prefix: <span class="type">String</span> = <span class="string">&quot;&quot;</span>)</span></span> &#123;</span><br><span class="line">    Log.i(<span class="string">&quot;CoroutineDemo&quot;</span>, <span class="string">&quot;<span class="subst">$&#123;if(prefix.isNullOrBlank()) <span class="string">&quot;&quot;</span> else <span class="string">&quot;<span class="variable">$prefix</span>, &quot;</span>&#125;</span>current thread is <span class="subst">$&#123;Thread.currentThread().name&#125;</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">printThreadInfo</span><span class="token punctuation">(</span>prefix<span class="token operator">:</span> String <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Log<span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token string">"CoroutineDemo"</span><span class="token punctuation">,</span> <span class="token string">"${if(prefix.isNullOrBlank()) "</span><span class="token string">" else "</span>$prefix<span class="token punctuation">,</span> <span class="token string">"}current thread is <span class="token interpolation"><span class="token delimiter variable">${</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>name<span class="token delimiter variable">}</span></span>"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用上述代码输出结果如下：</p>
 <pre><code>current thread is DefaultDispatcher-worker-1
 </code></pre>
@@ -178,26 +171,8 @@ step 1. 请求接口 1 --&gt; 更新 UI 1
 step 2. 请求接口 2 --&gt; 更新 UI 2
 step 3. 请求接口 3 --&gt; 更新 UI 3
 </code></pre>
-<h2 id="3-1-普通写法："><a href="#3-1-普通写法：" class="headerlink" title="3.1 普通写法："></a>3.1 普通写法：</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 线程写法</span>
-thread <span class="token punctuation">{</span>
-    <span class="token function">networkTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    activity<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">runOnUiThread</span> <span class="token punctuation">{</span>
-        <span class="token function">uiTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        thread <span class="token punctuation">{</span>
-            <span class="token function">networkTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            activity<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">runOnUiThread</span> <span class="token punctuation">{</span>
-                <span class="token function">uiTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                thread <span class="token punctuation">{</span>
-                    <span class="token function">networkTest3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                    activity<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">runOnUiThread</span> <span class="token punctuation">{</span>
-                        <span class="token function">uiTest3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-1-普通写法："><a href="#3-1-普通写法：" class="headerlink" title="3.1 普通写法："></a>3.1 普通写法：</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 线程写法</span></span><br><span class="line">thread &#123;</span><br><span class="line">    networkTest1()</span><br><span class="line">    activity?.runOnUiThread &#123;</span><br><span class="line">        uiTest1()</span><br><span class="line">        thread &#123;</span><br><span class="line">            networkTest2()</span><br><span class="line">            activity?.runOnUiThread &#123;</span><br><span class="line">                uiTest2()</span><br><span class="line">                thread &#123;</span><br><span class="line">                    networkTest3()</span><br><span class="line">                    activity?.runOnUiThread &#123;</span><br><span class="line">                        uiTest3()</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>输出信息为：</p>
 <pre><code>networkTest1(), current thread is Thread-2
 uiTest1(), current thread is main
@@ -207,21 +182,7 @@ networkTest3(), current thread is Thread-4
 uiTest3(), current thread is main
 </code></pre>
 <p>死亡回调有木有？</p>
-<h2 id="3-2-RxJava写法："><a href="#3-2-RxJava写法：" class="headerlink" title="3.2  RxJava写法："></a>3.2 <code> RxJava</code>写法：</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin">Observable<span class="token punctuation">.</span><span class="token function">just</span><span class="token punctuation">(</span><span class="token string">"Test"</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>Schedulers<span class="token punctuation">.</span><span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">doOnNext</span> <span class="token punctuation">{</span> <span class="token function">networkTestRx1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-            <span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>AndroidSchedulers<span class="token punctuation">.</span><span class="token function">mainThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">doOnNext</span> <span class="token punctuation">{</span> <span class="token function">uiTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-            <span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>Schedulers<span class="token punctuation">.</span><span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">doOnNext</span> <span class="token punctuation">{</span> <span class="token function">networkTestRx2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-            <span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>AndroidSchedulers<span class="token punctuation">.</span><span class="token function">mainThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">doOnNext</span> <span class="token punctuation">{</span> <span class="token function">uiTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-            <span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>Schedulers<span class="token punctuation">.</span><span class="token function">io</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">doOnNext</span> <span class="token punctuation">{</span> <span class="token function">networkTestRx3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-            <span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>AndroidSchedulers<span class="token punctuation">.</span><span class="token function">mainThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">doOnNext</span> <span class="token punctuation">{</span> <span class="token function">uiTest3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-            <span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-2-RxJava写法："><a href="#3-2-RxJava写法：" class="headerlink" title="3.2  RxJava写法："></a>3.2 <code> RxJava</code>写法：</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">Observable.just(<span class="string">&quot;Test&quot;</span>)</span><br><span class="line">            .observeOn(Schedulers.io())</span><br><span class="line">            .doOnNext &#123; networkTestRx1() &#125;</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .doOnNext &#123; uiTest1() &#125;</span><br><span class="line">            .observeOn(Schedulers.io())</span><br><span class="line">            .doOnNext &#123; networkTestRx2() &#125;</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .doOnNext &#123; uiTest2() &#125;</span><br><span class="line">            .observeOn(Schedulers.io())</span><br><span class="line">            .doOnNext &#123; networkTestRx3() &#125;</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .doOnNext &#123; uiTest3() &#125;</span><br><span class="line">            .subscribe()</span><br></pre></td></tr></table></figure>
 <p>输出信息如下图所示：</p>
 <pre><code>networkTestRx1(), current thread is RxCachedThreadScheduler-1
 uiTest1(), current thread is main
@@ -231,15 +192,8 @@ networkTestRx3(), current thread is RxCachedThreadScheduler-3
 uiTest3(), current thread is main
 </code></pre>
 <p>由输出信息可见，<code>RxJava</code> 线程切换没有问题，完美的实现了需求。但是，为了实现线程切换，增加的 <strong>线程切换代码量</strong> 是 <strong>有效执行代码量</strong> 的一倍，相比于普通写法，代码量减少了不少，但是线程切换的代码占比较大，那么…还有没有优化空间呢？</p>
-<h2 id="3-2-协程-写法："><a href="#3-2-协程-写法：" class="headerlink" title="3.2 协程 写法："></a>3.2 <code>协程</code> 写法：</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin">viewModel<span class="token punctuation">.</span>viewModelScope<span class="token punctuation">.</span><span class="token function">launch</span><span class="token punctuation">(</span>Dispatchers<span class="token punctuation">.</span>Main<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">networkTests1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">uiTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">networkTests2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">uiTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">networkTests3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">uiTest3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-2-协程-写法："><a href="#3-2-协程-写法：" class="headerlink" title="3.2 协程 写法："></a>3.2 <code>协程</code> 写法：</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">viewModel.viewModelScope.launch(Dispatchers.Main) &#123;</span><br><span class="line">    networkTests1()</span><br><span class="line">    uiTest1()</span><br><span class="line">    networkTests2()</span><br><span class="line">    uiTest2()</span><br><span class="line">    networkTests3()</span><br><span class="line">    uiTest3()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>输出信息为：</p>
 <pre><code>networkTest1(), current thread is DefaultDispatcher-worker-1
 uiTest1(), current thread is main
@@ -249,33 +203,13 @@ networkTest3(), current thread is DefaultDispatcher-worker-1
 uiTest3(), current thread is main
 </code></pre>
 <p>就这几行看似同步的代码，实现了异步任务、线程切换等问题，由此可见，<code>协程</code>比单纯使用线程方便很多。由日志信息可见，<code>DefaultDispatcher-worker-1</code> 与 <code>DefaultDispatcher-worker-3</code> 并不是同一个线程哟，所以说 <code>协程是单线程的说法是错误的</code>。</p>
-<h1 id="4-并行场景模拟"><a href="#4-并行场景模拟" class="headerlink" title="4. 并行场景模拟"></a>4. 并行场景模拟</h1><h2 id="4-1-普通写法："><a href="#4-1-普通写法：" class="headerlink" title="4.1 普通写法："></a>4.1 普通写法：</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin">thread <span class="token punctuation">{</span>
-    <span class="token function">networkTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    activity<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">runOnUiThread</span> <span class="token punctuation">{</span> <span class="token function">uiTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-thread <span class="token punctuation">{</span>
-    <span class="token function">networkTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    activity<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">runOnUiThread</span> <span class="token punctuation">{</span> <span class="token function">uiTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-thread <span class="token punctuation">{</span>
-    <span class="token function">networkTest3</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    activity<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">runOnUiThread</span> <span class="token punctuation">{</span> <span class="token function">uiTest3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="4-并行场景模拟"><a href="#4-并行场景模拟" class="headerlink" title="4. 并行场景模拟"></a>4. 并行场景模拟</h1><h2 id="4-1-普通写法："><a href="#4-1-普通写法：" class="headerlink" title="4.1 普通写法："></a>4.1 普通写法：</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">thread &#123;</span><br><span class="line">    networkTest1()</span><br><span class="line">    activity?.runOnUiThread &#123; uiTest1() &#125;</span><br><span class="line">&#125;</span><br><span class="line">thread &#123;</span><br><span class="line">    networkTest2()</span><br><span class="line">    activity?.runOnUiThread &#123; uiTest2() &#125;</span><br><span class="line">&#125;</span><br><span class="line">thread &#123;</span><br><span class="line">    networkTest3()</span><br><span class="line">    activity?.runOnUiThread &#123; uiTest3() &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>直接开启几个线程，更新 UI 时，还要切换回主线程。</p>
-<h2 id="4-2-RxJava-写法"><a href="#4-2-RxJava-写法" class="headerlink" title="4.2 RxJava 写法"></a>4.2 RxJava 写法</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin">Single<span class="token punctuation">.</span><span class="token function">zip</span><span class="token punctuation">(</span>
-    RetrofitHelper<span class="token punctuation">.</span>wanAPI<span class="token punctuation">.</span><span class="token function">queryBannerRx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    RetrofitHelper<span class="token punctuation">.</span>wanAPI<span class="token punctuation">.</span><span class="token function">queryChapterRx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> banner<span class="token punctuation">,</span> chapter <span class="token operator">-></span> <span class="token string">"<span class="token interpolation"><span class="token delimiter variable">${</span>banner<span class="token punctuation">.</span>data<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>title<span class="token delimiter variable">}</span></span> - <span class="token interpolation"><span class="token delimiter variable">${</span>chapter<span class="token punctuation">.</span>data<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>name<span class="token delimiter variable">}</span></span>"</span> <span class="token punctuation">}</span>
-<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">observeOn</span><span class="token punctuation">(</span>AndroidSchedulers<span class="token punctuation">.</span><span class="token function">mainThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span> <span class="token punctuation">{</span> combine <span class="token operator">-></span> msg<span class="token punctuation">.</span>value <span class="token operator">=</span> combine <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="4-2-RxJava-写法"><a href="#4-2-RxJava-写法" class="headerlink" title="4.2 RxJava 写法"></a>4.2 RxJava 写法</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">Single.zip(</span><br><span class="line">    RetrofitHelper.wanAPI.queryBannerRx(),</span><br><span class="line">    RetrofitHelper.wanAPI.queryChapterRx(),</span><br><span class="line">    &#123; banner, chapter -&gt; <span class="string">&quot;<span class="subst">$&#123;banner.data?.first()?.title&#125;</span> - <span class="subst">$&#123;chapter.data?.first()?.name&#125;</span>&quot;</span> &#125;</span><br><span class="line">).observeOn(AndroidSchedulers.mainThread()).subscribe &#123; combine -&gt; msg.value = combine &#125;</span><br></pre></td></tr></table></figure>
+
 <p>这里实现两个真实并行网络请求，由代码可见，线程能通过 observeOn 自动切换，多个异步也能并行执行，相对于<code>普通写法</code>，代码可读性大大提高，也简洁不少。</p>
-<h2 id="4-3-协程写法"><a href="#4-3-协程写法" class="headerlink" title="4.3 协程写法"></a>4.3 协程写法</h2><pre class="line-numbers language-kotlin"><code class="language-kotlin">viewModelScope<span class="token punctuation">.</span><span class="token function">launch</span><span class="token punctuation">(</span>Dispatchers<span class="token punctuation">.</span>Main<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">val</span> banner <span class="token operator">=</span> async <span class="token punctuation">{</span> RetrofitHelper<span class="token punctuation">.</span>wanAPI<span class="token punctuation">.</span><span class="token function">queryBannerKt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>data <span class="token punctuation">}</span>
-    <span class="token keyword">val</span> chapter <span class="token operator">=</span> async <span class="token punctuation">{</span> RetrofitHelper<span class="token punctuation">.</span>wanAPI<span class="token punctuation">.</span><span class="token function">queryChapterKt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>data <span class="token punctuation">}</span>
-    msg<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">"<span class="token interpolation"><span class="token delimiter variable">${</span>banner<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>title<span class="token delimiter variable">}</span></span> + <span class="token interpolation"><span class="token delimiter variable">${</span>chapter<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>name<span class="token delimiter variable">}</span></span>"</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="4-3-协程写法"><a href="#4-3-协程写法" class="headerlink" title="4.3 协程写法"></a>4.3 协程写法</h2><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">viewModelScope.launch(Dispatchers.Main) &#123;</span><br><span class="line">    <span class="keyword">val</span> banner = async &#123; RetrofitHelper.wanAPI.queryBannerKt().<span class="keyword">data</span> &#125;</span><br><span class="line">    <span class="keyword">val</span> chapter = async &#123; RetrofitHelper.wanAPI.queryChapterKt().<span class="keyword">data</span> &#125;</span><br><span class="line">    msg.value = <span class="string">&quot;<span class="subst">$&#123;banner.await()?.first()?.title&#125;</span> + <span class="subst">$&#123;chapter.await()?.first()?.name&#125;</span>&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>相比较于 RxJava，代码量更少，在通过 <code>launch</code> 开启线协程后，3 行代码对应 3 个需要的操作，代码更加简洁明了。</p>
 <h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h1><p>协程是什么：协程是一个线程框架。</p>
 <p>使用协程的优势：</p>

@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)" >
   <h2>CSS 动画</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2022-05-02T13:58:00.000Z">
@@ -150,7 +150,7 @@
 </ol>
 </li>
 <li>响应<ol>
-<li>TCP 慢开始 / 14kb 规则</li>
+<li>TCP 慢开始 &#x2F; 14kb 规则</li>
 <li>拥塞控制</li>
 </ol>
 </li>
@@ -209,23 +209,8 @@
 <p><strong>返回值</strong></p>
 <p>一个 long 整数，请求 ID ，是回调列表中唯一的标识。是个非零值，没别的意义。你可以传这个值给 <code>window.cancelAnimationFrame()</code> 以取消回调函数。</p>
 </blockquote>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'some-element-you-want-to-animate'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> start<span class="token punctuation">;</span>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;some-element-you-want-to-animate&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> start;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">step</span>(<span class="params">timestamp</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (start === <span class="literal">undefined</span>)</span><br><span class="line">    start = timestamp;</span><br><span class="line">  <span class="keyword">const</span> elapsed = timestamp - start;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//这里使用`Math.min()`确保元素刚好停在200px的位置。</span></span><br><span class="line">  element.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">&#x27;translateX(&#x27;</span> + <span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">0.1</span> * elapsed, <span class="number">200</span>) + <span class="string">&#x27;px)&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (elapsed &lt; <span class="number">2000</span>) &#123; <span class="comment">// 在两秒后停止动画</span></span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">function</span> <span class="token function">step</span><span class="token punctuation">(</span>timestamp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>start <span class="token operator">===</span> undefined<span class="token punctuation">)</span>
-    start <span class="token operator">=</span> timestamp<span class="token punctuation">;</span>
-  <span class="token keyword">const</span> elapsed <span class="token operator">=</span> timestamp <span class="token operator">-</span> start<span class="token punctuation">;</span>
-
-  <span class="token comment" spellcheck="true">//这里使用`Math.min()`确保元素刚好停在200px的位置。</span>
-  element<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transform <span class="token operator">=</span> <span class="token string">'translateX('</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">0.1</span> <span class="token operator">*</span> elapsed<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'px)'</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>elapsed <span class="token operator">&lt;</span> <span class="token number">2000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 在两秒后停止动画</span>
-    window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>step<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>step<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>触发 Layout 情况 <a target="_blank" rel="noopener" href="https://csstriggers.com/transform">CSS Triggers</a></strong></p>
 <ul>
 <li>改变 <code>width、height、margin</code> 等和 <strong>大小、位置</strong> 相关的属性</li>

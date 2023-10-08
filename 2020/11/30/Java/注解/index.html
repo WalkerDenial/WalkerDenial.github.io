@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-12.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)" >
   <h2>注解</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-30T15:21:00.000Z">
@@ -146,24 +146,16 @@
 <p>Java 注解（Annotation）又称为 Java 标注，是 JDK1.5 引入的一种注释机制。是元数据的一种形式，提供有关于程序但不属于程序本身的数据。注解对它们注解的代码的操作没有直接影响。</p>
 </blockquote>
 <h2 id="2、注解扒皮"><a href="#2、注解扒皮" class="headerlink" title="2、注解扒皮"></a>2、注解扒皮</h2><p>是不是有点绕？简单来讲，<code>注解</code> 就是一种注释，提供标注功能，但是对所标注的代码没有任何影响，例如自定义一个注解：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>SOURCE<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 元注解</span>
-<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>METHOD<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 元注解</span>
-<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">WD</span> <span class="token punctuation">{</span>
-    
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.SOURCE)</span> <span class="comment">// 元注解</span></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span> <span class="comment">// 元注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> WD &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>在此处自定义了一个注解 <code>WD</code>，使用如下：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@WD</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">annotationTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@WD</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">annotationTest</span><span class="params">()</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>就这么简单，一个 <code>注解</code> 就诞生了，<strong>但是</strong> 这个 <code>注解</code> 并没有什么用，你没看错，就是一个标记而已，但是没有任何实质作用。</p>
 <p>Emmm… 平常不是经常用注解嘛，都是有作用的啊，这是不是一个假注解呢？</p>
 <p>不存在的，这就是货真价实的真注解，我们再深一步，扒一扒和平常用的注解有什么不同。先来分析一下 <a target="_blank" rel="noopener" href="https://github.com/JakeWharton/butterknife">ButterKnife</a> 的使用：</p>
-<pre class="line-numbers language-java"><code class="language-java">implementation <span class="token string">'com.jakewharton:butterknife:10.2.3'</span>
-annotationProcessor <span class="token string">'com.jakewharton:butterknife-compiler:10.2.3'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.jakewharton:butterknife:10.2.3&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&#x27;com.jakewharton:butterknife-compiler:10.2.3&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p>第一行引入，项目工程打开一看，跟上面自定义的 <code>注解</code> 一模一样，也就证明了，自定义的注解是没有问题的，但是，我们没有第二行代码，那么，问题就很明确了，区别在第二行代码上。</p>
 <p>第二行代码的本质就是通过 APT 技术，动态生成代码，也是 ButterKnife 动态生成 Java 文件的核心。所以，学习 <code>注解</code> 同时，也要结合 <code>反射</code>、<code>APT</code> 等技术手段，让注解变得更有意义，如果只是单纯的 <code>注解</code>，那么跟注释的差别不会太大。<code>注解</code> 的主要作用是：可以通过反射获取标注内容。</p>
 <h1 id="3、概念介绍"><a href="#3、概念介绍" class="headerlink" title="3、概念介绍"></a>3、概念介绍</h1><p>Java 定义了一套注解，共有 10 个，3 个在 java.lang 中，剩下 4 个在 java.lang.annotation 中。</p>
@@ -209,67 +201,18 @@ annotationProcessor <span class="token string">'com.jakewharton:butterknife-comp
 </tbody></table>
 <h1 id="5、注解-IntDef-使用"><a href="#5、注解-IntDef-使用" class="headerlink" title="5、注解 IntDef 使用"></a>5、注解 IntDef 使用</h1><p>IntDef 顾名思义就是对 Int 数据进行规约的，比如我们常用的 view.setBackgroundResource(xxx)，此处 xxx 为 int 类型，但是如果我们随便传入一个 int 类型进去，会发现编译器报错，这里就是类似 IntDef 的功劳，编译器帮我们检查数据是否合法，从而避免很多不必要的错误。以往，为了确保数据唯一，我们常常使用 <code>枚举</code> 来进行规约，但是随着项目增大，枚举会很多很多，导致内存开销也比较大，为了优化性能，可以考虑尝试使用 IntDef 解解毒。</p>
 <p>先看一下 <code>枚举</code> 的写法：</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">/**
- * 列举周几信息
- * 常规写法：枚举
- */</span>
-<span class="token comment" spellcheck="true">/**
- * 列举周几信息
- * 常规写法：枚举
- */</span>
-<span class="token keyword">enum</span> <span class="token keyword">class</span> Weeks <span class="token punctuation">{</span>
-    MONDAY<span class="token punctuation">,</span>
-    TUESDAY<span class="token punctuation">,</span>
-    WEDNESDAY<span class="token punctuation">,</span>
-    THURSDAY<span class="token punctuation">,</span>
-    FRIDAY<span class="token punctuation">,</span>
-    SATURDAY<span class="token punctuation">,</span>
-    SUNDAY
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 列举周几信息</span></span><br><span class="line"><span class="comment"> * 常规写法：枚举</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 列举周几信息</span></span><br><span class="line"><span class="comment"> * 常规写法：枚举</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="title class_">Weeks</span> &#123;</span><br><span class="line">    MONDAY,</span><br><span class="line">    TUESDAY,</span><br><span class="line">    WEDNESDAY,</span><br><span class="line">    THURSDAY,</span><br><span class="line">    FRIDAY,</span><br><span class="line">    SATURDAY,</span><br><span class="line">    SUNDAY</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后，我们再看一下对应的字节码：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">enum</span> com<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks <span class="token keyword">extends</span> <span class="token class-name">java</span><span class="token operator">/</span>lang<span class="token operator">/</span>Enum <span class="token punctuation">{</span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">enum</span> <span class="title class_">com</span>/wd/kt/annotation/Weeks <span class="keyword">extends</span> <span class="title class_">java</span>/lang/Enum &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// access flags 0x4019</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Lcom</span>/wd/kt/annotation/Weeks; MONDAY</span><br><span class="line"></span><br><span class="line">  <span class="comment">// access flags 0x4019</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Lcom</span>/wd/kt/annotation/Weeks; TUESDAY</span><br><span class="line"></span><br><span class="line">  <span class="comment">// access flags 0x4019</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Lcom</span>/wd/kt/annotation/Weeks; WEDNESDAY</span><br><span class="line"></span><br><span class="line">  <span class="comment">// access flags 0x4019</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Lcom</span>/wd/kt/annotation/Weeks; THURSDAY</span><br><span class="line"></span><br><span class="line">  <span class="comment">// access flags 0x4019</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Lcom</span>/wd/kt/annotation/Weeks; FRIDAY</span><br><span class="line"></span><br><span class="line">  <span class="comment">// access flags 0x4019</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Lcom</span>/wd/kt/annotation/Weeks; SATURDAY</span><br><span class="line"></span><br><span class="line">  <span class="comment">// access flags 0x4019</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">enum</span> <span class="title class_">Lcom</span>/wd/kt/annotation/Weeks; SUNDAY</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 其余代码省略，有兴趣的同学可以自己生成字节码查看一下</span></span><br></pre></td></tr></table></figure>
 
-  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
-  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> MONDAY
-
-  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
-  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> TUESDAY
-
-  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
-  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> WEDNESDAY
-
-  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
-  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> THURSDAY
-
-  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
-  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> FRIDAY
-
-  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
-  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> SATURDAY
-
-  <span class="token comment" spellcheck="true">// access flags 0x4019</span>
-  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> Lcom<span class="token operator">/</span>wd<span class="token operator">/</span>kt<span class="token operator">/</span>annotation<span class="token operator">/</span>Weeks<span class="token punctuation">;</span> SUNDAY
-  
-  <span class="token comment" spellcheck="true">// 其余代码省略，有兴趣的同学可以自己生成字节码查看一下</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们看到，字节码生成了 7 个对象用来表述星期信息，而对象的开销又比较大，从而会增加应用开销，从字节码也能看出，为什么 <code>枚举</code> 开销会比较大了，这里只有 7 个枚举，对应 7 个对象，那么如果 700 个枚举呢？7000 个呢？所以，寻找一种替代办法还是很有必要的。</p>
 <p>接下来，我们看一下另一种写法，IntDef 写法：</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token annotation builtin">@IntDef</span><span class="token punctuation">(</span>MONDAY<span class="token punctuation">,</span> TUESDAY<span class="token punctuation">,</span> WEDNESDAY<span class="token punctuation">,</span> THURSDAY<span class="token punctuation">,</span> FRIDAY<span class="token punctuation">,</span> SATURDAY<span class="token punctuation">,</span> SUNDAY<span class="token punctuation">)</span>
-<span class="token annotation builtin">@Target</span><span class="token punctuation">(</span>AnnotationTarget<span class="token punctuation">.</span>FIELD<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>TYPE_PARAMETER<span class="token punctuation">,</span> AnnotationTarget<span class="token punctuation">.</span>VALUE_PARAMETER<span class="token punctuation">)</span>
-<span class="token annotation builtin">@Retention</span><span class="token punctuation">(</span>AnnotationRetention<span class="token punctuation">.</span>SOURCE<span class="token punctuation">)</span>
-<span class="token keyword">annotation</span> <span class="token keyword">class</span> WeekDays
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此处设置了 <strong>注解</strong> WeekDays，再看看如何使用的：</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">showWeek</span><span class="token punctuation">(</span><span class="token annotation builtin">@WeekDays</span> day<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@IntDef(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY)</span></span><br><span class="line"><span class="meta">@Target(AnnotationTarget.FIELD, AnnotationTarget.TYPE_PARAMETER, AnnotationTarget.VALUE_PARAMETER)</span></span><br><span class="line"><span class="meta">@Retention(AnnotationRetention.SOURCE)</span></span><br><span class="line"><span class="keyword">annotation</span> <span class="keyword">class</span> <span class="title class_">WeekDays</span></span><br></pre></td></tr></table></figure>
 
-<span class="token keyword">fun</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">showWeek</span><span class="token punctuation">(</span><span class="token number">99</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Java 版本此处编译器会直接报错，Kotlin 目前还存在问题</span>
-    <span class="token function">showWeek</span><span class="token punctuation">(</span>THURSDAY<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 只有限定范围内的数据，传入才能通过编译</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此处设置了 <strong>注解</strong> WeekDays，再看看如何使用的：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">showWeek</span><span class="params">(<span class="meta">@WeekDays</span> day: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">    print(day)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">test</span><span class="params">()</span></span> &#123;</span><br><span class="line">    showWeek(<span class="number">99</span>) <span class="comment">// Java 版本此处编译器会直接报错，Kotlin 目前还存在问题</span></span><br><span class="line">    showWeek(THURSDAY) <span class="comment">// 只有限定范围内的数据，传入才能通过编译</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这里只是定义了 7 个常量，开销比对象小多了，达到了优化的目的。</p>
 <p>综上所述，在要使用枚举的时候，看看能不能使用 <code>IntDef</code>、<code>StringDef</code> 替代，从而降低内存的开销。</p>
 

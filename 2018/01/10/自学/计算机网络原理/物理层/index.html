@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-19.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-13.png)" >
   <h2>物理层</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2018-01-10T07:19:00.000Z">
@@ -148,7 +148,7 @@
 <h4 id="1-2-物理层的功能和提供的服务"><a href="#1-2-物理层的功能和提供的服务" class="headerlink" title="1.2 物理层的功能和提供的服务"></a>1.2 物理层的功能和提供的服务</h4><p><strong>1. 机械特性</strong></p>
 <p>DTE 与 DCE 之间通过多根导线相互联系。</p>
 <p><strong>2. 电气特性</strong></p>
-<p>DTE 与 DCE 之间有多根导线相连，这些导线中除了地线以外，其它信号线均有方向性。物理层的电气特性规定了这组导线的电气连接及有关电路的特性，一般包括：接收器和发送器电路特性的说明，表示信号状态的电压/电流电平的识别、最大数据传输速率的说明，以及互连电缆相关的规范等。</p>
+<p>DTE 与 DCE 之间有多根导线相连，这些导线中除了地线以外，其它信号线均有方向性。物理层的电气特性规定了这组导线的电气连接及有关电路的特性，一般包括：接收器和发送器电路特性的说明，表示信号状态的电压&#x2F;电流电平的识别、最大数据传输速率的说明，以及互连电缆相关的规范等。</p>
 <p>DTE 与 DCE 接口的各根导线（也称电路）的电气连接方式有非平衡方式、采用差动接收器的非平衡方式和平衡方式三种。</p>
 <p><strong>3. 信号的功能特性</strong></p>
 <p>物理层的功能特性规定了接口信号的来源、作用以及其它信号之间的关系。接口信号线按功能一般可分为数据信号线、控制信号线、定时信号线和接地线等四类。信号线的名称可以采用数字、字母组合或英文缩写三种方式来命名。</p>
@@ -177,13 +177,13 @@
 <h4 id="2-5-传输介质的选择"><a href="#2-5-传输介质的选择" class="headerlink" title="2.5 传输介质的选择"></a>2.5 传输介质的选择</h4><p>传输介质的选择取决于以下诸因素：网络拓扑的结构、实际需要的通信容量、可靠性要求、能承受的价格范围。</p>
 <h3 id="3-数据通信技术"><a href="#3-数据通信技术" class="headerlink" title="3. 数据通信技术"></a>3. 数据通信技术</h3><h4 id="3-1-通信信道"><a href="#3-1-通信信道" class="headerlink" title="3.1 通信信道"></a>3.1 通信信道</h4><p>数据通信的任务是传输数据信息，希望达到传输速度快、出错率低、信息量大、可靠性高，并且既经济又便于使用维护。</p>
 <p><strong>1. 数据传输速率</strong></p>
-<p>所谓数据传输速率，是指每秒能传输的二进制信息位数，单位为位/秒（Bits Per Second），记作 bps 或 b/s，它可由下式确定：</p>
-<p><strong>R = (log<sub>2</sub>N)/T (bps)</strong></p>
+<p>所谓数据传输速率，是指每秒能传输的二进制信息位数，单位为位&#x2F;秒（Bits Per Second），记作 bps 或 b&#x2F;s，它可由下式确定：</p>
+<p><strong>R &#x3D; (log<sub>2</sub>N)&#x2F;T (bps)</strong></p>
 <p>式中 T 为一个数字脉冲信号的宽度（全款码情况）或重复周期（归零码情况），单位为秒。一个数字脉冲也成为一个码元，N 为一个码元所取的有效离散值个数，也称调制电平数，N 一般取 2 的整数次方值。</p>
 <p><strong>2. 信道容量</strong></p>
-<p>信道容量表征一个信道传输数据的能力，单位也用位/秒（bps）。信道容量与数据传输速率的区别在于，前者表示信道的最大数据传输速率，是信道传输数据能力的极限，而后者则表示实际的数据传输速率。</p>
+<p>信道容量表征一个信道传输数据的能力，单位也用位&#x2F;秒（bps）。信道容量与数据传输速率的区别在于，前者表示信道的最大数据传输速率，是信道传输数据能力的极限，而后者则表示实际的数据传输速率。</p>
 <p><strong>3. 误码率</strong></p>
-<p>误码率是衡量数据通信系统在正常工作情况下的传输可靠性的指标，它定义为二进制数据位传输时出错的概率。设传输的二进制数据总数为 N 位，其中出错的位数为 N<sub>e</sub>，则误码率表示为：P<sub>e</sub>=N<sub>e</sub>/N</p>
+<p>误码率是衡量数据通信系统在正常工作情况下的传输可靠性的指标，它定义为二进制数据位传输时出错的概率。设传输的二进制数据总数为 N 位，其中出错的位数为 N<sub>e</sub>，则误码率表示为：P<sub>e</sub>&#x3D;N<sub>e</sub>&#x2F;N</p>
 <p><strong>4. 通信方式</strong></p>
 <p>在计算机内部各部件之间、计算机与各种外部设备之间及计算机与计算机之间都是以通信的方式传递交换数据信息的。通信有两种基本方式，即串行方式和并行方式。通常情况下，并行方式用于近距离通信，串行方式用于距离较远的通信。在计算机网络中，串行通信方式更具有普遍意义。</p>
 <h4 id="3-2-模拟数据通信和数字数据通信"><a href="#3-2-模拟数据通信和数字数据通信" class="headerlink" title="3.2 模拟数据通信和数字数据通信"></a>3.2 模拟数据通信和数字数据通信</h4><p>几个基本术语解释：</p>
@@ -207,8 +207,8 @@
 <p>数字信号可以直接采用基带传输，所谓基带就是指表示二进制比特序列的矩形脉冲信号所占的固有频带，称为基本频带（简称基带）。基带传输就是在线路中直接传送数字信号的电脉冲，这是一种最简单的传输方式，近距离通信的局域网都采用基带传输。</p>
 <p><strong>2. 模拟数据的数字信号编码</strong></p>
 <p>对模拟数据进行数字信号编码的最常用方法是脉码调制 PCM（Pulse Code Modulation），它常用于对声音信号进行编码。脉码调制是以采样定理为基础的，该定理从数学上证明：若对连续变化的模拟信号进行周期性采样，只要采样频率大于等于有效信号最高频率或其带宽的两倍，则采样值便可包含原始信号的全部信息，利用低通滤波器可以从这些采样中重新构造出原始信号。设原始信号的最高频率为 F<sub>max</sub>，采样频率为 F<sub>s</sub>，则采样定理可以下式表示：</p>
-<p><strong>F<sub>s</sub>(=1/T<sub>s</sub>)≥2F<sub>max</sub> 或 F<sub>s</sub>≥2B<sub>s</sub></strong></p>
-<p>式中 T<sub>s</sub> 为采样周期，B<sub>s</sub>(=F<sub>max</sub> - F<sub>min</sub>) 为原始信号的带宽。</p>
+<p><strong>F<sub>s</sub>(&#x3D;1&#x2F;T<sub>s</sub>)≥2F<sub>max</sub> 或 F<sub>s</sub>≥2B<sub>s</sub></strong></p>
+<p>式中 T<sub>s</sub> 为采样周期，B<sub>s</sub>(&#x3D;F<sub>max</sub> - F<sub>min</sub>) 为原始信号的带宽。</p>
 <h4 id="4-2-调制解调器"><a href="#4-2-调制解调器" class="headerlink" title="4.2 调制解调器"></a>4.2 调制解调器</h4><p>传输线路存在三个主要的问题：衰减（Attenuation）、延迟畸变（Delay Distortion）和噪声（Noise）。衰减是指信号传播的过程中能量的损失。这种损失可以表示为每公里多少分贝。能量损失的数量跟频率有关。信号并非是一个简单的波形，而是傅里叶级数中的一些分量。每个分量被衰减的程度不同，因而导致了在接收方得到一个完全不同的傅里叶频谱。</p>
 <p>更糟的是，不同的傅里叶分量在线路上的传播速度也不同。这种速度的差异会导致接收端信号的畸变。</p>
 <ol>

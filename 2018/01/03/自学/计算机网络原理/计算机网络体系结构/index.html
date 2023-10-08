@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-10.png)" >
   <h2>计算机网络体系结构</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2018-01-03T07:23:00.000Z">
@@ -152,7 +152,7 @@
 <ol>
 <li>除了在物理介质上进行的是实通信之外，其余各对等实体间进行的都是虚通信</li>
 <li>对等层的虚通信必须遵循该层的协议</li>
-<li>n 层的虚通信是通过 n/n-1 层间接口处 n-1 层提供的服务以及 n-1 层的通信（通常也是虚通信）来实现的</li>
+<li>n 层的虚通信是通过 n&#x2F;n-1 层间接口处 n-1 层提供的服务以及 n-1 层的通信（通常也是虚通信）来实现的</li>
 </ol>
 <p>层次结构的划分，一般要遵循以下原则：</p>
 <ol>
@@ -160,9 +160,9 @@
 <li>层间接口必须清晰，跨越接口的信息量应尽可能少</li>
 <li>层数应适中。若层数太少，则多种功能混杂在一层中，造成每一层的协议太复杂；若层数太多，则体系结构过于复杂，使描述和实现各层功能变得困难</li>
 </ol>
-<h3 id="2-OSI-RM-开放系统互联参考模型"><a href="#2-OSI-RM-开放系统互联参考模型" class="headerlink" title="2. OSI/RM 开放系统互联参考模型"></a>2. OSI/RM 开放系统互联参考模型</h3><h4 id="2-1-OSI-RM-简介"><a href="#2-1-OSI-RM-简介" class="headerlink" title="2.1 OSI/RM 简介"></a>2.1 OSI/RM 简介</h4><p>开放系统互连（Open System Interconnection）基本参考模型是由国际标准化组织（ISO）制定的标准化开放式计算机网络层次结构模型，又称 ISO’S OSI 参考模型。「开放」这个词表示能使任何两个遵守参考模型和有关标准的系统进行互连。</p>
+<h3 id="2-OSI-RM-开放系统互联参考模型"><a href="#2-OSI-RM-开放系统互联参考模型" class="headerlink" title="2. OSI&#x2F;RM 开放系统互联参考模型"></a>2. OSI&#x2F;RM 开放系统互联参考模型</h3><h4 id="2-1-OSI-RM-简介"><a href="#2-1-OSI-RM-简介" class="headerlink" title="2.1 OSI&#x2F;RM 简介"></a>2.1 OSI&#x2F;RM 简介</h4><p>开放系统互连（Open System Interconnection）基本参考模型是由国际标准化组织（ISO）制定的标准化开放式计算机网络层次结构模型，又称 ISO’S OSI 参考模型。「开放」这个词表示能使任何两个遵守参考模型和有关标准的系统进行互连。</p>
 <p>OSI 包括了体系结构、服务定义和协议规范三级抽象。OSI 的体系结构定义了一个七层模型，用以进行进程间的通信，并作为一个框架来协调各层标准的制定；OSI 的服务定义描述了各层所提供的服务，以及层与层之间的抽象接口和交互用的服务原语；OIS 各层的协议规范，精确地定义了应当发送何种控制信息及用何种过程来解释该控制信息。</p>
-<h4 id="2-2-OSI-RM-的结构"><a href="#2-2-OSI-RM-的结构" class="headerlink" title="2.2 OSI/RM 的结构"></a>2.2 OSI/RM 的结构</h4><p>简而言之，OSI 参考模型将网络划分为七层，OSI 七层模型从下到上分别为物理层（Physical Layer，PH）、数据链路层（Data Link Layer，DL）、网络层（Network Layer，N）、传输层（也称运输层）（Transport Layer，T）、会话层（Session Layer，S）、表示层（Presentation Layer，P）和应用层（Application Layer，A）。</p>
+<h4 id="2-2-OSI-RM-的结构"><a href="#2-2-OSI-RM-的结构" class="headerlink" title="2.2 OSI&#x2F;RM 的结构"></a>2.2 OSI&#x2F;RM 的结构</h4><p>简而言之，OSI 参考模型将网络划分为七层，OSI 七层模型从下到上分别为物理层（Physical Layer，PH）、数据链路层（Data Link Layer，DL）、网络层（Network Layer，N）、传输层（也称运输层）（Transport Layer，T）、会话层（Session Layer，S）、表示层（Presentation Layer，P）和应用层（Application Layer，A）。</p>
 <p>各层的功能：</p>
 <ol>
 <li>物理层定义了为建立、维护和拆除物理链路所需的机械的、电气的、功能的和规程的特性，其作用是使原始的数据比特流能在物理介质上传输。具体涉及接插件的规格，「0」、「1」信号的电平表示，收发双方的协调等内容</li>
@@ -170,7 +170,7 @@
 <li>在网络层中，数据以网络协议数据单元（通常称为分组）为单位进行传输。网络层关心的是通信子网的运行控制，主要解决如何使数据分组跨越通信子网从源传送到目的地的问题，这就需要在通信子网中进行路由选择。另外，为避免通信子网中出现过多的分组而造成网络阻塞，需要对流入的分组数量进行控制。当分组要跨越多个通信子网才能到达目的地时，还要解决网际互联的问题</li>
 <li>传输层是第一个端-端，也即主机-主机的层次。传输层提供的端到端的透明数据传输服务，使高层用户不必关心通信子网的存在，由此用统一的数据原语书写的高层软件便可运行于任何通信子网上。传输层还要处理端到端的差错控制和流量控制问题</li>
 <li>会话层是进程-进程的层次，其主要功能室组织和同步不同主机上各种进程间的通信（也称为对话）。会话层负责在两个会话层实体之间进行对话进行对话连接的建立和拆除。在半双工情况下，会话层提供一种数据权标来控制某一方何时有权发送数据。会话层还提供在数据流中插入同步点的机制，使得数据传输因网络故障而中断后，可以不必从头开始而仅重传最近一个同步点以后的数据</li>
-<li>表示层为上层用户提供共同的数据或信息语法表示变换。为了让采用不同编码方法的计算机在通信中能相互理解数据的内容，可以采用抽象的标准方法来定义数据结构，并采用标准的编码表示形式。表示层管理这些抽象的数据结构，并将计算机内部的表示形式转换成网络通信中采用的标准表示形式。数据压缩/恢复和加密/解密也是表示层可提供的表示变换功能</li>
+<li>表示层为上层用户提供共同的数据或信息语法表示变换。为了让采用不同编码方法的计算机在通信中能相互理解数据的内容，可以采用抽象的标准方法来定义数据结构，并采用标准的编码表示形式。表示层管理这些抽象的数据结构，并将计算机内部的表示形式转换成网络通信中采用的标准表示形式。数据压缩&#x2F;恢复和加密&#x2F;解密也是表示层可提供的表示变换功能</li>
 <li>应用层是开放系统互联环境的最高层。不用的应用层为特定类型的网络应用提供访问 OSI 环境的手段。网络环境下不同主机间的文件传送访问和管理（FTAM）、传送标准电子邮件的文电处理系统（MHS）、使不同类型的终端和主机通过网络交互访问的虚拟终端（VT）协议等都属于应用层的范畴</li>
 </ol>
 <h4 id="2-3-面向连接服务与无连接服务"><a href="#2-3-面向连接服务与无连接服务" class="headerlink" title="2.3 面向连接服务与无连接服务"></a>2.3 面向连接服务与无连接服务</h4><p><strong>1. 通信服务类型</strong></p>
@@ -181,29 +181,29 @@
 <p>确认是指数据分组接收节点在收到每个分组后，要求向发送节点回送正确接收分组的确认信息。在规定时间内，如果发送节点没有接收到接收节点返回的确认信息，就认为该数据分组发送失败，发送节点重传该数据分组。</p>
 <p><strong>3. 服务类型和服务质量</strong></p>
 <p>在网络的各个层次的设计中，可以在面向连接与确认服务、面向连接与不确认服务、无连接与确认服务、无连接与不确认服务这 4 种情况中，根据不同的通信要求，决定选择不同的服务类型。</p>
-<h3 id="3-TCP-IP-参考模型"><a href="#3-TCP-IP-参考模型" class="headerlink" title="3. TCP/IP 参考模型"></a>3. TCP/IP 参考模型</h3><h4 id="3-1-TCP-IP-简介"><a href="#3-1-TCP-IP-简介" class="headerlink" title="3.1 TCP/IP 简介"></a>3.1 TCP/IP 简介</h4><p>TCP/IP 协议具有以下几个特点：</p>
+<h3 id="3-TCP-IP-参考模型"><a href="#3-TCP-IP-参考模型" class="headerlink" title="3. TCP&#x2F;IP 参考模型"></a>3. TCP&#x2F;IP 参考模型</h3><h4 id="3-1-TCP-IP-简介"><a href="#3-1-TCP-IP-简介" class="headerlink" title="3.1 TCP&#x2F;IP 简介"></a>3.1 TCP&#x2F;IP 简介</h4><p>TCP&#x2F;IP 协议具有以下几个特点：</p>
 <ol>
 <li>开放的协议标准，可以免费使用，并且独立于特定的计算机硬件与操作系统</li>
 <li>独立于特定的网络硬件，可以运行在局域网、广域网，更适用于互联网中</li>
-<li>统一的网络地址分配方案，使得整个 TCP/IP 设备在网中都具有唯一的地址</li>
+<li>统一的网络地址分配方案，使得整个 TCP&#x2F;IP 设备在网中都具有唯一的地址</li>
 <li>标准的高层协议，可以提供多种可靠的用户服务</li>
 </ol>
-<h4 id="3-2-TCP-IP-的体系结构"><a href="#3-2-TCP-IP-的体系结构" class="headerlink" title="3.2 TCP/IP 的体系结构"></a>3.2 TCP/IP 的体系结构</h4><p>协议分层模型包括两方面的内容：一是层次结构，二是各层功能的描述。</p>
-<p>TCP/IP 参考模型可以分为 4 个层次：应用层、传输层、互连层、主机-网络层。</p>
-<p>TCP/IP 是一组协议的代名词，它还包括许多别的协议，组成了 TCP/IP 协议簇。一般来说，TCP 提供传输层服务，而 IP 提供网络层服务。</p>
-<p>在 TCP/IP 层次模型中，主机-网络层是 TCP/IP 参考模型的最底层，是 TCP/IP 的实现基础，它包括 TCP/IP 赖以存在的各种通信网与 TCP/IP 之间的接口和物理网络协议，这些通信网络包括多种广域网，以及各种局域网。</p>
+<h4 id="3-2-TCP-IP-的体系结构"><a href="#3-2-TCP-IP-的体系结构" class="headerlink" title="3.2 TCP&#x2F;IP 的体系结构"></a>3.2 TCP&#x2F;IP 的体系结构</h4><p>协议分层模型包括两方面的内容：一是层次结构，二是各层功能的描述。</p>
+<p>TCP&#x2F;IP 参考模型可以分为 4 个层次：应用层、传输层、互连层、主机-网络层。</p>
+<p>TCP&#x2F;IP 是一组协议的代名词，它还包括许多别的协议，组成了 TCP&#x2F;IP 协议簇。一般来说，TCP 提供传输层服务，而 IP 提供网络层服务。</p>
+<p>在 TCP&#x2F;IP 层次模型中，主机-网络层是 TCP&#x2F;IP 参考模型的最底层，是 TCP&#x2F;IP 的实现基础，它包括 TCP&#x2F;IP 赖以存在的各种通信网与 TCP&#x2F;IP 之间的接口和物理网络协议，这些通信网络包括多种广域网，以及各种局域网。</p>
 <p>在互连层中，IP 为互联网协议（Internet Protocol）、ICMP 为互联网控制报文协议（Internet Control Message Protocol）、ARP 为地址转换协议（Address Resolution Protocol）、RARP 为反向地址转换协议（Reverse ARP）。互连层的主要功能主要由 IP 来提供。除了提供端到端的分组分发功能外，IP 还提供了很多扩充功能。</p>
 <p>互连层的另一个重要服务是在互相独立的局域网上建立互联网络，即互联网。</p>
 <p>在传输层，TCP 为传输控制协议、UDP 为用户数据报协议（User Datagram Protocol）。这一层主要功能是负责应用进程之间的端-端通信，它与 OSI 参考模型的传输层功能是相似的。TCP 提供可靠的字节流信道，UDP 提供不可靠的数据报传送信道。</p>
 <p>在应用层中，SMTP 为简单邮件传送协议（Simple Mail Transfer Protocol）、DNS 为域名服务（Domain Name Service）、FTP 为文件传输协议（File Transfer Protocol）、TELNET 为远程终端访问协议。</p>
-<h3 id="4-OSI-RM-与-TCP-IP-参考模型的比较"><a href="#4-OSI-RM-与-TCP-IP-参考模型的比较" class="headerlink" title="4. OSI/RM 与 TCP/IP 参考模型的比较"></a>4. OSI/RM 与 TCP/IP 参考模型的比较</h3><p> OSI 和 TCP/IP 参考模型有很多共同之处，两者都以协议栈的概念为基础，并且协议栈中的协议彼此相互独立，而且两个模型中都采用了层次结构的概念，各个层的功能也大体相似。除了这些基本的相似之处意外，两个模型也有着许多不同的地方。</p>
-<p>首先，OSI 模型有七层，而 TCP/IP 只有四层，它们都有网络层（或者称为互联网层）、传输层和应用层，但其它的层并不相同。</p>
-<p>其次，在于无连接的和面向连接的通信范围有所不同。OSI 模型的网络层同时支持无连接和面向连接的通信，但是传输层上只支持面向连接的通信。TCP/IP 模型的网络层只有一种模式即无连接通信，但是在传输层上同时支持两种通信模式。</p>
+<h3 id="4-OSI-RM-与-TCP-IP-参考模型的比较"><a href="#4-OSI-RM-与-TCP-IP-参考模型的比较" class="headerlink" title="4. OSI&#x2F;RM 与 TCP&#x2F;IP 参考模型的比较"></a>4. OSI&#x2F;RM 与 TCP&#x2F;IP 参考模型的比较</h3><p> OSI 和 TCP&#x2F;IP 参考模型有很多共同之处，两者都以协议栈的概念为基础，并且协议栈中的协议彼此相互独立，而且两个模型中都采用了层次结构的概念，各个层的功能也大体相似。除了这些基本的相似之处意外，两个模型也有着许多不同的地方。</p>
+<p>首先，OSI 模型有七层，而 TCP&#x2F;IP 只有四层，它们都有网络层（或者称为互联网层）、传输层和应用层，但其它的层并不相同。</p>
+<p>其次，在于无连接的和面向连接的通信范围有所不同。OSI 模型的网络层同时支持无连接和面向连接的通信，但是传输层上只支持面向连接的通信。TCP&#x2F;IP 模型的网络层只有一种模式即无连接通信，但是在传输层上同时支持两种通信模式。</p>
 <h4 id="4-1-OSI-模型和协议的缺点"><a href="#4-1-OSI-模型和协议的缺点" class="headerlink" title="4.1 OSI 模型和协议的缺点"></a>4.1 OSI 模型和协议的缺点</h4><ol>
 <li>模型和协议自身的缺陷。会话层和表示层这两层几乎是空的，而另外的数据链路层和网络层包含内容太多，有很多的子层插入，每个子层都有不同的功能。OSI 模型以及相应的服务定义和协议都极其复杂，它们很难实现。</li>
-<li>协议出现时机晚于 TCP/IP 协议。</li>
+<li>协议出现时机晚于 TCP&#x2F;IP 协议。</li>
 </ol>
-<h4 id="4-2-TCP-IP-模型和协议的缺点"><a href="#4-2-TCP-IP-模型和协议的缺点" class="headerlink" title="4.2 TCP/IP 模型和协议的缺点"></a>4.2 TCP/IP 模型和协议的缺点</h4><ol>
+<h4 id="4-2-TCP-IP-模型和协议的缺点"><a href="#4-2-TCP-IP-模型和协议的缺点" class="headerlink" title="4.2 TCP&#x2F;IP 模型和协议的缺点"></a>4.2 TCP&#x2F;IP 模型和协议的缺点</h4><ol>
 <li>没有清楚地区分哪些是规范、哪些是实现</li>
 <li>主机-网络层并不是常规意义上的一层，它是定义了网络层与数据链路层的接口</li>
 </ol>

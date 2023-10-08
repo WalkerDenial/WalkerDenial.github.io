@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-18.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)" >
   <h2>关系模式设计理论</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-11-20T09:41:00.000Z">
@@ -150,30 +150,30 @@
 </ol>
 <h3 id="2-函数依赖"><a href="#2-函数依赖" class="headerlink" title="2. 函数依赖"></a>2. 函数依赖</h3><p>在数据依赖中，函数依赖是最基本、最重要的一种依赖。实际上，它是关键码概念的推广。</p>
 <h4 id="2-1-函数依赖的定义"><a href="#2-1-函数依赖的定义" class="headerlink" title="2.1 函数依赖的定义"></a>2.1 函数依赖的定义</h4><blockquote>
-<p>设有关系模式 R（U），X 和 Y 是属性集 U 的子集，函数依赖（functional dependency，简记为 FD）是形式 X → Y 的一个命题，只要 r 是 R 的当前关系，对 r 中任意两个元组 t 和 s，都有 t[X] = s[X] 蕴涵 t[Y] = s[Y]，那么称 FD X → Y 在关系模式 R（U）中成立。</p>
+<p>设有关系模式 R（U），X 和 Y 是属性集 U 的子集，函数依赖（functional dependency，简记为 FD）是形式 X → Y 的一个命题，只要 r 是 R 的当前关系，对 r 中任意两个元组 t 和 s，都有 t[X] &#x3D; s[X] 蕴涵 t[Y] &#x3D; s[Y]，那么称 FD X → Y 在关系模式 R（U）中成立。</p>
 </blockquote>
 <h4 id="2-2-FD-的逻辑蕴涵"><a href="#2-2-FD-的逻辑蕴涵" class="headerlink" title="2.2 FD 的逻辑蕴涵"></a>2.2 FD 的逻辑蕴涵</h4><blockquote>
 <p>设 F 是在关系模式 R 上成立的函数依赖的集合，X→Y 是一个函数依赖。</p>
-<p>设 F 是函数依赖集，被 F 逻辑蕴涵的函数依赖全体构成的集合，称为函数依赖集 F 的闭包（Closure），记为 F<sup>+</sup>。即 F<sup>+</sup> = { X→Y | F |= X→Y }</p>
+<p>设 F 是函数依赖集，被 F 逻辑蕴涵的函数依赖全体构成的集合，称为函数依赖集 F 的闭包（Closure），记为 F<sup>+</sup>。即 F<sup>+</sup> &#x3D; { X→Y | F |&#x3D; X→Y }</p>
 </blockquote>
 <h4 id="2-3-FD-的推理规则"><a href="#2-3-FD-的推理规则" class="headerlink" title="2.3 FD 的推理规则"></a>2.3 FD 的推理规则</h4><p>设 U 是关系模式 R 的属性集，F 是 R 上成立的只涉及到 U 中属性的函数依赖集。FD 的推理规则如下：</p>
 <ol>
 <li>自反性（Reflexivity）：若 Y∈X∈U，则 X→Y 在 R 上成立</li>
 <li>增广性（Augmentation）：若 X→Y 在 R 上成立，且 Z∈U，则 XZ→YZ 在 R 上成立</li>
 <li>传递性（Transitivity）：若 X→Y 和 Y→Z 在 R 上成立，则 X→Z 在 R 上成立</li>
-<li>合并性（Union）：{ X→Y，X→Z } |=X→YZ</li>
-<li>分解性（Decomposition）：{ X→Y，Z∈Y } |=X→Z</li>
-<li>伪传递性：{ X→Y，WY→Z } |=WX→Z</li>
-<li>复合性（Composition）：{ X→Y，W→Z } |=XW→YZ</li>
-<li>通用一致性（Gernal Unification Theorem）：{ X→Y，W→Z } |=X∪（W-Y）→YZ</li>
+<li>合并性（Union）：{ X→Y，X→Z } |&#x3D;X→YZ</li>
+<li>分解性（Decomposition）：{ X→Y，Z∈Y } |&#x3D;X→Z</li>
+<li>伪传递性：{ X→Y，WY→Z } |&#x3D;WX→Z</li>
+<li>复合性（Composition）：{ X→Y，W→Z } |&#x3D;XW→YZ</li>
+<li>通用一致性（Gernal Unification Theorem）：{ X→Y，W→Z } |&#x3D;X∪（W-Y）→YZ</li>
 </ol>
 <h4 id="2-4-FD-和关键码的联系"><a href="#2-4-FD-和关键码的联系" class="headerlink" title="2.4 FD 和关键码的联系"></a>2.4 FD 和关键码的联系</h4><p>设关系模式 R 的属性集是 U，X 是 U 的一个子集。如果 X→U 在 R 上成立，那么称 X 是 R 的一个超键。如果 X→U 在 R 上成立，但对于 X 的任一真子集 X<sub>1</sub> 都有 X<sub>1</sub>→U 不成立，那么称 X 是 R 上的一个候选键。</p>
 <h4 id="2-5-属性集的闭包"><a href="#2-5-属性集的闭包" class="headerlink" title="2.5 属性集的闭包"></a>2.5 属性集的闭包</h4><blockquote>
-<p>设 F 是属性集 U 上的 FD 集，X 是 U 的子集，那么（相对于 F）属性集 X 的闭包用 X<sup>+</sup> 表示，它是一个从 F 集使用 FD 推理规则推出的所有满足 X→A 的属性 A 的集合：X<sup>+</sup> = { 属性 A | F|=X→A }</p>
+<p>设 F 是属性集 U 上的 FD 集，X 是 U 的子集，那么（相对于 F）属性集 X 的闭包用 X<sup>+</sup> 表示，它是一个从 F 集使用 FD 推理规则推出的所有满足 X→A 的属性 A 的集合：X<sup>+</sup> &#x3D; { 属性 A | F|&#x3D;X→A }</p>
 <p>X→Y 能用 FD 推理规则推出的充分必要条件是 Y∈X<sup>+</sup>。</p>
 </blockquote>
 <h4 id="2-6-FD-集的最小依赖集"><a href="#2-6-FD-集的最小依赖集" class="headerlink" title="2.6 FD 集的最小依赖集"></a>2.6 FD 集的最小依赖集</h4><blockquote>
-<p>如果关系模式 R（U）上的两个函数依赖集 F 和 G，有 F<sup>+</sup>=G<sup>+</sup>，则称 F 和 G 是等价的函数依赖集。</p>
+<p>如果关系模式 R（U）上的两个函数依赖集 F 和 G，有 F<sup>+</sup>&#x3D;G<sup>+</sup>，则称 F 和 G 是等价的函数依赖集。</p>
 <p>如果函数依赖集 G 满足下列三个条件，则称 G 是最小依赖集：</p>
 <ol>
 <li>G 中每个 FD 的右边都是单属性；</li>
@@ -208,7 +208,7 @@
 <p>设 F 是关系模式 R 的 FD 集，如果对 F 中每个非平凡的 FD X→Y，都有 X 是 R 的超键，那么称 R 是 BCNF 的模式。</p>
 </blockquote>
 <h3 id="5-多值依赖和第四范式"><a href="#5-多值依赖和第四范式" class="headerlink" title="5. 多值依赖和第四范式"></a>5. 多值依赖和第四范式</h3><h4 id="5-1-多值依赖"><a href="#5-1-多值依赖" class="headerlink" title="5.1 多值依赖"></a>5.1 多值依赖</h4><blockquote>
-<p>设 U 是关系模式 R 的属性集，X 和 Y 是 U 的子集，Z=R-X-Y，小写的 xyz 表示属性集 XYZ 的值。对于 R 的关系 r，在 r 中存在元组（x，y<sub>1</sub>，z<sub>1</sub>）和（x，y<sub>2</sub>，z<sub>2</sub>）时，就也存在元组（x，y<sub>2</sub>，z<sub>1</sub>）和（x，y<sub>1</sub>，z<sub>2</sub>），那么称多值依赖（Multivalued Dependency，简记为 MVD）X→→Y 在模式 R 上成立。</p>
+<p>设 U 是关系模式 R 的属性集，X 和 Y 是 U 的子集，Z&#x3D;R-X-Y，小写的 xyz 表示属性集 XYZ 的值。对于 R 的关系 r，在 r 中存在元组（x，y<sub>1</sub>，z<sub>1</sub>）和（x，y<sub>2</sub>，z<sub>2</sub>）时，就也存在元组（x，y<sub>2</sub>，z<sub>1</sub>）和（x，y<sub>1</sub>，z<sub>2</sub>），那么称多值依赖（Multivalued Dependency，简记为 MVD）X→→Y 在模式 R 上成立。</p>
 </blockquote>
 <h4 id="5-2-第四范式（4NF）"><a href="#5-2-第四范式（4NF）" class="headerlink" title="5.2 第四范式（4NF）"></a>5.2 第四范式（4NF）</h4><blockquote>
 <p>设 D 施关系模式 R 上成立的 FD 和 MVD 集合。如果 D 中每个非平凡的 MVD X→→Y 的左部都是 R 的超键，那么称 R 是 4NF 的模式。</p>

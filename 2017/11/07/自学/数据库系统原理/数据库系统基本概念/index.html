@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-10.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)" >
   <h2>数据库系统基本概念</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-11-07T02:54:00.000Z">
@@ -142,34 +142,15 @@
   </div>
   <div class="post-page-content">
   <h3 id="1-数据管理技术的发展"><a href="#1-数据管理技术的发展" class="headerlink" title="1. 数据管理技术的发展"></a>1. 数据管理技术的发展</h3><h4 id="1-1-人工管理阶段"><a href="#1-1-人工管理阶段" class="headerlink" title="1.1 人工管理阶段"></a>1.1 人工管理阶段</h4><p><strong>特点:</strong></p>
-<pre><code>1. 数据不保存在计算机内；
-2. 没有专用的软件对数据进行管理；
-3. 只有程序 (Program) 的概念，没有文件 (File) 的概念；
-4. 数据库面向程序；
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 数据不保存在计算机内；</span><br><span class="line">2. 没有专用的软件对数据进行管理；</span><br><span class="line">3. 只有程序 (Program) 的概念，没有文件 (File) 的概念；</span><br><span class="line">4. 数据库面向程序；</span><br></pre></td></tr></table></figure>
 <h4 id="1-2-文件系统阶段"><a href="#1-2-文件系统阶段" class="headerlink" title="1.2 文件系统阶段"></a>1.2 文件系统阶段</h4><p><strong>特点:</strong></p>
-<pre><code>1. 数据以「文件」形式可长期保存在外部存储器的磁盘上；
-2. 数据的逻辑结构与物理结构有了区别，但比较简单；
-3. 文件组织已多样化；
-4. 数据不再属于某个特定的程序，可以重复使用，即数据面向应用；
-5. 对数据的操作以记录为单位；
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 数据以「文件」形式可长期保存在外部存储器的磁盘上；</span><br><span class="line">2. 数据的逻辑结构与物理结构有了区别，但比较简单；</span><br><span class="line">3. 文件组织已多样化；</span><br><span class="line">4. 数据不再属于某个特定的程序，可以重复使用，即数据面向应用；</span><br><span class="line">5. 对数据的操作以记录为单位；</span><br></pre></td></tr></table></figure>
+
 <p><strong>缺陷:</strong></p>
-<pre><code>1. 数据冗余（Redundancy）；
-2. 数据不一致（Inconsistency）；
-3. 数据联系弱（Poor Data Relationship）；
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 数据冗余（Redundancy）；</span><br><span class="line">2. 数据不一致（Inconsistency）；</span><br><span class="line">3. 数据联系弱（Poor Data Relationship）；</span><br></pre></td></tr></table></figure>
 <h4 id="1-3-数据库阶段"><a href="#1-3-数据库阶段" class="headerlink" title="1.3 数据库阶段"></a>1.3 数据库阶段</h4><p><strong>特点:</strong></p>
-<pre><code>1. 采用数据模型表示复杂的数据结构；
-2. 有较高的数据独立性；
-3. 数据库系统为用户提供了方便的用户接口；
-4. 数据库系统提供以下四方面的数据控制功能：
-    ① 数据库的恢复：在数据库被破坏或数据不可靠时，系统有能力把数据库恢复到最近某个正确状态；
-    ② 数据库的并发控制：对程序的并发操作加以控制，防止数据库被破坏，杜绝提供给用户不正确的数据；
-    ③ 数据的完整性：保证数据库中数据始终是正确的；
-    ④ 数据安全性：保证数据的安全，防止数据丢失或被窃取、破坏；
-5. 增加了系统的灵活性：对数据的操作不一定以记录为单位，可以以数据项为单位；
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 采用数据模型表示复杂的数据结构；</span><br><span class="line">2. 有较高的数据独立性；</span><br><span class="line">3. 数据库系统为用户提供了方便的用户接口；</span><br><span class="line">4. 数据库系统提供以下四方面的数据控制功能：</span><br><span class="line">	① 数据库的恢复：在数据库被破坏或数据不可靠时，系统有能力把数据库恢复到最近某个正确状态；</span><br><span class="line">	② 数据库的并发控制：对程序的并发操作加以控制，防止数据库被破坏，杜绝提供给用户不正确的数据；</span><br><span class="line">	③ 数据的完整性：保证数据库中数据始终是正确的；</span><br><span class="line">	④ 数据安全性：保证数据的安全，防止数据丢失或被窃取、破坏；</span><br><span class="line">5. 增加了系统的灵活性：对数据的操作不一定以记录为单位，可以以数据项为单位；</span><br></pre></td></tr></table></figure>
+
 <h4 id="1-4-高级数据库阶段"><a href="#1-4-高级数据库阶段" class="headerlink" title="1.4 高级数据库阶段"></a>1.4 高级数据库阶段</h4><p>主要标识是 20 世纪 80 年代的 <code>分布式数据库系统</code>、90 年代的 <code>对象数据库系统</code> 以及 21 世纪的 <code>Web 数据库系统</code>。</p>
 <h3 id="2-数据库描述"><a href="#2-数据库描述" class="headerlink" title="2. 数据库描述"></a>2. 数据库描述</h3><h4 id="2-1-概念设计中的数据描述"><a href="#2-1-概念设计中的数据描述" class="headerlink" title="2.1 概念设计中的数据描述"></a>2.1 概念设计中的数据描述</h4><ol>
 <li>实体（Entity）：客观存在，可以相互区别的事务称为实体；</li>
@@ -359,14 +340,14 @@
 <p><strong>2. 两级映像</strong></p>
 <p>三层模式之间存在着两级映像：</p>
 <ol>
-<li>外模式/逻辑模式映像存在于外模式和逻辑模式之间，用于定义外模式和逻辑模式之间的对应性。这个映像一般是放在外模式中描述的；</li>
-<li>逻辑模式/内模式映像存在于逻辑模式和内模式之间，用于定义逻辑模式和内模式之间的对应性。这个映像一般是放在内模式中描述的；</li>
+<li>外模式&#x2F;逻辑模式映像存在于外模式和逻辑模式之间，用于定义外模式和逻辑模式之间的对应性。这个映像一般是放在外模式中描述的；</li>
+<li>逻辑模式&#x2F;内模式映像存在于逻辑模式和内模式之间，用于定义逻辑模式和内模式之间的对应性。这个映像一般是放在内模式中描述的；</li>
 </ol>
 <h4 id="3-7-高度的数据独立性"><a href="#3-7-高度的数据独立性" class="headerlink" title="3.7 高度的数据独立性"></a>3.7 高度的数据独立性</h4><p><code>数据独立性（Data Independence）</code> 是指应用程序和数据库的数据结构之间相互独立，不受影响。</p>
 <p>数据独立性分成 <strong>物理数据独立性</strong> 和 <strong>逻辑数据独立性</strong> 两个级别。</p>
 <p><strong>1. 物理数据独立性</strong></p>
-<p>如果数据库的内模式要修改，即数据库的物理结构有所变化，那么只要对逻辑模式/内模式映像（即「对应性」）作相应的修改，可以使逻辑模式尽可能保持不变。</p>
-<p><strong>2. 逻辑数据独立性</strong><br>如果数据库的逻辑模式要修改，譬如增加记录类型或增加数据项，那么只要对外模式/逻辑模式映像作相应的修改，可以使外模式和应用程序尽可能保持不变。这样，我们称数据库达到了逻辑数据独立性（简称逻辑独立性）。</p>
+<p>如果数据库的内模式要修改，即数据库的物理结构有所变化，那么只要对逻辑模式&#x2F;内模式映像（即「对应性」）作相应的修改，可以使逻辑模式尽可能保持不变。</p>
+<p><strong>2. 逻辑数据独立性</strong><br>如果数据库的逻辑模式要修改，譬如增加记录类型或增加数据项，那么只要对外模式&#x2F;逻辑模式映像作相应的修改，可以使外模式和应用程序尽可能保持不变。这样，我们称数据库达到了逻辑数据独立性（简称逻辑独立性）。</p>
 <h3 id="4-数据库管理系统（DBMS）"><a href="#4-数据库管理系统（DBMS）" class="headerlink" title="4. 数据库管理系统（DBMS）"></a>4. 数据库管理系统（DBMS）</h3><h4 id="4-1-DBMS-的工作模式如下："><a href="#4-1-DBMS-的工作模式如下：" class="headerlink" title="4.1 DBMS 的工作模式如下："></a>4.1 DBMS 的工作模式如下：</h4><ol>
 <li>接受应用程序的数据请求和处理请求；</li>
 <li>将用户的数据请求（高级指令）转换成复杂的机器代码（低层指令）；</li>
@@ -403,7 +384,7 @@
 </ol>
 <h4 id="5-2-DBS-的全局结构"><a href="#5-2-DBS-的全局结构" class="headerlink" title="5.2 DBS 的全局结构"></a>5.2 DBS 的全局结构</h4><p><strong>1. 数据库用户</strong></p>
 <ol>
-<li> DBA：DBA 负责三级结构的定义和修改，以及访问授权、日常维护等工作。DBA 和 DBMS 之间的界面是数据库模式；</li>
+<li>DBA：DBA 负责三级结构的定义和修改，以及访问授权、日常维护等工作。DBA 和 DBMS 之间的界面是数据库模式；</li>
 <li>专业用户：指数据库设计中的上层人士（例如系统分析员）；</li>
 <li>应用程序员：指使用主语言和 DML 语言编写应用程序的计算机工作者；</li>
 <li>终端用户：指应用程序的非计算机人员；</li>

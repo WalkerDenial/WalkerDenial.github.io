@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-13.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-16.png)" >
   <h2>插件</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-12-16T15:27:00.000Z">
@@ -154,8 +154,8 @@
 <li>plugin package：这是一个既包含了 dart 代码编写的 API，又包含了平台特定实现的 package，可以被 Android 和 iOS 调用。</li>
 </ol>
 <h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><h3 id="开发-Dart-package"><a href="#开发-Dart-package" class="headerlink" title="开发 Dart package"></a>开发 Dart package</h3><p>创建 Dart 包，需使用 <code>--template=package</code> 来执行 <code>flutter create</code></p>
-<pre class="line-numbers language-dart"><code class="language-dart">flutter create <span class="token operator">--</span>template<span class="token operator">=</span>package hello
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">flutter create --template=package hello</span><br></pre></td></tr></table></figure>
+
 <p>这将在 hello 文件夹下创建一个具有以下专用内容的 package 工程：</p>
 <ul>
 <li><code>lib/hello.dart:</code><ul>
@@ -167,7 +167,7 @@
 </ul>
 </li>
 <li>实现 package<ul>
-<li>对于纯 Dart 包，只需在主 lib/<package name>.dart 文件内或 lib 目录中的文件中添加功能 。</li>
+<li>对于纯 Dart 包，只需在主 lib&#x2F;<package name>.dart 文件内或 lib 目录中的文件中添加功能 。</li>
 <li>要测试软件包，请在 test 目录中添加 unit tests。</li>
 </ul>
 </li>
@@ -180,24 +180,24 @@
 </ul>
 <p><code>flutter create --org com.example --template=plugin hello</code></p>
 <ul>
-<li><p>这将在 hello/ 文件夹下创建一个具有以下专用内容的插件工程：</p>
+<li><p>这将在 hello&#x2F; 文件夹下创建一个具有以下专用内容的插件工程：</p>
 </li>
-<li><p>lib/hello.dart:</p>
+<li><p>lib&#x2F;hello.dart:</p>
 <ul>
 <li>插件包的 Dart API.</li>
 </ul>
 </li>
-<li><p>android/src/main/java/com/yourcompany/​hello/HelloPlugin.java:</p>
+<li><p>android&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;yourcompany&#x2F;​hello&#x2F;HelloPlugin.java:</p>
 <ul>
 <li>插件包 API 的 Android 实现.</li>
 </ul>
 </li>
-<li><p>ios/Classes/HelloPlugin.m:</p>
+<li><p>ios&#x2F;Classes&#x2F;HelloPlugin.m:</p>
 <ul>
 <li>插件包 API 的 ios 实现.</li>
 </ul>
 </li>
-<li><p>example/:</p>
+<li><p>example&#x2F;:</p>
 <ul>
 <li>一个依赖于该插件的 Flutter 应用程序，来说明如何使用它。默认情况下，插件项目针对 iOS 代码使用 Objective-C，Android 代码使用 Java。如果您更喜欢 Swift 或 Kotlin，则可以使用 -i 或 -a 为 iOS 或 Android 指定语言。例如：</li>
 </ul>
@@ -207,17 +207,17 @@
 <h4 id="Step-2-实现包-package"><a href="#Step-2-实现包-package" class="headerlink" title="Step 2: 实现包 package"></a>Step 2: 实现包 package</h4><ul>
 <li><p>由于插件包中包含用多种编程语言编写的多个平台的代码，因此需要一些特定的步骤来确保顺畅的体验。</p>
 </li>
-<li><p>Step 2a: 定义包 API（.dart）插件包的 API 在 Dart 代码中定义。打开主文件夹hello/ 。找到lib/hello.dart。</p>
+<li><p>Step 2a: 定义包 API（.dart）插件包的 API 在 Dart 代码中定义。打开主文件夹hello&#x2F; 。找到lib&#x2F;hello.dart。</p>
 </li>
-<li><p>Step 2b: 添加 Android 平台代码（.java / .kt）我们建议您使用 Android Studio 编辑 Android 代码。</p>
+<li><p>Step 2b: 添加 Android 平台代码（.java &#x2F; .kt）我们建议您使用 Android Studio 编辑 Android 代码。</p>
 </li>
 </ul>
-<p>在 Android Studio 中编辑 Android 平台代码之前，首先确保代码至少已经构建过一次（例如，从 IntelliJ 运行示例应用程序或在终端执行 cd hello/example; flutter build apk）。</p>
+<p>在 Android Studio 中编辑 Android 平台代码之前，首先确保代码至少已经构建过一次（例如，从 IntelliJ 运行示例应用程序或在终端执行 cd hello&#x2F;example; flutter build apk）。</p>
 <ol>
 <li>启动 Android Studio</li>
-<li>在 ’Welcome to Android Studio’ 对话框选择 ‘Import project’, 或者在菜单栏 ‘File &gt; New &gt; Import Project…‘，然后选择 hello/example/android/build.gradle 文件.</li>
+<li>在 ’Welcome to Android Studio’ 对话框选择 ‘Import project’, 或者在菜单栏 ‘File &gt; New &gt; Import Project…‘，然后选择 hello&#x2F;example&#x2F;android&#x2F;build.gradle 文件.</li>
 <li>在 ’Gradle Sync’ 对话框, 选择 ‘OK’.</li>
-<li>在 ’Android Gradle Plugin Update’ 对话框, 选择 ‘Don’t remind me again for this project’.<br>您插件的 Android 平台代码位于 hello/java/com.yourcompany.hello/​HelloPlugin.</li>
+<li>在 ’Android Gradle Plugin Update’ 对话框, 选择 ‘Don’t remind me again for this project’.<br>您插件的 Android 平台代码位于 hello&#x2F;java&#x2F;com.yourcompany.hello&#x2F;​HelloPlugin.</li>
 </ol>
 <p>您可以通过按下 ▶ 按钮从 Android Studio 运行示例应用程序.</p>
 <ul>
@@ -281,7 +281,7 @@
 <li>name:  String 类型，代表 Channel 的名字，也是其唯一标识符。</li>
 <li>messager：BinaryMessenger 类型，代表消息信使，是消息的发送与接收的工具。</li>
 <li>codec: MessageCodec 类型或 MethodCodec 类型，代表消息的编解码器。</li>
-<li> Channel name： 一个 Flutter 应用中可能存在多个 Channel，每个 Channel 在创建时必须指定一个独一无二的 name，Channel 之间使用 name 来区分彼此。当有消息从 Flutter 端发送到 Platform 端时，会根据其传递过来的 channel name 找到该 Channel 对应的 Handler（消息处理器）。</li>
+<li>Channel name： 一个 Flutter 应用中可能存在多个 Channel，每个 Channel 在创建时必须指定一个独一无二的 name，Channel 之间使用 name 来区分彼此。当有消息从 Flutter 端发送到 Platform 端时，会根据其传递过来的 channel name 找到该 Channel 对应的 Handler（消息处理器）。</li>
 <li>消息信使：BinaryMessenger</li>
 <li>平台通道数据类型支持和解码器</li>
 <li>标准平台通道使用标准消息编解码器，以支持简单的类似 JSON 值的高效二进制序列化，例如 booleans、numbers,、Strings,、byte buffers,、List,、Maps（请参阅StandardMessageCodec 了解详细信息）。 当您发送和接收值时，这些值在消息中的序列化和反序列化会自动进行。</li>
@@ -326,7 +326,7 @@
 <td>NSNumber numberWithDouble:</td>
 </tr>
 <tr>
-<td>String    j</td>
+<td>String	j</td>
 <td>ava.lang.String</td>
 <td>NSString</td>
 </tr>

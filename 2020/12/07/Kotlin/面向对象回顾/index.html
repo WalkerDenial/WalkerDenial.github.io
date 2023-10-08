@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)" >
   <h2>面向对象回顾</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-12-07T14:05:00.000Z">
@@ -149,81 +149,29 @@
 <p>如果你有点懵？那么我来举个栗子就明白了。现在人们日常生活越来越离不开手机，就以手机来举栗子吧。</p>
 <blockquote>
 <p>隐藏对象的属性和实现细节 –&gt; 我们拿到的手机是组装好的成品，而不是一个个零件，即手机对我们隐藏了内部软件、硬件等相关细节；换个角度，如果给我一堆零件让我自己组装，我可能会放弃使用手机了吧。</p>
-<p>仅对外公开接口，控制在程序中属性的读和修改的访问级别 –&gt; 手机对我们开放的也就是 「开/关机」、「音量」、「主页」等少部分可操作功能，如果不开放，那手机也就没法使用了，跟个砖头没啥区别，所以需要对外开放部分操作，但是，用户不需要具体知道某个功能如何实现的。同理，司机不需要知道汽车是如何制造的，但是要能操作「启动」、「转向」等功能。</p>
+<p>仅对外公开接口，控制在程序中属性的读和修改的访问级别 –&gt; 手机对我们开放的也就是 「开&#x2F;关机」、「音量」、「主页」等少部分可操作功能，如果不开放，那手机也就没法使用了，跟个砖头没啥区别，所以需要对外开放部分操作，但是，用户不需要具体知道某个功能如何实现的。同理，司机不需要知道汽车是如何制造的，但是要能操作「启动」、「转向」等功能。</p>
 </blockquote>
-<p>生活中处处皆 <code>封装</code>，比如：热水壶（需要烧水功能，但是用户不需要知道如何实现的）、空调（需要制冷/制热功能，用户不需要知道如何实现空气温度调节的）等等，这也是 <code>面向对象</code> 的由来，所以结合现实生活中的例子，就能更好的理解 <code>封装</code> 概念了。</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Phone <span class="token punctuation">{</span>
-    <span class="token keyword">val</span> name <span class="token operator">=</span> <span class="token string">"Mi 10"</span> <span class="token comment" spellcheck="true">// 手机名称</span>
-    
-    <span class="token keyword">fun</span> <span class="token function">turnOn</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 开机</span>
-    
-    <span class="token punctuation">}</span>
-    
-    <span class="token keyword">fun</span> <span class="token function">turnOff</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 关机</span>
-    
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>生活中处处皆 <code>封装</code>，比如：热水壶（需要烧水功能，但是用户不需要知道如何实现的）、空调（需要制冷&#x2F;制热功能，用户不需要知道如何实现空气温度调节的）等等，这也是 <code>面向对象</code> 的由来，所以结合现实生活中的例子，就能更好的理解 <code>封装</code> 概念了。</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Phone</span> &#123;</span><br><span class="line">	<span class="keyword">val</span> name = <span class="string">&quot;Mi 10&quot;</span> <span class="comment">// 手机名称</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">fun</span> <span class="title">turnOn</span> <span class="params">()</span></span> &#123; <span class="comment">// 开机</span></span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">fun</span> <span class="title">turnOff</span> <span class="params">()</span></span> &#123; <span class="comment">// 关机</span></span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h1><blockquote>
 <p>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的属性和方法，或子类从父类继承方法，使得子类具有父类相同的行为。</p>
 </blockquote>
 <p><code>继承</code> 就比较简单了，这个概念经常在生活中听到，所以理解起来不难。例如：</p>
 <p>子女（<code>子类</code>）可以继承自己祖辈（<code>父类</code>）的基因（<code>属性</code>）、财产（<code>方法</code>）等特性，同时，<code>子类</code> 也可以有别于 <code>父类</code>，不止能 <code>继承</code>，还能自己玩出新花样，比如不同的爱好、技能等等。</p>
 <p>为什么要使用 <code>继承</code> 呢？人类进化到现在，用了几千万时间，如果不使用 <code>继承</code>，你现在可能还是个 <code>单细胞生物</code>，也没机会阅读这篇文章了，所以 使用<code>继承</code> 是相当有必要的，通过 <code>继承</code> 拥有 <code>父类</code> 的特性，减少重复操作，提升复用性。</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> Father <span class="token punctuation">{</span>
-    <span class="token keyword">val</span> dna <span class="token operator">=</span> <span class="token string">"xxx"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">class</span> Son <span class="token operator">:</span> <span class="token function">Father</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 通过继承，就拥有了父类的 dna 特性，如果不继承，就没有</span>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">	<span class="keyword">val</span> dna = <span class="string">&quot;xxx&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> : <span class="type">Father</span>() &#123; <span class="comment">// 通过继承，就拥有了父类的 dna 特性，如果不继承，就没有</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="3-多态"><a href="#3-多态" class="headerlink" title="3. 多态"></a>3. 多态</h1><blockquote>
 <p>同一操作作用于不同的对象，可以有不同的解释，产生不同的执行结果。</p>
 </blockquote>
-<p>用白话文来举个栗子：有的家庭有多个小孩，这些小孩有同一个爸爸/妈妈（继承），但是，这些小孩却并不完全一模一样，包括但不限于身高、体重、长相、天赋等等，这…就是多态，虽然是 <code>继承</code> 自同一个 <code>父类</code>，却有不同的表现，哪怕是双胞胎也不例外，这就叫 <code>多态</code>。所以说，<code>多态</code> 没有那么难以理解，正是因为有了 <code>多态</code>，世界才会更多姿多彩。</p>
+<p>用白话文来举个栗子：有的家庭有多个小孩，这些小孩有同一个爸爸&#x2F;妈妈（继承），但是，这些小孩却并不完全一模一样，包括但不限于身高、体重、长相、天赋等等，这…就是多态，虽然是 <code>继承</code> 自同一个 <code>父类</code>，却有不同的表现，哪怕是双胞胎也不例外，这就叫 <code>多态</code>。所以说，<code>多态</code> 没有那么难以理解，正是因为有了 <code>多态</code>，世界才会更多姿多彩。</p>
 <h2 id="3-1-多态举例"><a href="#3-1-多态举例" class="headerlink" title="3.1 多态举例"></a>3.1 多态举例</h2><p>多态由于可变性很强，所以结合例子服用效果更佳。</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> A <span class="token punctuation">{</span>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">show</span><span class="params">(obj: <span class="type">D</span>)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;A show D&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">show</span><span class="params">(obj: <span class="type">A</span>)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;A show A&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">B</span> : <span class="type">A</span>() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">show</span><span class="params">(obj: <span class="type">B</span>)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;B show B&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">show</span><span class="params">(obj: <span class="type">A</span>)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;B show A&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> : <span class="type">B</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span> : <span class="type">B</span>()</span><br></pre></td></tr></table></figure>
 
-    <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">show</span><span class="token punctuation">(</span>obj<span class="token operator">:</span> D<span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"A show D"</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">show</span><span class="token punctuation">(</span>obj<span class="token operator">:</span> A<span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"A show A"</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-
-<span class="token keyword">open</span> <span class="token keyword">class</span> B <span class="token operator">:</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">fun</span> <span class="token function">show</span><span class="token punctuation">(</span>obj<span class="token operator">:</span> B<span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"B show B"</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">show</span><span class="token punctuation">(</span>obj<span class="token operator">:</span> A<span class="token punctuation">)</span><span class="token operator">:</span> String <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"B show A"</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">class</span> C <span class="token operator">:</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">class</span> D <span class="token operator">:</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上述代码逻辑比较简单，定义了父类 <code>A</code> ，以及子类 <code>B</code>、<code>C</code>、<code>D</code>，<code>A</code> 中有两个方法，接下来请看考题：</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> a1<span class="token operator">:</span> A <span class="token operator">=</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">val</span> a2<span class="token operator">:</span> A <span class="token operator">=</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">val</span> b<span class="token operator">:</span> B <span class="token operator">=</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">val</span> c<span class="token operator">:</span> C <span class="token operator">=</span> <span class="token function">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">val</span> d<span class="token operator">:</span> D <span class="token operator">=</span> <span class="token function">D</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 1</span>
-<span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 2</span>
-<span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//3</span>
-<span class="token function">println</span><span class="token punctuation">(</span>a2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 4</span>
-<span class="token function">println</span><span class="token punctuation">(</span>a2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 5</span>
-<span class="token function">println</span><span class="token punctuation">(</span>a2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 6</span>
-<span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 7</span>
-<span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 8</span>
-<span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 9</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">val</span> a1: A = A()</span><br><span class="line"><span class="keyword">val</span> a2: A = B()</span><br><span class="line"><span class="keyword">val</span> b: B = B()</span><br><span class="line"><span class="keyword">val</span> c: C = C()</span><br><span class="line"><span class="keyword">val</span> d: D = D()</span><br><span class="line">println(a1.show(b)) <span class="comment">// 1</span></span><br><span class="line">println(a1.show(c)) <span class="comment">// 2</span></span><br><span class="line">println(a1.show(d)) <span class="comment">//3</span></span><br><span class="line">println(a2.show(b)) <span class="comment">// 4</span></span><br><span class="line">println(a2.show(c)) <span class="comment">// 5</span></span><br><span class="line">println(a2.show(d)) <span class="comment">// 6</span></span><br><span class="line">println(b.show(b)) <span class="comment">// 7</span></span><br><span class="line">println(b.show(c)) <span class="comment">// 8</span></span><br><span class="line">println(b.show(d)) <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
 <p>1~9 的答案分别是多少呢？接下来一步一步分析。</p>
 <p>解题 1：</p>
 <blockquote>
@@ -299,24 +247,7 @@
 </blockquote>
 <p>虽然看起来很难，但是只要确定好 <strong>调用对象</strong>、<strong>输入参数</strong> 以后，就可以找到具体的调用方法，问题也就迎刃而解了，所以以后再遇到这类问题，可以做减法，将问题划分成一个个小问题点，分别求解，然后组合起来就行了。</p>
 <p>带注释的代码如下，有兴趣的话可以自己尝试一下。</p>
-<pre class="line-numbers language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">val</span> a1<span class="token operator">:</span> A <span class="token operator">=</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">val</span> a2<span class="token operator">:</span> A <span class="token operator">=</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">val</span> b<span class="token operator">:</span> B <span class="token operator">=</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">val</span> c<span class="token operator">:</span> C <span class="token operator">=</span> <span class="token function">C</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">val</span> d<span class="token operator">:</span> D <span class="token operator">=</span> <span class="token function">D</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// A show A</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// A show A</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// A show D</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>a2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// B show A</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>a2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// B show A</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>a2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// A show D</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// B show B</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// B show B</span>
-    <span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// A show D</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> a1: A = A()</span><br><span class="line">    <span class="keyword">val</span> a2: A = B()</span><br><span class="line">    <span class="keyword">val</span> b: B = B()</span><br><span class="line">    <span class="keyword">val</span> c: C = C()</span><br><span class="line">    <span class="keyword">val</span> d: D = D()</span><br><span class="line">    println(a1.show(b)) <span class="comment">// A show A</span></span><br><span class="line">    println(a1.show(c)) <span class="comment">// A show A</span></span><br><span class="line">    println(a1.show(d)) <span class="comment">// A show D</span></span><br><span class="line">    println(a2.show(b)) <span class="comment">// B show A</span></span><br><span class="line">    println(a2.show(c)) <span class="comment">// B show A</span></span><br><span class="line">    println(a2.show(d)) <span class="comment">// A show D</span></span><br><span class="line">    println(b.show(b)) <span class="comment">// B show B</span></span><br><span class="line">    println(b.show(c)) <span class="comment">// B show B</span></span><br><span class="line">    println(b.show(d)) <span class="comment">// A show D</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   </div>
   <!--评论块-->
     

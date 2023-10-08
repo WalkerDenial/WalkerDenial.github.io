@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-17.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)" >
   <h2>Android 中 Gradle 调用过程</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-11-01T14:23:00.000Z">
@@ -166,99 +166,24 @@
 </code></pre>
 <p>其中 <code>config.gradle</code> 是基础配置，统一管理依赖项，整个项目中，存在 <strong>4</strong> 个 gradle 文件，它们分别是：</p>
 <ol>
-<li>app/build.gradle：对 app 模块所需配置信息进行管理；</li>
+<li>app&#x2F;build.gradle：对 app 模块所需配置信息进行管理；</li>
 <li>config.gradle：对依赖配置版本信息进行统一管理；</li>
 <li>build.gradle：项目根配置文件；</li>
 <li>settings.gradle：配置、管理项目模块信息；</li>
 </ol>
 <p>对以上 4 个文件进行日志信息输出处理：</p>
-<p><strong>app/build.gradle</strong></p>
-<pre class="line-numbers language-java"><code class="language-java">
-android <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> android"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<p><strong>app&#x2F;build.gradle</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    println(<span class="string">&quot;app --&gt; build.gradle --&gt; android&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; defaultConfig&quot;</span>)</span><br><span class="line">        ...</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; defaultConfig out&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; buildTypes&quot;</span>)</span><br><span class="line">        debug &#123;</span><br><span class="line">            println(<span class="string">&quot;app --&gt; build.gradle --&gt; debug&quot;</span>)</span><br><span class="line">            println(<span class="string">&quot;app --&gt; build.gradle --&gt; debug out&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        release &#123;</span><br><span class="line">            println(<span class="string">&quot;app --&gt; build.gradle --&gt; release&quot;</span>)</span><br><span class="line">            ...</span><br><span class="line">            println(<span class="string">&quot;app --&gt; build.gradle --&gt; release out&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; buildTypes out&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; compileOptions&quot;</span>)</span><br><span class="line">        ...</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; compileOptions out&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    kotlinOptions &#123;</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; kotlinOptions&quot;</span>)</span><br><span class="line">        ...</span><br><span class="line">        println(<span class="string">&quot;app --&gt; build.gradle --&gt; kotlinOptions out&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;app --&gt; build.gradle --&gt; android out&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    println(<span class="string">&quot;app --&gt; build.gradle --&gt; dependencies&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line">    println(<span class="string">&quot;app --&gt; build.gradle --&gt; dependencies out&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    defaultConfig <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> defaultConfig"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> defaultConfig out"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    buildTypes <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> buildTypes"</span><span class="token punctuation">)</span>
-        debug <span class="token punctuation">{</span>
-            <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> debug"</span><span class="token punctuation">)</span>
-            <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> debug out"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-        release <span class="token punctuation">{</span>
-            <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> release"</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-            <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> release out"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> buildTypes out"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    compileOptions <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> compileOptions"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> compileOptions out"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    kotlinOptions <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> kotlinOptions"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> kotlinOptions out"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> android out"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-dependencies <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> dependencies"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"app --> build.gradle --> dependencies out"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>config.gradle</strong></p>
-<pre class="line-numbers language-java"><code class="language-java">allprojects <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"config.gradle --> allprojects"</span><span class="token punctuation">)</span>
-    repositories <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"config.gradle --> repositories"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"config.gradle --> repositories out"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"config.gradle --> allprojects out"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">    println(<span class="string">&quot;config.gradle --&gt; allprojects&quot;</span>)</span><br><span class="line">    repositories &#123;</span><br><span class="line">        println(<span class="string">&quot;config.gradle --&gt; repositories&quot;</span>)</span><br><span class="line">        ...</span><br><span class="line">        println(<span class="string">&quot;config.gradle --&gt; repositories out&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;config.gradle --&gt; allprojects out&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task <span class="title function_">clean</span><span class="params">(type: Delete)</span> &#123;</span><br><span class="line">    println(<span class="string">&quot;config.gradle --&gt; clean&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line">    println(<span class="string">&quot;config.gradle --&gt; clean out&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ext.deps = [</span><br><span class="line">        ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-task <span class="token function">clean</span><span class="token punctuation">(</span>type<span class="token operator">:</span> Delete<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"config.gradle --> clean"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"config.gradle --> clean out"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-ext<span class="token punctuation">.</span>deps <span class="token operator">=</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>build.gradle</strong></p>
-<pre class="line-numbers language-java"><code class="language-java">    buildscript <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"build.gradle --> buildscript"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    repositories <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"build.gradle --> repositories"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"build.gradle --> repositories out"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    dependencies <span class="token punctuation">{</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"build.gradle --> dependencies"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"build.gradle --> dependencies out"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"build.gradle --> buildscript out"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	buildscript &#123;</span><br><span class="line">    println(<span class="string">&quot;build.gradle --&gt; buildscript&quot;</span>)</span><br><span class="line">    ...</span><br><span class="line">    repositories &#123;</span><br><span class="line">        println(<span class="string">&quot;build.gradle --&gt; repositories&quot;</span>)</span><br><span class="line">        ...</span><br><span class="line">        println(<span class="string">&quot;build.gradle --&gt; repositories out&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        println(<span class="string">&quot;build.gradle --&gt; dependencies&quot;</span>)</span><br><span class="line">        ..</span><br><span class="line">        println(<span class="string">&quot;build.gradle --&gt; dependencies out&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;build.gradle --&gt; buildscript out&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>settings.gradle</strong></p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"settings.gradle --> start"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"settings.gradle --> end"</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">println(<span class="string">&quot;settings.gradle --&gt; start&quot;</span>)</span><br><span class="line">...</span><br><span class="line">println(<span class="string">&quot;settings.gradle --&gt; end&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>build 项目之后，日志输出信息如下：</p>
 <pre><code>Starting Gradle Daemon...
 Gradle Daemon started in 953 ms
@@ -301,7 +226,7 @@ app --&gt; build.gradle --&gt; android out
 app --&gt; build.gradle --&gt; dependencies
 app --&gt; build.gradle --&gt; dependencies out
 </code></pre>
-<p>由此可知，执行顺序如下：<strong>settings.gradle</strong> –&gt; <strong>build.gradle</strong> –&gt; <strong>config.gradle</strong> –&gt; <strong>app/build.gradle</strong> ，在配置 config 信息时，要注意其实效性在 build.gradle 之后，可以避免很多不必要的错误。</p>
+<p>由此可知，执行顺序如下：<strong>settings.gradle</strong> –&gt; <strong>build.gradle</strong> –&gt; <strong>config.gradle</strong> –&gt; <strong>app&#x2F;build.gradle</strong> ，在配置 config 信息时，要注意其实效性在 build.gradle 之后，可以避免很多不必要的错误。</p>
 <p>最后，项目地址信息 <a target="_blank" rel="noopener" href="https://github.com/WalkerDenial/KotlinStudy">示例代码</a>，欢迎交流学习。</p>
 
   </div>

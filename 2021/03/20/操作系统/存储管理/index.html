@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-7.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)" >
   <h2>存储管理</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-19T16:06:00.000Z">
@@ -141,7 +141,7 @@
     
   </div>
   <div class="post-page-content">
-  <p>计算机系统中的存储器可以分成两类：<strong>内存储器（简称内存）</strong>和 <strong>外存储器（简称外存）</strong>。处理器可以直接访问内存，但不能直接访问外存。处理器要通过启动相应的输入/输出设备后才能使外存与内存交换信息。</p>
+  <p>计算机系统中的存储器可以分成两类：<strong>内存储器（简称内存）</strong>和 <strong>外存储器（简称外存）</strong>。处理器可以直接访问内存，但不能直接访问外存。处理器要通过启动相应的输入&#x2F;输出设备后才能使外存与内存交换信息。</p>
 <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/OS_chapter_6.png"></p>
 <h1 id="1-存储管理的任务"><a href="#1-存储管理的任务" class="headerlink" title="1 存储管理的任务"></a>1 存储管理的任务</h1><p>在计算机系统中，存储器是处理器处理的信息的来源于归宿，占据着重要地位。到目前为止，最先进的计算机科学技术能够提供的存储设备的速度，仍然明显地慢于同级别的中央处理器的速度。而且由于成本等方面的原因，任何一种存储设备都无法在速度上与容量两个方面同时满足用户的需求。</p>
 <h2 id="1-1-内存空间的划分"><a href="#1-1-内存空间的划分" class="headerlink" title="1.1 内存空间的划分"></a>1.1 内存空间的划分</h2><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/OS_storage_system.png"></p>
@@ -214,7 +214,7 @@
 <h2 id="4-2-页表的作用和页表项的内容"><a href="#4-2-页表的作用和页表项的内容" class="headerlink" title="4.2 页表的作用和页表项的内容"></a>4.2 页表的作用和页表项的内容</h2><p>页式存储管理要有硬件的地址转换机构作支持。同时，要为每个被装入内存的进程提供一张页表。该页表所在内存的起始地址和长度作为现场信息存储在该进程的进程控制块中。一旦进程被调度进入处理器执行，这些信息将被作为恢复现场信息送入系统的地址映射机制中的寄存器里。</p>
 <p>页表指出该程序虚拟地址中的页号与所占用的物理页面号之间的对应关系。页表的长度有程序拥有的页面数而定，故每个程序的页表长度可能是不同的。</p>
 <p>页表又是硬件进行地址转换的依据，每执行一条指令时按虚拟地址中的页号查页表。若页表中无此页号，则产生一个「地址错」的程序性中断事件。若页表中有此页号，则可得到对应的物理页面号，按计算公式可转换成访问的内存的物理地址。</p>
-<p>物理地址的计算公式为：<center>物理地址 = 物理页面号 x 块长 + 页内地址</center></p>
+<p>物理地址的计算公式为：<center>物理地址 &#x3D; 物理页面号 x 块长 + 页内地址</center></p>
 <p>物理页面号又称为页帧和页框号。</p>
 <p>在虚拟也是存储管理中，页表项的设计如下：</p>
 <ol>
@@ -222,7 +222,7 @@
 <li>有效位：又称驻留位、存在位，表示该页是在内存还是在磁盘；</li>
 <li>访问位：访问位表示该页在内存期间是否被访问过；</li>
 <li>修改位：修改位表示该页在内存中是否被修改过；</li>
-<li>保护位：是否能读/写；</li>
+<li>保护位：是否能读&#x2F;写；</li>
 </ol>
 <p>其中，访问位和修改位可以用来决定置换哪个页面，具体由页面置换算法决定。</p>
 <h2 id="4-3-地址转换过程与-TLB"><a href="#4-3-地址转换过程与-TLB" class="headerlink" title="4.3 地址转换过程与 TLB"></a>4.3 地址转换过程与 TLB</h2><p>一般而言，页式存储管理中的页表是存储在内存中的。于是，当要按给定的虚拟地址进行读写时，必须访问两次内存。第一次按页号读出页表中对应的块号，第二次按计算出来的绝对地址进行读写。两次访问内存显然延长了指令的执行周期，降低了执行速度。</p>

@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)" >
   <h2>ES6 简介</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2017-07-31T04:05:41.000Z">
@@ -153,161 +153,70 @@
 <li>class</li>
 </ol>
 <h3 id="3-正则特殊字符说明"><a href="#3-正则特殊字符说明" class="headerlink" title="3. 正则特殊字符说明"></a>3. 正则特殊字符说明</h3><p>1、 <code>.</code> 字符：除了换行符以外的任意单个字符</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'𠮷'</span><span class="token punctuation">;</span>
-<span class="token regex">/^.$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/^.$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;𠮷&#x27;</span>;</span><br><span class="line"><span class="regexp">/^.$/</span>.<span class="title function_">test</span>(s) <span class="comment">// false</span></span><br><span class="line">/^.<span class="property">$</span>/u.<span class="title function_">test</span>(s) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p>2、 <code>u</code> 修饰符：含义为 <strong>Unicode模式</strong>, 用来正确处理大于 \uFFFF 的 Unicode 字符。也就是说，会正确处理四个字节的 UTF-16 编码。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^\uD83D/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\uD83D\uDC2A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/^\uD83D/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\uD83D\uDC2A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/^\uD83D/u.<span class="title function_">test</span>(<span class="string">&#x27;\uD83D\uDC2A&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">/^\uD83D/.<span class="title function_">test</span>(<span class="string">&#x27;\uD83D\uDC2A&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p>3、 <code>Unicode</code> 字符：ES6 新增了使用大括号表示 Unicode 字符，这种表示法在正则表达式中必须加上  <code>u</code> 修饰符，才能识别当中的大括号，否则会被解读为量词。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/\u{61}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/\u{61}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token regex">/\u{20BB7}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/\u&#123;<span class="number">61</span>&#125;/.<span class="title function_">test</span>(<span class="string">&#x27;a&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">/\u&#123;<span class="number">61</span>&#125;/u.<span class="title function_">test</span>(<span class="string">&#x27;a&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">/\u&#123;20BB7&#125;/u.<span class="title function_">test</span>(<span class="string">&#x27;𠮷&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p>4、<code>量词</code>：使用 <code>u</code> 修饰符后，所有量词都会正确识别码点大于 0xFFFF 的 Unicode 字符。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/a{2}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token regex">/a{2}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span class="token regex">/𠮷{2}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/𠮷{2}/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/a&#123;<span class="number">2</span>&#125;/.<span class="title function_">test</span>(<span class="string">&#x27;aa&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">/a&#123;<span class="number">2</span>&#125;/u.<span class="title function_">test</span>(<span class="string">&#x27;aa&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">/𠮷&#123;<span class="number">2</span>&#125;/.<span class="title function_">test</span>(<span class="string">&#x27;𠮷𠮷&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">/𠮷&#123;<span class="number">2</span>&#125;/u.<span class="title function_">test</span>(<span class="string">&#x27;𠮷𠮷&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p>5、<code>预定义模式</code>：<code>u</code> 修饰符也影响到预定义模式，能否正确识别码点大于 0xFFFF 的 Unicode 字符。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^\S$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/^\S$/u</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'𠮷'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/^\S$/.<span class="title function_">test</span>(<span class="string">&#x27;𠮷&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">/^\S$/u.<span class="title function_">test</span>(<span class="string">&#x27;𠮷&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p><em>说明：上面代码的 <code>\S</code> 是预定义模式，匹配所有不是空格的字符。只有加了 <code>u</code> 修饰符，它才能正确匹配码点大于 0xFFFF 的 Unicode 字符。</em></p>
 <p>6、<code>i</code> 修饰符：有些 Unicode 字符的编码不同，但是字型很相近，比如，\u004B 与 \u212A 都是大写的 K。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/[a-z]/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\u212A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// false</span>
-<span class="token regex">/[a-z]/iu</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'\u212A'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/[a-z]/i.<span class="title function_">test</span>(<span class="string">&#x27;\u212A&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">/[a-z]/iu.<span class="title function_">test</span>(<span class="string">&#x27;\u212A&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码中，不加 <code>u</code> 修饰符，就无法识别非规范的 <code>K</code> 字符</em></p>
 <p>7、<code>y</code> 修饰符：除了 <code>u</code> 修饰符，ES6 还为正则表达式添加了 <code>y</code> 修饰符，叫做「粘连」（ sticky ）修饰符。<code>y</code> 修饰符的作用与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，<code>g</code> 修饰符只要剩余位置中存在匹配就可，而 <code>y</code> 修饰符确保匹配必须从剩余的第一个位置开始，这也就是 “粘连” 的涵义。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'aaa_aa_a'</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> r1 <span class="token operator">=</span> <span class="token regex">/a+/g</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> r2 <span class="token operator">=</span> <span class="token regex">/a+/y</span><span class="token punctuation">;</span>
-    
-r1<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa"]</span>
-r2<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa"]</span>
-    
-r1<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aa"]</span>
-r2<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;aaa_aa_a&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> r1 = <span class="regexp">/a+/g</span>;</span><br><span class="line"><span class="keyword">var</span> r2 = <span class="regexp">/a+/y</span>;</span><br><span class="line">	</span><br><span class="line">r1.<span class="title function_">exec</span>(s) <span class="comment">// [&quot;aaa&quot;]</span></span><br><span class="line">r2.<span class="title function_">exec</span>(s) <span class="comment">// [&quot;aaa&quot;]</span></span><br><span class="line">	</span><br><span class="line">r1.<span class="title function_">exec</span>(s) <span class="comment">// [&quot;aa&quot;]</span></span><br><span class="line">r2.<span class="title function_">exec</span>(s) <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码有两个正则表达式，一个使用 <code>g</code> 修饰符，另一个使用 <code>y</code> 修饰符。这两个正则表达式各执行了两次，第一次执行的时候，两者行为相同，剩余字符串都是 <code>_aa_a</code> 。由于 <code>g</code> 修饰没有位置要求，所以第二次执行会返回结果，而 <code>y</code> 修饰符要求匹配必须从头部开始，所以返回 <code>null</code>。</em></p>
 <p>如果改一下正则表达式，保证每次都能头部匹配，<code>y</code> 修饰符就会返回结果了。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">'aaa_aa_a'</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> r <span class="token operator">=</span> <span class="token regex">/a+_/y</span><span class="token punctuation">;</span>
-    
-r<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aaa_"]</span>
-r<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["aa_"]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;aaa_aa_a&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> r = <span class="regexp">/a+_/y</span>;</span><br><span class="line">	</span><br><span class="line">r.<span class="title function_">exec</span>(s) <span class="comment">// [&quot;aaa_&quot;]</span></span><br><span class="line">r.<span class="title function_">exec</span>(s) <span class="comment">// [&quot;aa_&quot;]</span></span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码每次匹配，都是从剩余字符串的头部开始。</em></p>
 <p>使用 <code>lastIndex</code> 属性，可以更好地说明 <code>y</code> 修饰符。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/g</span><span class="token punctuation">;</span>
-    
-<span class="token comment" spellcheck="true">// 指定从2号位置（y）开始匹配</span>
-REGEX<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    
-<span class="token comment" spellcheck="true">// 匹配成功</span>
-<span class="token keyword">const</span> match <span class="token operator">=</span> REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaya'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    
-<span class="token comment" spellcheck="true">// 在3号位置匹配成功</span>
-match<span class="token punctuation">.</span>index <span class="token comment" spellcheck="true">// 3</span>
-    
-<span class="token comment" spellcheck="true">// 下一次匹配从4号位开始</span>
-REGEX<span class="token punctuation">.</span>lastIndex <span class="token comment" spellcheck="true">// 4</span>
-    
-<span class="token comment" spellcheck="true">// 4号位开始匹配失败</span>
-REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaxa'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">REGEX</span> = <span class="regexp">/a/g</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 指定从2号位置（y）开始匹配</span></span><br><span class="line"><span class="variable constant_">REGEX</span>.<span class="property">lastIndex</span> = <span class="number">2</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 匹配成功</span></span><br><span class="line"><span class="keyword">const</span> match = <span class="variable constant_">REGEX</span>.<span class="title function_">exec</span>(<span class="string">&#x27;xaya&#x27;</span>);</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 在3号位置匹配成功</span></span><br><span class="line">match.<span class="property">index</span> <span class="comment">// 3</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">// 下一次匹配从4号位开始</span></span><br><span class="line"><span class="variable constant_">REGEX</span>.<span class="property">lastIndex</span> <span class="comment">// 4</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">// 4号位开始匹配失败</span></span><br><span class="line"><span class="variable constant_">REGEX</span>.<span class="title function_">exec</span>(<span class="string">&#x27;xaxa&#x27;</span>) <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
 <p>上面代码中，<code>lastIndex</code> 属性指定每次搜索的开始位置，<code>g</code> 修饰符从这个位置开始向后搜索，直到发现匹配为止。</p>
 <p><code>y</code> 修饰符同样遵守 <code>lastIndex</code> 属性，但是要求必须在 <code>lastIndex</code> 指定的位置发现匹配。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/y</span><span class="token punctuation">;</span>
-    
-<span class="token comment" spellcheck="true">// 指定从2号位置开始匹配</span>
-REGEX<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    
-<span class="token comment" spellcheck="true">// 不是粘连，匹配失败</span>
-REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaya'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// null</span>
-    
-<span class="token comment" spellcheck="true">// 指定从3号位置开始匹配</span>
-REGEX<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-    
-<span class="token comment" spellcheck="true">// 3号位置是粘连，匹配成功</span>
-<span class="token keyword">const</span> match <span class="token operator">=</span> REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'xaxa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-match<span class="token punctuation">.</span>index <span class="token comment" spellcheck="true">// 3</span>
-REGEX<span class="token punctuation">.</span>lastIndex <span class="token comment" spellcheck="true">// 4</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">REGEX</span> = <span class="regexp">/a/y</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 指定从2号位置开始匹配</span></span><br><span class="line"><span class="variable constant_">REGEX</span>.<span class="property">lastIndex</span> = <span class="number">2</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 不是粘连，匹配失败</span></span><br><span class="line"><span class="variable constant_">REGEX</span>.<span class="title function_">exec</span>(<span class="string">&#x27;xaya&#x27;</span>) <span class="comment">// null</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">// 指定从3号位置开始匹配</span></span><br><span class="line"><span class="variable constant_">REGEX</span>.<span class="property">lastIndex</span> = <span class="number">3</span>;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 3号位置是粘连，匹配成功</span></span><br><span class="line"><span class="keyword">const</span> match = <span class="variable constant_">REGEX</span>.<span class="title function_">exec</span>(<span class="string">&#x27;xaxa&#x27;</span>);</span><br><span class="line">match.<span class="property">index</span> <span class="comment">// 3</span></span><br><span class="line"><span class="variable constant_">REGEX</span>.<span class="property">lastIndex</span> <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
 <p>实际上，<code>y</code> 修饰符号隐含了头部匹配的标志 <code>^</code>。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/b/y</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'aba'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// null</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/b/y.<span class="title function_">exec</span>(<span class="string">&#x27;aba&#x27;</span>)</span><br><span class="line"><span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码由于不能保证头部匹配，所以返回 <code>null</code>。<code>y</code> 修饰符的设计本意，就是让头部匹配的标志 <code>^</code> 在全局匹配中都有效。</em></p>
 <p>在 <code>split</code> 方法中使用 <code>y</code> 修饰符，原字符串必须以分隔符开头。这也意味着，只要匹配成功，数组的第一个成员肯定是空字符串。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 没有找到匹配</span>
-<span class="token string">'x##'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ 'x##' ]</span>
-    
-<span class="token comment" spellcheck="true">// 找到两个匹配</span>
-<span class="token string">'##x'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '', '', 'x' ]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 没有找到匹配</span></span><br><span class="line"><span class="string">&#x27;x##&#x27;</span>.<span class="title function_">split</span>(<span class="regexp">/#/y</span>)</span><br><span class="line"><span class="comment">// [ &#x27;x##&#x27; ]</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">// 找到两个匹配</span></span><br><span class="line"><span class="string">&#x27;##x&#x27;</span>.<span class="title function_">split</span>(<span class="regexp">/#/y</span>)</span><br><span class="line"><span class="comment">// [ &#x27;&#x27;, &#x27;&#x27;, &#x27;x&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
 <p>后续的分隔符只有紧跟前面的分隔符，才会被识别。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">'#x#'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '', 'x#' ]</span>
-    
-<span class="token string">'##'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex">/#/y</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '', '', '' ]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;#x#&#x27;</span>.<span class="title function_">split</span>(<span class="regexp">/#/y</span>)</span><br><span class="line"><span class="comment">// [ &#x27;&#x27;, &#x27;x#&#x27; ]</span></span><br><span class="line">	</span><br><span class="line"><span class="string">&#x27;##&#x27;</span>.<span class="title function_">split</span>(<span class="regexp">/#/y</span>)</span><br><span class="line"><span class="comment">// [ &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
 <p>下面是字符串对象的 <code>replace</code> 方法的例子。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> REGEX <span class="token operator">=</span> <span class="token regex">/a/gy</span><span class="token punctuation">;</span>
-<span class="token string">'aaxa'</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>REGEX<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// '--xa'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">REGEX</span> = <span class="regexp">/a/gy</span>;</span><br><span class="line"><span class="string">&#x27;aaxa&#x27;</span>.<span class="title function_">replace</span>(<span class="variable constant_">REGEX</span>, <span class="string">&#x27;-&#x27;</span>) <span class="comment">// &#x27;--xa&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码中，最后一个 <code>a</code> 因为不是出现在下一次匹配的头部，所以不会被替换。</em></p>
 <p>单单一个 <code>y</code> 修饰符对 <code>match</code> 方法，只能返回第一个匹配，必须与 <code>g</code> 修饰符联用，才能返回所有匹配。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token string">'a1a2a3'</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/a\d/y</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["a1"]</span>
-<span class="token string">'a1a2a3'</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/a\d/gy</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["a1", "a2", "a3"]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;a1a2a3&#x27;</span>.<span class="title function_">match</span>(<span class="regexp">/a\d/y</span>) <span class="comment">// [&quot;a1&quot;]</span></span><br><span class="line"><span class="string">&#x27;a1a2a3&#x27;</span>.<span class="title function_">match</span>(<span class="regexp">/a\d/gy</span>) <span class="comment">// [&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;]</span></span><br></pre></td></tr></table></figure>
+
 <p><code>y</code> 修饰符的一个应用，是从字符串提取 token（词元），<code>y</code> 修饰符确保了匹配之间不会有漏掉的字符。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> TOKEN_Y <span class="token operator">=</span> <span class="token regex">/\s*(\+|[0-9]+)\s*/y</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> TOKEN_G  <span class="token operator">=</span> <span class="token regex">/\s*(\+|[0-9]+)\s*/g</span><span class="token punctuation">;</span>
-    
-<span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_Y<span class="token punctuation">,</span> <span class="token string">'3 + 4'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span>
-<span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_G<span class="token punctuation">,</span> <span class="token string">'3 + 4'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span>
-    
-<span class="token keyword">function</span> <span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_REGEX<span class="token punctuation">,</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token keyword">let</span> match<span class="token punctuation">;</span>
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>match <span class="token operator">=</span> TOKEN_REGEX<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>match<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">TOKEN_Y</span> = <span class="regexp">/\s*(\+|[0-9]+)\s*/y</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">TOKEN_G</span>  = <span class="regexp">/\s*(\+|[0-9]+)\s*/g</span>;</span><br><span class="line">	</span><br><span class="line"><span class="title function_">tokenize</span>(<span class="variable constant_">TOKEN_Y</span>, <span class="string">&#x27;3 + 4&#x27;</span>)</span><br><span class="line"><span class="comment">// [ &#x27;3&#x27;, &#x27;+&#x27;, &#x27;4&#x27; ]</span></span><br><span class="line"><span class="title function_">tokenize</span>(<span class="variable constant_">TOKEN_G</span>, <span class="string">&#x27;3 + 4&#x27;</span>)</span><br><span class="line"><span class="comment">// [ &#x27;3&#x27;, &#x27;+&#x27;, &#x27;4&#x27; ]</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">tokenize</span>(<span class="params">TOKEN_REGEX, str</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  <span class="keyword">let</span> match;</span><br><span class="line">  <span class="keyword">while</span> (match = <span class="variable constant_">TOKEN_REGEX</span>.<span class="title function_">exec</span>(str)) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(match[<span class="number">1</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码中，如果字符串里面没有非法字符，<code>y</code> 修饰符与 <code>g</code> 修饰符的提取结果是一样的。但是，一旦出现非法字符，两者的行为就不一样了。</em></p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_Y<span class="token punctuation">,</span> <span class="token string">'3x + 4'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '3' ]</span>
-<span class="token function">tokenize</span><span class="token punctuation">(</span>TOKEN_G<span class="token punctuation">,</span> <span class="token string">'3x + 4'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// [ '3', '+', '4' ]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">tokenize</span>(<span class="variable constant_">TOKEN_Y</span>, <span class="string">&#x27;3x + 4&#x27;</span>)</span><br><span class="line"><span class="comment">// [ &#x27;3&#x27; ]</span></span><br><span class="line"><span class="title function_">tokenize</span>(<span class="variable constant_">TOKEN_G</span>, <span class="string">&#x27;3x + 4&#x27;</span>)</span><br><span class="line"><span class="comment">// [ &#x27;3&#x27;, &#x27;+&#x27;, &#x27;4&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码中，<code>g</code> 修饰符会忽略非法字符，而 <code>y</code> 修饰符不会，这样就很容易发现错误。</em></p>
 <p>8、<code>sticky</code> 属性：与 <code>y</code> 修饰符相匹配，ES6 的正则对象多了 <code>sticky</code> 属性，表示是否设置了 <code>y</code> 修饰符。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> r <span class="token operator">=</span> <span class="token regex">/hello\d/y</span><span class="token punctuation">;</span>
-r<span class="token punctuation">.</span>sticky <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> r = <span class="regexp">/hello\d/y</span>;</span><br><span class="line">r.<span class="property">sticky</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p>9、<code>flags</code> 属性：ES6 为正则表达式新增了 <code>flags</code> 属性，会返回正则表达式的修饰符。 </p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// ES5 的 source 属性</span>
-<span class="token comment" spellcheck="true">// 返回正则表达式的正文</span>
-<span class="token regex">/abc/ig</span><span class="token punctuation">.</span>source
-<span class="token comment" spellcheck="true">// "abc"</span>
-    
-<span class="token comment" spellcheck="true">// ES6 的 flags 属性</span>
-<span class="token comment" spellcheck="true">// 返回正则表达式的修饰符</span>
-<span class="token regex">/abc/ig</span><span class="token punctuation">.</span>flags
-<span class="token comment" spellcheck="true">// 'gi'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5 的 source 属性</span></span><br><span class="line"><span class="comment">// 返回正则表达式的正文</span></span><br><span class="line">/abc/ig.<span class="property">source</span></span><br><span class="line"><span class="comment">// &quot;abc&quot;</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">// ES6 的 flags 属性</span></span><br><span class="line"><span class="comment">// 返回正则表达式的修饰符</span></span><br><span class="line">/abc/ig.<span class="property">flags</span></span><br><span class="line"><span class="comment">// &#x27;gi&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p>10、<code>s</code> 修饰符：dotAll 模式</p>
 <p>正则表达式中，点（ <code>.</code> ）是一个特殊字符，代表任意的单个字符，但是行终止符（line terminator character）除外。</p>
 <p>以下四个字符属于 <code>行终止符</code>。</p>
@@ -317,22 +226,15 @@ r<span class="token punctuation">.</span>sticky <span class="token comment" spel
 <li>U+2028 行分隔符（line separator）</li>
 <li>U+2029 段分隔符（paragraph separator）</li>
 </ol>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/foo.bar/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// false</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/foo.<span class="property">bar</span>/.<span class="title function_">test</span>(<span class="string">&#x27;foo\nbar&#x27;</span>)</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
 <p><em>上面代码中，因为 <code>.</code> 不匹配 <code>\n</code>，所以正则表达式返回 <code>false</code>。</em></p>
 <p>所以现在有一个提案，引入 <code>/s</code> 修饰符，使得 <code>.</code> 可以匹配任意单个字符。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">/</span>foo<span class="token punctuation">.</span>bar<span class="token operator">/</span>s<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/foo.<span class="property">bar</span>/s.<span class="title function_">test</span>(<span class="string">&#x27;foo\nbar&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <p>这被称为 <code>dotAll</code> 模式，即点（ <code>dot</code> ）代表一切字符。所以，正则表达式还引入了一个 <code>dotAll</code> 属性，返回一个布尔值，表示该正则表达式是否处在 <code>dotAll</code> 模式。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> re <span class="token operator">=</span> <span class="token operator">/</span>foo<span class="token punctuation">.</span>bar<span class="token operator">/</span>s<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 另一种写法</span>
-<span class="token comment" spellcheck="true">// const re = new RegExp('foo.bar', 's');</span>
-    
-re<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'foo\nbar'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// true</span>
-re<span class="token punctuation">.</span>dotAll <span class="token comment" spellcheck="true">// true</span>
-re<span class="token punctuation">.</span>flags <span class="token comment" spellcheck="true">// 's'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> re = <span class="regexp">/foo.bar/</span>s;</span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line"><span class="comment">// const re = new RegExp(&#x27;foo.bar&#x27;, &#x27;s&#x27;);</span></span><br><span class="line">	</span><br><span class="line">re.<span class="title function_">test</span>(<span class="string">&#x27;foo\nbar&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">re.<span class="property">dotAll</span> <span class="comment">// true</span></span><br><span class="line">re.<span class="property">flags</span> <span class="comment">// &#x27;s&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p><code>/s</code> 修饰符和多行修饰符 <code>/m</code> 不冲突，两者一起使用的情况下，.匹配所有字符，而 <code>^</code> 和 <code>$</code> 匹配每一行的行首和行尾。</p>
 
   </div>

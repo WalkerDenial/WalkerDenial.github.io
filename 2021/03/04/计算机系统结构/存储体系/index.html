@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-17.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-12.png)" >
   <h2>存储体系</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-04T15:33:00.000Z">
@@ -152,9 +152,9 @@
 <p>c<sub>i</sub>：每位价格；<br/><br>S<sub>M<sub>i</sub></sub>：以位计算的存储容量；<br/><br>T<sub>A<sub>i</sub></sub>：CPU 访问到 M<sub>i</sub> 中信息所需的时间；<br/><br>H：命中率；</p>
 </blockquote>
 <p>存储层次的每位价格：</p>
-<p>c = (c<sub>1</sub>S<sub>M<sub>1</sub></sub> + c<sub>2</sub>S<sub>M<sub>2</sub></sub> + … + c<sub>i</sub>S<sub>M<sub>i</sub></sub>)/(S<sub>M<sub>1</sub></sub> + S<sub>M<sub>2</sub></sub> + … + S<sub>M<sub>i</sub></sub>)</p>
+<p>c &#x3D; (c<sub>1</sub>S<sub>M<sub>1</sub></sub> + c<sub>2</sub>S<sub>M<sub>2</sub></sub> + … + c<sub>i</sub>S<sub>M<sub>i</sub></sub>)&#x2F;(S<sub>M<sub>1</sub></sub> + S<sub>M<sub>2</sub></sub> + … + S<sub>M<sub>i</sub></sub>)</p>
 <p>命中率 H 定义为 CPU 产生的逻辑地址在 M<sub>1</sub> 中访问到（命中到）的概率。</p>
-<p>存储层次的等效访问时间 T<sub>A</sub> = H<sub>1</sub>T<sub>A<sub>1</sub></sub> + H<sub>2</sub>T<sub>A<sub>2</sub></sub> + … + H<sub>i</sub>T<sub>A<sub>i</sub></sub>，希望 T<sub>A<sub>i</sub></sub> 越接近于 T<sub>A<sub>1</sub></sub>。</p>
+<p>存储层次的等效访问时间 T<sub>A</sub> &#x3D; H<sub>1</sub>T<sub>A<sub>1</sub></sub> + H<sub>2</sub>T<sub>A<sub>2</sub></sub> + … + H<sub>i</sub>T<sub>A<sub>i</sub></sub>，希望 T<sub>A<sub>i</sub></sub> 越接近于 T<sub>A<sub>1</sub></sub>。</p>
 <h1 id="2-虚拟存储器"><a href="#2-虚拟存储器" class="headerlink" title="2 虚拟存储器"></a>2 虚拟存储器</h1><h2 id="2-1-3-种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题"><a href="#2-1-3-种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题" class="headerlink" title="2.1 3 种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题"></a>2.1 3 种虚拟管理方式的原理、地址映像规则、映像表机构、地址变换过程、各自的优点和问题</h2><p>虚拟存储器通过增设地址映像表机构来实现程序在主存中的定位。将程序分割成若干段或页，用相应的映像表指明该程序的某段或某页是否已装入主存。若已装入，同时指明其在主存中的起始地址；若未装入，就去辅存中调段或调页，装入主存后在映像表中建立好程序空间和实存空间的地址映像关系。这样，程序执行时通过查映像表将程序（虚）地址变换成实（主）存地址再仿主存。</p>
 <p>根据存储映像算法的不同，可有多种不同的存储管理方式的虚拟存储器，其中主要有段氏、页式和段页式 3 种。</p>
 <h2 id="2-2-段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效"><a href="#2-2-段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效" class="headerlink" title="2.2 段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效"></a>2.2 段页式虚拟存储器由虚地址计算实主存地址的方法，给出映像表内容计算出主存实地址，判断是否发生段失效、页失效或保护失效</h2><p>程序都有模块性，一个复杂的大程序可以分解成多个在逻辑上相对独立的模块。这些模块可以是主程序、子程序或过程，也可以是数据块。模块的大小各不相同，有的甚至事先无法确定。每个模块都是一个单独的段，都以该段的起点为 0 相对编址。当某个段由辅存调入主存时，只要系统赋予该段一个基址（即该段存放在主存中的起始地址），就可以由此基址和单元子啊段内的相对位移形成单元在主存中的实际地址。将主存按段分配的存储管理方式称为段氏管理。</p>

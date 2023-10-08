@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-4.png)" >
   <h2>CSS 设计模式</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2022-04-19T06:30:00.000Z">
@@ -144,41 +144,14 @@
   <p>除了 CSS 编写之外，<strong>CSS 设计模式</strong> 也是重中之重，如果前期不重视 CSS 规划，后期维护或者重构时，在几百个甚至更多文件中寻找并调整样式，将是一场灾难。为了 CSS 能更好的维护，接下来介绍几种常用的设计模式。</p>
 <h2 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h2><p>「OO」即面向对象，采用面向对象思维来设计 CSS。</p>
 <p>大致思路示例如下：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Father</span> <span class="token punctuation">{</span>
-    <span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">class</span> <span class="token class-name">Child</span> <span class="token keyword">extends</span> <span class="token class-name">Father</span> <span class="token punctuation">{</span>
-    <span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 对父方法进行改动</span>
-    <span class="token function">study</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 扩展方法</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">	<span class="title function_">action</span>()</span><br><span class="line">	<span class="title function_">eat</span>()</span><br><span class="line">	<span class="title function_">run</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Father</span> &#123;</span><br><span class="line">	<span class="title function_">action</span>() <span class="comment">// 对父方法进行改动</span></span><br><span class="line">	<span class="title function_">study</span>() <span class="comment">// 扩展方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>基于前面示例代码，可以考虑定义 <strong>公共 CSS</strong>，然后再进行改造或扩展。示例代码如下：</p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">&lt;div class="item">&lt;/div>
-&lt;div class="item">&lt;/div>
-&lt;div class="item">&lt;/div>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;item&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;item&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;item&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: green;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">	// 其他属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="token class">.item</span> </span><span class="token punctuation">{</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">14</span>px<span class="token punctuation">;</span>
-    // 其他属性
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>设想，如果想对第二个 div 调整为红色，如果直接更改 <strong>.item</strong> 里面的颜色显然是不合理的，重新写一份代价也大，如何处理呢？</p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">&lt;div class="item">&lt;/div>
-&lt;div class="item item-red">&lt;/div>
-&lt;div class="item">&lt;/div>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;item&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;item item-red&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;item&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: green;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">	// 其他属性</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-red</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="token class">.item</span> </span><span class="token punctuation">{</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">14</span>px<span class="token punctuation">;</span>
-    // 其他属性
-<span class="token punctuation">}</span>
-<span class="token selector"><span class="token class">.item-red</span> </span><span class="token punctuation">{</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如此，就可以符合要求，并不影响其他区域，并且改动量最少。</p>
 <p>原则：</p>
 <ol>
@@ -186,45 +159,10 @@
 <li>结构（基础对象）与皮肤分离</li>
 <li>面向设计开发</li>
 </ol>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 容器与内容分离 --></span>
-<span class="token comment" spellcheck="true">&lt;!-- post 中的 meta-data --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>meta-data<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Information<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token comment" spellcheck="true">&lt;!-- comment 中的 meta-data --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>comment<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>meta-data<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Information<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 容器与内容分离 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- post 中的 meta-data --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;meta-data&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>Information<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- comment 中的 meta-data --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;comment&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;meta-data&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>Information<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 方式一，不推荐 --&gt;</span></span><br><span class="line">.post .meta-data &#123;</span><br><span class="line">    <span class="comment">&lt;!-- css code --&gt;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 方式二 --&gt;</span></span><br><span class="line">.post &#123;</span><br><span class="line">    <span class="comment">&lt;!-- css code --&gt;</span></span><br><span class="line">&#125;</span><br><span class="line">.meta-data &#123;</span><br><span class="line">    <span class="comment">&lt;!-- css code --&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true">&lt;!-- 方式一，不推荐 --></span>
-.post .meta-data {
-    <span class="token comment" spellcheck="true">&lt;!-- css code --></span>
-}
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 结构（基础对象）与皮肤分离 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item skin&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">.item &#123;</span><br><span class="line">	color: green;</span><br><span class="line">	font-size: 14px;</span><br><span class="line">	// 其他属性</span><br><span class="line">&#125;</span><br><span class="line">.skin &#123;</span><br><span class="line">	background-color: white;</span><br><span class="line">    // 其他样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<span class="token comment" spellcheck="true">&lt;!-- 方式二 --></span>
-.post {
-    <span class="token comment" spellcheck="true">&lt;!-- css code --></span>
-}
-.meta-data {
-    <span class="token comment" spellcheck="true">&lt;!-- css code --></span>
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 结构（基础对象）与皮肤分离 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>item skin<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-.item {
-    color: green;
-    font-size: 14px;
-    // 其他属性
-}
-.skin {
-    background-color: white;
-    // 其他样式
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="BEM"><a href="#BEM" class="headerlink" title="BEM"></a>BEM</h2><ul>
 <li>块：Block</li>
 <li>元素：Element__</li>
@@ -258,7 +196,7 @@
 <ol>
 <li>Settings（设置）：包含字体、颜色定义等，通常定义可以自定义模板的变量。</li>
 <li>Tools（工具）: mixin，function 主要结合预处理器使用</li>
-<li>Generic（常规）：重置和/或标准化样式、框大小定义等，例如 normalize.css、reset.css</li>
+<li>Generic（常规）：重置和&#x2F;或标准化样式、框大小定义等，例如 normalize.css、reset.css</li>
 <li>Elements（元素）：定义网站 HTML 元素的样式（如 H1 标签默认样式等）</li>
 <li>Objects（对象）：类名样式中，不允许出现外观属性，例如 Color，概念和 OOCSS 这个设计模式中的 struct 类似</li>
 <li>Components（组件）：用于设置任何页面元素和所有页面元素样式的美学类（通常与对象类的结构结合使用）</li>

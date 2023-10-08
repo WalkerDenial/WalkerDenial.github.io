@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-13.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)" >
   <h2>计算机网络概述</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2020-04-10T15:56:00.000Z">
@@ -293,7 +293,7 @@
 <blockquote>
 <ol>
 <li>主要用于处理应用实体间交换数据的语法，目的是解决格式和数据表示的差别，从而为应用提供一个一致的数据格式，使字符、格式等有差异的设备之间相互通信；</li>
-<li>实现文本压缩/解压缩、数据加密/解密、字符串彪马的转换等功能；</li>
+<li>实现文本压缩&#x2F;解压缩、数据加密&#x2F;解密、字符串彪马的转换等功能；</li>
 </ol>
 </blockquote>
 <p>会话层：</p>
@@ -305,7 +305,7 @@
 <li>在会话建立以后，需要对进程间的对话进行管理与控制；</li>
 </ol>
 </blockquote>
-<p>传输层：主要功能包括复用/分解（区分发送和接收主机上的进程），端到端的可靠数据传输、连接控制、流量控制和拥塞控制机制等</p>
+<p>传输层：主要功能包括复用&#x2F;分解（区分发送和接收主机上的进程），端到端的可靠数据传输、连接控制、流量控制和拥塞控制机制等</p>
 <p>网络层：</p>
 <blockquote>
 <ol>
@@ -330,20 +330,20 @@
 <li>网络高层：主要是完成信息处理服务的功能。包含会话层、表示层、应用层；</li>
 </ul>
 <p><strong>PS：实际应用的网络中几乎没有严格按照 OSI 参考模型构件的。OSI 参考模型的意义在于它是一种计算机网络的理论体系结构，是目前学习、讨论计算机网络的一种工具，能够从理论上很好地解释网络概念、层次与通信过程，是学习计算机网络必须学习和掌握的内容。</strong></p>
-<h4 id="8-2-TCP-IP-参考模型"><a href="#8-2-TCP-IP-参考模型" class="headerlink" title="8.2 TCP/IP 参考模型"></a>8.2 TCP/IP 参考模型</h4><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/TCP_IP.jpeg" alt="TCP/IP 参考模型"></p>
+<h4 id="8-2-TCP-IP-参考模型"><a href="#8-2-TCP-IP-参考模型" class="headerlink" title="8.2 TCP&#x2F;IP 参考模型"></a>8.2 TCP&#x2F;IP 参考模型</h4><p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/TCP_IP.jpeg" alt="TCP/IP 参考模型"></p>
 <blockquote>
 <ol>
-<li><p>应用层：TCP/IP 参考模型将 OSI 参考模型中会话层和表示层的功能合并到了应用层来实现；</p>
+<li><p>应用层：TCP&#x2F;IP 参考模型将 OSI 参考模型中会话层和表示层的功能合并到了应用层来实现；</p>
 </li>
-<li><p> 传输层：主要包括面向连接、提供可靠数据流传输的传输控制协议 TCP 和无连接不提供可靠数据传输的用户数据报协议 UDP；</p>
+<li><p>传输层：主要包括面向连接、提供可靠数据流传输的传输控制协议 TCP 和无连接不提供可靠数据传输的用户数据报协议 UDP；</p>
 </li>
 <li><p>网络互连层：是整个参考模型的核心，主要解决把数据分组发往目的网络或主机的问题；（IP 是无连接不可靠网络协议）</p>
 </li>
-<li><p>网络接口层：实际上，TCP/IP 参考模型没有真正描述这一层的实现，只是要求能够提供给其上层—网络互连层一个访问接口，以便在其上传递 IP 分组；</p>
+<li><p>网络接口层：实际上，TCP&#x2F;IP 参考模型没有真正描述这一层的实现，只是要求能够提供给其上层—网络互连层一个访问接口，以便在其上传递 IP 分组；</p>
 </li>
 </ol>
 </blockquote>
-<h4 id="8-3-五层参考模型"><a href="#8-3-五层参考模型" class="headerlink" title="8.3 五层参考模型"></a>8.3 五层参考模型</h4><p>对比 TCP/IP 参考模型与 OSI 参考模型，TCP/IP 参考模型缺少 OSI 参考模型中功能比较少的会话层与表示层，而 TCP/IP 参考模型的网络接口层则相当于合并了 OSI 参考模型的数据链路层与物理层。结合这两个参考模型，可以提出综合理论需求与实际网络的五层参考模型，包括 <strong>物理层</strong>、<strong>数据链路层</strong>、<strong>网络层</strong>、<strong>传输层</strong> 与 <strong>应用层</strong>，各层功能基本与 OSI 参考模型对应。</p>
+<h4 id="8-3-五层参考模型"><a href="#8-3-五层参考模型" class="headerlink" title="8.3 五层参考模型"></a>8.3 五层参考模型</h4><p>对比 TCP&#x2F;IP 参考模型与 OSI 参考模型，TCP&#x2F;IP 参考模型缺少 OSI 参考模型中功能比较少的会话层与表示层，而 TCP&#x2F;IP 参考模型的网络接口层则相当于合并了 OSI 参考模型的数据链路层与物理层。结合这两个参考模型，可以提出综合理论需求与实际网络的五层参考模型，包括 <strong>物理层</strong>、<strong>数据链路层</strong>、<strong>网络层</strong>、<strong>传输层</strong> 与 <strong>应用层</strong>，各层功能基本与 OSI 参考模型对应。</p>
 <p><img src="https://personal-blog.oss-cn-hangzhou.aliyuncs.com/five_layer.jpeg" alt="五层参考模型"></p>
 
   </div>

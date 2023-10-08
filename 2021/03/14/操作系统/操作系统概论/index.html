@@ -31,7 +31,7 @@
           url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
       }
   </style>
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<meta name="generator" content="Hexo 7.0.0-rc2"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 <body>
 <div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
@@ -131,7 +131,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-3.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)" >
   <h2>操作系统概论</h2>
     
   <p>作者 : Walker Denial &nbsp&nbsp 发布于 : <time datetime="2021-03-14T15:04:00.000Z">
@@ -188,7 +188,7 @@
 <h2 id="3-4-Android-操作系统的体系结构"><a href="#3-4-Android-操作系统的体系结构" class="headerlink" title="3.4 Android 操作系统的体系结构"></a>3.4 Android 操作系统的体系结构</h2><p>Android 操作系统分为四层，从高层到低层分别是应用程序层、应用框架层、系统运行库层和 Linux 内核层。</p>
 <p>Android 应用程序：Android 会同一系列核心应用程序包一起发布，该应用程序包包括客户端、SMS 短消息程序、日历、地图、浏览器、联系人管理程序等。</p>
 <p>Android 应用框架：应用框架层为应用开发者提供了用以访问核心功能的 API 框架。</p>
-<p>C、C++ 本地库和 Android 运行时环境：Android 包含一些 C/C++ 库，这些库能被 Android 系统中不同的组件使用。</p>
+<p>C、C++ 本地库和 Android 运行时环境：Android 包含一些 C&#x2F;C++ 库，这些库能被 Android 系统中不同的组件使用。</p>
 <p>Linux 内核：Android 是基于不同版本的 Linux 内核开发出来的，Linux 内核层包括系统层安全机制、内存管理、进程管理、网络堆栈及一系列的驱动模块，位于硬件与其他的软件层之间，提供与硬件的交互。</p>
 <h1 id="4-操作系统的发展历史及分类"><a href="#4-操作系统的发展历史及分类" class="headerlink" title="4 操作系统的发展历史及分类"></a>4 操作系统的发展历史及分类</h1><h2 id="4-1-批处理操作系统"><a href="#4-1-批处理操作系统" class="headerlink" title="4.1 批处理操作系统"></a>4.1 批处理操作系统</h2><p>批处理操作系统的基本工作方式是：用户将作业交给系统操作员，系统操作员在收到作业后，并不立即将作业输入计算机，而是在收到一定数量的用户作业之后，组成一批作业，再把这批作业输入到计算机中。这批作业可在系统中形成一个连续的、自动转接的作业流。</p>
 <h2 id="4-2-分时系统"><a href="#4-2-分时系统" class="headerlink" title="4.2 分时系统"></a>4.2 分时系统</h2><p>在分时系统中，一台计算机主机连接了若干个终端，每个终端可由一个用户使用。用户通过终端交互式地向系统提出命令请求，系统接受用户的命令之后，采用时间片轮转方式处理服务请求，并通过交互方式在终端上向用户显示结果。</p>
@@ -200,7 +200,7 @@
 <h2 id="4-7-分布式操作系统"><a href="#4-7-分布式操作系统" class="headerlink" title="4.7 分布式操作系统"></a>4.7 分布式操作系统</h2><p>将大量的计算机通过网络连结在一起，可以过得极高的运算能力及广泛的数据共享。这样一种系统称作为分布式系统（Distributed System）。为分布式系统配置的操作系统称为分布式操作系统（Distributed Operating System）。</p>
 <h1 id="5-操作系统的结构设计"><a href="#5-操作系统的结构设计" class="headerlink" title="5 操作系统的结构设计"></a>5 操作系统的结构设计</h1><h2 id="5-1-整体式结构"><a href="#5-1-整体式结构" class="headerlink" title="5.1 整体式结构"></a>5.1 整体式结构</h2><p>首先确定操作系统的总体功能，然后将总功能分解为若干个子功能，实现每个子功能的程序称为模块。再按照功能将上述每个大模块分解为若干个较小的模块，如此下去，直至每个模块仅包含单一功能或紧密联系的小功能为止，即分解为最基本的模块为止。最后通过接口将所有模块连接起来形成一个整体。我们把这种操作系统的结构称之为模块组合结构。</p>
 <h2 id="5-2-层次式结构"><a href="#5-2-层次式结构" class="headerlink" title="5.2 层次式结构"></a>5.2 层次式结构</h2><p>层次式结构就是把操作系统的所有功能模块，按功能流图的调用次序，分别将这些模块排列成若干层，各层之间的模块只能是单向依赖或单向调用（如只允许上层或外层模块调用下层或内层模块）关系。</p>
-<h2 id="5-3-微内核结构"><a href="#5-3-微内核结构" class="headerlink" title="5.3 微内核结构"></a>5.3 微内核结构</h2><p>采用客户/服务器结构的操作系统就适宜于应用在网络环境下分布式处理的计算环境中。由于这种体系结构所具有的一些特征，它又被称为内核体系结构。</p>
+<h2 id="5-3-微内核结构"><a href="#5-3-微内核结构" class="headerlink" title="5.3 微内核结构"></a>5.3 微内核结构</h2><p>采用客户&#x2F;服务器结构的操作系统就适宜于应用在网络环境下分布式处理的计算环境中。由于这种体系结构所具有的一些特征，它又被称为内核体系结构。</p>
 
   </div>
   <!--评论块-->
